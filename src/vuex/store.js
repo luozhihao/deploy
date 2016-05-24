@@ -7,18 +7,17 @@
 
 import Vue from 'vue'
 import Vuex from 'vuex'
+import Vue_Resource from 'vue-resource'
 
 // 告诉 vue “使用” vuex
 Vue.use(Vuex)
+Vue.use(Vue_Resource)
 
 // 创建一个 object 存储应用启动时的状态
 const state = {
 
-    // 应用启动时，count 置为0
-    count: 0,
-    success: false,
-    confirm: false,
-    tag:''
+    // 类型
+    types: []
 }
 
 // 创建一个 object 存储 mutation 函数
@@ -26,18 +25,8 @@ const mutations = {
 
     // mutation 的第一个参数是当前的 state
     // 你可以在函数里修改 state
-    INCREMENT (state, amount) {
-        state.count += amount
-        state.tag = '222'
-    },
-    DECREMENT (state, amount) {
-        state.count -= amount
-    },
-    SHOWRIGHT (state, status) {
-        state.success = status
-    },
-    CONFIRM (state) {
-        state.confirm = true
+    GETTYPES (state, data) {
+        state.types = data
     }
 }
 

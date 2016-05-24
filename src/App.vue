@@ -7,12 +7,14 @@ div.main
 <script>
 import Left from './views/Left.vue'
 import Main from './views/Main.vue'
+import store from './vuex/store.js'
 
 export default {
     components: {
         Left,
         Main
-    }
+    },
+    store
 }
 </script>
 

@@ -1,23 +1,11 @@
-webpackJsonp([2],[
-/* 0 */,
-/* 1 */,
-/* 2 */,
-/* 3 */,
-/* 4 */,
-/* 5 */,
-/* 6 */,
-/* 7 */,
-/* 8 */,
-/* 9 */,
-/* 10 */,
-/* 11 */,
-/* 12 */
+webpackJsonp([2],Array(31).concat([
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(13)
-	__vue_script__ = __webpack_require__(15)
-	__vue_template__ = __webpack_require__(73)
+	__webpack_require__(32)
+	__vue_script__ = __webpack_require__(34)
+	__vue_template__ = __webpack_require__(92)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -25,7 +13,7 @@ webpackJsonp([2],[
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "D:\\work\\Aptana Studio 3 Workspace\\deploy\\static\\src\\components\\global\\Select.vue"
+	  var id = "D:\\work\\Aptana Studio 3 Workspace\\charging_conf\\charging_conf\\static\\src\\components\\global\\Select.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -34,23 +22,23 @@ webpackJsonp([2],[
 	})()}
 
 /***/ },
-/* 13 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(14);
+	var content = __webpack_require__(33);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(10)(content, {});
+	var update = __webpack_require__(29)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-14cf0780&file=Select.vue!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Select.vue", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-14cf0780&file=Select.vue!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Select.vue");
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-59e06a5e&file=Select.vue!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Select.vue", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-59e06a5e&file=Select.vue!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Select.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -60,10 +48,10 @@ webpackJsonp([2],[
 	}
 
 /***/ },
-/* 14 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(9)();
+	exports = module.exports = __webpack_require__(28)();
 	// imports
 	
 	
@@ -74,7 +62,7 @@ webpackJsonp([2],[
 
 
 /***/ },
-/* 15 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function($) {'use strict';
@@ -83,11 +71,11 @@ webpackJsonp([2],[
 	    value: true
 	});
 	
-	var _defineProperty2 = __webpack_require__(16);
+	var _defineProperty2 = __webpack_require__(35);
 	
 	var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 	
-	var _getIterator2 = __webpack_require__(35);
+	var _getIterator2 = __webpack_require__(54);
 	
 	var _getIterator3 = _interopRequireDefault(_getIterator2);
 	
@@ -348,14 +336,14 @@ webpackJsonp([2],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 16 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	exports.__esModule = true;
 	
-	var _defineProperty = __webpack_require__(17);
+	var _defineProperty = __webpack_require__(36);
 	
 	var _defineProperty2 = _interopRequireDefault(_defineProperty);
 	
@@ -377,37 +365,37 @@ webpackJsonp([2],[
 	};
 
 /***/ },
-/* 17 */
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(18), __esModule: true };
+	module.exports = { "default": __webpack_require__(37), __esModule: true };
 
 /***/ },
-/* 18 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(19);
-	var $Object = __webpack_require__(22).Object;
+	__webpack_require__(38);
+	var $Object = __webpack_require__(41).Object;
 	module.exports = function defineProperty(it, key, desc){
 	  return $Object.defineProperty(it, key, desc);
 	};
 
 /***/ },
-/* 19 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var $export = __webpack_require__(20);
+	var $export = __webpack_require__(39);
 	// 19.1.2.4 / 15.2.3.6 Object.defineProperty(O, P, Attributes)
-	$export($export.S + $export.F * !__webpack_require__(30), 'Object', {defineProperty: __webpack_require__(26).f});
+	$export($export.S + $export.F * !__webpack_require__(49), 'Object', {defineProperty: __webpack_require__(45).f});
 
 /***/ },
-/* 20 */
+/* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var global    = __webpack_require__(21)
-	  , core      = __webpack_require__(22)
-	  , ctx       = __webpack_require__(23)
-	  , hide      = __webpack_require__(25)
+	var global    = __webpack_require__(40)
+	  , core      = __webpack_require__(41)
+	  , ctx       = __webpack_require__(42)
+	  , hide      = __webpack_require__(44)
 	  , PROTOTYPE = 'prototype';
 	
 	var $export = function(type, name, source){
@@ -467,7 +455,7 @@ webpackJsonp([2],[
 	module.exports = $export;
 
 /***/ },
-/* 21 */
+/* 40 */
 /***/ function(module, exports) {
 
 	// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
@@ -476,18 +464,18 @@ webpackJsonp([2],[
 	if(typeof __g == 'number')__g = global; // eslint-disable-line no-undef
 
 /***/ },
-/* 22 */
+/* 41 */
 /***/ function(module, exports) {
 
 	var core = module.exports = {version: '2.4.0'};
 	if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
 
 /***/ },
-/* 23 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// optional / simple context binding
-	var aFunction = __webpack_require__(24);
+	var aFunction = __webpack_require__(43);
 	module.exports = function(fn, that, length){
 	  aFunction(fn);
 	  if(that === undefined)return fn;
@@ -508,7 +496,7 @@ webpackJsonp([2],[
 	};
 
 /***/ },
-/* 24 */
+/* 43 */
 /***/ function(module, exports) {
 
 	module.exports = function(it){
@@ -517,12 +505,12 @@ webpackJsonp([2],[
 	};
 
 /***/ },
-/* 25 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var dP         = __webpack_require__(26)
-	  , createDesc = __webpack_require__(34);
-	module.exports = __webpack_require__(30) ? function(object, key, value){
+	var dP         = __webpack_require__(45)
+	  , createDesc = __webpack_require__(53);
+	module.exports = __webpack_require__(49) ? function(object, key, value){
 	  return dP.f(object, key, createDesc(1, value));
 	} : function(object, key, value){
 	  object[key] = value;
@@ -530,15 +518,15 @@ webpackJsonp([2],[
 	};
 
 /***/ },
-/* 26 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var anObject       = __webpack_require__(27)
-	  , IE8_DOM_DEFINE = __webpack_require__(29)
-	  , toPrimitive    = __webpack_require__(33)
+	var anObject       = __webpack_require__(46)
+	  , IE8_DOM_DEFINE = __webpack_require__(48)
+	  , toPrimitive    = __webpack_require__(52)
 	  , dP             = Object.defineProperty;
 	
-	exports.f = __webpack_require__(30) ? Object.defineProperty : function defineProperty(O, P, Attributes){
+	exports.f = __webpack_require__(49) ? Object.defineProperty : function defineProperty(O, P, Attributes){
 	  anObject(O);
 	  P = toPrimitive(P, true);
 	  anObject(Attributes);
@@ -551,17 +539,17 @@ webpackJsonp([2],[
 	};
 
 /***/ },
-/* 27 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isObject = __webpack_require__(28);
+	var isObject = __webpack_require__(47);
 	module.exports = function(it){
 	  if(!isObject(it))throw TypeError(it + ' is not an object!');
 	  return it;
 	};
 
 /***/ },
-/* 28 */
+/* 47 */
 /***/ function(module, exports) {
 
 	module.exports = function(it){
@@ -569,24 +557,24 @@ webpackJsonp([2],[
 	};
 
 /***/ },
-/* 29 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = !__webpack_require__(30) && !__webpack_require__(31)(function(){
-	  return Object.defineProperty(__webpack_require__(32)('div'), 'a', {get: function(){ return 7; }}).a != 7;
+	module.exports = !__webpack_require__(49) && !__webpack_require__(50)(function(){
+	  return Object.defineProperty(__webpack_require__(51)('div'), 'a', {get: function(){ return 7; }}).a != 7;
 	});
 
 /***/ },
-/* 30 */
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// Thank's IE8 for his funny defineProperty
-	module.exports = !__webpack_require__(31)(function(){
+	module.exports = !__webpack_require__(50)(function(){
 	  return Object.defineProperty({}, 'a', {get: function(){ return 7; }}).a != 7;
 	});
 
 /***/ },
-/* 31 */
+/* 50 */
 /***/ function(module, exports) {
 
 	module.exports = function(exec){
@@ -598,11 +586,11 @@ webpackJsonp([2],[
 	};
 
 /***/ },
-/* 32 */
+/* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isObject = __webpack_require__(28)
-	  , document = __webpack_require__(21).document
+	var isObject = __webpack_require__(47)
+	  , document = __webpack_require__(40).document
 	  // in old IE typeof document.createElement is 'object'
 	  , is = isObject(document) && isObject(document.createElement);
 	module.exports = function(it){
@@ -610,11 +598,11 @@ webpackJsonp([2],[
 	};
 
 /***/ },
-/* 33 */
+/* 52 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 7.1.1 ToPrimitive(input [, PreferredType])
-	var isObject = __webpack_require__(28);
+	var isObject = __webpack_require__(47);
 	// instead of the ES6 spec version, we didn't implement @@toPrimitive case
 	// and the second argument - flag - preferred type is a string
 	module.exports = function(it, S){
@@ -627,7 +615,7 @@ webpackJsonp([2],[
 	};
 
 /***/ },
-/* 34 */
+/* 53 */
 /***/ function(module, exports) {
 
 	module.exports = function(bitmap, value){
@@ -640,28 +628,28 @@ webpackJsonp([2],[
 	};
 
 /***/ },
-/* 35 */
+/* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(36), __esModule: true };
+	module.exports = { "default": __webpack_require__(55), __esModule: true };
 
 /***/ },
-/* 36 */
+/* 55 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(37);
-	__webpack_require__(68);
-	module.exports = __webpack_require__(70);
+	__webpack_require__(56);
+	__webpack_require__(87);
+	module.exports = __webpack_require__(89);
 
 /***/ },
-/* 37 */
+/* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(38);
-	var global        = __webpack_require__(21)
-	  , hide          = __webpack_require__(25)
-	  , Iterators     = __webpack_require__(41)
-	  , TO_STRING_TAG = __webpack_require__(65)('toStringTag');
+	__webpack_require__(57);
+	var global        = __webpack_require__(40)
+	  , hide          = __webpack_require__(44)
+	  , Iterators     = __webpack_require__(60)
+	  , TO_STRING_TAG = __webpack_require__(84)('toStringTag');
 	
 	for(var collections = ['NodeList', 'DOMTokenList', 'MediaList', 'StyleSheetList', 'CSSRuleList'], i = 0; i < 5; i++){
 	  var NAME       = collections[i]
@@ -672,20 +660,20 @@ webpackJsonp([2],[
 	}
 
 /***/ },
-/* 38 */
+/* 57 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	var addToUnscopables = __webpack_require__(39)
-	  , step             = __webpack_require__(40)
-	  , Iterators        = __webpack_require__(41)
-	  , toIObject        = __webpack_require__(42);
+	var addToUnscopables = __webpack_require__(58)
+	  , step             = __webpack_require__(59)
+	  , Iterators        = __webpack_require__(60)
+	  , toIObject        = __webpack_require__(61);
 	
 	// 22.1.3.4 Array.prototype.entries()
 	// 22.1.3.13 Array.prototype.keys()
 	// 22.1.3.29 Array.prototype.values()
 	// 22.1.3.30 Array.prototype[@@iterator]()
-	module.exports = __webpack_require__(46)(Array, 'Array', function(iterated, kind){
+	module.exports = __webpack_require__(65)(Array, 'Array', function(iterated, kind){
 	  this._t = toIObject(iterated); // target
 	  this._i = 0;                   // next index
 	  this._k = kind;                // kind
@@ -711,13 +699,13 @@ webpackJsonp([2],[
 	addToUnscopables('entries');
 
 /***/ },
-/* 39 */
+/* 58 */
 /***/ function(module, exports) {
 
 	module.exports = function(){ /* empty */ };
 
 /***/ },
-/* 40 */
+/* 59 */
 /***/ function(module, exports) {
 
 	module.exports = function(done, value){
@@ -725,34 +713,34 @@ webpackJsonp([2],[
 	};
 
 /***/ },
-/* 41 */
+/* 60 */
 /***/ function(module, exports) {
 
 	module.exports = {};
 
 /***/ },
-/* 42 */
+/* 61 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// to indexed object, toObject with fallback for non-array-like ES3 strings
-	var IObject = __webpack_require__(43)
-	  , defined = __webpack_require__(45);
+	var IObject = __webpack_require__(62)
+	  , defined = __webpack_require__(64);
 	module.exports = function(it){
 	  return IObject(defined(it));
 	};
 
 /***/ },
-/* 43 */
+/* 62 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// fallback for non-array-like ES3 and non-enumerable old V8 strings
-	var cof = __webpack_require__(44);
+	var cof = __webpack_require__(63);
 	module.exports = Object('z').propertyIsEnumerable(0) ? Object : function(it){
 	  return cof(it) == 'String' ? it.split('') : Object(it);
 	};
 
 /***/ },
-/* 44 */
+/* 63 */
 /***/ function(module, exports) {
 
 	var toString = {}.toString;
@@ -762,7 +750,7 @@ webpackJsonp([2],[
 	};
 
 /***/ },
-/* 45 */
+/* 64 */
 /***/ function(module, exports) {
 
 	// 7.2.1 RequireObjectCoercible(argument)
@@ -772,20 +760,20 @@ webpackJsonp([2],[
 	};
 
 /***/ },
-/* 46 */
+/* 65 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	var LIBRARY        = __webpack_require__(47)
-	  , $export        = __webpack_require__(20)
-	  , redefine       = __webpack_require__(48)
-	  , hide           = __webpack_require__(25)
-	  , has            = __webpack_require__(49)
-	  , Iterators      = __webpack_require__(41)
-	  , $iterCreate    = __webpack_require__(50)
-	  , setToStringTag = __webpack_require__(64)
-	  , getPrototypeOf = __webpack_require__(66)
-	  , ITERATOR       = __webpack_require__(65)('iterator')
+	var LIBRARY        = __webpack_require__(66)
+	  , $export        = __webpack_require__(39)
+	  , redefine       = __webpack_require__(67)
+	  , hide           = __webpack_require__(44)
+	  , has            = __webpack_require__(68)
+	  , Iterators      = __webpack_require__(60)
+	  , $iterCreate    = __webpack_require__(69)
+	  , setToStringTag = __webpack_require__(83)
+	  , getPrototypeOf = __webpack_require__(85)
+	  , ITERATOR       = __webpack_require__(84)('iterator')
 	  , BUGGY          = !([].keys && 'next' in [].keys()) // Safari has buggy iterators w/o `next`
 	  , FF_ITERATOR    = '@@iterator'
 	  , KEYS           = 'keys'
@@ -847,19 +835,19 @@ webpackJsonp([2],[
 	};
 
 /***/ },
-/* 47 */
+/* 66 */
 /***/ function(module, exports) {
 
 	module.exports = true;
 
 /***/ },
-/* 48 */
+/* 67 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(25);
+	module.exports = __webpack_require__(44);
 
 /***/ },
-/* 49 */
+/* 68 */
 /***/ function(module, exports) {
 
 	var hasOwnProperty = {}.hasOwnProperty;
@@ -868,17 +856,17 @@ webpackJsonp([2],[
 	};
 
 /***/ },
-/* 50 */
+/* 69 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	var create         = __webpack_require__(51)
-	  , descriptor     = __webpack_require__(34)
-	  , setToStringTag = __webpack_require__(64)
+	var create         = __webpack_require__(70)
+	  , descriptor     = __webpack_require__(53)
+	  , setToStringTag = __webpack_require__(83)
 	  , IteratorPrototype = {};
 	
 	// 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
-	__webpack_require__(25)(IteratorPrototype, __webpack_require__(65)('iterator'), function(){ return this; });
+	__webpack_require__(44)(IteratorPrototype, __webpack_require__(84)('iterator'), function(){ return this; });
 	
 	module.exports = function(Constructor, NAME, next){
 	  Constructor.prototype = create(IteratorPrototype, {next: descriptor(1, next)});
@@ -886,26 +874,26 @@ webpackJsonp([2],[
 	};
 
 /***/ },
-/* 51 */
+/* 70 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
-	var anObject    = __webpack_require__(27)
-	  , dPs         = __webpack_require__(52)
-	  , enumBugKeys = __webpack_require__(62)
-	  , IE_PROTO    = __webpack_require__(59)('IE_PROTO')
+	var anObject    = __webpack_require__(46)
+	  , dPs         = __webpack_require__(71)
+	  , enumBugKeys = __webpack_require__(81)
+	  , IE_PROTO    = __webpack_require__(78)('IE_PROTO')
 	  , Empty       = function(){ /* empty */ }
 	  , PROTOTYPE   = 'prototype';
 	
 	// Create object with fake `null` prototype: use iframe Object with cleared prototype
 	var createDict = function(){
 	  // Thrash, waste and sodomy: IE GC bug
-	  var iframe = __webpack_require__(32)('iframe')
+	  var iframe = __webpack_require__(51)('iframe')
 	    , i      = enumBugKeys.length
 	    , gt     = '>'
 	    , iframeDocument;
 	  iframe.style.display = 'none';
-	  __webpack_require__(63).appendChild(iframe);
+	  __webpack_require__(82).appendChild(iframe);
 	  iframe.src = 'javascript:'; // eslint-disable-line no-script-url
 	  // createDict = iframe.contentWindow.Object;
 	  // html.removeChild(iframe);
@@ -931,14 +919,14 @@ webpackJsonp([2],[
 	};
 
 /***/ },
-/* 52 */
+/* 71 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var dP       = __webpack_require__(26)
-	  , anObject = __webpack_require__(27)
-	  , getKeys  = __webpack_require__(53);
+	var dP       = __webpack_require__(45)
+	  , anObject = __webpack_require__(46)
+	  , getKeys  = __webpack_require__(72);
 	
-	module.exports = __webpack_require__(30) ? Object.defineProperties : function defineProperties(O, Properties){
+	module.exports = __webpack_require__(49) ? Object.defineProperties : function defineProperties(O, Properties){
 	  anObject(O);
 	  var keys   = getKeys(Properties)
 	    , length = keys.length
@@ -949,25 +937,25 @@ webpackJsonp([2],[
 	};
 
 /***/ },
-/* 53 */
+/* 72 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 19.1.2.14 / 15.2.3.14 Object.keys(O)
-	var $keys       = __webpack_require__(54)
-	  , enumBugKeys = __webpack_require__(62);
+	var $keys       = __webpack_require__(73)
+	  , enumBugKeys = __webpack_require__(81);
 	
 	module.exports = Object.keys || function keys(O){
 	  return $keys(O, enumBugKeys);
 	};
 
 /***/ },
-/* 54 */
+/* 73 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var has          = __webpack_require__(49)
-	  , toIObject    = __webpack_require__(42)
-	  , arrayIndexOf = __webpack_require__(55)(false)
-	  , IE_PROTO     = __webpack_require__(59)('IE_PROTO');
+	var has          = __webpack_require__(68)
+	  , toIObject    = __webpack_require__(61)
+	  , arrayIndexOf = __webpack_require__(74)(false)
+	  , IE_PROTO     = __webpack_require__(78)('IE_PROTO');
 	
 	module.exports = function(object, names){
 	  var O      = toIObject(object)
@@ -983,14 +971,14 @@ webpackJsonp([2],[
 	};
 
 /***/ },
-/* 55 */
+/* 74 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// false -> Array#indexOf
 	// true  -> Array#includes
-	var toIObject = __webpack_require__(42)
-	  , toLength  = __webpack_require__(56)
-	  , toIndex   = __webpack_require__(58);
+	var toIObject = __webpack_require__(61)
+	  , toLength  = __webpack_require__(75)
+	  , toIndex   = __webpack_require__(77);
 	module.exports = function(IS_INCLUDES){
 	  return function($this, el, fromIndex){
 	    var O      = toIObject($this)
@@ -1009,18 +997,18 @@ webpackJsonp([2],[
 	};
 
 /***/ },
-/* 56 */
+/* 75 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 7.1.15 ToLength
-	var toInteger = __webpack_require__(57)
+	var toInteger = __webpack_require__(76)
 	  , min       = Math.min;
 	module.exports = function(it){
 	  return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
 	};
 
 /***/ },
-/* 57 */
+/* 76 */
 /***/ function(module, exports) {
 
 	// 7.1.4 ToInteger
@@ -1031,10 +1019,10 @@ webpackJsonp([2],[
 	};
 
 /***/ },
-/* 58 */
+/* 77 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var toInteger = __webpack_require__(57)
+	var toInteger = __webpack_require__(76)
 	  , max       = Math.max
 	  , min       = Math.min;
 	module.exports = function(index, length){
@@ -1043,20 +1031,20 @@ webpackJsonp([2],[
 	};
 
 /***/ },
-/* 59 */
+/* 78 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var shared = __webpack_require__(60)('keys')
-	  , uid    = __webpack_require__(61);
+	var shared = __webpack_require__(79)('keys')
+	  , uid    = __webpack_require__(80);
 	module.exports = function(key){
 	  return shared[key] || (shared[key] = uid(key));
 	};
 
 /***/ },
-/* 60 */
+/* 79 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var global = __webpack_require__(21)
+	var global = __webpack_require__(40)
 	  , SHARED = '__core-js_shared__'
 	  , store  = global[SHARED] || (global[SHARED] = {});
 	module.exports = function(key){
@@ -1064,7 +1052,7 @@ webpackJsonp([2],[
 	};
 
 /***/ },
-/* 61 */
+/* 80 */
 /***/ function(module, exports) {
 
 	var id = 0
@@ -1074,7 +1062,7 @@ webpackJsonp([2],[
 	};
 
 /***/ },
-/* 62 */
+/* 81 */
 /***/ function(module, exports) {
 
 	// IE 8- don't enum bug keys
@@ -1083,30 +1071,30 @@ webpackJsonp([2],[
 	).split(',');
 
 /***/ },
-/* 63 */
+/* 82 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(21).document && document.documentElement;
+	module.exports = __webpack_require__(40).document && document.documentElement;
 
 /***/ },
-/* 64 */
+/* 83 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var def = __webpack_require__(26).f
-	  , has = __webpack_require__(49)
-	  , TAG = __webpack_require__(65)('toStringTag');
+	var def = __webpack_require__(45).f
+	  , has = __webpack_require__(68)
+	  , TAG = __webpack_require__(84)('toStringTag');
 	
 	module.exports = function(it, tag, stat){
 	  if(it && !has(it = stat ? it : it.prototype, TAG))def(it, TAG, {configurable: true, value: tag});
 	};
 
 /***/ },
-/* 65 */
+/* 84 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var store      = __webpack_require__(60)('wks')
-	  , uid        = __webpack_require__(61)
-	  , Symbol     = __webpack_require__(21).Symbol
+	var store      = __webpack_require__(79)('wks')
+	  , uid        = __webpack_require__(80)
+	  , Symbol     = __webpack_require__(40).Symbol
 	  , USE_SYMBOL = typeof Symbol == 'function';
 	
 	var $exports = module.exports = function(name){
@@ -1117,13 +1105,13 @@ webpackJsonp([2],[
 	$exports.store = store;
 
 /***/ },
-/* 66 */
+/* 85 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
-	var has         = __webpack_require__(49)
-	  , toObject    = __webpack_require__(67)
-	  , IE_PROTO    = __webpack_require__(59)('IE_PROTO')
+	var has         = __webpack_require__(68)
+	  , toObject    = __webpack_require__(86)
+	  , IE_PROTO    = __webpack_require__(78)('IE_PROTO')
 	  , ObjectProto = Object.prototype;
 	
 	module.exports = Object.getPrototypeOf || function(O){
@@ -1135,24 +1123,24 @@ webpackJsonp([2],[
 	};
 
 /***/ },
-/* 67 */
+/* 86 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 7.1.13 ToObject(argument)
-	var defined = __webpack_require__(45);
+	var defined = __webpack_require__(64);
 	module.exports = function(it){
 	  return Object(defined(it));
 	};
 
 /***/ },
-/* 68 */
+/* 87 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	var $at  = __webpack_require__(69)(true);
+	var $at  = __webpack_require__(88)(true);
 	
 	// 21.1.3.27 String.prototype[@@iterator]()
-	__webpack_require__(46)(String, 'String', function(iterated){
+	__webpack_require__(65)(String, 'String', function(iterated){
 	  this._t = String(iterated); // target
 	  this._i = 0;                // next index
 	// 21.1.5.2.1 %StringIteratorPrototype%.next()
@@ -1167,11 +1155,11 @@ webpackJsonp([2],[
 	});
 
 /***/ },
-/* 69 */
+/* 88 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var toInteger = __webpack_require__(57)
-	  , defined   = __webpack_require__(45);
+	var toInteger = __webpack_require__(76)
+	  , defined   = __webpack_require__(64);
 	// true  -> String#at
 	// false -> String#codePointAt
 	module.exports = function(TO_STRING){
@@ -1189,37 +1177,37 @@ webpackJsonp([2],[
 	};
 
 /***/ },
-/* 70 */
+/* 89 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var anObject = __webpack_require__(27)
-	  , get      = __webpack_require__(71);
-	module.exports = __webpack_require__(22).getIterator = function(it){
+	var anObject = __webpack_require__(46)
+	  , get      = __webpack_require__(90);
+	module.exports = __webpack_require__(41).getIterator = function(it){
 	  var iterFn = get(it);
 	  if(typeof iterFn != 'function')throw TypeError(it + ' is not iterable!');
 	  return anObject(iterFn.call(it));
 	};
 
 /***/ },
-/* 71 */
+/* 90 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var classof   = __webpack_require__(72)
-	  , ITERATOR  = __webpack_require__(65)('iterator')
-	  , Iterators = __webpack_require__(41);
-	module.exports = __webpack_require__(22).getIteratorMethod = function(it){
+	var classof   = __webpack_require__(91)
+	  , ITERATOR  = __webpack_require__(84)('iterator')
+	  , Iterators = __webpack_require__(60);
+	module.exports = __webpack_require__(41).getIteratorMethod = function(it){
 	  if(it != undefined)return it[ITERATOR]
 	    || it['@@iterator']
 	    || Iterators[classof(it)];
 	};
 
 /***/ },
-/* 72 */
+/* 91 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// getting tag from 19.1.3.6 Object.prototype.toString()
-	var cof = __webpack_require__(44)
-	  , TAG = __webpack_require__(65)('toStringTag')
+	var cof = __webpack_require__(63)
+	  , TAG = __webpack_require__(84)('toStringTag')
 	  // ES3 wrong here
 	  , ARG = cof(function(){ return arguments; }()) == 'Arguments';
 	
@@ -1242,26 +1230,36 @@ webpackJsonp([2],[
 	};
 
 /***/ },
-/* 73 */
+/* 92 */
 /***/ function(module, exports) {
 
 	module.exports = "\n  <div class=\"btn-group\" v-bind:class=\"{open:show}\">\n    <button v-el:btn type=\"button\" class=\"btn btn-default dropdown-toggle\" \n      @click=\"toggleDropdown\"\n      @blur=\"show = (search ? show:false)\"\n    >\n      <span class=\"placeholder\" v-show=\"showPlaceholder\">{{placeholder}}</span>\n      <span class=\"content\">{{ selectedItems }}</span>\n      <span class=\"caret\"></span>\n    </button>\n    <ul class=\"dropdown-menu\">\n      <template v-if=\"options.length\">\n        <li v-if=\"search\" class=\"bs-searchbox\">\n          <input type=\"text\" placeholder=\"Search\" v-model=\"searchText\" class=\"form-control\" autocomplete=\"off\">\n        </li>\n        <li v-for=\"option in options | filterBy searchText \" v-bind:id=\"option.value\" style=\"position:relative\">\n          <a @mousedown.prevent=\"select(option.value)\" style=\"cursor:pointer\">\n            {{ option.label }}\n            <span class=\"glyphicon glyphicon-ok check-mark\" v-show=\"multiple ? value.indexOf(option.value) !== -1 : value === option.value\"></span>\n          </a>\n        </li>\n      </template>\n      <slot v-else></slot>\n      <div class=\"notify\" v-show=\"showNotify\" transition=\"fadein\">最多选择 ({{limit}} 个)</div>\n    </ul>\n  </div>\n";
 
 /***/ },
-/* 74 */,
-/* 75 */,
-/* 76 */,
-/* 77 */,
-/* 78 */,
-/* 79 */,
-/* 80 */,
-/* 81 */
+/* 93 */,
+/* 94 */,
+/* 95 */,
+/* 96 */,
+/* 97 */,
+/* 98 */,
+/* 99 */,
+/* 100 */,
+/* 101 */,
+/* 102 */,
+/* 103 */,
+/* 104 */,
+/* 105 */,
+/* 106 */,
+/* 107 */,
+/* 108 */,
+/* 109 */,
+/* 110 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(82)
-	__vue_script__ = __webpack_require__(84)
-	__vue_template__ = __webpack_require__(85)
+	__webpack_require__(111)
+	__vue_script__ = __webpack_require__(113)
+	__vue_template__ = __webpack_require__(114)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -1269,7 +1267,7 @@ webpackJsonp([2],[
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "D:\\work\\Aptana Studio 3 Workspace\\deploy\\static\\src\\components\\deploy_manage\\app_board\\AppBoard.vue"
+	  var id = "D:\\work\\Aptana Studio 3 Workspace\\charging_conf\\charging_conf\\static\\src\\components\\global\\Confirm.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -1278,23 +1276,23 @@ webpackJsonp([2],[
 	})()}
 
 /***/ },
-/* 82 */
+/* 111 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(83);
+	var content = __webpack_require__(112);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(10)(content, {});
+	var update = __webpack_require__(29)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js?sourceMap!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-301604fd&file=AppBoard.vue&scoped=true!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./AppBoard.vue", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js?sourceMap!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-301604fd&file=AppBoard.vue&scoped=true!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./AppBoard.vue");
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-cd8cc08a&file=Confirm.vue!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Confirm.vue", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-cd8cc08a&file=Confirm.vue!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Confirm.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -1304,10 +1302,147 @@ webpackJsonp([2],[
 	}
 
 /***/ },
-/* 83 */
+/* 112 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(9)();
+	exports = module.exports = __webpack_require__(28)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "\r\n    \r\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"Confirm.vue","sourceRoot":"webpack://"}]);
+	
+	// exports
+
+
+/***/ },
+/* 113 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _vueStrap = __webpack_require__(97);
+	
+	exports.default = {
+	    data: function data() {
+	        return {
+	            confirmModal: false,
+	            tag: ''
+	        };
+	    },
+	
+	    methods: {
+	        okFn: function okFn() {}
+	    },
+	    components: {
+	        modal: _vueStrap.modal
+	    },
+	    events: {
+	        'showConfirm': function showConfirm(data) {
+	            this.confirmModal = true;
+	
+	            if (data) {
+	                this.tag = data;
+	            }
+	        }
+	    }
+	};
+	// </script>
+	//
+	// <style>
+	//
+	// </style>
+	/* generated by vue-loader */
+	// <!-- 确认操作组件 -->
+	// <template>
+	//     <modal :show.sync="confirmModal" effect="fade" width="450px">
+	//         <div slot="modal-header" class="modal-header">
+	//             <h4 class="modal-title">
+	//                 确认操作
+	//             </h4>
+	//         </div>
+	//         <div slot="modal-body" class="modal-body">
+	//             <h4 class="text-center">确认要删除此配置？</h4>
+	//         </div>
+	//         <div slot="modal-footer" class="modal-footer">
+	//             <button type="button" class="btn btn-warning" @click="okFn">
+	//                 确认
+	//             </button>
+	//             <button type="button" class="btn btn-default" @click="confirmModal = false">
+	//                 取消
+	//             </button>
+	//         </div>
+	//     </modal>
+	// </template>
+	//
+	// <script>
+
+/***/ },
+/* 114 */
+/***/ function(module, exports) {
+
+	module.exports = "\r\n    <modal :show.sync=\"confirmModal\" effect=\"fade\" width=\"450px\">\r\n        <div slot=\"modal-header\" class=\"modal-header\">\r\n            <h4 class=\"modal-title\">\r\n                确认操作\r\n            </h4>\r\n        </div>\r\n        <div slot=\"modal-body\" class=\"modal-body\">\r\n            <h4 class=\"text-center\">确认要删除此配置？</h4>\r\n        </div>\r\n        <div slot=\"modal-footer\" class=\"modal-footer\">\r\n            <button type=\"button\" class=\"btn btn-warning\" @click=\"okFn\">\r\n                确认\r\n            </button>\r\n            <button type=\"button\" class=\"btn btn-default\" @click=\"confirmModal = false\">\r\n                取消\r\n            </button>\r\n        </div>\r\n    </modal>\r\n";
+
+/***/ },
+/* 115 */,
+/* 116 */,
+/* 117 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__webpack_require__(118)
+	__vue_script__ = __webpack_require__(120)
+	__vue_template__ = __webpack_require__(131)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "D:\\work\\Aptana Studio 3 Workspace\\charging_conf\\charging_conf\\static\\src\\components\\deploy_manage\\app_board\\AppBoard.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 118 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(119);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(29)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js?sourceMap!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-5b3a62cc&file=AppBoard.vue&scoped=true!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./AppBoard.vue", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js?sourceMap!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-5b3a62cc&file=AppBoard.vue&scoped=true!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./AppBoard.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 119 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(28)();
 	// imports
 	
 	
@@ -1318,7 +1453,7 @@ webpackJsonp([2],[
 
 
 /***/ },
-/* 84 */
+/* 120 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1326,89 +1461,118 @@ webpackJsonp([2],[
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+	
+	var _vueStrap = __webpack_require__(97);
+	
+	var _Add = __webpack_require__(121);
+	
+	var _Add2 = _interopRequireDefault(_Add);
+	
+	var _Copy = __webpack_require__(126);
+	
+	var _Copy2 = _interopRequireDefault(_Copy);
+	
+	var _Confirm = __webpack_require__(110);
+	
+	var _Confirm2 = _interopRequireDefault(_Confirm);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
 	// <template>
-	//     <form class="form-inline">
-	//         <div class="form-group">
-	//             <label>项目名称：</label>
-	//             <input type="text" class="form-control" v-model="projectName">
-	//         </div>
-	//         <div class="form-group">
-	//             <label>部署包名称：</label>
-	//             <input type="text" class="form-control" v-model="packName">
-	//         </div>
-	//         <div class="form-group">
-	//             <label>项目类型：</label>
-	//             <v-select :value.sync="type" :options="types" placeholder="请选择">
-	//             </v-select>
-	//         </div>
-	//         <div class="mt30 table-btn">
-	//             <button type="button" class="btn btn-default btn-pd">
-	//                 <span class="glyphicon glyphicon-plus"></span>
-	//                 添加
-	//             </button>
-	//             <button type="button" class="btn btn-default btn-pd">
-	//                 <span class="glyphicon glyphicon-duplicate"></span>
-	//                 配置复制
-	//             </button>
-	//         </div>
-	//         <table class="table table-hover table-bordered table-bg">
-	//             <thead>
-	//                 <tr>
-	//                     <th>部署包名称</th>
-	//                     <th>项目名称</th>
-	//                     <th>项目类型</th>
-	//                     <th>版本</th>
-	//                     <th>运行环境</th>
-	//                     <th>备注</th>
-	//                     <th>操作</th>
-	//                 </tr>
-	//             </thead>
-	//             <tbody>
-	//                 <tr>
-	//                     <td>sncp-imprest</td>
-	//                     <td>充值服务</td>
-	//                     <td>计费</td>
-	//                     <td>1.01</td>
-	//                     <td>
-	//                         <button type="button" class="btn btn-default btn-small">
-	//                             <span class="table-icon glyphicon glyphicon-pencil"></span>
-	//                             编辑
-	//                         </button>
-	//                         <button type="button" class="btn btn-default btn-small">
-	//                             <span class="table-icon glyphicon glyphicon-eye-open"></span>
-	//                             查看
-	//                         </button>
-	//                     </td>
-	//                     <td></td>
-	//                     <td>
-	//                         <button type="button" class="btn btn-default btn-small">
-	//                             <span class="table-icon glyphicon glyphicon-edit"></span>
-	//                             修改
-	//                         </button>
-	//                         <button type="button" class="btn btn-default btn-small">
-	//                             <span class="table-icon glyphicon glyphicon-trash"></span>
-	//                             删除
-	//                         </button>
-	//                     </td>
-	//                 </tr>
-	//             </tbody>
-	//         </table>
-	//     </form>
+	//     <div>
+	//         <form class="form-inline">
+	//             <div class="form-group">
+	//                 <label>项目名称：</label>
+	//                 <input type="text" class="form-control" v-model="projectName">
+	//             </div>
+	//             <div class="form-group">
+	//                 <label>部署包名称：</label>
+	//                 <input type="text" class="form-control" v-model="packName">
+	//             </div>
+	//             <div class="form-group">
+	//                 <label>项目类型：</label>
+	//                 <v-select :value.sync="type" :options="types" placeholder="请选择">
+	//                 </v-select>
+	//             </div>
+	//             <div class="mt30 table-btn">
+	//                 <button type="button" class="btn btn-default btn-pd" @click="$broadcast('showAdd')">
+	//                     <span class="glyphicon glyphicon-plus"></span>
+	//                     添加
+	//                 </button>
+	//                 <button type="button" class="btn btn-default btn-pd" @click="$broadcast('showCopy')">
+	//                     <span class="glyphicon glyphicon-duplicate"></span>
+	//                     配置复制
+	//                 </button>
+	//             </div>
+	//             <table class="table table-hover table-bordered table-bg">
+	//                 <thead>
+	//                     <tr>
+	//                         <th>部署包名称</th>
+	//                         <th>项目名称</th>
+	//                         <th>项目类型</th>
+	//                         <th>版本</th>
+	//                         <th>运行环境</th>
+	//                         <th>备注</th>
+	//                         <th>操作</th>
+	//                     </tr>
+	//                 </thead>
+	//                 <tbody>
+	//                     <tr>
+	//                         <td>sncp-imprest</td>
+	//                         <td>充值服务</td>
+	//                         <td>计费</td>
+	//                         <td>1.01</td>
+	//                         <td>
+	//                             <button type="button" class="btn btn-default btn-small">
+	//                                 <span class="table-icon glyphicon glyphicon-pencil"></span>
+	//                                 编辑
+	//                             </button>
+	//                             <button type="button" class="btn btn-default btn-small">
+	//                                 <span class="table-icon glyphicon glyphicon-eye-open"></span>
+	//                                 查看
+	//                             </button>
+	//                         </td>
+	//                         <td></td>
+	//                         <td>
+	//                             <button type="button" class="btn btn-default btn-small">
+	//                                 <span class="table-icon glyphicon glyphicon-edit"></span>
+	//                                 修改
+	//                             </button>
+	//                             <button type="button" class="btn btn-default btn-small" @click="$broadcast('showConfirm')">
+	//                                 <span class="table-icon glyphicon glyphicon-trash"></span>
+	//                                 删除
+	//                             </button>
+	//                         </td>
+	//                     </tr>
+	//                 </tbody>
+	//             </table>
+	//         </form>
+	//         <add-modal></add-modal>
+	//         <copy-modal></copy-modal>
+	//         <delete-modal></delete-modal>
+	//     </div>
 	// </template>
 	//
 	// <script>
+	
+	
+	var origin = {
+	    types: [],
+	    type: '',
+	    projectName: '',
+	    packName: ''
+	};
+	
 	exports.default = {
 	    data: function data() {
-	        return {
-	            types: [],
-	            type: '',
-	            projectName: '',
-	            packName: ''
-	        };
+	        return origin;
 	    },
 	
 	    components: {
-	        vSelect: __webpack_require__(12)
+	        vSelect: _vueStrap.vSelect,
+	        addModal: _Add2.default,
+	        copyModal: _Copy2.default,
+	        deleteModal: _Confirm2.default
 	    }
 	};
 	// </script>
@@ -1419,11 +1583,332 @@ webpackJsonp([2],[
 	/* generated by vue-loader */
 
 /***/ },
-/* 85 */
+/* 121 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__webpack_require__(122)
+	__vue_script__ = __webpack_require__(124)
+	__vue_template__ = __webpack_require__(125)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "D:\\work\\Aptana Studio 3 Workspace\\charging_conf\\charging_conf\\static\\src\\components\\deploy_manage\\app_board\\Add.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 122 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(123);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(29)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js?sourceMap!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-6b7b5fea&file=Add.vue&scoped=true!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Add.vue", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js?sourceMap!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-6b7b5fea&file=Add.vue&scoped=true!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Add.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 123 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(28)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "\r\n.add-menu[_v-6b7b5fea] {\r\n    height: 34px;\r\n    line-height: 34px;\r\n    padding: 0;\r\n    color: #009688;\r\n    cursor: pointer;\r\n}\r\n", "", {"version":3,"sources":["/./src/components/deploy_manage/app_board/Add.vue.style"],"names":[],"mappings":";AAkFA;IACA,aAAA;IACA,kBAAA;IACA,WAAA;IACA,eAAA;IACA,gBAAA;CACA","file":"Add.vue","sourcesContent":["<template>\r\n    <modal :show.sync=\"addModal\" effect=\"fade\" width=\"450px\">\r\n        <div slot=\"modal-header\" class=\"modal-header\">\r\n            <h4 class=\"modal-title\">添加</h4>\r\n        </div>\r\n        <div slot=\"modal-body\" class=\"modal-body\">\r\n            <form class=\"form-horizontal\">\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label col-sm-3\">部署包名：</label>\r\n                    <div class=\"col-sm-8\">\r\n                        <input type=\"text\" class=\"form-control\" v-model=\"packName\">\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group input-box\">\r\n                    <label class=\"control-label col-sm-3\">类型：</label>\r\n                    <div class=\"col-sm-8\">\r\n                        <v-select :value.sync=\"type\" :options=\"types\" placeholder=\"请选择\">\r\n                        </v-select>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label col-sm-3\">项目名：</label>\r\n                    <div class=\"col-sm-8\">\r\n                        <input type=\"text\" class=\"form-control\" v-model=\"projectName\">\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\" v-for=\"version in versions\">\r\n                    <label class=\"control-label col-sm-3\" v-show=\"$index === 0\">版本号：</label>\r\n                    <div :class=\"$index === 0 ? 'col-sm-8' : 'col-sm-8 col-sm-offset-3'\">\r\n                        <input type=\"text\" class=\"form-control\" v-model=\"version\">\r\n                    </div>\r\n                    <div class=\"col-sm-1 add-menu\">\r\n                        <span class=\"glyphicon glyphicon-plus\" v-if=\"$index === 0\"></span>\r\n                        <span class=\"glyphicon glyphicon-minus text-danger\" v-else></span>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label col-sm-3\">备注：</label>\r\n                    <div class=\"col-sm-8\">\r\n                        <textarea class=\"form-control\" rows=\"5\" v-model=\"remark\"></textarea>\r\n                    </div>\r\n                </div>\r\n            </form>\r\n        </div>\r\n        <div slot=\"modal-footer\" class=\"modal-footer\">\r\n            <button type=\"button\" class=\"btn btn-default\">保存</button>\r\n            <button type=\"button\" class=\"btn btn-default\" @click='addModal = false'>取消</button>\r\n        </div>\r\n    </modal>\r\n</template>\r\n\r\n<script>\r\nimport { modal } from 'vue-strap'\r\nimport vSelect from '../../global/Select.vue'\r\n\r\nlet origin = {\r\n        addModal: false,\r\n        packName: '',\r\n        projectName: '',\r\n        types: [],\r\n        type: '',\r\n        versions: [''],\r\n        remark: ''\r\n    }\r\n\r\nexport default {\r\n    data () {\r\n        return origin\r\n    },\r\n    components: {\r\n        modal,\r\n        vSelect\r\n    },\r\n    events: {\r\n        'showAdd' () {\r\n            this.addModal = true\r\n        }\r\n    }\r\n}\r\n</script>\r\n\r\n<style scoped>\r\n.add-menu {\r\n    height: 34px;\r\n    line-height: 34px;\r\n    padding: 0;\r\n    color: #009688;\r\n    cursor: pointer;\r\n}\r\n</style>"],"sourceRoot":"webpack://"}]);
+	
+	// exports
+
+
+/***/ },
+/* 124 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _vueStrap = __webpack_require__(97);
+	
+	var _Select = __webpack_require__(31);
+	
+	var _Select2 = _interopRequireDefault(_Select);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	// <template>
+	//     <modal :show.sync="addModal" effect="fade" width="450px">
+	//         <div slot="modal-header" class="modal-header">
+	//             <h4 class="modal-title">添加</h4>
+	//         </div>
+	//         <div slot="modal-body" class="modal-body">
+	//             <form class="form-horizontal">
+	//                 <div class="form-group">
+	//                     <label class="control-label col-sm-3">部署包名：</label>
+	//                     <div class="col-sm-8">
+	//                         <input type="text" class="form-control" v-model="packName">
+	//                     </div>
+	//                 </div>
+	//                 <div class="form-group input-box">
+	//                     <label class="control-label col-sm-3">类型：</label>
+	//                     <div class="col-sm-8">
+	//                         <v-select :value.sync="type" :options="types" placeholder="请选择">
+	//                         </v-select>
+	//                     </div>
+	//                 </div>
+	//                 <div class="form-group">
+	//                     <label class="control-label col-sm-3">项目名：</label>
+	//                     <div class="col-sm-8">
+	//                         <input type="text" class="form-control" v-model="projectName">
+	//                     </div>
+	//                 </div>
+	//                 <div class="form-group" v-for="version in versions">
+	//                     <label class="control-label col-sm-3" v-show="$index === 0">版本号：</label>
+	//                     <div :class="$index === 0 ? 'col-sm-8' : 'col-sm-8 col-sm-offset-3'">
+	//                         <input type="text" class="form-control" v-model="version">
+	//                     </div>
+	//                     <div class="col-sm-1 add-menu">
+	//                         <span class="glyphicon glyphicon-plus" v-if="$index === 0"></span>
+	//                         <span class="glyphicon glyphicon-minus text-danger" v-else></span>
+	//                     </div>
+	//                 </div>
+	//                 <div class="form-group">
+	//                     <label class="control-label col-sm-3">备注：</label>
+	//                     <div class="col-sm-8">
+	//                         <textarea class="form-control" rows="5" v-model="remark"></textarea>
+	//                     </div>
+	//                 </div>
+	//             </form>
+	//         </div>
+	//         <div slot="modal-footer" class="modal-footer">
+	//             <button type="button" class="btn btn-default">保存</button>
+	//             <button type="button" class="btn btn-default" @click='addModal = false'>取消</button>
+	//         </div>
+	//     </modal>
+	// </template>
+	//
+	// <script>
+	
+	
+	var origin = {
+	    addModal: false,
+	    packName: '',
+	    projectName: '',
+	    types: [],
+	    type: '',
+	    versions: [''],
+	    remark: ''
+	};
+	
+	exports.default = {
+	    data: function data() {
+	        return origin;
+	    },
+	
+	    components: {
+	        modal: _vueStrap.modal,
+	        vSelect: _Select2.default
+	    },
+	    events: {
+	        'showAdd': function showAdd() {
+	            this.addModal = true;
+	        }
+	    }
+	};
+	// </script>
+	//
+	// <style scoped>
+	// .add-menu {
+	//     height: 34px;
+	//     line-height: 34px;
+	//     padding: 0;
+	//     color: #009688;
+	//     cursor: pointer;
+	// }
+	// </style>
+	/* generated by vue-loader */
+
+/***/ },
+/* 125 */
 /***/ function(module, exports) {
 
-	module.exports = "\n    <form class=\"form-inline\" _v-301604fd=\"\">\n        <div class=\"form-group\" _v-301604fd=\"\">\n            <label _v-301604fd=\"\">项目名称：</label>\n            <input type=\"text\" class=\"form-control\" v-model=\"projectName\" _v-301604fd=\"\">\n        </div>\n        <div class=\"form-group\" _v-301604fd=\"\">\n            <label _v-301604fd=\"\">部署包名称：</label>\n            <input type=\"text\" class=\"form-control\" v-model=\"packName\" _v-301604fd=\"\">\n        </div>\n        <div class=\"form-group\" _v-301604fd=\"\">\n            <label _v-301604fd=\"\">项目类型：</label>\n            <v-select :value.sync=\"type\" :options=\"types\" placeholder=\"请选择\" _v-301604fd=\"\">\n            </v-select>\n        </div>\n        <div class=\"mt30 table-btn\" _v-301604fd=\"\">\n            <button type=\"button\" class=\"btn btn-default btn-pd\" _v-301604fd=\"\">\n                <span class=\"glyphicon glyphicon-plus\" _v-301604fd=\"\"></span>\n                添加\n            </button>\n            <button type=\"button\" class=\"btn btn-default btn-pd\" _v-301604fd=\"\">\n                <span class=\"glyphicon glyphicon-duplicate\" _v-301604fd=\"\"></span>\n                配置复制\n            </button>\n        </div>\n        <table class=\"table table-hover table-bordered table-bg\" _v-301604fd=\"\">\n            <thead _v-301604fd=\"\">\n                <tr _v-301604fd=\"\">\n                    <th _v-301604fd=\"\">部署包名称</th>\n                    <th _v-301604fd=\"\">项目名称</th>\n                    <th _v-301604fd=\"\">项目类型</th>\n                    <th _v-301604fd=\"\">版本</th>\n                    <th _v-301604fd=\"\">运行环境</th>\n                    <th _v-301604fd=\"\">备注</th>\n                    <th _v-301604fd=\"\">操作</th>\n                </tr>\n            </thead>\n            <tbody _v-301604fd=\"\">\n                <tr _v-301604fd=\"\">\n                    <td _v-301604fd=\"\">sncp-imprest</td>\n                    <td _v-301604fd=\"\">充值服务</td>\n                    <td _v-301604fd=\"\">计费</td>\n                    <td _v-301604fd=\"\">1.01</td>\n                    <td _v-301604fd=\"\">\n                        <button type=\"button\" class=\"btn btn-default btn-small\" _v-301604fd=\"\">\n                            <span class=\"table-icon glyphicon glyphicon-pencil\" _v-301604fd=\"\"></span>\n                            编辑\n                        </button>\n                        <button type=\"button\" class=\"btn btn-default btn-small\" _v-301604fd=\"\">\n                            <span class=\"table-icon glyphicon glyphicon-eye-open\" _v-301604fd=\"\"></span>\n                            查看\n                        </button>\n                    </td>\n                    <td _v-301604fd=\"\"></td>\n                    <td _v-301604fd=\"\">\n                        <button type=\"button\" class=\"btn btn-default btn-small\" _v-301604fd=\"\">\n                            <span class=\"table-icon glyphicon glyphicon-edit\" _v-301604fd=\"\"></span>\n                            修改\n                        </button>\n                        <button type=\"button\" class=\"btn btn-default btn-small\" _v-301604fd=\"\">\n                            <span class=\"table-icon glyphicon glyphicon-trash\" _v-301604fd=\"\"></span>\n                            删除\n                        </button>\n                    </td>\n                </tr>\n            </tbody>\n        </table>\n    </form>\n";
+	module.exports = "\n    <modal :show.sync=\"addModal\" effect=\"fade\" width=\"450px\" _v-6b7b5fea=\"\">\n        <div slot=\"modal-header\" class=\"modal-header\" _v-6b7b5fea=\"\">\n            <h4 class=\"modal-title\" _v-6b7b5fea=\"\">添加</h4>\n        </div>\n        <div slot=\"modal-body\" class=\"modal-body\" _v-6b7b5fea=\"\">\n            <form class=\"form-horizontal\" _v-6b7b5fea=\"\">\n                <div class=\"form-group\" _v-6b7b5fea=\"\">\n                    <label class=\"control-label col-sm-3\" _v-6b7b5fea=\"\">部署包名：</label>\n                    <div class=\"col-sm-8\" _v-6b7b5fea=\"\">\n                        <input type=\"text\" class=\"form-control\" v-model=\"packName\" _v-6b7b5fea=\"\">\n                    </div>\n                </div>\n                <div class=\"form-group input-box\" _v-6b7b5fea=\"\">\n                    <label class=\"control-label col-sm-3\" _v-6b7b5fea=\"\">类型：</label>\n                    <div class=\"col-sm-8\" _v-6b7b5fea=\"\">\n                        <v-select :value.sync=\"type\" :options=\"types\" placeholder=\"请选择\" _v-6b7b5fea=\"\">\n                        </v-select>\n                    </div>\n                </div>\n                <div class=\"form-group\" _v-6b7b5fea=\"\">\n                    <label class=\"control-label col-sm-3\" _v-6b7b5fea=\"\">项目名：</label>\n                    <div class=\"col-sm-8\" _v-6b7b5fea=\"\">\n                        <input type=\"text\" class=\"form-control\" v-model=\"projectName\" _v-6b7b5fea=\"\">\n                    </div>\n                </div>\n                <div class=\"form-group\" v-for=\"version in versions\" _v-6b7b5fea=\"\">\n                    <label class=\"control-label col-sm-3\" v-show=\"$index === 0\" _v-6b7b5fea=\"\">版本号：</label>\n                    <div :class=\"$index === 0 ? 'col-sm-8' : 'col-sm-8 col-sm-offset-3'\" _v-6b7b5fea=\"\">\n                        <input type=\"text\" class=\"form-control\" v-model=\"version\" _v-6b7b5fea=\"\">\n                    </div>\n                    <div class=\"col-sm-1 add-menu\" _v-6b7b5fea=\"\">\n                        <span class=\"glyphicon glyphicon-plus\" v-if=\"$index === 0\" _v-6b7b5fea=\"\"></span>\n                        <span class=\"glyphicon glyphicon-minus text-danger\" v-else=\"\" _v-6b7b5fea=\"\"></span>\n                    </div>\n                </div>\n                <div class=\"form-group\" _v-6b7b5fea=\"\">\n                    <label class=\"control-label col-sm-3\" _v-6b7b5fea=\"\">备注：</label>\n                    <div class=\"col-sm-8\" _v-6b7b5fea=\"\">\n                        <textarea class=\"form-control\" rows=\"5\" v-model=\"remark\" _v-6b7b5fea=\"\"></textarea>\n                    </div>\n                </div>\n            </form>\n        </div>\n        <div slot=\"modal-footer\" class=\"modal-footer\" _v-6b7b5fea=\"\">\n            <button type=\"button\" class=\"btn btn-default\" _v-6b7b5fea=\"\">保存</button>\n            <button type=\"button\" class=\"btn btn-default\" @click=\"addModal = false\" _v-6b7b5fea=\"\">取消</button>\n        </div>\n    </modal>\n";
+
+/***/ },
+/* 126 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__webpack_require__(127)
+	__vue_script__ = __webpack_require__(129)
+	__vue_template__ = __webpack_require__(130)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "D:\\work\\Aptana Studio 3 Workspace\\charging_conf\\charging_conf\\static\\src\\components\\deploy_manage\\app_board\\Copy.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 127 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(128);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(29)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js?sourceMap!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-3211d87c&file=Copy.vue&scoped=true!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Copy.vue", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js?sourceMap!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-3211d87c&file=Copy.vue&scoped=true!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Copy.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 128 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(28)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "\r\n.add-menu[_v-3211d87c] {\r\n    height: 34px;\r\n    line-height: 34px;\r\n    padding: 0;\r\n    color: #009688;\r\n    cursor: pointer;\r\n}\r\n", "", {"version":3,"sources":["/./src/components/deploy_manage/app_board/Copy.vue.style"],"names":[],"mappings":";AA6CA;IACA,aAAA;IACA,kBAAA;IACA,WAAA;IACA,eAAA;IACA,gBAAA;CACA","file":"Copy.vue","sourcesContent":["<template>\r\n    <modal :show.sync=\"copyModal\" effect=\"fade\" width=\"450px\">\r\n        <div slot=\"modal-header\" class=\"modal-header\">\r\n            <h4 class=\"modal-title\">复制</h4>\r\n        </div>\r\n        <div slot=\"modal-body\" class=\"modal-body text-center\">\r\n            从\r\n            <v-select :value.sync=\"setting\" :options=\"settings\" placeholder=\"请选择\">\r\n            </v-select>\r\n            上复制生成新的应用配置?\r\n        </div>\r\n        <div slot=\"modal-footer\" class=\"modal-footer\">\r\n            <button type=\"button\" class=\"btn btn-default\">确定</button>\r\n            <button type=\"button\" class=\"btn btn-default\" @click='copyModal = false'>取消</button>\r\n        </div>\r\n    </modal>\r\n</template>\r\n\r\n<script>\r\nimport { modal } from 'vue-strap'\r\nimport vSelect from '../../global/Select.vue'\r\n\r\nlet origin = {\r\n        copyModal: false,\r\n        settings: [],\r\n        setting: ''\r\n    }\r\n\r\nexport default {\r\n    data () {\r\n        return origin\r\n    },\r\n    components: {\r\n        modal,\r\n        vSelect\r\n    },\r\n    events: {\r\n        'showCopy' () {\r\n            this.copyModal = true\r\n        }\r\n    }\r\n}\r\n</script>\r\n\r\n<style scoped>\r\n.add-menu {\r\n    height: 34px;\r\n    line-height: 34px;\r\n    padding: 0;\r\n    color: #009688;\r\n    cursor: pointer;\r\n}\r\n</style>"],"sourceRoot":"webpack://"}]);
+	
+	// exports
+
+
+/***/ },
+/* 129 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _vueStrap = __webpack_require__(97);
+	
+	var _Select = __webpack_require__(31);
+	
+	var _Select2 = _interopRequireDefault(_Select);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	// <template>
+	//     <modal :show.sync="copyModal" effect="fade" width="450px">
+	//         <div slot="modal-header" class="modal-header">
+	//             <h4 class="modal-title">复制</h4>
+	//         </div>
+	//         <div slot="modal-body" class="modal-body text-center">
+	//             从
+	//             <v-select :value.sync="setting" :options="settings" placeholder="请选择">
+	//             </v-select>
+	//             上复制生成新的应用配置?
+	//         </div>
+	//         <div slot="modal-footer" class="modal-footer">
+	//             <button type="button" class="btn btn-default">确定</button>
+	//             <button type="button" class="btn btn-default" @click='copyModal = false'>取消</button>
+	//         </div>
+	//     </modal>
+	// </template>
+	//
+	// <script>
+	
+	
+	var origin = {
+	    copyModal: false,
+	    settings: [],
+	    setting: ''
+	};
+	
+	exports.default = {
+	    data: function data() {
+	        return origin;
+	    },
+	
+	    components: {
+	        modal: _vueStrap.modal,
+	        vSelect: _Select2.default
+	    },
+	    events: {
+	        'showCopy': function showCopy() {
+	            this.copyModal = true;
+	        }
+	    }
+	};
+	// </script>
+	//
+	// <style scoped>
+	// .add-menu {
+	//     height: 34px;
+	//     line-height: 34px;
+	//     padding: 0;
+	//     color: #009688;
+	//     cursor: pointer;
+	// }
+	// </style>
+	/* generated by vue-loader */
+
+/***/ },
+/* 130 */
+/***/ function(module, exports) {
+
+	module.exports = "\n    <modal :show.sync=\"copyModal\" effect=\"fade\" width=\"450px\" _v-3211d87c=\"\">\n        <div slot=\"modal-header\" class=\"modal-header\" _v-3211d87c=\"\">\n            <h4 class=\"modal-title\" _v-3211d87c=\"\">复制</h4>\n        </div>\n        <div slot=\"modal-body\" class=\"modal-body text-center\" _v-3211d87c=\"\">\n            从\n            <v-select :value.sync=\"setting\" :options=\"settings\" placeholder=\"请选择\" _v-3211d87c=\"\">\n            </v-select>\n            上复制生成新的应用配置?\n        </div>\n        <div slot=\"modal-footer\" class=\"modal-footer\" _v-3211d87c=\"\">\n            <button type=\"button\" class=\"btn btn-default\" _v-3211d87c=\"\">确定</button>\n            <button type=\"button\" class=\"btn btn-default\" @click=\"copyModal = false\" _v-3211d87c=\"\">取消</button>\n        </div>\n    </modal>\n";
+
+/***/ },
+/* 131 */
+/***/ function(module, exports) {
+
+	module.exports = "\n    <div _v-5b3a62cc=\"\">\n        <form class=\"form-inline\" _v-5b3a62cc=\"\">\n            <div class=\"form-group\" _v-5b3a62cc=\"\">\n                <label _v-5b3a62cc=\"\">项目名称：</label>\n                <input type=\"text\" class=\"form-control\" v-model=\"projectName\" _v-5b3a62cc=\"\">\n            </div>\n            <div class=\"form-group\" _v-5b3a62cc=\"\">\n                <label _v-5b3a62cc=\"\">部署包名称：</label>\n                <input type=\"text\" class=\"form-control\" v-model=\"packName\" _v-5b3a62cc=\"\">\n            </div>\n            <div class=\"form-group\" _v-5b3a62cc=\"\">\n                <label _v-5b3a62cc=\"\">项目类型：</label>\n                <v-select :value.sync=\"type\" :options=\"types\" placeholder=\"请选择\" _v-5b3a62cc=\"\">\n                </v-select>\n            </div>\n            <div class=\"mt30 table-btn\" _v-5b3a62cc=\"\">\n                <button type=\"button\" class=\"btn btn-default btn-pd\" @click=\"$broadcast('showAdd')\" _v-5b3a62cc=\"\">\n                    <span class=\"glyphicon glyphicon-plus\" _v-5b3a62cc=\"\"></span>\n                    添加\n                </button>\n                <button type=\"button\" class=\"btn btn-default btn-pd\" @click=\"$broadcast('showCopy')\" _v-5b3a62cc=\"\">\n                    <span class=\"glyphicon glyphicon-duplicate\" _v-5b3a62cc=\"\"></span>\n                    配置复制\n                </button>\n            </div>\n            <table class=\"table table-hover table-bordered table-bg\" _v-5b3a62cc=\"\">\n                <thead _v-5b3a62cc=\"\">\n                    <tr _v-5b3a62cc=\"\">\n                        <th _v-5b3a62cc=\"\">部署包名称</th>\n                        <th _v-5b3a62cc=\"\">项目名称</th>\n                        <th _v-5b3a62cc=\"\">项目类型</th>\n                        <th _v-5b3a62cc=\"\">版本</th>\n                        <th _v-5b3a62cc=\"\">运行环境</th>\n                        <th _v-5b3a62cc=\"\">备注</th>\n                        <th _v-5b3a62cc=\"\">操作</th>\n                    </tr>\n                </thead>\n                <tbody _v-5b3a62cc=\"\">\n                    <tr _v-5b3a62cc=\"\">\n                        <td _v-5b3a62cc=\"\">sncp-imprest</td>\n                        <td _v-5b3a62cc=\"\">充值服务</td>\n                        <td _v-5b3a62cc=\"\">计费</td>\n                        <td _v-5b3a62cc=\"\">1.01</td>\n                        <td _v-5b3a62cc=\"\">\n                            <button type=\"button\" class=\"btn btn-default btn-small\" _v-5b3a62cc=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-pencil\" _v-5b3a62cc=\"\"></span>\n                                编辑\n                            </button>\n                            <button type=\"button\" class=\"btn btn-default btn-small\" _v-5b3a62cc=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-eye-open\" _v-5b3a62cc=\"\"></span>\n                                查看\n                            </button>\n                        </td>\n                        <td _v-5b3a62cc=\"\"></td>\n                        <td _v-5b3a62cc=\"\">\n                            <button type=\"button\" class=\"btn btn-default btn-small\" _v-5b3a62cc=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-edit\" _v-5b3a62cc=\"\"></span>\n                                修改\n                            </button>\n                            <button type=\"button\" class=\"btn btn-default btn-small\" @click=\"$broadcast('showConfirm')\" _v-5b3a62cc=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-trash\" _v-5b3a62cc=\"\"></span>\n                                删除\n                            </button>\n                        </td>\n                    </tr>\n                </tbody>\n            </table>\n        </form>\n        <add-modal _v-5b3a62cc=\"\"></add-modal>\n        <copy-modal _v-5b3a62cc=\"\"></copy-modal>\n        <delete-modal _v-5b3a62cc=\"\"></delete-modal>\n    </div>\n";
 
 /***/ }
-]);
+]));
 //# sourceMappingURL=2.build.js.map

@@ -1,7 +1,7 @@
 <template>
     <div class="sidebar">
         <a class="logo" v-link="{ path: '/' }">
-            <img src="../assets/images/logo.png" height="35" width="134">
+            <img src="../assets/images/logo2.png" height="35" width="134">
         </a>
         <aside class="menu">
             <div>

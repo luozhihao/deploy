@@ -6,9 +6,9 @@
         <div slot="modal-body" class="modal-body">
             <form class="form-horizontal">
                 <div class="form-group">
-                    <label class="control-label col-sm-3">名称：</label>
+                    <label class="control-label col-sm-3">部署包名：</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" v-model="name">
+                        <input type="text" class="form-control" v-model="packName">
                     </div>
                 </div>
                 <div class="form-group input-box">
@@ -18,16 +18,20 @@
                         </v-select>
                     </div>
                 </div>
-                <div class="form-group" v-for="version in versions" track-by="$index">
-                    <label class="control-label col-sm-3" v-show="$index === 0">版本/型号：</label>
+                <div class="form-group">
+                    <label class="control-label col-sm-3">项目名：</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" v-model="projectName">
+                    </div>
+                </div>
+                <div class="form-group" v-for="version in versions">
+                    <label class="control-label col-sm-3" v-show="$index === 0">版本号：</label>
                     <div :class="$index === 0 ? 'col-sm-8' : 'col-sm-8 col-sm-offset-3'">
                         <input type="text" class="form-control" v-model="version">
                     </div>
-                    <div class="col-sm-1 add-menu" v-if="$index === 0" @click="addMenu">
-                        <span class="glyphicon glyphicon-plus"></span>
-                    </div>
-                    <div class="col-sm-1 add-menu" v-else @click="removeMenu($index)">
-                        <span class="glyphicon glyphicon-minus text-danger"></span>
+                    <div class="col-sm-1 add-menu">
+                        <span class="glyphicon glyphicon-plus" v-if="$index === 0"></span>
+                        <span class="glyphicon glyphicon-minus text-danger" v-else></span>
                     </div>
                 </div>
                 <div class="form-group">
@@ -48,11 +52,12 @@
 <script>
 import { modal } from 'vue-strap'
 import vSelect from '../../global/Select.vue'
-import { getTypes } from '../../../vuex/getters.js'
 
 let origin = {
         addModal: false,
-        name: '',
+        packName: '',
+        projectName: '',
+        types: [],
         type: '',
         versions: [''],
         remark: ''
@@ -61,23 +66,6 @@ let origin = {
 export default {
     data () {
         return origin
-    },
-    methods: {
-
-        // 添加版本
-        addMenu () {
-            this.versions.push('')
-        },
-
-        // 删除版本
-        removeMenu (index) {
-            this.versions.splice(index, 1)
-        }
-    },
-    vuex: {
-        getters: {
-            types: getTypes
-        }
     },
     components: {
         modal,

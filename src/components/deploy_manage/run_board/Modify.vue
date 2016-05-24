@@ -1,14 +1,14 @@
 <template>
-    <modal :show.sync="addModal" effect="fade" width="450px">
+    <modal :show.sync="modifyModal" effect="fade" width="450px">
         <div slot="modal-header" class="modal-header">
-            <h4 class="modal-title">添加</h4>
+            <h4 class="modal-title">修改</h4>
         </div>
         <div slot="modal-body" class="modal-body">
             <form class="form-horizontal">
                 <div class="form-group">
                     <label class="control-label col-sm-3">名称：</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" v-model="name">
+                        <label class="control-label" v-text="name"></label>
                     </div>
                 </div>
                 <div class="form-group input-box">
@@ -18,16 +18,14 @@
                         </v-select>
                     </div>
                 </div>
-                <div class="form-group" v-for="version in versions" track-by="$index">
+                <div class="form-group" v-for="version in versions">
                     <label class="control-label col-sm-3" v-show="$index === 0">版本/型号：</label>
                     <div :class="$index === 0 ? 'col-sm-8' : 'col-sm-8 col-sm-offset-3'">
                         <input type="text" class="form-control" v-model="version">
                     </div>
-                    <div class="col-sm-1 add-menu" v-if="$index === 0" @click="addMenu">
-                        <span class="glyphicon glyphicon-plus"></span>
-                    </div>
-                    <div class="col-sm-1 add-menu" v-else @click="removeMenu($index)">
-                        <span class="glyphicon glyphicon-minus text-danger"></span>
+                    <div class="col-sm-1 add-menu">
+                        <span class="glyphicon glyphicon-plus" v-if="$index === 0"></span>
+                        <span class="glyphicon glyphicon-minus text-danger" v-else></span>
                     </div>
                 </div>
                 <div class="form-group">
@@ -40,7 +38,7 @@
         </div>
         <div slot="modal-footer" class="modal-footer">
             <button type="button" class="btn btn-default">保存</button>
-            <button type="button" class="btn btn-default" @click='addModal = false'>取消</button>
+            <button type="button" class="btn btn-default" @click='modifyModal = false'>取消</button>
         </div>
     </modal>
 </template>
@@ -48,13 +46,13 @@
 <script>
 import { modal } from 'vue-strap'
 import vSelect from '../../global/Select.vue'
-import { getTypes } from '../../../vuex/getters.js'
 
 let origin = {
-        addModal: false,
-        name: '',
-        type: '',
-        versions: [''],
+        modifyModal: false,
+        name: 'nginx',
+        types: [{label: '负载软件', value: '负载软件'}],
+        type: '负载软件',
+        versions: ['1.0', '2.0', '3.0'],
         remark: ''
     }
 
@@ -62,30 +60,13 @@ export default {
     data () {
         return origin
     },
-    methods: {
-
-        // 添加版本
-        addMenu () {
-            this.versions.push('')
-        },
-
-        // 删除版本
-        removeMenu (index) {
-            this.versions.splice(index, 1)
-        }
-    },
-    vuex: {
-        getters: {
-            types: getTypes
-        }
-    },
     components: {
         modal,
         vSelect
     },
     events: {
-        'showAdd' () {
-            this.addModal = true
+        'showModify' () {
+            this.modifyModal = true
         }
     }
 }

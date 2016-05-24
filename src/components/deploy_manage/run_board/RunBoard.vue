@@ -11,7 +11,7 @@
                 </v-select>
             </div>
             <div class="mt30 table-btn">
-                <button type="button" class="btn btn-default btn-pd" @click="$broadcast('showModal')">
+                <button type="button" class="btn btn-default btn-pd" @click="addFn">
                     <span class="glyphicon glyphicon-plus"></span>
                     添加
                 </button>
@@ -33,22 +33,22 @@
                         <td>操作系统</td>
                         <td>2.6.32-431.el6.x86_64</td>
                         <td>
-                            <button type="button" class="btn btn-default btn-small">
+                            <button type="button" class="btn btn-default btn-small" @click="$broadcast('showRule')">
                                 <span class="table-icon glyphicon glyphicon-pencil"></span>
                                 编辑
                             </button>
-                            <button type="button" class="btn btn-default btn-small">
+                            <button type="button" class="btn btn-default btn-small" @click="$broadcast('showRule')">
                                 <span class="table-icon glyphicon glyphicon-eye-open"></span>
                                 查看
                             </button>
                         </td>
                         <td>centeros 5+</td>
                         <td>
-                            <button type="button" class="btn btn-default btn-small">
+                            <button type="button" class="btn btn-default btn-small" @click="$broadcast('showModify')">
                                 <span class="table-icon glyphicon glyphicon-edit"></span>
                                 修改
                             </button>
-                            <button type="button" class="btn btn-default btn-small">
+                            <button type="button" class="btn btn-default btn-small" @click="$broadcast('showConfirm')">
                                 <span class="table-icon glyphicon glyphicon-trash"></span>
                                 删除
                             </button>
@@ -59,22 +59,22 @@
                         <td>操作系统</td>
                         <td>2.6.32-431.el6.x86_64</td>
                         <td>
-                            <button type="button" class="btn btn-default btn-small">
+                            <button type="button" class="btn btn-default btn-small" @click="$broadcast('showRule')">
                                 <span class="table-icon glyphicon glyphicon-pencil"></span>
                                 编辑
                             </button>
-                            <button type="button" class="btn btn-default btn-small">
+                            <button type="button" class="btn btn-default btn-small" @click="$broadcast('showRule')">
                                 <span class="table-icon glyphicon glyphicon-eye-open"></span>
                                 查看
                             </button>
                         </td>
                         <td>centeros 5+</td>
                         <td>
-                            <button type="button" class="btn btn-default btn-small">
+                            <button type="button" class="btn btn-default btn-small" @click="$broadcast('showModify')">
                                 <span class="table-icon glyphicon glyphicon-edit"></span>
                                 修改
                             </button>
-                            <button type="button" class="btn btn-default btn-small">
+                            <button type="button" class="btn btn-default btn-small" @click="$broadcast('showConfirm')">
                                 <span class="table-icon glyphicon glyphicon-trash"></span>
                                 删除
                             </button>
@@ -84,23 +84,49 @@
             </table>
         </form>
         <add-modal></add-modal>
+        <rule-modal></rule-modal>
+        <modify-modal></modify-modal>
+        <delete-modal></delete-modal>
     </div>
 </template>
 
 <script>
 import vSelect from '../../global/Select.vue'
 import addModal from './Add.vue'
+import ruleModal from './EditRule.vue'
+import modifyModal from './Modify.vue'
+import deleteModal from '../../global/Confirm.vue'
+import { getTypes } from '../../../vuex/action.js'
+
+let origin = {
+        types: [],
+        type: ''
+    }
 
 export default {
     data () {
-        return {
-            types: [],
-            type: ''
+        return origin
+    },
+    methods: {
+
+        // 添加方法
+        addFn () {
+            this.getTypesFn()
+
+            this.$broadcast('showAdd')
+        }
+    },
+    vuex: {
+        actions: {
+            getTypesFn: getTypes
         }
     },
     components: {
         vSelect,
-        addModal
+        addModal,
+        ruleModal,
+        modifyModal,
+        deleteModal
     }
 }
 </script>
