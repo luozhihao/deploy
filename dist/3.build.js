@@ -1253,13 +1253,24 @@ webpackJsonp([3],Array(31).concat([
 /* 107 */,
 /* 108 */,
 /* 109 */,
-/* 110 */
+/* 110 */,
+/* 111 */,
+/* 112 */,
+/* 113 */,
+/* 114 */,
+/* 115 */,
+/* 116 */,
+/* 117 */,
+/* 118 */,
+/* 119 */,
+/* 120 */,
+/* 121 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(111)
-	__vue_script__ = __webpack_require__(113)
-	__vue_template__ = __webpack_require__(114)
+	__webpack_require__(122)
+	__vue_script__ = __webpack_require__(124)
+	__vue_template__ = __webpack_require__(125)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -1276,13 +1287,13 @@ webpackJsonp([3],Array(31).concat([
 	})()}
 
 /***/ },
-/* 111 */
+/* 122 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(112);
+	var content = __webpack_require__(123);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(29)(content, {});
@@ -1302,7 +1313,7 @@ webpackJsonp([3],Array(31).concat([
 	}
 
 /***/ },
-/* 112 */
+/* 123 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(28)();
@@ -1316,7 +1327,7 @@ webpackJsonp([3],Array(31).concat([
 
 
 /***/ },
-/* 113 */
+/* 124 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1325,7 +1336,7 @@ webpackJsonp([3],Array(31).concat([
 	    value: true
 	});
 	
-	var _vueStrap = __webpack_require__(97);
+	var _vueStrap = __webpack_require__(103);
 	
 	exports.default = {
 	    data: function data() {
@@ -1336,7 +1347,12 @@ webpackJsonp([3],Array(31).concat([
 	    },
 	
 	    methods: {
-	        okFn: function okFn() {}
+	        okFn: function okFn() {
+	            var _this = this;
+	
+	            this.$dispatch('confirm', _this.tag);
+	            this.confirmModal = false;
+	        }
 	    },
 	    components: {
 	        modal: _vueStrap.modal
@@ -1382,36 +1398,47 @@ webpackJsonp([3],Array(31).concat([
 	// <script>
 
 /***/ },
-/* 114 */
+/* 125 */
 /***/ function(module, exports) {
 
 	module.exports = "\r\n    <modal :show.sync=\"confirmModal\" effect=\"fade\" width=\"450px\">\r\n        <div slot=\"modal-header\" class=\"modal-header\">\r\n            <h4 class=\"modal-title\">\r\n                确认操作\r\n            </h4>\r\n        </div>\r\n        <div slot=\"modal-body\" class=\"modal-body\">\r\n            <h4 class=\"text-center\">确认要删除此配置？</h4>\r\n        </div>\r\n        <div slot=\"modal-footer\" class=\"modal-footer\">\r\n            <button type=\"button\" class=\"btn btn-warning\" @click=\"okFn\">\r\n                确认\r\n            </button>\r\n            <button type=\"button\" class=\"btn btn-default\" @click=\"confirmModal = false\">\r\n                取消\r\n            </button>\r\n        </div>\r\n    </modal>\r\n";
 
 /***/ },
-/* 115 */,
-/* 116 */,
-/* 117 */,
-/* 118 */,
-/* 119 */,
-/* 120 */,
-/* 121 */,
-/* 122 */,
-/* 123 */,
-/* 124 */,
-/* 125 */,
 /* 126 */,
 /* 127 */,
 /* 128 */,
 /* 129 */,
 /* 130 */,
 /* 131 */,
-/* 132 */
+/* 132 */,
+/* 133 */,
+/* 134 */,
+/* 135 */,
+/* 136 */,
+/* 137 */,
+/* 138 */,
+/* 139 */,
+/* 140 */,
+/* 141 */,
+/* 142 */,
+/* 143 */,
+/* 144 */,
+/* 145 */,
+/* 146 */,
+/* 147 */,
+/* 148 */,
+/* 149 */,
+/* 150 */,
+/* 151 */,
+/* 152 */,
+/* 153 */,
+/* 154 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(133)
-	__vue_script__ = __webpack_require__(135)
-	__vue_template__ = __webpack_require__(141)
+	__webpack_require__(155)
+	__vue_script__ = __webpack_require__(157)
+	__vue_template__ = __webpack_require__(163)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -1428,13 +1455,13 @@ webpackJsonp([3],Array(31).concat([
 	})()}
 
 /***/ },
-/* 133 */
+/* 155 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(134);
+	var content = __webpack_require__(156);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(29)(content, {});
@@ -1454,7 +1481,7 @@ webpackJsonp([3],Array(31).concat([
 	}
 
 /***/ },
-/* 134 */
+/* 156 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(28)();
@@ -1468,7 +1495,7 @@ webpackJsonp([3],Array(31).concat([
 
 
 /***/ },
-/* 135 */
+/* 157 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1477,15 +1504,15 @@ webpackJsonp([3],Array(31).concat([
 	    value: true
 	});
 	
-	var _Add = __webpack_require__(136);
+	var _Add = __webpack_require__(158);
 	
 	var _Add2 = _interopRequireDefault(_Add);
 	
-	var _Confirm = __webpack_require__(110);
+	var _Confirm = __webpack_require__(121);
 	
 	var _Confirm2 = _interopRequireDefault(_Confirm);
 	
-	var _vueStrap = __webpack_require__(97);
+	var _vueStrap = __webpack_require__(103);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -1605,13 +1632,13 @@ webpackJsonp([3],Array(31).concat([
 	// <script>
 
 /***/ },
-/* 136 */
+/* 158 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(137)
-	__vue_script__ = __webpack_require__(139)
-	__vue_template__ = __webpack_require__(140)
+	__webpack_require__(159)
+	__vue_script__ = __webpack_require__(161)
+	__vue_template__ = __webpack_require__(162)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -1628,13 +1655,13 @@ webpackJsonp([3],Array(31).concat([
 	})()}
 
 /***/ },
-/* 137 */
+/* 159 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(138);
+	var content = __webpack_require__(160);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(29)(content, {});
@@ -1654,7 +1681,7 @@ webpackJsonp([3],Array(31).concat([
 	}
 
 /***/ },
-/* 138 */
+/* 160 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(28)();
@@ -1668,7 +1695,7 @@ webpackJsonp([3],Array(31).concat([
 
 
 /***/ },
-/* 139 */
+/* 161 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1677,7 +1704,7 @@ webpackJsonp([3],Array(31).concat([
 	    value: true
 	});
 	
-	var _vueStrap = __webpack_require__(97);
+	var _vueStrap = __webpack_require__(103);
 	
 	var _Select = __webpack_require__(31);
 	
@@ -1836,13 +1863,13 @@ webpackJsonp([3],Array(31).concat([
 	/* generated by vue-loader */
 
 /***/ },
-/* 140 */
+/* 162 */
 /***/ function(module, exports) {
 
 	module.exports = "\n    <modal :show.sync=\"addModal\" effect=\"fade\" width=\"450px\" _v-502888f3=\"\">\n        <div slot=\"modal-header\" class=\"modal-header\" _v-502888f3=\"\">\n            <h4 class=\"modal-title\" _v-502888f3=\"\">添加</h4>\n        </div>\n        <div slot=\"modal-body\" class=\"modal-body\" _v-502888f3=\"\">\n            <form class=\"form-horizontal form-small\" _v-502888f3=\"\">\n                <div class=\"form-group\" _v-502888f3=\"\">\n                    <label class=\"control-label col-sm-3\" _v-502888f3=\"\">实例名：</label>\n                    <div class=\"col-sm-8\" _v-502888f3=\"\">\n                        <input type=\"text\" class=\"form-control\" v-model=\"exampleName\" _v-502888f3=\"\">\n                    </div>\n                </div>\n                <div class=\"form-group input-box\" _v-502888f3=\"\">\n                    <label class=\"control-label col-sm-3\" _v-502888f3=\"\">项目类型：</label>\n                    <div class=\"col-sm-8\" _v-502888f3=\"\">\n                        <v-select :value.sync=\"type\" :options=\"types\" placeholder=\"请选择\" _v-502888f3=\"\">\n                        </v-select>\n                    </div>\n                </div>\n                <div class=\"form-group input-box\" _v-502888f3=\"\">\n                    <label class=\"control-label col-sm-3\" _v-502888f3=\"\">部署包：</label>\n                    <div class=\"col-sm-8\" _v-502888f3=\"\">\n                        <v-select :value.sync=\"pack\" :options=\"packs\" placeholder=\"请选择\" _v-502888f3=\"\">\n                        </v-select>\n                    </div>\n                </div>\n                <div class=\"form-group input-box\" _v-502888f3=\"\">\n                    <label class=\"control-label col-sm-3\" _v-502888f3=\"\">机房位置：</label>\n                    <div class=\"col-sm-8\" _v-502888f3=\"\">\n                        <v-select :value.sync=\"host\" :options=\"hosts\" placeholder=\"请选择\" _v-502888f3=\"\">\n                        </v-select>\n                    </div>\n                </div>\n                <div class=\"form-group\" _v-502888f3=\"\">\n                    <label class=\"control-label col-sm-3\" _v-502888f3=\"\">内网IP端口：</label>\n                    <div class=\"col-sm-5\" _v-502888f3=\"\">\n                        <input type=\"text\" class=\"form-control\" v-model=\"inip\" _v-502888f3=\"\">\n                    </div>\n                    <div class=\"col-sm-3\" _v-502888f3=\"\">\n                        <input type=\"text\" class=\"form-control\" v-model=\"inport\" _v-502888f3=\"\">\n                    </div>\n                </div>\n                <div class=\"form-group\" _v-502888f3=\"\">\n                    <label class=\"control-label col-sm-3\" _v-502888f3=\"\">外网IP端口：</label>\n                    <div class=\"col-sm-5\" _v-502888f3=\"\">\n                        <input type=\"text\" class=\"form-control\" v-model=\"outip\" _v-502888f3=\"\">\n                    </div>\n                    <div class=\"col-sm-3\" _v-502888f3=\"\">\n                        <input type=\"text\" class=\"form-control\" v-model=\"outport\" _v-502888f3=\"\">\n                    </div>\n                </div>\n                <div class=\"form-group\" _v-502888f3=\"\">\n                    <label class=\"control-label col-sm-3\" _v-502888f3=\"\">域名：</label>\n                    <div class=\"col-sm-8\" _v-502888f3=\"\">\n                        <input type=\"text\" class=\"form-control\" v-model=\"domain\" _v-502888f3=\"\">\n                    </div>\n                </div>\n                <div class=\"form-group\" _v-502888f3=\"\">\n                    <label class=\"control-label col-sm-3\" _v-502888f3=\"\">部署目录：</label>\n                    <div class=\"col-sm-8\" _v-502888f3=\"\">\n                        <input type=\"text\" class=\"form-control\" v-model=\"deployPath\" _v-502888f3=\"\">\n                    </div>\n                </div>\n                <div class=\"form-group\" _v-502888f3=\"\">\n                    <label class=\"control-label col-sm-3\" _v-502888f3=\"\">日志目录：</label>\n                    <div class=\"col-sm-8\" _v-502888f3=\"\">\n                        <input type=\"text\" class=\"form-control\" v-model=\"logPath\" _v-502888f3=\"\">\n                    </div>\n                </div>\n                <div class=\"form-group\" _v-502888f3=\"\">\n                    <label class=\"control-label col-sm-3\" _v-502888f3=\"\">配置文件目录：</label>\n                    <div class=\"col-sm-8\" _v-502888f3=\"\">\n                        <input type=\"text\" class=\"form-control\" v-model=\"docPath\" _v-502888f3=\"\">\n                    </div>\n                </div>\n                <div class=\"form-group\" _v-502888f3=\"\">\n                    <label class=\"control-label col-sm-3\" _v-502888f3=\"\">备注：</label>\n                    <div class=\"col-sm-8\" _v-502888f3=\"\">\n                        <textarea class=\"form-control\" rows=\"3\" v-model=\"remark\" _v-502888f3=\"\"></textarea>\n                    </div>\n                </div>\n            </form>\n        </div>\n        <div slot=\"modal-footer\" class=\"modal-footer\" _v-502888f3=\"\">\n            <button type=\"button\" class=\"btn btn-default\" _v-502888f3=\"\">保存</button>\n            <button type=\"button\" class=\"btn btn-default\" @click=\"addModal = false\" _v-502888f3=\"\">取消</button>\n        </div>\n    </modal>\n";
 
 /***/ },
-/* 141 */
+/* 163 */
 /***/ function(module, exports) {
 
 	module.exports = "\n    <div _v-efb0e18c=\"\">\n        <form class=\"form-inline\" _v-efb0e18c=\"\">\n            <div class=\"form-group\" _v-efb0e18c=\"\">\n                <label _v-efb0e18c=\"\">搜索：</label>\n                <input type=\"text\" class=\"form-control search-txt\" v-model=\"search\" placeholder=\"项目名/域名/机器名/部署包名/状态\" _v-efb0e18c=\"\">\n            </div>\n            <div class=\"mt30 table-btn\" _v-efb0e18c=\"\">\n                <button type=\"button\" class=\"btn btn-default btn-pd\" @click=\"$broadcast('showAdd')\" _v-efb0e18c=\"\">\n                    <span class=\"glyphicon glyphicon-plus\" _v-efb0e18c=\"\"></span>\n                    添加\n                </button>\n                <dropdown class=\"pull-right\" _v-efb0e18c=\"\"> \n                    <button type=\"button\" class=\"btn btn-default set-btn\" data-toggle=\"dropdown\" _v-efb0e18c=\"\">\n                        <span class=\"glyphicon glyphicon-cog\" _v-efb0e18c=\"\"></span>\n                    </button>\n                    <ul slot=\"dropdown-menu\" class=\"dropdown-menu\" _v-efb0e18c=\"\">\n                        <li _v-efb0e18c=\"\"><input id=\"example_name\" type=\"checkbox\" _v-efb0e18c=\"\"> <label for=\"example_name\" _v-efb0e18c=\"\">实例名称</label></li>\n                        <li _v-efb0e18c=\"\"><input type=\"checkbox\" _v-efb0e18c=\"\"> <label _v-efb0e18c=\"\">项目名称</label></li>\n                        <li _v-efb0e18c=\"\"><input type=\"checkbox\" _v-efb0e18c=\"\"> <label _v-efb0e18c=\"\">部署包名称</label></li>\n                        <li _v-efb0e18c=\"\"><input type=\"checkbox\" _v-efb0e18c=\"\"> <label _v-efb0e18c=\"\">域名</label></li>\n                        <li _v-efb0e18c=\"\"><input type=\"checkbox\" _v-efb0e18c=\"\"> <label _v-efb0e18c=\"\">端口</label></li>\n                        <li _v-efb0e18c=\"\"><input type=\"checkbox\" _v-efb0e18c=\"\"> <label _v-efb0e18c=\"\">版本</label></li>\n                        <li _v-efb0e18c=\"\"><input type=\"checkbox\" _v-efb0e18c=\"\"> <label _v-efb0e18c=\"\">配置环境要求</label></li>\n                        <li _v-efb0e18c=\"\"><input type=\"checkbox\" _v-efb0e18c=\"\"> <label _v-efb0e18c=\"\">机房位置</label></li>\n                        <li _v-efb0e18c=\"\"><input type=\"checkbox\" _v-efb0e18c=\"\"> <label _v-efb0e18c=\"\">机器IP</label></li>\n                        <li _v-efb0e18c=\"\"><input type=\"checkbox\" _v-efb0e18c=\"\"> <label _v-efb0e18c=\"\">服务部署目录</label></li>\n                        <li _v-efb0e18c=\"\"><input type=\"checkbox\" _v-efb0e18c=\"\"> <label _v-efb0e18c=\"\">日志文件目录</label></li>\n                        <li _v-efb0e18c=\"\"><input type=\"checkbox\" _v-efb0e18c=\"\"> <label _v-efb0e18c=\"\">配置文件目录</label></li>\n                        <li _v-efb0e18c=\"\"><input type=\"checkbox\" _v-efb0e18c=\"\"> <label _v-efb0e18c=\"\">备注</label></li>\n                    </ul>\n                </dropdown>\n            </div>\n            <table class=\"table table-hover table-bordered table-bg\" _v-efb0e18c=\"\">\n                <thead _v-efb0e18c=\"\">\n                    <tr _v-efb0e18c=\"\">\n                        <th _v-efb0e18c=\"\">实例名称</th>\n                        <th _v-efb0e18c=\"\">项目名称</th>\n                        <th _v-efb0e18c=\"\">部署包名称</th>\n                        <th _v-efb0e18c=\"\">域名</th>\n                        <th _v-efb0e18c=\"\">端口</th>\n                        <th _v-efb0e18c=\"\">版本</th>\n                        <th _v-efb0e18c=\"\">配置环境要求</th>\n                        <th _v-efb0e18c=\"\">机房位置</th>\n                        <th _v-efb0e18c=\"\">机器IP</th>\n                        <th _v-efb0e18c=\"\">服务部署目录</th>\n                        <th _v-efb0e18c=\"\">日志文件目录</th>\n                        <th _v-efb0e18c=\"\">配置文件目录</th>\n                        <th _v-efb0e18c=\"\">备注</th>\n                        <th _v-efb0e18c=\"\">操作</th>\n                    </tr>\n                </thead>\n                <tbody _v-efb0e18c=\"\">\n                    <tr _v-efb0e18c=\"\">\n                        <td _v-efb0e18c=\"\">imprest.woniu.com1</td>\n                        <td _v-efb0e18c=\"\">账户服务</td>\n                        <td _v-efb0e18c=\"\"></td>\n                        <td _v-efb0e18c=\"\"></td>\n                        <td _v-efb0e18c=\"\"></td>\n                        <td _v-efb0e18c=\"\"></td>\n                        <td _v-efb0e18c=\"\"></td>\n                        <td _v-efb0e18c=\"\"></td>\n                        <td _v-efb0e18c=\"\"></td>\n                        <td _v-efb0e18c=\"\"></td>\n                        <td _v-efb0e18c=\"\"></td>\n                        <td _v-efb0e18c=\"\"></td>\n                        <td _v-efb0e18c=\"\"></td>\n                        <td _v-efb0e18c=\"\">\n                            <button type=\"button\" class=\"btn btn-default btn-small\" _v-efb0e18c=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-edit\" _v-efb0e18c=\"\"></span>\n                            </button>\n                            <button type=\"button\" class=\"btn btn-default btn-small\" @click=\"$broadcast('showConfirm')\" _v-efb0e18c=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-trash\" _v-efb0e18c=\"\"></span>\n                            </button>\n                        </td>\n                    </tr>\n                </tbody>\n            </table>\n        </form>\n        <add-modal _v-efb0e18c=\"\"></add-modal>\n        <delete-modal _v-efb0e18c=\"\"></delete-modal>\n    </div>\n";

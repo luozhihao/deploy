@@ -32,11 +32,14 @@ export default {
     },
     methods: {
         okFn () {
-            
+            let _this = this
+
+            this.$dispatch('confirm', _this.tag)
+            this.confirmModal = false
         }
-    },
+    },  
     components: {
-        modal,
+        modal
     },
     events: {
         'showConfirm' (data) {

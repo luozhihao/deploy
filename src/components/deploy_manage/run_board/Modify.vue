@@ -6,26 +6,28 @@
         <div slot="modal-body" class="modal-body">
             <form class="form-horizontal">
                 <div class="form-group">
-                    <label class="control-label col-sm-3">名称：</label>
+                    <label class="control-label col-sm-3">名称：<span class="text-danger">*</span></label>
                     <div class="col-sm-8">
-                        <label class="control-label" v-text="name"></label>
+                        <input type="text" class="form-control" v-model="name"></label>
                     </div>
                 </div>
                 <div class="form-group input-box">
-                    <label class="control-label col-sm-3">类型：</label>
+                    <label class="control-label col-sm-3">类型：<span class="text-danger">*</span></label>
                     <div class="col-sm-8">
                         <v-select :value.sync="type" :options="types" placeholder="请选择">
                         </v-select>
                     </div>
                 </div>
-                <div class="form-group" v-for="version in versions">
+                <div class="form-group" v-for="version in versions" track-by="$index">
                     <label class="control-label col-sm-3" v-show="$index === 0">版本/型号：</label>
                     <div :class="$index === 0 ? 'col-sm-8' : 'col-sm-8 col-sm-offset-3'">
                         <input type="text" class="form-control" v-model="version">
                     </div>
-                    <div class="col-sm-1 add-menu">
-                        <span class="glyphicon glyphicon-plus" v-if="$index === 0"></span>
-                        <span class="glyphicon glyphicon-minus text-danger" v-else></span>
+                    <div class="col-sm-1 add-menu" v-if="$index === 0" @click="versions.push('')">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </div>
+                    <div class="col-sm-1 add-menu" v-else @click="versions.splice($index, 1)">
+                        <span class="glyphicon glyphicon-minus text-danger"></span>
                     </div>
                 </div>
                 <div class="form-group">
@@ -37,7 +39,7 @@
             </form>
         </div>
         <div slot="modal-footer" class="modal-footer">
-            <button type="button" class="btn btn-default">保存</button>
+            <button type="button" class="btn btn-default" :disabled="name.trim() && type ? false : true" @click="saveFn">保存</button>
             <button type="button" class="btn btn-default" @click='modifyModal = false'>取消</button>
         </div>
     </modal>
@@ -46,27 +48,75 @@
 <script>
 import { modal } from 'vue-strap'
 import vSelect from '../../global/Select.vue'
+import { types } from '../../../vuex/getters.js'
 
 let origin = {
         modifyModal: false,
-        name: 'nginx',
-        types: [{label: '负载软件', value: '负载软件'}],
-        type: '负载软件',
-        versions: ['1.0', '2.0', '3.0'],
-        remark: ''
+        name: '',
+        type: '',
+        versions: [''],
+        remark: '',
+        id: null
     }
 
 export default {
     data () {
         return origin
     },
+    methods: {
+
+        // 保存修改
+        saveFn () {
+            this.$http({
+                url: '/env_edit/',
+                method: 'POST',
+                data: {
+                    id: this.id,
+                    name: this.name,
+                    type: this.type,
+                    versions: this.versions,
+                    remark: this.remark
+                }
+            })
+            .then(response => {
+                if (response.data.result) {
+                    this.modifyModal = false
+
+                    this.$dispatch('refresh')
+                    this.$dispatch('show-success')
+                } else {
+                    this.$dispatch('show-error')
+                }
+            })
+        }
+    },
     components: {
         modal,
         vSelect
     },
+    vuex: {
+        getters: {
+            types
+        }
+    },
     events: {
-        'showModify' () {
+        'showModify' (param) {
             this.modifyModal = true
+
+            this.$http({
+                url: '/env_edit/',
+                method: 'GET',
+                data: {
+                    id: param
+                }
+            })
+            .then(response => {
+                this.name = response.data.name
+                this.type = response.data.type
+                this.versions = response.data.versions
+                this.remark = response.data.remark
+                this.id = param
+            })
         }
     }
 }

@@ -34,7 +34,7 @@ export default {
     background: white;
     color: #A3A3A3;
     box-shadow: 0 0 2px #ccc;
-    z-index: 1023;
+    z-index: 2;
 }
 
 .username {

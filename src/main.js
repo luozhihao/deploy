@@ -15,6 +15,9 @@ import App from './App.vue'
 Vue.use(Vue_Router)
 Vue.use(Vue_Resource)
 
+// 请求编码转换
+Vue.http.options.emulateJSON = true
+
 var router = new Vue_Router({
     hashbang: true,
     history: false,

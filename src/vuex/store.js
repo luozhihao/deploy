@@ -18,14 +18,14 @@ const state = {
 
     // 类型
     types: []
-}
+}   
 
 // 创建一个 object 存储 mutation 函数
 const mutations = {
 
     // mutation 的第一个参数是当前的 state
     // 你可以在函数里修改 state
-    GETTYPES (state, data) {
+    GETRUNTYPES (state, data) {
         state.types = data
     }
 }

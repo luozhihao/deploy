@@ -6,13 +6,13 @@
         <div slot="modal-body" class="modal-body">
             <form class="form-horizontal">
                 <div class="form-group">
-                    <label class="control-label col-sm-3">名称：</label>
+                    <label class="control-label col-sm-3">名称：<span class="text-danger">*</span></label>
                     <div class="col-sm-8">
                         <input type="text" class="form-control" v-model="name">
                     </div>
                 </div>
                 <div class="form-group input-box">
-                    <label class="control-label col-sm-3">类型：</label>
+                    <label class="control-label col-sm-3">类型：<span class="text-danger">*</span></label>
                     <div class="col-sm-8">
                         <v-select :value.sync="type" :options="types" placeholder="请选择">
                         </v-select>
@@ -39,7 +39,7 @@
             </form>
         </div>
         <div slot="modal-footer" class="modal-footer">
-            <button type="button" class="btn btn-default">保存</button>
+            <button type="button" class="btn btn-default" @click="saveFn" :disabled="name.trim() && type ? false: true">保存</button>
             <button type="button" class="btn btn-default" @click='addModal = false'>取消</button>
         </div>
     </modal>
@@ -48,7 +48,7 @@
 <script>
 import { modal } from 'vue-strap'
 import vSelect from '../../global/Select.vue'
-import { getTypes } from '../../../vuex/getters.js'
+import { types } from '../../../vuex/getters.js'
 
 let origin = {
         addModal: false,
@@ -56,7 +56,8 @@ let origin = {
         type: '',
         versions: [''],
         remark: ''
-    }
+    },
+    init = Object.assign({}, origin);
 
 export default {
     data () {
@@ -72,11 +73,38 @@ export default {
         // 删除版本
         removeMenu (index) {
             this.versions.splice(index, 1)
+        },
+
+        // 保存
+        saveFn () {
+            this.$http({
+                url: '/env_add/',
+                method: 'POST',
+                data: {
+                    name: this.name,
+                    type: this.type,
+                    versions: this.versions,
+                    remark: this.remark
+                }
+            })
+            .then(response => {
+                if (response.data.result) {
+                    this.addModal = false
+
+                    this.$data = Object.assign(origin, init)
+                    this.versions = ['']
+
+                    this.$dispatch('refresh')
+                    this.$dispatch('show-success')
+                } else {
+                    this.$dispatch('show-error')
+                }
+            }, () => this.$dispatch('show-error'))
         }
     },
     vuex: {
         getters: {
-            types: getTypes
+            types
         }
     },
     components: {
