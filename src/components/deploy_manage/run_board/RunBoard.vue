@@ -33,11 +33,11 @@
                         <td v-text="list.type"></td>
                         <td v-text="list.version" :title="list.version"></td>
                         <td>
-                            <button type="button" class="btn btn-default btn-small" @click="$broadcast('showRule')">
+                            <button type="button" class="btn btn-default btn-small" @click="getRuleFn($index)">
                                 <span class="table-icon glyphicon glyphicon-list-alt"></span>
                                 规则
                             </button>
-                            <button type="button" class="btn btn-default btn-small" @click="$broadcast('showScript')">
+                            <button type="button" class="btn btn-default btn-small" @click="getRuleListFn($index)">
                                 <span class="table-icon glyphicon glyphicon-duplicate"></span>
                                 脚本
                             </button>
@@ -87,7 +87,7 @@ import modifyModal from './Modify.vue'
 import bootPage from '../../global/BootPage.vue'
 import deleteModal from '../../global/Confirm.vue'
 import editscriptModal from './Script.vue'
-import { getRunTypes } from '../../../vuex/action.js'
+import { getRunTypes, getRules, getRuleList } from '../../../vuex/action.js'
 import { types } from '../../../vuex/getters.js'
 
 let origin = {
@@ -111,6 +111,18 @@ export default {
         // 刷新表格
         refresh () {
             this.$broadcast('refresh')
+        },
+
+        // 获取编辑规则名
+        getRuleFn (index) {
+            this.$broadcast('showRule')
+            this.getRules(this.tableList[index].id)
+        },
+
+        // 获取已建规则列表
+        getRuleListFn (index) {
+            this.$broadcast('showScript')
+            this.getRuleList(this.tableList[index].id)
         }
     },
     vuex: {
@@ -118,7 +130,9 @@ export default {
             types
         },
         actions: {
-            getRunTypes // 获取类型数据
+            getRunTypes, // 获取类型数据
+            getRules, // 获取规则
+            getRuleList // 获取规则列表
         }
     },
     components: {

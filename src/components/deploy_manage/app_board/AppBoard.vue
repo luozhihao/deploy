@@ -11,7 +11,7 @@
             </div>
             <div class="form-group">
                 <label>项目类型：</label>
-                <v-select :value.sync="type" :options="types" placeholder="请选择">
+                <v-select :value.sync="type" :options="appTypes" placeholder="请选择">
                 </v-select>
             </div>
             <div class="mt30 table-btn">
@@ -74,13 +74,14 @@
 </template>
 
 <script>
-import { vSelect } from 'vue-strap'
+import vSelect from '../../global/Select.vue'
 import addModal from './Add.vue'
 import copyModal from './Copy.vue'
 import deleteModal from '../../global/Confirm.vue'
+import { getAppTypes } from '../../../vuex/action.js'
+import { appTypes } from '../../../vuex/getters.js'
 
 let origin = {
-        types: [],
         type: '',
         projectName: '',
         packName: ''
@@ -95,6 +96,17 @@ export default {
         addModal,
         copyModal,
         deleteModal
+    },
+    vuex: {
+        getters: {
+            appTypes
+        },
+        actions: {
+            getAppTypes
+        }
+    },
+    ready () {
+        this.getAppTypes()
     }
 }
 </script>

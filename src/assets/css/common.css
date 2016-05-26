@@ -90,7 +90,6 @@ fieldset[disabled] .form-control {
 
 .btn-small {
     padding: 0px 3px;
-    color: #5D5151;
     border: none;
     font-size: 12px;
     margin-right: 10px;
@@ -162,4 +161,8 @@ fieldset[disabled] .form-control {
 
 .modal-footer {
     text-align: center !important;
+}
+
+.alert {
+    z-index: 9999 !important;
 }

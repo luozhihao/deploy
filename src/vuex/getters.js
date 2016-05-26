@@ -13,3 +13,23 @@
 export function types (state) {
    return state.types
 }
+
+// 获取规则
+export function rules (state) {
+   return state.rules
+}
+
+// 获取规则id
+export function ruleId (state) {
+   return state.ruleId
+}
+
+// 获取规则列表
+export function ruleList (state) {
+   return state.ruleList
+}
+
+// 获取规则列表
+export function appTypes (state) {
+   return state.appTypes
+}

@@ -5,10 +5,10 @@
         </div>
         <div slot="modal-body" class="modal-body">
             <form class="form-horizontal">
-                <div class="form-group" v-for="rule in rules" track-by="$index">
+                <div class="form-group" v-for="list in rules" track-by="$index">
                     <label class="control-label col-sm-3">规则{{ $index + 1 }}：</label>
                     <div class="col-sm-7">
-                        <input type="text" class="form-control" v-model="rule">
+                        <input type="text" class="form-control" v-model="list.label">
                     </div>
                     <div class="col-sm-2 add-menu" v-if="$index === 0" @click="addRules">
                         <span class="glyphicon glyphicon-plus"></span>
@@ -20,18 +20,20 @@
             </form>
         </div>
         <div slot="modal-footer" class="modal-footer">
-            <button type="button" class="btn btn-default">保存</button>
+            <button type="button" class="btn btn-default" @click="saveRules">保存</button>
             <button type="button" class="btn btn-default" @click='ruleModal = false'>取消</button>
         </div>
     </modal>
+    <delete-modal></delete-modal>
 </template>
 
 <script>
 import { modal } from 'vue-strap'
+import { rules, ruleId } from '../../../vuex/getters.js'
+import deleteModal from '../../global/Confirm.vue'
 
 let origin = {
-        ruleModal: false,
-        rules: ['']
+        ruleModal: false
     }
 
 export default {
@@ -42,20 +44,80 @@ export default {
 
         // 添加规则
         addRules () {
-            this.rules.push('')
+            this.rules.push({value: '', label: ''})
         },
 
         // 删除规则
         removeRules (index) {
-            this.rules.splice(index, 1)
+            if (this.rules[index].value) {
+                this.$broadcast('showConfirm', index)
+                this.$broadcast('setMsg', '该规则下对应的脚本也会删除，是否确认？')
+            } else {
+                this.rules.splice(index, 1)
+            }
+        },
+
+        // 保存规则
+        saveRules () {
+            let isPass = true
+
+            this.rules.forEach(e => {
+                if (!e.label.trim()) {
+                    isPass = false
+                    this.$dispatch('show-notify', '规则名不能为空')
+
+                    return false
+                }
+            })
+
+            if (isPass) {
+                this.$http({
+                    url: '/rule_edit/',
+                    method: 'POST',
+                    data: {
+                        id: this.ruleId,
+                        rules: JSON.stringify(this.rules)
+                    }
+                })
+                .then(response => {
+                    if (response.data.result) {
+                        this.ruleModal = false
+
+                        this.$dispatch('show-success')
+                    } else {
+                        this.$dispatch('show-error')
+                    }
+                })
+            }
         }
     },
     components: {
-        modal
+        modal,
+        deleteModal
+    },
+    vuex: {
+        getters: {
+            rules,
+            ruleId
+        }
     },
     events: {
         'showRule' () {
             this.ruleModal = true
+        },
+        'confirm' (param) {
+
+            // 删除规则
+            this.$http({
+                url: '/rule_delete/',
+                method: 'POST',
+                data: {
+                    id: this.rules[param].value
+                }
+            })
+            .then(response => {
+                response.data.result ? this.rules.splice(param, 1) : ''
+            })
         }
     }
 }

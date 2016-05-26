@@ -15,19 +15,40 @@ Vue.use(Vue_Resource)
 
 // 创建一个 object 存储应用启动时的状态
 const state = {
-
-    // 类型
-    types: []
+    types: [],
+    rules: [],
+    ruleId: null,
+    ruleList: [],
+    appTypes: []
 }   
 
 // 创建一个 object 存储 mutation 函数
 const mutations = {
 
-    // mutation 的第一个参数是当前的 state
-    // 你可以在函数里修改 state
+    // 运行环境类型
     GETRUNTYPES (state, data) {
         state.types = data
-    }
+    },
+
+    // 规则
+    GETRULES (state, data) {
+        state.rules = data
+    },
+
+    // 规则id
+    GETRULEID (state, data) {
+        state.ruleId = data
+    },
+
+    // 规则列表
+    GETRULELIST (state, data) {
+        state.ruleList = data
+    },
+
+    // 应用配置类型
+    GETAPPTYPES (state, data) {
+        state.appTypes = data
+    }   
 }
 
 // 通过 new Vuex.Store 结合初始 state 和 mutations，创建 store

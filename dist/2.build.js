@@ -1247,7 +1247,56 @@ webpackJsonp([2],Array(31).concat([
 /* 101 */,
 /* 102 */,
 /* 103 */,
-/* 104 */,
+/* 104 */
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	   value: true
+	});
+	exports.types = types;
+	exports.rules = rules;
+	exports.ruleId = ruleId;
+	exports.ruleList = ruleList;
+	exports.appTypes = appTypes;
+	/**
+	 * 
+	 * @authors Your Name (you@example.org)
+	 * @date    2016-05-12 10:42:13
+	 * @version $Id$
+	 */
+	
+	// 这个 getter 函数会返回 count 的值
+	// 在 ES6 里你可以写成：
+	// export const getCount = state => state.count
+	
+	// 获取类型
+	function types(state) {
+	   return state.types;
+	}
+	
+	// 获取规则
+	function rules(state) {
+	   return state.rules;
+	}
+	
+	// 获取规则id
+	function ruleId(state) {
+	   return state.ruleId;
+	}
+	
+	// 获取规则列表
+	function ruleList(state) {
+	   return state.ruleList;
+	}
+	
+	// 获取规则列表
+	function appTypes(state) {
+	   return state.appTypes;
+	}
+
+/***/ },
 /* 105 */,
 /* 106 */,
 /* 107 */,
@@ -1255,22 +1304,13 @@ webpackJsonp([2],Array(31).concat([
 /* 109 */,
 /* 110 */,
 /* 111 */,
-/* 112 */,
-/* 113 */,
-/* 114 */,
-/* 115 */,
-/* 116 */,
-/* 117 */,
-/* 118 */,
-/* 119 */,
-/* 120 */,
-/* 121 */
+/* 112 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(122)
-	__vue_script__ = __webpack_require__(124)
-	__vue_template__ = __webpack_require__(125)
+	__webpack_require__(113)
+	__vue_script__ = __webpack_require__(115)
+	__vue_template__ = __webpack_require__(116)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -1287,13 +1327,13 @@ webpackJsonp([2],Array(31).concat([
 	})()}
 
 /***/ },
-/* 122 */
+/* 113 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(123);
+	var content = __webpack_require__(114);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(29)(content, {});
@@ -1313,7 +1353,7 @@ webpackJsonp([2],Array(31).concat([
 	}
 
 /***/ },
-/* 123 */
+/* 114 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(28)();
@@ -1327,7 +1367,7 @@ webpackJsonp([2],Array(31).concat([
 
 
 /***/ },
-/* 124 */
+/* 115 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1342,7 +1382,8 @@ webpackJsonp([2],Array(31).concat([
 	    data: function data() {
 	        return {
 	            confirmModal: false,
-	            tag: ''
+	            tag: '',
+	            msg: '确认要删除此配置？'
 	        };
 	    },
 	
@@ -1358,12 +1399,15 @@ webpackJsonp([2],Array(31).concat([
 	        modal: _vueStrap.modal
 	    },
 	    events: {
-	        'showConfirm': function showConfirm(data) {
+	        'showConfirm': function showConfirm(param) {
 	            this.confirmModal = true;
 	
-	            if (data) {
-	                this.tag = data;
+	            if (param) {
+	                this.tag = param;
 	            }
+	        },
+	        'setMsg': function setMsg(param) {
+	            this.msg = param;
 	        }
 	    }
 	};
@@ -1382,7 +1426,7 @@ webpackJsonp([2],Array(31).concat([
 	//             </h4>
 	//         </div>
 	//         <div slot="modal-body" class="modal-body">
-	//             <h4 class="text-center">确认要删除此配置？</h4>
+	//             <h4 class="text-center" v-text="msg"></h4>
 	//         </div>
 	//         <div slot="modal-footer" class="modal-footer">
 	//             <button type="button" class="btn btn-warning" @click="okFn">
@@ -1398,12 +1442,21 @@ webpackJsonp([2],Array(31).concat([
 	// <script>
 
 /***/ },
-/* 125 */
+/* 116 */
 /***/ function(module, exports) {
 
-	module.exports = "\r\n    <modal :show.sync=\"confirmModal\" effect=\"fade\" width=\"450px\">\r\n        <div slot=\"modal-header\" class=\"modal-header\">\r\n            <h4 class=\"modal-title\">\r\n                确认操作\r\n            </h4>\r\n        </div>\r\n        <div slot=\"modal-body\" class=\"modal-body\">\r\n            <h4 class=\"text-center\">确认要删除此配置？</h4>\r\n        </div>\r\n        <div slot=\"modal-footer\" class=\"modal-footer\">\r\n            <button type=\"button\" class=\"btn btn-warning\" @click=\"okFn\">\r\n                确认\r\n            </button>\r\n            <button type=\"button\" class=\"btn btn-default\" @click=\"confirmModal = false\">\r\n                取消\r\n            </button>\r\n        </div>\r\n    </modal>\r\n";
+	module.exports = "\r\n    <modal :show.sync=\"confirmModal\" effect=\"fade\" width=\"450px\">\r\n        <div slot=\"modal-header\" class=\"modal-header\">\r\n            <h4 class=\"modal-title\">\r\n                确认操作\r\n            </h4>\r\n        </div>\r\n        <div slot=\"modal-body\" class=\"modal-body\">\r\n            <h4 class=\"text-center\" v-text=\"msg\"></h4>\r\n        </div>\r\n        <div slot=\"modal-footer\" class=\"modal-footer\">\r\n            <button type=\"button\" class=\"btn btn-warning\" @click=\"okFn\">\r\n                确认\r\n            </button>\r\n            <button type=\"button\" class=\"btn btn-default\" @click=\"confirmModal = false\">\r\n                取消\r\n            </button>\r\n        </div>\r\n    </modal>\r\n";
 
 /***/ },
+/* 117 */,
+/* 118 */,
+/* 119 */,
+/* 120 */,
+/* 121 */,
+/* 122 */,
+/* 123 */,
+/* 124 */,
+/* 125 */,
 /* 126 */,
 /* 127 */,
 /* 128 */,
@@ -1417,13 +1470,102 @@ webpackJsonp([2],Array(31).concat([
 /* 136 */,
 /* 137 */,
 /* 138 */,
-/* 139 */
+/* 139 */,
+/* 140 */,
+/* 141 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.getRunTypes = getRunTypes;
+	exports.getRules = getRules;
+	exports.getRuleList = getRuleList;
+	exports.getAppTypes = getAppTypes;
+	/**
+	 * 
+	 * @authors luozh@snail.com
+	 * @date    2016-05-12 10:35:58
+	 * @version v1.0
+	 */
+	
+	// action 会收到 store 作为它的第一个参数
+	// 在 store 里我们只需要 dispatch （在有些情况下需要 state）
+	// 我们可以利用 ES6 的解构（destructuring）语法来简化参数的使用
+	
+	// 获取运行环境类型
+	function getRunTypes(_ref) {
+	    var dispatch = _ref.dispatch;
+	    var state = _ref.state;
+	
+	    this.$http({
+	        url: '/env_add/',
+	        method: 'GET'
+	    }).then(function (response) {
+	        dispatch('GETRUNTYPES', response.data.types);
+	    });
+	}
+	
+	// 获取规则
+	function getRules(_ref2, param) {
+	    var dispatch = _ref2.dispatch;
+	    var state = _ref2.state;
+	
+	    this.$http({
+	        url: '/rule_edit/?id=' + param,
+	        method: 'GET'
+	    }).then(function (response) {
+	        if (response.data.result) {
+	            if (response.data.rules.length) {
+	                dispatch('GETRULES', response.data.rules);
+	            } else {
+	                dispatch('GETRULES', [{ value: '', label: '' }]);
+	            }
+	
+	            dispatch('GETRULEID', param);
+	        } else {
+	            dispatch('GETRULEID', null);
+	        }
+	    });
+	}
+	
+	// 获取规则列表
+	function getRuleList(_ref3, param) {
+	    var dispatch = _ref3.dispatch;
+	    var state = _ref3.state;
+	
+	    this.$http({
+	        url: '/rule_edit/?id=' + param,
+	        method: 'GET'
+	    }).then(function (response) {
+	        dispatch('GETRULELIST', response.data.rules);
+	    });
+	}
+	
+	// 获取应用配置类型
+	function getAppTypes(_ref4) {
+	    var dispatch = _ref4.dispatch;
+	    var state = _ref4.state;
+	
+	    this.$http({
+	        url: '/package_add/',
+	        method: 'GET'
+	    }).then(function (response) {
+	        dispatch('GETAPPTYPES', response.data.types);
+	    });
+	}
+
+/***/ },
+/* 142 */,
+/* 143 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(140)
-	__vue_script__ = __webpack_require__(142)
-	__vue_template__ = __webpack_require__(153)
+	__webpack_require__(144)
+	__vue_script__ = __webpack_require__(146)
+	__vue_template__ = __webpack_require__(157)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -1440,13 +1582,13 @@ webpackJsonp([2],Array(31).concat([
 	})()}
 
 /***/ },
-/* 140 */
+/* 144 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(141);
+	var content = __webpack_require__(145);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(29)(content, {});
@@ -1466,7 +1608,7 @@ webpackJsonp([2],Array(31).concat([
 	}
 
 /***/ },
-/* 141 */
+/* 145 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(28)();
@@ -1480,7 +1622,7 @@ webpackJsonp([2],Array(31).concat([
 
 
 /***/ },
-/* 142 */
+/* 146 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1489,19 +1631,25 @@ webpackJsonp([2],Array(31).concat([
 	    value: true
 	});
 	
-	var _vueStrap = __webpack_require__(103);
+	var _Select = __webpack_require__(31);
 	
-	var _Add = __webpack_require__(143);
+	var _Select2 = _interopRequireDefault(_Select);
+	
+	var _Add = __webpack_require__(147);
 	
 	var _Add2 = _interopRequireDefault(_Add);
 	
-	var _Copy = __webpack_require__(148);
+	var _Copy = __webpack_require__(152);
 	
 	var _Copy2 = _interopRequireDefault(_Copy);
 	
-	var _Confirm = __webpack_require__(121);
+	var _Confirm = __webpack_require__(112);
 	
 	var _Confirm2 = _interopRequireDefault(_Confirm);
+	
+	var _action = __webpack_require__(141);
+	
+	var _getters = __webpack_require__(104);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -1518,7 +1666,7 @@ webpackJsonp([2],Array(31).concat([
 	//             </div>
 	//             <div class="form-group">
 	//                 <label>项目类型：</label>
-	//                 <v-select :value.sync="type" :options="types" placeholder="请选择">
+	//                 <v-select :value.sync="type" :options="appTypes" placeholder="请选择">
 	//                 </v-select>
 	//             </div>
 	//             <div class="mt30 table-btn">
@@ -1584,7 +1732,6 @@ webpackJsonp([2],Array(31).concat([
 	
 	
 	var origin = {
-	    types: [],
 	    type: '',
 	    projectName: '',
 	    packName: ''
@@ -1596,10 +1743,21 @@ webpackJsonp([2],Array(31).concat([
 	    },
 	
 	    components: {
-	        vSelect: _vueStrap.vSelect,
+	        vSelect: _Select2.default,
 	        addModal: _Add2.default,
 	        copyModal: _Copy2.default,
 	        deleteModal: _Confirm2.default
+	    },
+	    vuex: {
+	        getters: {
+	            appTypes: _getters.appTypes
+	        },
+	        actions: {
+	            getAppTypes: _action.getAppTypes
+	        }
+	    },
+	    ready: function ready() {
+	        this.getAppTypes();
 	    }
 	};
 	// </script>
@@ -1610,13 +1768,13 @@ webpackJsonp([2],Array(31).concat([
 	/* generated by vue-loader */
 
 /***/ },
-/* 143 */
+/* 147 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(144)
-	__vue_script__ = __webpack_require__(146)
-	__vue_template__ = __webpack_require__(147)
+	__webpack_require__(148)
+	__vue_script__ = __webpack_require__(150)
+	__vue_template__ = __webpack_require__(151)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -1633,13 +1791,13 @@ webpackJsonp([2],Array(31).concat([
 	})()}
 
 /***/ },
-/* 144 */
+/* 148 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(145);
+	var content = __webpack_require__(149);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(29)(content, {});
@@ -1659,7 +1817,7 @@ webpackJsonp([2],Array(31).concat([
 	}
 
 /***/ },
-/* 145 */
+/* 149 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(28)();
@@ -1667,13 +1825,13 @@ webpackJsonp([2],Array(31).concat([
 	
 	
 	// module
-	exports.push([module.id, "\r\n.add-menu[_v-6b7b5fea] {\r\n    height: 34px;\r\n    line-height: 34px;\r\n    padding: 0;\r\n    color: #009688;\r\n    cursor: pointer;\r\n}\r\n", "", {"version":3,"sources":["/./src/components/deploy_manage/app_board/Add.vue.style"],"names":[],"mappings":";AAkFA;IACA,aAAA;IACA,kBAAA;IACA,WAAA;IACA,eAAA;IACA,gBAAA;CACA","file":"Add.vue","sourcesContent":["<template>\r\n    <modal :show.sync=\"addModal\" effect=\"fade\" width=\"450px\">\r\n        <div slot=\"modal-header\" class=\"modal-header\">\r\n            <h4 class=\"modal-title\">添加</h4>\r\n        </div>\r\n        <div slot=\"modal-body\" class=\"modal-body\">\r\n            <form class=\"form-horizontal\">\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label col-sm-3\">部署包名：</label>\r\n                    <div class=\"col-sm-8\">\r\n                        <input type=\"text\" class=\"form-control\" v-model=\"packName\">\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group input-box\">\r\n                    <label class=\"control-label col-sm-3\">类型：</label>\r\n                    <div class=\"col-sm-8\">\r\n                        <v-select :value.sync=\"type\" :options=\"types\" placeholder=\"请选择\">\r\n                        </v-select>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label col-sm-3\">项目名：</label>\r\n                    <div class=\"col-sm-8\">\r\n                        <input type=\"text\" class=\"form-control\" v-model=\"projectName\">\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\" v-for=\"version in versions\">\r\n                    <label class=\"control-label col-sm-3\" v-show=\"$index === 0\">版本号：</label>\r\n                    <div :class=\"$index === 0 ? 'col-sm-8' : 'col-sm-8 col-sm-offset-3'\">\r\n                        <input type=\"text\" class=\"form-control\" v-model=\"version\">\r\n                    </div>\r\n                    <div class=\"col-sm-1 add-menu\">\r\n                        <span class=\"glyphicon glyphicon-plus\" v-if=\"$index === 0\"></span>\r\n                        <span class=\"glyphicon glyphicon-minus text-danger\" v-else></span>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label col-sm-3\">备注：</label>\r\n                    <div class=\"col-sm-8\">\r\n                        <textarea class=\"form-control\" rows=\"5\" v-model=\"remark\"></textarea>\r\n                    </div>\r\n                </div>\r\n            </form>\r\n        </div>\r\n        <div slot=\"modal-footer\" class=\"modal-footer\">\r\n            <button type=\"button\" class=\"btn btn-default\">保存</button>\r\n            <button type=\"button\" class=\"btn btn-default\" @click='addModal = false'>取消</button>\r\n        </div>\r\n    </modal>\r\n</template>\r\n\r\n<script>\r\nimport { modal } from 'vue-strap'\r\nimport vSelect from '../../global/Select.vue'\r\n\r\nlet origin = {\r\n        addModal: false,\r\n        packName: '',\r\n        projectName: '',\r\n        types: [],\r\n        type: '',\r\n        versions: [''],\r\n        remark: ''\r\n    }\r\n\r\nexport default {\r\n    data () {\r\n        return origin\r\n    },\r\n    components: {\r\n        modal,\r\n        vSelect\r\n    },\r\n    events: {\r\n        'showAdd' () {\r\n            this.addModal = true\r\n        }\r\n    }\r\n}\r\n</script>\r\n\r\n<style scoped>\r\n.add-menu {\r\n    height: 34px;\r\n    line-height: 34px;\r\n    padding: 0;\r\n    color: #009688;\r\n    cursor: pointer;\r\n}\r\n</style>"],"sourceRoot":"webpack://"}]);
+	exports.push([module.id, "\r\n.add-menu[_v-6b7b5fea] {\r\n    height: 34px;\r\n    line-height: 34px;\r\n    padding: 0;\r\n    color: #009688;\r\n    cursor: pointer;\r\n}\r\n", "", {"version":3,"sources":["/./src/components/deploy_manage/app_board/Add.vue.style"],"names":[],"mappings":";AAmFA;IACA,aAAA;IACA,kBAAA;IACA,WAAA;IACA,eAAA;IACA,gBAAA;CACA","file":"Add.vue","sourcesContent":["<template>\r\n    <modal :show.sync=\"addModal\" effect=\"fade\" width=\"450px\">\r\n        <div slot=\"modal-header\" class=\"modal-header\">\r\n            <h4 class=\"modal-title\">添加</h4>\r\n        </div>\r\n        <div slot=\"modal-body\" class=\"modal-body\">\r\n            <form class=\"form-horizontal\">\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label col-sm-3\">部署包名：</label>\r\n                    <div class=\"col-sm-8\">\r\n                        <input type=\"text\" class=\"form-control\" v-model=\"packName\">\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group input-box\">\r\n                    <label class=\"control-label col-sm-3\">类型：</label>\r\n                    <div class=\"col-sm-8\">\r\n                        <v-select :value.sync=\"type\" :options=\"appTypes\" placeholder=\"请选择\">\r\n                        </v-select>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label col-sm-3\">项目名：</label>\r\n                    <div class=\"col-sm-8\">\r\n                        <input type=\"text\" class=\"form-control\" v-model=\"projectName\">\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label col-sm-3\">版本号：</label>\r\n                    <div class=\"col-sm-8\">\r\n                        <input type=\"text\" class=\"form-control\" v-model=\"version\">\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label col-sm-3\">备注：</label>\r\n                    <div class=\"col-sm-8\">\r\n                        <textarea class=\"form-control\" rows=\"5\" v-model=\"remark\"></textarea>\r\n                    </div>\r\n                </div>\r\n            </form>\r\n        </div>\r\n        <div slot=\"modal-footer\" class=\"modal-footer\">\r\n            <button type=\"button\" class=\"btn btn-default\">保存</button>\r\n            <button type=\"button\" class=\"btn btn-default\" @click='addModal = false'>取消</button>\r\n        </div>\r\n    </modal>\r\n</template>\r\n\r\n<script>\r\nimport { modal } from 'vue-strap'\r\nimport vSelect from '../../global/Select.vue'\r\nimport { appTypes } from '../../../vuex/getters.js'\r\n\r\nlet origin = {\r\n        addModal: false,\r\n        packName: '',\r\n        projectName: '',\r\n        type: '',\r\n        version: '',\r\n        remark: ''\r\n    }\r\n\r\nexport default {\r\n    data () {\r\n        return origin\r\n    },\r\n    components: {\r\n        modal,\r\n        vSelect\r\n    },\r\n    vuex: {\r\n        getters: {\r\n            appTypes\r\n        }\r\n    },\r\n    events: {\r\n        'showAdd' () {\r\n            this.addModal = true\r\n        }\r\n    }\r\n}\r\n</script>\r\n\r\n<style scoped>\r\n.add-menu {\r\n    height: 34px;\r\n    line-height: 34px;\r\n    padding: 0;\r\n    color: #009688;\r\n    cursor: pointer;\r\n}\r\n</style>"],"sourceRoot":"webpack://"}]);
 	
 	// exports
 
 
 /***/ },
-/* 146 */
+/* 150 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1688,9 +1846,18 @@ webpackJsonp([2],Array(31).concat([
 	
 	var _Select2 = _interopRequireDefault(_Select);
 	
+	var _getters = __webpack_require__(104);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	// <template>
+	var origin = {
+	    addModal: false,
+	    packName: '',
+	    projectName: '',
+	    type: '',
+	    version: '',
+	    remark: ''
+	}; // <template>
 	//     <modal :show.sync="addModal" effect="fade" width="450px">
 	//         <div slot="modal-header" class="modal-header">
 	//             <h4 class="modal-title">添加</h4>
@@ -1706,7 +1873,7 @@ webpackJsonp([2],Array(31).concat([
 	//                 <div class="form-group input-box">
 	//                     <label class="control-label col-sm-3">类型：</label>
 	//                     <div class="col-sm-8">
-	//                         <v-select :value.sync="type" :options="types" placeholder="请选择">
+	//                         <v-select :value.sync="type" :options="appTypes" placeholder="请选择">
 	//                         </v-select>
 	//                     </div>
 	//                 </div>
@@ -1716,14 +1883,10 @@ webpackJsonp([2],Array(31).concat([
 	//                         <input type="text" class="form-control" v-model="projectName">
 	//                     </div>
 	//                 </div>
-	//                 <div class="form-group" v-for="version in versions">
-	//                     <label class="control-label col-sm-3" v-show="$index === 0">版本号：</label>
-	//                     <div :class="$index === 0 ? 'col-sm-8' : 'col-sm-8 col-sm-offset-3'">
+	//                 <div class="form-group">
+	//                     <label class="control-label col-sm-3">版本号：</label>
+	//                     <div class="col-sm-8">
 	//                         <input type="text" class="form-control" v-model="version">
-	//                     </div>
-	//                     <div class="col-sm-1 add-menu">
-	//                         <span class="glyphicon glyphicon-plus" v-if="$index === 0"></span>
-	//                         <span class="glyphicon glyphicon-minus text-danger" v-else></span>
 	//                     </div>
 	//                 </div>
 	//                 <div class="form-group">
@@ -1744,16 +1907,6 @@ webpackJsonp([2],Array(31).concat([
 	// <script>
 	
 	
-	var origin = {
-	    addModal: false,
-	    packName: '',
-	    projectName: '',
-	    types: [],
-	    type: '',
-	    versions: [''],
-	    remark: ''
-	};
-	
 	exports.default = {
 	    data: function data() {
 	        return origin;
@@ -1762,6 +1915,11 @@ webpackJsonp([2],Array(31).concat([
 	    components: {
 	        modal: _vueStrap.modal,
 	        vSelect: _Select2.default
+	    },
+	    vuex: {
+	        getters: {
+	            appTypes: _getters.appTypes
+	        }
 	    },
 	    events: {
 	        'showAdd': function showAdd() {
@@ -1783,19 +1941,19 @@ webpackJsonp([2],Array(31).concat([
 	/* generated by vue-loader */
 
 /***/ },
-/* 147 */
+/* 151 */
 /***/ function(module, exports) {
 
-	module.exports = "\n    <modal :show.sync=\"addModal\" effect=\"fade\" width=\"450px\" _v-6b7b5fea=\"\">\n        <div slot=\"modal-header\" class=\"modal-header\" _v-6b7b5fea=\"\">\n            <h4 class=\"modal-title\" _v-6b7b5fea=\"\">添加</h4>\n        </div>\n        <div slot=\"modal-body\" class=\"modal-body\" _v-6b7b5fea=\"\">\n            <form class=\"form-horizontal\" _v-6b7b5fea=\"\">\n                <div class=\"form-group\" _v-6b7b5fea=\"\">\n                    <label class=\"control-label col-sm-3\" _v-6b7b5fea=\"\">部署包名：</label>\n                    <div class=\"col-sm-8\" _v-6b7b5fea=\"\">\n                        <input type=\"text\" class=\"form-control\" v-model=\"packName\" _v-6b7b5fea=\"\">\n                    </div>\n                </div>\n                <div class=\"form-group input-box\" _v-6b7b5fea=\"\">\n                    <label class=\"control-label col-sm-3\" _v-6b7b5fea=\"\">类型：</label>\n                    <div class=\"col-sm-8\" _v-6b7b5fea=\"\">\n                        <v-select :value.sync=\"type\" :options=\"types\" placeholder=\"请选择\" _v-6b7b5fea=\"\">\n                        </v-select>\n                    </div>\n                </div>\n                <div class=\"form-group\" _v-6b7b5fea=\"\">\n                    <label class=\"control-label col-sm-3\" _v-6b7b5fea=\"\">项目名：</label>\n                    <div class=\"col-sm-8\" _v-6b7b5fea=\"\">\n                        <input type=\"text\" class=\"form-control\" v-model=\"projectName\" _v-6b7b5fea=\"\">\n                    </div>\n                </div>\n                <div class=\"form-group\" v-for=\"version in versions\" _v-6b7b5fea=\"\">\n                    <label class=\"control-label col-sm-3\" v-show=\"$index === 0\" _v-6b7b5fea=\"\">版本号：</label>\n                    <div :class=\"$index === 0 ? 'col-sm-8' : 'col-sm-8 col-sm-offset-3'\" _v-6b7b5fea=\"\">\n                        <input type=\"text\" class=\"form-control\" v-model=\"version\" _v-6b7b5fea=\"\">\n                    </div>\n                    <div class=\"col-sm-1 add-menu\" _v-6b7b5fea=\"\">\n                        <span class=\"glyphicon glyphicon-plus\" v-if=\"$index === 0\" _v-6b7b5fea=\"\"></span>\n                        <span class=\"glyphicon glyphicon-minus text-danger\" v-else=\"\" _v-6b7b5fea=\"\"></span>\n                    </div>\n                </div>\n                <div class=\"form-group\" _v-6b7b5fea=\"\">\n                    <label class=\"control-label col-sm-3\" _v-6b7b5fea=\"\">备注：</label>\n                    <div class=\"col-sm-8\" _v-6b7b5fea=\"\">\n                        <textarea class=\"form-control\" rows=\"5\" v-model=\"remark\" _v-6b7b5fea=\"\"></textarea>\n                    </div>\n                </div>\n            </form>\n        </div>\n        <div slot=\"modal-footer\" class=\"modal-footer\" _v-6b7b5fea=\"\">\n            <button type=\"button\" class=\"btn btn-default\" _v-6b7b5fea=\"\">保存</button>\n            <button type=\"button\" class=\"btn btn-default\" @click=\"addModal = false\" _v-6b7b5fea=\"\">取消</button>\n        </div>\n    </modal>\n";
+	module.exports = "\n    <modal :show.sync=\"addModal\" effect=\"fade\" width=\"450px\" _v-6b7b5fea=\"\">\n        <div slot=\"modal-header\" class=\"modal-header\" _v-6b7b5fea=\"\">\n            <h4 class=\"modal-title\" _v-6b7b5fea=\"\">添加</h4>\n        </div>\n        <div slot=\"modal-body\" class=\"modal-body\" _v-6b7b5fea=\"\">\n            <form class=\"form-horizontal\" _v-6b7b5fea=\"\">\n                <div class=\"form-group\" _v-6b7b5fea=\"\">\n                    <label class=\"control-label col-sm-3\" _v-6b7b5fea=\"\">部署包名：</label>\n                    <div class=\"col-sm-8\" _v-6b7b5fea=\"\">\n                        <input type=\"text\" class=\"form-control\" v-model=\"packName\" _v-6b7b5fea=\"\">\n                    </div>\n                </div>\n                <div class=\"form-group input-box\" _v-6b7b5fea=\"\">\n                    <label class=\"control-label col-sm-3\" _v-6b7b5fea=\"\">类型：</label>\n                    <div class=\"col-sm-8\" _v-6b7b5fea=\"\">\n                        <v-select :value.sync=\"type\" :options=\"appTypes\" placeholder=\"请选择\" _v-6b7b5fea=\"\">\n                        </v-select>\n                    </div>\n                </div>\n                <div class=\"form-group\" _v-6b7b5fea=\"\">\n                    <label class=\"control-label col-sm-3\" _v-6b7b5fea=\"\">项目名：</label>\n                    <div class=\"col-sm-8\" _v-6b7b5fea=\"\">\n                        <input type=\"text\" class=\"form-control\" v-model=\"projectName\" _v-6b7b5fea=\"\">\n                    </div>\n                </div>\n                <div class=\"form-group\" _v-6b7b5fea=\"\">\n                    <label class=\"control-label col-sm-3\" _v-6b7b5fea=\"\">版本号：</label>\n                    <div class=\"col-sm-8\" _v-6b7b5fea=\"\">\n                        <input type=\"text\" class=\"form-control\" v-model=\"version\" _v-6b7b5fea=\"\">\n                    </div>\n                </div>\n                <div class=\"form-group\" _v-6b7b5fea=\"\">\n                    <label class=\"control-label col-sm-3\" _v-6b7b5fea=\"\">备注：</label>\n                    <div class=\"col-sm-8\" _v-6b7b5fea=\"\">\n                        <textarea class=\"form-control\" rows=\"5\" v-model=\"remark\" _v-6b7b5fea=\"\"></textarea>\n                    </div>\n                </div>\n            </form>\n        </div>\n        <div slot=\"modal-footer\" class=\"modal-footer\" _v-6b7b5fea=\"\">\n            <button type=\"button\" class=\"btn btn-default\" _v-6b7b5fea=\"\">保存</button>\n            <button type=\"button\" class=\"btn btn-default\" @click=\"addModal = false\" _v-6b7b5fea=\"\">取消</button>\n        </div>\n    </modal>\n";
 
 /***/ },
-/* 148 */
+/* 152 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(149)
-	__vue_script__ = __webpack_require__(151)
-	__vue_template__ = __webpack_require__(152)
+	__webpack_require__(153)
+	__vue_script__ = __webpack_require__(155)
+	__vue_template__ = __webpack_require__(156)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -1812,13 +1970,13 @@ webpackJsonp([2],Array(31).concat([
 	})()}
 
 /***/ },
-/* 149 */
+/* 153 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(150);
+	var content = __webpack_require__(154);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(29)(content, {});
@@ -1838,7 +1996,7 @@ webpackJsonp([2],Array(31).concat([
 	}
 
 /***/ },
-/* 150 */
+/* 154 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(28)();
@@ -1852,7 +2010,7 @@ webpackJsonp([2],Array(31).concat([
 
 
 /***/ },
-/* 151 */
+/* 155 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1925,16 +2083,16 @@ webpackJsonp([2],Array(31).concat([
 	/* generated by vue-loader */
 
 /***/ },
-/* 152 */
+/* 156 */
 /***/ function(module, exports) {
 
 	module.exports = "\n    <modal :show.sync=\"copyModal\" effect=\"fade\" width=\"450px\" _v-3211d87c=\"\">\n        <div slot=\"modal-header\" class=\"modal-header\" _v-3211d87c=\"\">\n            <h4 class=\"modal-title\" _v-3211d87c=\"\">复制</h4>\n        </div>\n        <div slot=\"modal-body\" class=\"modal-body text-center\" _v-3211d87c=\"\">\n            从\n            <v-select :value.sync=\"setting\" :options=\"settings\" placeholder=\"请选择\" _v-3211d87c=\"\">\n            </v-select>\n            上复制生成新的应用配置?\n        </div>\n        <div slot=\"modal-footer\" class=\"modal-footer\" _v-3211d87c=\"\">\n            <button type=\"button\" class=\"btn btn-default\" _v-3211d87c=\"\">确定</button>\n            <button type=\"button\" class=\"btn btn-default\" @click=\"copyModal = false\" _v-3211d87c=\"\">取消</button>\n        </div>\n    </modal>\n";
 
 /***/ },
-/* 153 */
+/* 157 */
 /***/ function(module, exports) {
 
-	module.exports = "\n    <div _v-5b3a62cc=\"\">\n        <form class=\"form-inline\" _v-5b3a62cc=\"\">\n            <div class=\"form-group\" _v-5b3a62cc=\"\">\n                <label _v-5b3a62cc=\"\">项目名称：</label>\n                <input type=\"text\" class=\"form-control\" v-model=\"projectName\" _v-5b3a62cc=\"\">\n            </div>\n            <div class=\"form-group\" _v-5b3a62cc=\"\">\n                <label _v-5b3a62cc=\"\">部署包名称：</label>\n                <input type=\"text\" class=\"form-control\" v-model=\"packName\" _v-5b3a62cc=\"\">\n            </div>\n            <div class=\"form-group\" _v-5b3a62cc=\"\">\n                <label _v-5b3a62cc=\"\">项目类型：</label>\n                <v-select :value.sync=\"type\" :options=\"types\" placeholder=\"请选择\" _v-5b3a62cc=\"\">\n                </v-select>\n            </div>\n            <div class=\"mt30 table-btn\" _v-5b3a62cc=\"\">\n                <button type=\"button\" class=\"btn btn-default btn-pd\" @click=\"$broadcast('showAdd')\" _v-5b3a62cc=\"\">\n                    <span class=\"glyphicon glyphicon-plus\" _v-5b3a62cc=\"\"></span>\n                    添加\n                </button>\n                <button type=\"button\" class=\"btn btn-default btn-pd\" @click=\"$broadcast('showCopy')\" _v-5b3a62cc=\"\">\n                    <span class=\"glyphicon glyphicon-duplicate\" _v-5b3a62cc=\"\"></span>\n                    配置复制\n                </button>\n            </div>\n            <table class=\"table table-hover table-bordered table-bg\" _v-5b3a62cc=\"\">\n                <thead _v-5b3a62cc=\"\">\n                    <tr _v-5b3a62cc=\"\">\n                        <th _v-5b3a62cc=\"\">部署包名称</th>\n                        <th _v-5b3a62cc=\"\">项目名称</th>\n                        <th _v-5b3a62cc=\"\">项目类型</th>\n                        <th _v-5b3a62cc=\"\">版本</th>\n                        <th _v-5b3a62cc=\"\">运行环境</th>\n                        <th _v-5b3a62cc=\"\">备注</th>\n                        <th _v-5b3a62cc=\"\">操作</th>\n                    </tr>\n                </thead>\n                <tbody _v-5b3a62cc=\"\">\n                    <tr _v-5b3a62cc=\"\">\n                        <td _v-5b3a62cc=\"\">sncp-imprest</td>\n                        <td _v-5b3a62cc=\"\">充值服务</td>\n                        <td _v-5b3a62cc=\"\">计费</td>\n                        <td _v-5b3a62cc=\"\">1.01</td>\n                        <td _v-5b3a62cc=\"\">\n                            <button type=\"button\" class=\"btn btn-default btn-small\" _v-5b3a62cc=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-pencil\" _v-5b3a62cc=\"\"></span>\n                                编辑\n                            </button>\n                            <button type=\"button\" class=\"btn btn-default btn-small\" _v-5b3a62cc=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-eye-open\" _v-5b3a62cc=\"\"></span>\n                                查看\n                            </button>\n                        </td>\n                        <td _v-5b3a62cc=\"\"></td>\n                        <td _v-5b3a62cc=\"\">\n                            <button type=\"button\" class=\"btn btn-default btn-small\" _v-5b3a62cc=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-edit\" _v-5b3a62cc=\"\"></span>\n                                修改\n                            </button>\n                            <button type=\"button\" class=\"btn btn-default btn-small\" @click=\"$broadcast('showConfirm')\" _v-5b3a62cc=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-trash\" _v-5b3a62cc=\"\"></span>\n                                删除\n                            </button>\n                        </td>\n                    </tr>\n                </tbody>\n            </table>\n        </form>\n        <add-modal _v-5b3a62cc=\"\"></add-modal>\n        <copy-modal _v-5b3a62cc=\"\"></copy-modal>\n        <delete-modal _v-5b3a62cc=\"\"></delete-modal>\n    </div>\n";
+	module.exports = "\n    <div _v-5b3a62cc=\"\">\n        <form class=\"form-inline\" _v-5b3a62cc=\"\">\n            <div class=\"form-group\" _v-5b3a62cc=\"\">\n                <label _v-5b3a62cc=\"\">项目名称：</label>\n                <input type=\"text\" class=\"form-control\" v-model=\"projectName\" _v-5b3a62cc=\"\">\n            </div>\n            <div class=\"form-group\" _v-5b3a62cc=\"\">\n                <label _v-5b3a62cc=\"\">部署包名称：</label>\n                <input type=\"text\" class=\"form-control\" v-model=\"packName\" _v-5b3a62cc=\"\">\n            </div>\n            <div class=\"form-group\" _v-5b3a62cc=\"\">\n                <label _v-5b3a62cc=\"\">项目类型：</label>\n                <v-select :value.sync=\"type\" :options=\"appTypes\" placeholder=\"请选择\" _v-5b3a62cc=\"\">\n                </v-select>\n            </div>\n            <div class=\"mt30 table-btn\" _v-5b3a62cc=\"\">\n                <button type=\"button\" class=\"btn btn-default btn-pd\" @click=\"$broadcast('showAdd')\" _v-5b3a62cc=\"\">\n                    <span class=\"glyphicon glyphicon-plus\" _v-5b3a62cc=\"\"></span>\n                    添加\n                </button>\n                <button type=\"button\" class=\"btn btn-default btn-pd\" @click=\"$broadcast('showCopy')\" _v-5b3a62cc=\"\">\n                    <span class=\"glyphicon glyphicon-duplicate\" _v-5b3a62cc=\"\"></span>\n                    配置复制\n                </button>\n            </div>\n            <table class=\"table table-hover table-bordered table-bg\" _v-5b3a62cc=\"\">\n                <thead _v-5b3a62cc=\"\">\n                    <tr _v-5b3a62cc=\"\">\n                        <th _v-5b3a62cc=\"\">部署包名称</th>\n                        <th _v-5b3a62cc=\"\">项目名称</th>\n                        <th _v-5b3a62cc=\"\">项目类型</th>\n                        <th _v-5b3a62cc=\"\">版本</th>\n                        <th _v-5b3a62cc=\"\">运行环境</th>\n                        <th _v-5b3a62cc=\"\">备注</th>\n                        <th _v-5b3a62cc=\"\">操作</th>\n                    </tr>\n                </thead>\n                <tbody _v-5b3a62cc=\"\">\n                    <tr _v-5b3a62cc=\"\">\n                        <td _v-5b3a62cc=\"\">sncp-imprest</td>\n                        <td _v-5b3a62cc=\"\">充值服务</td>\n                        <td _v-5b3a62cc=\"\">计费</td>\n                        <td _v-5b3a62cc=\"\">1.01</td>\n                        <td _v-5b3a62cc=\"\">\n                            <button type=\"button\" class=\"btn btn-default btn-small\" _v-5b3a62cc=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-pencil\" _v-5b3a62cc=\"\"></span>\n                                编辑\n                            </button>\n                            <button type=\"button\" class=\"btn btn-default btn-small\" _v-5b3a62cc=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-eye-open\" _v-5b3a62cc=\"\"></span>\n                                查看\n                            </button>\n                        </td>\n                        <td _v-5b3a62cc=\"\"></td>\n                        <td _v-5b3a62cc=\"\">\n                            <button type=\"button\" class=\"btn btn-default btn-small\" _v-5b3a62cc=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-edit\" _v-5b3a62cc=\"\"></span>\n                                修改\n                            </button>\n                            <button type=\"button\" class=\"btn btn-default btn-small\" @click=\"$broadcast('showConfirm')\" _v-5b3a62cc=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-trash\" _v-5b3a62cc=\"\"></span>\n                                删除\n                            </button>\n                        </td>\n                    </tr>\n                </tbody>\n            </table>\n        </form>\n        <add-modal _v-5b3a62cc=\"\"></add-modal>\n        <copy-modal _v-5b3a62cc=\"\"></copy-modal>\n        <delete-modal _v-5b3a62cc=\"\"></delete-modal>\n    </div>\n";
 
 /***/ }
 ]));

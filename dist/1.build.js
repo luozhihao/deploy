@@ -5,7 +5,7 @@ webpackJsonp([1],Array(25).concat([
 	var __vue_script__, __vue_template__
 	__webpack_require__(26)
 	__vue_script__ = __webpack_require__(30)
-	__vue_template__ = __webpack_require__(138)
+	__vue_template__ = __webpack_require__(142)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -85,23 +85,23 @@ webpackJsonp([1],Array(25).concat([
 	
 	var _EditRule2 = _interopRequireDefault(_EditRule);
 	
-	var _Modify = __webpack_require__(111);
+	var _Modify = __webpack_require__(118);
 	
 	var _Modify2 = _interopRequireDefault(_Modify);
 	
-	var _BootPage = __webpack_require__(116);
+	var _BootPage = __webpack_require__(123);
 	
 	var _BootPage2 = _interopRequireDefault(_BootPage);
 	
-	var _Confirm = __webpack_require__(121);
+	var _Confirm = __webpack_require__(112);
 	
 	var _Confirm2 = _interopRequireDefault(_Confirm);
 	
-	var _Script = __webpack_require__(126);
+	var _Script = __webpack_require__(128);
 	
 	var _Script2 = _interopRequireDefault(_Script);
 	
-	var _action = __webpack_require__(137);
+	var _action = __webpack_require__(141);
 	
 	var _getters = __webpack_require__(104);
 	
@@ -152,11 +152,11 @@ webpackJsonp([1],Array(25).concat([
 	//                         <td v-text="list.type"></td>
 	//                         <td v-text="list.version" :title="list.version"></td>
 	//                         <td>
-	//                             <button type="button" class="btn btn-default btn-small" @click="$broadcast('showRule')">
+	//                             <button type="button" class="btn btn-default btn-small" @click="getRuleFn($index)">
 	//                                 <span class="table-icon glyphicon glyphicon-list-alt"></span>
 	//                                 规则
 	//                             </button>
-	//                             <button type="button" class="btn btn-default btn-small" @click="$broadcast('showScript')">
+	//                             <button type="button" class="btn btn-default btn-small" @click="getRuleListFn($index)">
 	//                                 <span class="table-icon glyphicon glyphicon-duplicate"></span>
 	//                                 脚本
 	//                             </button>
@@ -212,6 +212,20 @@ webpackJsonp([1],Array(25).concat([
 	
 	        refresh: function refresh() {
 	            this.$broadcast('refresh');
+	        },
+	
+	
+	        // 获取编辑规则名
+	        getRuleFn: function getRuleFn(index) {
+	            this.$broadcast('showRule');
+	            this.getRules(this.tableList[index].id);
+	        },
+	
+	
+	        // 获取已建规则列表
+	        getRuleListFn: function getRuleListFn(index) {
+	            this.$broadcast('showScript');
+	            this.getRuleList(this.tableList[index].id);
 	        }
 	    },
 	    vuex: {
@@ -219,7 +233,9 @@ webpackJsonp([1],Array(25).concat([
 	            types: _getters.types
 	        },
 	        actions: {
-	            getRunTypes: _action.getRunTypes // 获取类型数据
+	            getRunTypes: _action.getRunTypes, // 获取类型数据
+	            getRules: _action.getRules, // 获取规则
+	            getRuleList: _action.getRuleList // 获取规则列表
 	        }
 	    },
 	    components: {
@@ -1817,9 +1833,13 @@ webpackJsonp([1],Array(25).concat([
 	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	   value: true
 	});
 	exports.types = types;
+	exports.rules = rules;
+	exports.ruleId = ruleId;
+	exports.ruleList = ruleList;
+	exports.appTypes = appTypes;
 	/**
 	 * 
 	 * @authors Your Name (you@example.org)
@@ -1833,7 +1853,27 @@ webpackJsonp([1],Array(25).concat([
 	
 	// 获取类型
 	function types(state) {
-	  return state.types;
+	   return state.types;
+	}
+	
+	// 获取规则
+	function rules(state) {
+	   return state.rules;
+	}
+	
+	// 获取规则id
+	function ruleId(state) {
+	   return state.ruleId;
+	}
+	
+	// 获取规则列表
+	function ruleList(state) {
+	   return state.ruleList;
+	}
+	
+	// 获取规则列表
+	function appTypes(state) {
+	   return state.appTypes;
 	}
 
 /***/ },
@@ -1849,7 +1889,7 @@ webpackJsonp([1],Array(25).concat([
 	var __vue_script__, __vue_template__
 	__webpack_require__(107)
 	__vue_script__ = __webpack_require__(109)
-	__vue_template__ = __webpack_require__(110)
+	__vue_template__ = __webpack_require__(117)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -1900,7 +1940,7 @@ webpackJsonp([1],Array(25).concat([
 	
 	
 	// module
-	exports.push([module.id, "\r\n.add-menu[_v-788a4083] {\r\n    height: 34px;\r\n    line-height: 34px;\r\n    padding: 0;\r\n    color: #009688;\r\n    cursor: pointer;\r\n}\r\n", "", {"version":3,"sources":["/./src/components/deploy_manage/run_board/EditRule.vue.style"],"names":[],"mappings":";AAgEA;IACA,aAAA;IACA,kBAAA;IACA,WAAA;IACA,eAAA;IACA,gBAAA;CACA","file":"EditRule.vue","sourcesContent":["<template>\r\n    <modal :show.sync=\"ruleModal\" effect=\"fade\" width=\"450px\">\r\n        <div slot=\"modal-header\" class=\"modal-header\">\r\n            <h4 class=\"modal-title\">规则配置</h4>\r\n        </div>\r\n        <div slot=\"modal-body\" class=\"modal-body\">\r\n            <form class=\"form-horizontal\">\r\n                <div class=\"form-group\" v-for=\"rule in rules\" track-by=\"$index\">\r\n                    <label class=\"control-label col-sm-3\">规则{{ $index + 1 }}：</label>\r\n                    <div class=\"col-sm-7\">\r\n                        <input type=\"text\" class=\"form-control\" v-model=\"rule\">\r\n                    </div>\r\n                    <div class=\"col-sm-2 add-menu\" v-if=\"$index === 0\" @click=\"addRules\">\r\n                        <span class=\"glyphicon glyphicon-plus\"></span>\r\n                    </div>\r\n                    <div class=\"col-sm-2 add-menu\" @click=\"removeRules($index)\" v-else>\r\n                        <span class=\"glyphicon glyphicon-minus text-danger\"></span>\r\n                    </div>\r\n                </div>\r\n            </form>\r\n        </div>\r\n        <div slot=\"modal-footer\" class=\"modal-footer\">\r\n            <button type=\"button\" class=\"btn btn-default\">保存</button>\r\n            <button type=\"button\" class=\"btn btn-default\" @click='ruleModal = false'>取消</button>\r\n        </div>\r\n    </modal>\r\n</template>\r\n\r\n<script>\r\nimport { modal } from 'vue-strap'\r\n\r\nlet origin = {\r\n        ruleModal: false,\r\n        rules: ['']\r\n    }\r\n\r\nexport default {\r\n    data () {\r\n        return origin\r\n    },\r\n    methods: {\r\n\r\n        // 添加规则\r\n        addRules () {\r\n            this.rules.push('')\r\n        },\r\n\r\n        // 删除规则\r\n        removeRules (index) {\r\n            this.rules.splice(index, 1)\r\n        }\r\n    },\r\n    components: {\r\n        modal\r\n    },\r\n    events: {\r\n        'showRule' () {\r\n            this.ruleModal = true\r\n        }\r\n    }\r\n}\r\n</script>\r\n\r\n<style scoped>\r\n.add-menu {\r\n    height: 34px;\r\n    line-height: 34px;\r\n    padding: 0;\r\n    color: #009688;\r\n    cursor: pointer;\r\n}\r\n</style>"],"sourceRoot":"webpack://"}]);
+	exports.push([module.id, "\r\n.add-menu[_v-788a4083] {\r\n    height: 34px;\r\n    line-height: 34px;\r\n    padding: 0;\r\n    color: #009688;\r\n    cursor: pointer;\r\n}\r\n", "", {"version":3,"sources":["/./src/components/deploy_manage/run_board/EditRule.vue.style"],"names":[],"mappings":";AA8HA;IACA,aAAA;IACA,kBAAA;IACA,WAAA;IACA,eAAA;IACA,gBAAA;CACA","file":"EditRule.vue","sourcesContent":["<template>\r\n    <modal :show.sync=\"ruleModal\" effect=\"fade\" width=\"450px\">\r\n        <div slot=\"modal-header\" class=\"modal-header\">\r\n            <h4 class=\"modal-title\">规则配置</h4>\r\n        </div>\r\n        <div slot=\"modal-body\" class=\"modal-body\">\r\n            <form class=\"form-horizontal\">\r\n                <div class=\"form-group\" v-for=\"list in rules\" track-by=\"$index\">\r\n                    <label class=\"control-label col-sm-3\">规则{{ $index + 1 }}：</label>\r\n                    <div class=\"col-sm-7\">\r\n                        <input type=\"text\" class=\"form-control\" v-model=\"list.label\">\r\n                    </div>\r\n                    <div class=\"col-sm-2 add-menu\" v-if=\"$index === 0\" @click=\"addRules\">\r\n                        <span class=\"glyphicon glyphicon-plus\"></span>\r\n                    </div>\r\n                    <div class=\"col-sm-2 add-menu\" @click=\"removeRules($index)\" v-else>\r\n                        <span class=\"glyphicon glyphicon-minus text-danger\"></span>\r\n                    </div>\r\n                </div>\r\n            </form>\r\n        </div>\r\n        <div slot=\"modal-footer\" class=\"modal-footer\">\r\n            <button type=\"button\" class=\"btn btn-default\" @click=\"saveRules\">保存</button>\r\n            <button type=\"button\" class=\"btn btn-default\" @click='ruleModal = false'>取消</button>\r\n        </div>\r\n    </modal>\r\n    <delete-modal></delete-modal>\r\n</template>\r\n\r\n<script>\r\nimport { modal } from 'vue-strap'\r\nimport { rules, ruleId } from '../../../vuex/getters.js'\r\nimport deleteModal from '../../global/Confirm.vue'\r\n\r\nlet origin = {\r\n        ruleModal: false\r\n    }\r\n\r\nexport default {\r\n    data () {\r\n        return origin\r\n    },\r\n    methods: {\r\n\r\n        // 添加规则\r\n        addRules () {\r\n            this.rules.push({value: '', label: ''})\r\n        },\r\n\r\n        // 删除规则\r\n        removeRules (index) {\r\n            if (this.rules[index].value) {\r\n                this.$broadcast('showConfirm', index)\r\n                this.$broadcast('setMsg', '该规则下对应的脚本也会删除，是否确认？')\r\n            } else {\r\n                this.rules.splice(index, 1)\r\n            }\r\n        },\r\n\r\n        // 保存规则\r\n        saveRules () {\r\n            let isPass = true\r\n\r\n            this.rules.forEach(e => {\r\n                if (!e.label.trim()) {\r\n                    isPass = false\r\n                    this.$dispatch('show-notify', '规则名不能为空')\r\n\r\n                    return false\r\n                }\r\n            })\r\n\r\n            if (isPass) {\r\n                this.$http({\r\n                    url: '/rule_edit/',\r\n                    method: 'POST',\r\n                    data: {\r\n                        id: this.ruleId,\r\n                        rules: JSON.stringify(this.rules)\r\n                    }\r\n                })\r\n                .then(response => {\r\n                    if (response.data.result) {\r\n                        this.ruleModal = false\r\n\r\n                        this.$dispatch('show-success')\r\n                    } else {\r\n                        this.$dispatch('show-error')\r\n                    }\r\n                })\r\n            }\r\n        }\r\n    },\r\n    components: {\r\n        modal,\r\n        deleteModal\r\n    },\r\n    vuex: {\r\n        getters: {\r\n            rules,\r\n            ruleId\r\n        }\r\n    },\r\n    events: {\r\n        'showRule' () {\r\n            this.ruleModal = true\r\n        },\r\n        'confirm' (param) {\r\n\r\n            // 删除规则\r\n            this.$http({\r\n                url: '/rule_delete/',\r\n                method: 'POST',\r\n                data: {\r\n                    id: this.rules[param].value\r\n                }\r\n            })\r\n            .then(response => {\r\n                response.data.result ? this.rules.splice(param, 1) : ''\r\n            })\r\n        }\r\n    }\r\n}\r\n</script>\r\n\r\n<style scoped>\r\n.add-menu {\r\n    height: 34px;\r\n    line-height: 34px;\r\n    padding: 0;\r\n    color: #009688;\r\n    cursor: pointer;\r\n}\r\n</style>"],"sourceRoot":"webpack://"}]);
 	
 	// exports
 
@@ -1915,11 +1955,22 @@ webpackJsonp([1],Array(25).concat([
 	    value: true
 	});
 	
+	var _stringify = __webpack_require__(110);
+	
+	var _stringify2 = _interopRequireDefault(_stringify);
+	
 	var _vueStrap = __webpack_require__(103);
 	
+	var _getters = __webpack_require__(104);
+	
+	var _Confirm = __webpack_require__(112);
+	
+	var _Confirm2 = _interopRequireDefault(_Confirm);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
 	var origin = {
-	    ruleModal: false,
-	    rules: ['']
+	    ruleModal: false
 	}; // <template>
 	//     <modal :show.sync="ruleModal" effect="fade" width="450px">
 	//         <div slot="modal-header" class="modal-header">
@@ -1927,10 +1978,10 @@ webpackJsonp([1],Array(25).concat([
 	//         </div>
 	//         <div slot="modal-body" class="modal-body">
 	//             <form class="form-horizontal">
-	//                 <div class="form-group" v-for="rule in rules" track-by="$index">
+	//                 <div class="form-group" v-for="list in rules" track-by="$index">
 	//                     <label class="control-label col-sm-3">规则{{ $index + 1 }}：</label>
 	//                     <div class="col-sm-7">
-	//                         <input type="text" class="form-control" v-model="rule">
+	//                         <input type="text" class="form-control" v-model="list.label">
 	//                     </div>
 	//                     <div class="col-sm-2 add-menu" v-if="$index === 0" @click="addRules">
 	//                         <span class="glyphicon glyphicon-plus"></span>
@@ -1942,10 +1993,11 @@ webpackJsonp([1],Array(25).concat([
 	//             </form>
 	//         </div>
 	//         <div slot="modal-footer" class="modal-footer">
-	//             <button type="button" class="btn btn-default">保存</button>
+	//             <button type="button" class="btn btn-default" @click="saveRules">保存</button>
 	//             <button type="button" class="btn btn-default" @click='ruleModal = false'>取消</button>
 	//         </div>
 	//     </modal>
+	//     <delete-modal></delete-modal>
 	// </template>
 	//
 	// <script>
@@ -1961,21 +2013,83 @@ webpackJsonp([1],Array(25).concat([
 	        // 添加规则
 	
 	        addRules: function addRules() {
-	            this.rules.push('');
+	            this.rules.push({ value: '', label: '' });
 	        },
 	
 	
 	        // 删除规则
 	        removeRules: function removeRules(index) {
-	            this.rules.splice(index, 1);
+	            if (this.rules[index].value) {
+	                this.$broadcast('showConfirm', index);
+	                this.$broadcast('setMsg', '该规则下对应的脚本也会删除，是否确认？');
+	            } else {
+	                this.rules.splice(index, 1);
+	            }
+	        },
+	
+	
+	        // 保存规则
+	        saveRules: function saveRules() {
+	            var _this = this;
+	
+	            var isPass = true;
+	
+	            this.rules.forEach(function (e) {
+	                if (!e.label.trim()) {
+	                    isPass = false;
+	                    _this.$dispatch('show-notify', '规则名不能为空');
+	
+	                    return false;
+	                }
+	            });
+	
+	            if (isPass) {
+	                this.$http({
+	                    url: '/rule_edit/',
+	                    method: 'POST',
+	                    data: {
+	                        id: this.ruleId,
+	                        rules: (0, _stringify2.default)(this.rules)
+	                    }
+	                }).then(function (response) {
+	                    if (response.data.result) {
+	                        _this.ruleModal = false;
+	
+	                        _this.$dispatch('show-success');
+	                    } else {
+	                        _this.$dispatch('show-error');
+	                    }
+	                });
+	            }
 	        }
 	    },
 	    components: {
-	        modal: _vueStrap.modal
+	        modal: _vueStrap.modal,
+	        deleteModal: _Confirm2.default
+	    },
+	    vuex: {
+	        getters: {
+	            rules: _getters.rules,
+	            ruleId: _getters.ruleId
+	        }
 	    },
 	    events: {
 	        'showRule': function showRule() {
 	            this.ruleModal = true;
+	        },
+	        'confirm': function confirm(param) {
+	            var _this2 = this;
+	
+	            // 删除规则
+	            this.$http({
+	                url: '/rule_delete/',
+	                method: 'POST',
+	                data: {
+	                    id: this.rules[param].value
+	                }
+	            }).then(function (response) {
+	                response.data.result ? _this2.rules.splice(param, 1) : '';
+	            });
 	        }
 	    }
 	};
@@ -1994,18 +2108,178 @@ webpackJsonp([1],Array(25).concat([
 
 /***/ },
 /* 110 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n    <modal :show.sync=\"ruleModal\" effect=\"fade\" width=\"450px\" _v-788a4083=\"\">\n        <div slot=\"modal-header\" class=\"modal-header\" _v-788a4083=\"\">\n            <h4 class=\"modal-title\" _v-788a4083=\"\">规则配置</h4>\n        </div>\n        <div slot=\"modal-body\" class=\"modal-body\" _v-788a4083=\"\">\n            <form class=\"form-horizontal\" _v-788a4083=\"\">\n                <div class=\"form-group\" v-for=\"rule in rules\" track-by=\"$index\" _v-788a4083=\"\">\n                    <label class=\"control-label col-sm-3\" _v-788a4083=\"\">规则{{ $index + 1 }}：</label>\n                    <div class=\"col-sm-7\" _v-788a4083=\"\">\n                        <input type=\"text\" class=\"form-control\" v-model=\"rule\" _v-788a4083=\"\">\n                    </div>\n                    <div class=\"col-sm-2 add-menu\" v-if=\"$index === 0\" @click=\"addRules\" _v-788a4083=\"\">\n                        <span class=\"glyphicon glyphicon-plus\" _v-788a4083=\"\"></span>\n                    </div>\n                    <div class=\"col-sm-2 add-menu\" @click=\"removeRules($index)\" v-else=\"\" _v-788a4083=\"\">\n                        <span class=\"glyphicon glyphicon-minus text-danger\" _v-788a4083=\"\"></span>\n                    </div>\n                </div>\n            </form>\n        </div>\n        <div slot=\"modal-footer\" class=\"modal-footer\" _v-788a4083=\"\">\n            <button type=\"button\" class=\"btn btn-default\" _v-788a4083=\"\">保存</button>\n            <button type=\"button\" class=\"btn btn-default\" @click=\"ruleModal = false\" _v-788a4083=\"\">取消</button>\n        </div>\n    </modal>\n";
+	module.exports = { "default": __webpack_require__(111), __esModule: true };
 
 /***/ },
 /* 111 */
 /***/ function(module, exports, __webpack_require__) {
 
+	var core  = __webpack_require__(41)
+	  , $JSON = core.JSON || (core.JSON = {stringify: JSON.stringify});
+	module.exports = function stringify(it){ // eslint-disable-line no-unused-vars
+	  return $JSON.stringify.apply($JSON, arguments);
+	};
+
+/***/ },
+/* 112 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var __vue_script__, __vue_template__
-	__webpack_require__(112)
-	__vue_script__ = __webpack_require__(114)
-	__vue_template__ = __webpack_require__(115)
+	__webpack_require__(113)
+	__vue_script__ = __webpack_require__(115)
+	__vue_template__ = __webpack_require__(116)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "D:\\work\\Aptana Studio 3 Workspace\\charging_conf\\charging_conf\\static\\src\\components\\global\\Confirm.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 113 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(114);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(29)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-cd8cc08a&file=Confirm.vue!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Confirm.vue", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-cd8cc08a&file=Confirm.vue!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Confirm.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 114 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(28)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "\r\n    \r\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"Confirm.vue","sourceRoot":"webpack://"}]);
+	
+	// exports
+
+
+/***/ },
+/* 115 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _vueStrap = __webpack_require__(103);
+	
+	exports.default = {
+	    data: function data() {
+	        return {
+	            confirmModal: false,
+	            tag: '',
+	            msg: '确认要删除此配置？'
+	        };
+	    },
+	
+	    methods: {
+	        okFn: function okFn() {
+	            var _this = this;
+	
+	            this.$dispatch('confirm', _this.tag);
+	            this.confirmModal = false;
+	        }
+	    },
+	    components: {
+	        modal: _vueStrap.modal
+	    },
+	    events: {
+	        'showConfirm': function showConfirm(param) {
+	            this.confirmModal = true;
+	
+	            if (param) {
+	                this.tag = param;
+	            }
+	        },
+	        'setMsg': function setMsg(param) {
+	            this.msg = param;
+	        }
+	    }
+	};
+	// </script>
+	//
+	// <style>
+	//
+	// </style>
+	/* generated by vue-loader */
+	// <!-- 确认操作组件 -->
+	// <template>
+	//     <modal :show.sync="confirmModal" effect="fade" width="450px">
+	//         <div slot="modal-header" class="modal-header">
+	//             <h4 class="modal-title">
+	//                 确认操作
+	//             </h4>
+	//         </div>
+	//         <div slot="modal-body" class="modal-body">
+	//             <h4 class="text-center" v-text="msg"></h4>
+	//         </div>
+	//         <div slot="modal-footer" class="modal-footer">
+	//             <button type="button" class="btn btn-warning" @click="okFn">
+	//                 确认
+	//             </button>
+	//             <button type="button" class="btn btn-default" @click="confirmModal = false">
+	//                 取消
+	//             </button>
+	//         </div>
+	//     </modal>
+	// </template>
+	//
+	// <script>
+
+/***/ },
+/* 116 */
+/***/ function(module, exports) {
+
+	module.exports = "\r\n    <modal :show.sync=\"confirmModal\" effect=\"fade\" width=\"450px\">\r\n        <div slot=\"modal-header\" class=\"modal-header\">\r\n            <h4 class=\"modal-title\">\r\n                确认操作\r\n            </h4>\r\n        </div>\r\n        <div slot=\"modal-body\" class=\"modal-body\">\r\n            <h4 class=\"text-center\" v-text=\"msg\"></h4>\r\n        </div>\r\n        <div slot=\"modal-footer\" class=\"modal-footer\">\r\n            <button type=\"button\" class=\"btn btn-warning\" @click=\"okFn\">\r\n                确认\r\n            </button>\r\n            <button type=\"button\" class=\"btn btn-default\" @click=\"confirmModal = false\">\r\n                取消\r\n            </button>\r\n        </div>\r\n    </modal>\r\n";
+
+/***/ },
+/* 117 */
+/***/ function(module, exports) {
+
+	module.exports = "\n    <modal :show.sync=\"ruleModal\" effect=\"fade\" width=\"450px\" _v-788a4083=\"\">\n        <div slot=\"modal-header\" class=\"modal-header\" _v-788a4083=\"\">\n            <h4 class=\"modal-title\" _v-788a4083=\"\">规则配置</h4>\n        </div>\n        <div slot=\"modal-body\" class=\"modal-body\" _v-788a4083=\"\">\n            <form class=\"form-horizontal\" _v-788a4083=\"\">\n                <div class=\"form-group\" v-for=\"list in rules\" track-by=\"$index\" _v-788a4083=\"\">\n                    <label class=\"control-label col-sm-3\" _v-788a4083=\"\">规则{{ $index + 1 }}：</label>\n                    <div class=\"col-sm-7\" _v-788a4083=\"\">\n                        <input type=\"text\" class=\"form-control\" v-model=\"list.label\" _v-788a4083=\"\">\n                    </div>\n                    <div class=\"col-sm-2 add-menu\" v-if=\"$index === 0\" @click=\"addRules\" _v-788a4083=\"\">\n                        <span class=\"glyphicon glyphicon-plus\" _v-788a4083=\"\"></span>\n                    </div>\n                    <div class=\"col-sm-2 add-menu\" @click=\"removeRules($index)\" v-else=\"\" _v-788a4083=\"\">\n                        <span class=\"glyphicon glyphicon-minus text-danger\" _v-788a4083=\"\"></span>\n                    </div>\n                </div>\n            </form>\n        </div>\n        <div slot=\"modal-footer\" class=\"modal-footer\" _v-788a4083=\"\">\n            <button type=\"button\" class=\"btn btn-default\" @click=\"saveRules\" _v-788a4083=\"\">保存</button>\n            <button type=\"button\" class=\"btn btn-default\" @click=\"ruleModal = false\" _v-788a4083=\"\">取消</button>\n        </div>\n    </modal>\n    <delete-modal _v-788a4083=\"\"></delete-modal>\n";
+
+/***/ },
+/* 118 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__webpack_require__(119)
+	__vue_script__ = __webpack_require__(121)
+	__vue_template__ = __webpack_require__(122)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -2022,13 +2296,13 @@ webpackJsonp([1],Array(25).concat([
 	})()}
 
 /***/ },
-/* 112 */
+/* 119 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(113);
+	var content = __webpack_require__(120);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(29)(content, {});
@@ -2048,7 +2322,7 @@ webpackJsonp([1],Array(25).concat([
 	}
 
 /***/ },
-/* 113 */
+/* 120 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(28)();
@@ -2062,7 +2336,7 @@ webpackJsonp([1],Array(25).concat([
 
 
 /***/ },
-/* 114 */
+/* 121 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2217,19 +2491,19 @@ webpackJsonp([1],Array(25).concat([
 	/* generated by vue-loader */
 
 /***/ },
-/* 115 */
+/* 122 */
 /***/ function(module, exports) {
 
 	module.exports = "\n    <modal :show.sync=\"modifyModal\" effect=\"fade\" width=\"450px\" _v-e1194f52=\"\">\n        <div slot=\"modal-header\" class=\"modal-header\" _v-e1194f52=\"\">\n            <h4 class=\"modal-title\" _v-e1194f52=\"\">修改</h4>\n        </div>\n        <div slot=\"modal-body\" class=\"modal-body\" _v-e1194f52=\"\">\n            <form class=\"form-horizontal\" _v-e1194f52=\"\">\n                <div class=\"form-group\" _v-e1194f52=\"\">\n                    <label class=\"control-label col-sm-3\" _v-e1194f52=\"\">名称：<span class=\"text-danger\" _v-e1194f52=\"\">*</span></label>\n                    <div class=\"col-sm-8\" _v-e1194f52=\"\">\n                        <input type=\"text\" class=\"form-control\" v-model=\"name\" _v-e1194f52=\"\">\n                    </div>\n                </div>\n                <div class=\"form-group input-box\" _v-e1194f52=\"\">\n                    <label class=\"control-label col-sm-3\" _v-e1194f52=\"\">类型：<span class=\"text-danger\" _v-e1194f52=\"\">*</span></label>\n                    <div class=\"col-sm-8\" _v-e1194f52=\"\">\n                        <v-select :value.sync=\"type\" :options=\"types\" placeholder=\"请选择\" _v-e1194f52=\"\">\n                        </v-select>\n                    </div>\n                </div>\n                <div class=\"form-group\" v-for=\"version in versions\" track-by=\"$index\" _v-e1194f52=\"\">\n                    <label class=\"control-label col-sm-3\" v-show=\"$index === 0\" _v-e1194f52=\"\">版本/型号：</label>\n                    <div :class=\"$index === 0 ? 'col-sm-8' : 'col-sm-8 col-sm-offset-3'\" _v-e1194f52=\"\">\n                        <input type=\"text\" class=\"form-control\" v-model=\"version\" _v-e1194f52=\"\">\n                    </div>\n                    <div class=\"col-sm-1 add-menu\" v-if=\"$index === 0\" @click=\"versions.push('')\" _v-e1194f52=\"\">\n                        <span class=\"glyphicon glyphicon-plus\" _v-e1194f52=\"\"></span>\n                    </div>\n                    <div class=\"col-sm-1 add-menu\" v-else=\"\" @click=\"versions.splice($index, 1)\" _v-e1194f52=\"\">\n                        <span class=\"glyphicon glyphicon-minus text-danger\" _v-e1194f52=\"\"></span>\n                    </div>\n                </div>\n                <div class=\"form-group\" _v-e1194f52=\"\">\n                    <label class=\"control-label col-sm-3\" _v-e1194f52=\"\">备注：</label>\n                    <div class=\"col-sm-8\" _v-e1194f52=\"\">\n                        <textarea class=\"form-control\" rows=\"5\" v-model=\"remark\" _v-e1194f52=\"\"></textarea>\n                    </div>\n                </div>\n            </form>\n        </div>\n        <div slot=\"modal-footer\" class=\"modal-footer\" _v-e1194f52=\"\">\n            <button type=\"button\" class=\"btn btn-default\" :disabled=\"name.trim() &amp;&amp; type ? false : true\" @click=\"saveFn\" _v-e1194f52=\"\">保存</button>\n            <button type=\"button\" class=\"btn btn-default\" @click=\"modifyModal = false\" _v-e1194f52=\"\">取消</button>\n        </div>\n    </modal>\n";
 
 /***/ },
-/* 116 */
+/* 123 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(117)
-	__vue_script__ = __webpack_require__(119)
-	__vue_template__ = __webpack_require__(120)
+	__webpack_require__(124)
+	__vue_script__ = __webpack_require__(126)
+	__vue_template__ = __webpack_require__(127)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -2246,13 +2520,13 @@ webpackJsonp([1],Array(25).concat([
 	})()}
 
 /***/ },
-/* 117 */
+/* 124 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(118);
+	var content = __webpack_require__(125);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(29)(content, {});
@@ -2272,7 +2546,7 @@ webpackJsonp([1],Array(25).concat([
 	}
 
 /***/ },
-/* 118 */
+/* 125 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(28)();
@@ -2286,7 +2560,7 @@ webpackJsonp([1],Array(25).concat([
 
 
 /***/ },
-/* 119 */
+/* 126 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2577,159 +2851,19 @@ webpackJsonp([1],Array(25).concat([
 	/* generated by vue-loader */
 
 /***/ },
-/* 120 */
+/* 127 */
 /***/ function(module, exports) {
 
 	module.exports = "\n    <select class=\"form-control boot-select\" v-model=\"len\" _v-329bae94=\"\">\n        <option v-for=\"arr in lens\" :value=\"arr\" v-text=\"arr\" :selected=\"$index === 0 ? true : false\" _v-329bae94=\"\"></option>\n    </select>\n    <nav class=\"boot-nav\" _v-329bae94=\"\">\n        <ul class=\"pagination boot-page\" _v-329bae94=\"\">\n            <li _v-329bae94=\"\">\n                <a href=\"javascript:void(0)\" aria-label=\"Previous\" @click=\"onPrevClick()\" _v-329bae94=\"\">\n                    <span aria-hidden=\"true\" _v-329bae94=\"\">«</span>\n                </a>\n            </li>\n            <li v-for=\"page in pages\" :class=\"activeNum === $index ? 'active' : ''\" _v-329bae94=\"\">\n                <a href=\"javascript:void(0)\" v-text=\"page\" @click=\"onPageClick($index)\" _v-329bae94=\"\"></a>\n            </li>\n            <li _v-329bae94=\"\">\n                <a href=\"javascript:void(0)\" aria-label=\"Next\" @click=\"onNextClick()\" _v-329bae94=\"\">\n                    <span aria-hidden=\"true\" _v-329bae94=\"\">»</span>\n                </a>\n            </li>\n        </ul>\n        <div class=\"page-total\" _v-329bae94=\"\">\n            共 <span v-text=\"pageTotal\" _v-329bae94=\"\"></span> 页\n        </div>\n    </nav>\n";
 
 /***/ },
-/* 121 */
+/* 128 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(122)
-	__vue_script__ = __webpack_require__(124)
-	__vue_template__ = __webpack_require__(125)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), true)
-	  if (!hotAPI.compatible) return
-	  var id = "D:\\work\\Aptana Studio 3 Workspace\\charging_conf\\charging_conf\\static\\src\\components\\global\\Confirm.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 122 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-	
-	// load the styles
-	var content = __webpack_require__(123);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(29)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-cd8cc08a&file=Confirm.vue!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Confirm.vue", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-cd8cc08a&file=Confirm.vue!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Confirm.vue");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 123 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(28)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, "\r\n    \r\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"Confirm.vue","sourceRoot":"webpack://"}]);
-	
-	// exports
-
-
-/***/ },
-/* 124 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _vueStrap = __webpack_require__(103);
-	
-	exports.default = {
-	    data: function data() {
-	        return {
-	            confirmModal: false,
-	            tag: ''
-	        };
-	    },
-	
-	    methods: {
-	        okFn: function okFn() {
-	            var _this = this;
-	
-	            this.$dispatch('confirm', _this.tag);
-	            this.confirmModal = false;
-	        }
-	    },
-	    components: {
-	        modal: _vueStrap.modal
-	    },
-	    events: {
-	        'showConfirm': function showConfirm(data) {
-	            this.confirmModal = true;
-	
-	            if (data) {
-	                this.tag = data;
-	            }
-	        }
-	    }
-	};
-	// </script>
-	//
-	// <style>
-	//
-	// </style>
-	/* generated by vue-loader */
-	// <!-- 确认操作组件 -->
-	// <template>
-	//     <modal :show.sync="confirmModal" effect="fade" width="450px">
-	//         <div slot="modal-header" class="modal-header">
-	//             <h4 class="modal-title">
-	//                 确认操作
-	//             </h4>
-	//         </div>
-	//         <div slot="modal-body" class="modal-body">
-	//             <h4 class="text-center">确认要删除此配置？</h4>
-	//         </div>
-	//         <div slot="modal-footer" class="modal-footer">
-	//             <button type="button" class="btn btn-warning" @click="okFn">
-	//                 确认
-	//             </button>
-	//             <button type="button" class="btn btn-default" @click="confirmModal = false">
-	//                 取消
-	//             </button>
-	//         </div>
-	//     </modal>
-	// </template>
-	//
-	// <script>
-
-/***/ },
-/* 125 */
-/***/ function(module, exports) {
-
-	module.exports = "\r\n    <modal :show.sync=\"confirmModal\" effect=\"fade\" width=\"450px\">\r\n        <div slot=\"modal-header\" class=\"modal-header\">\r\n            <h4 class=\"modal-title\">\r\n                确认操作\r\n            </h4>\r\n        </div>\r\n        <div slot=\"modal-body\" class=\"modal-body\">\r\n            <h4 class=\"text-center\">确认要删除此配置？</h4>\r\n        </div>\r\n        <div slot=\"modal-footer\" class=\"modal-footer\">\r\n            <button type=\"button\" class=\"btn btn-warning\" @click=\"okFn\">\r\n                确认\r\n            </button>\r\n            <button type=\"button\" class=\"btn btn-default\" @click=\"confirmModal = false\">\r\n                取消\r\n            </button>\r\n        </div>\r\n    </modal>\r\n";
-
-/***/ },
-/* 126 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	__webpack_require__(127)
-	__vue_script__ = __webpack_require__(129)
-	__vue_template__ = __webpack_require__(136)
+	__webpack_require__(129)
+	__vue_script__ = __webpack_require__(131)
+	__vue_template__ = __webpack_require__(140)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -2746,13 +2880,13 @@ webpackJsonp([1],Array(25).concat([
 	})()}
 
 /***/ },
-/* 127 */
+/* 129 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(128);
+	var content = __webpack_require__(130);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(29)(content, {});
@@ -2772,7 +2906,7 @@ webpackJsonp([1],Array(25).concat([
 	}
 
 /***/ },
-/* 128 */
+/* 130 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(28)();
@@ -2786,10 +2920,10 @@ webpackJsonp([1],Array(25).concat([
 
 
 /***/ },
-/* 129 */
+/* 131 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	/* WEBPACK VAR INJECTION */(function($) {'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -2801,64 +2935,202 @@ webpackJsonp([1],Array(25).concat([
 	
 	var _Select2 = _interopRequireDefault(_Select);
 	
-	var _codemirror = __webpack_require__(130);
+	var _codemirror = __webpack_require__(132);
 	
 	var _codemirror2 = _interopRequireDefault(_codemirror);
 	
-	var _codemirror3 = __webpack_require__(131);
+	var _codemirror3 = __webpack_require__(133);
 	
 	var _codemirror4 = _interopRequireDefault(_codemirror3);
 	
-	var _erlangDark = __webpack_require__(133);
+	var _erlangDark = __webpack_require__(135);
 	
 	var _erlangDark2 = _interopRequireDefault(_erlangDark);
 	
-	var _shell = __webpack_require__(135);
+	var _shell = __webpack_require__(137);
 	
 	var _shell2 = _interopRequireDefault(_shell);
 	
+	var _python = __webpack_require__(138);
+	
+	var _python2 = _interopRequireDefault(_python);
+	
+	var _perl = __webpack_require__(139);
+	
+	var _perl2 = _interopRequireDefault(_perl);
+	
+	var _getters = __webpack_require__(104);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	// <template>
+	var editor; // <template>
 	//     <modal :show.sync="scriptModal" effect="fade" width="800px">
 	//         <div slot="modal-header" class="modal-header">
+	//             <button type="button" class="close" @click="scriptModal = false">
+	//                 <span>×</span>
+	//             </button>
 	//             <h4 class="modal-title">脚本编写</h4>
 	//         </div>
 	//         <div slot="modal-body" class="modal-body">
-	//             <form class="form-horizontal">
-	//                 <div class="form-group text-center">
-	//                     <v-select :value.sync="rule" :options="rules" placeholder="请选择">
-	//                     </v-select>
+	//             <form id="file_form" class="form-horizontal">
+	//                 <div class="form-group">
+	//                     <label class="col-sm-2 control-label">规则名：<span class="text-danger">*</span></label>
+	//                     <div class="col-sm-6">
+	//                         <v-select :value.sync="rule" :options="ruleList" placeholder="请选择">
+	//                         </v-select>
+	//                     </div>
 	//                 </div>
 	//                 <div class="form-group">
-	//                     <textarea id="editScript" class="form-group" name="editScript"></textarea>
+	//                     <label class="col-sm-2 control-label">脚本来源：</label>
+	//                     <div class="col-sm-6">
+	//                         <radio-group :value.sync="scriptOriginSelected" type="default">
+	//                             <radio :value="'1'">手工录入</radio>
+	//                             <radio :value="'2'">本地脚本</radio>
+	//                         </radio-group>
+	//                     </div>
+	//                 </div>
+	//                 <div class="form-group" v-if="scriptOriginSelected === '2'">
+	//                     <div class="col-sm-5 col-sm-offset-2">
+	//                         <input type="text" class="form-control" :readonly="true" v-model="road">
+	//                         <input id="file" type="file" name="file" v-show="false" @change="fileChange">
+	//                     </div>
+	//                     <div class="col-sm-4">
+	//                         <button type="button" class="btn btn-default" @click="fileSearch">浏览</button>
+	//                         <button type="button" class="btn btn-default" @click="fileUpload">上传</button>
+	//                     </div>
+	//                 </div>
+	//                 <div class="form-group">
+	//                     <label class="col-sm-2 control-label">脚本类型：</label>
+	//                     <div class="col-sm-6">
+	//                         <radio-group :value.sync="scriptTypeSelected" type="default">
+	//                             <radio  v-for="scriptType in scriptTypes" :value="scriptType.value">{{ scriptType.label }}</radio>
+	//                         </radio-group>
+	//                     </div>
+	//                 </div>
+	//                 <div class="form-group" v-show="rule">
+	//                     <textarea id="editScript" class="form-group"></textarea>
 	//                 </div>
 	//             </form>
 	//         </div>
 	//         <div slot="modal-footer" class="modal-footer">
-	//             <button type="button" class="btn btn-default">保存</button>
-	//             <button type="button" class="btn btn-default">取消</button>
+	//             <button type="button" class="btn btn-default" :disabled="rule ? false : true" @click="saveScript">保存</button>
+	//             <button type="button" class="btn btn-default" @click="scriptModal = false">取消</button>
 	//         </div>
 	//     </modal>
 	// </template>
 	//
 	// <script>
+	
+	
 	exports.default = {
 	    data: function data() {
 	        return {
 	            scriptModal: false,
-	            rules: [{ value: '1', label: '规则1' }, { value: '2', label: '规则2' }],
-	            rule: ''
+	            rule: '',
+	            scriptTypes: [{ value: '1', label: 'shell' }, { value: '2', label: 'bat' }, { value: '3', label: 'python' }],
+	            scriptTypeSelected: '1',
+	            scriptOriginSelected: '1',
+	            road: ''
 	        };
 	    },
 	
+	    methods: {
+	
+	        // 保存脚本
+	
+	        saveScript: function saveScript() {
+	            var _this2 = this;
+	
+	            this.$http({
+	                url: '/script_edit/',
+	                method: 'POST',
+	                data: {
+	                    id: this.rule,
+	                    script: editor.getValue(),
+	                    script_type: this.scriptTypeSelected
+	                }
+	            }).then(function (response) {
+	                if (response.data.result) {
+	                    _this2.rule = '';
+	                    _this2.scriptOriginSelected = '1';
+	
+	                    _this2.scriptModal = false;
+	
+	                    _this2.$dispatch('show-success');
+	                } else {
+	                    _this2.$dispatch('show-error');
+	                }
+	            });
+	        },
+	
+	
+	        // 选择上传脚本
+	        fileChange: function fileChange() {
+	            this.road = $('#file').val();
+	        },
+	
+	
+	        // 浏览事件
+	        fileSearch: function fileSearch() {
+	            $('#file').trigger('click');
+	        },
+	
+	
+	        // 上传事件
+	        fileUpload: function fileUpload() {
+	            var _this3 = this;
+	
+	            if (!this.rule) {
+	                this.$dispatch('show-notify', '请先选择规则名');
+	
+	                return false;
+	            }
+	
+	            if (this.road) {
+	                (function () {
+	                    var _this = _this3,
+	                        formData = new FormData($('#file_form')[0]);
+	
+	                    $.ajax({
+	                        url: '/script_upload/',
+	                        type: 'POST',
+	                        processData: false,
+	                        contentType: false,
+	                        dataType: 'JSON',
+	                        data: formData
+	                    }).then(function (data) {
+	                        if (data.result === 1) {
+	                            $('#file').val('');
+	                            _this.road = '';
+	                            editor.setValue(data.content);
+	
+	                            _this.$dispatch('show-success');
+	                        } else {
+	                            _this.$dispatch('show-error');
+	                        }
+	                    });
+	                })();
+	            } else {
+	                this.$dispatch('show-notify', '请先选择脚本文件');
+	            }
+	        }
+	    },
 	    components: {
 	        modal: _vueStrap.modal,
 	        CodeMirror: _codemirror2.default,
-	        vSelect: _Select2.default
+	        vSelect: _Select2.default,
+	        radioGroup: _vueStrap.radioGroup,
+	        radio: _vueStrap.radioBtn
+	    },
+	    vuex: {
+	        getters: {
+	            ruleList: _getters.ruleList
+	        }
 	    },
 	    attached: function attached() {
-	        var editor = _codemirror2.default.fromTextArea(document.getElementById("editScript"), {
+	
+	        // 初始化codemirror
+	        editor = _codemirror2.default.fromTextArea(document.getElementById("editScript"), {
 	            lineNumbers: false,
 	            mode: "shell",
 	            lineWrapping: true,
@@ -2871,6 +3143,39 @@ webpackJsonp([1],Array(25).concat([
 	        'showScript': function showScript() {
 	            this.scriptModal = true;
 	        }
+	    },
+	    watch: {
+	
+	        // 监测规则名
+	
+	        'rule': function rule(newVal) {
+	            var _this4 = this;
+	
+	            this.$http({
+	                url: '/script_edit/?id=' + newVal,
+	                method: 'GET'
+	            }).then(function (response) {
+	                response.data.script ? editor.setValue(response.data.script) : editor.setValue('');
+	
+	                response.data.script_type ? _this4.scriptTypeSelected = response.data.script_type : _this4.scriptTypeSelected = '1';
+	            });
+	        },
+	
+	
+	        // 监测脚本类型
+	        'scriptTypeSelected': function scriptTypeSelected(newVal) {
+	            switch (newVal) {
+	                case '1':
+	                    editor.setOption('mode', 'shell');
+	                    break;
+	                case '2':
+	                    editor.setOption('mode', 'perl');
+	                    break;
+	                case '3':
+	                    editor.setOption('mode', 'python');
+	                    break;
+	            }
+	        }
 	    }
 	};
 	// </script>
@@ -2879,9 +3184,10 @@ webpackJsonp([1],Array(25).concat([
 	//
 	// </style>
 	/* generated by vue-loader */
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 130 */
+/* 132 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// CodeMirror, copyright (c) by Marijn Haverbeke and others
@@ -11795,13 +12101,13 @@ webpackJsonp([1],Array(25).concat([
 
 
 /***/ },
-/* 131 */
+/* 133 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(132);
+	var content = __webpack_require__(134);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(29)(content, {});
@@ -11821,7 +12127,7 @@ webpackJsonp([1],Array(25).concat([
 	}
 
 /***/ },
-/* 132 */
+/* 134 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(28)();
@@ -11835,13 +12141,13 @@ webpackJsonp([1],Array(25).concat([
 
 
 /***/ },
-/* 133 */
+/* 135 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(134);
+	var content = __webpack_require__(136);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(29)(content, {});
@@ -11861,7 +12167,7 @@ webpackJsonp([1],Array(25).concat([
 	}
 
 /***/ },
-/* 134 */
+/* 136 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(28)();
@@ -11875,7 +12181,7 @@ webpackJsonp([1],Array(25).concat([
 
 
 /***/ },
-/* 135 */
+/* 137 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// CodeMirror, copyright (c) by Marijn Haverbeke and others
@@ -11883,7 +12189,7 @@ webpackJsonp([1],Array(25).concat([
 	
 	(function(mod) {
 	  if (true) // CommonJS
-	    mod(__webpack_require__(130));
+	    mod(__webpack_require__(132));
 	  else if (typeof define == "function" && define.amd) // AMD
 	    define(["../../lib/codemirror"], mod);
 	  else // Plain browser env
@@ -12020,21 +12326,1213 @@ webpackJsonp([1],Array(25).concat([
 
 
 /***/ },
-/* 136 */
-/***/ function(module, exports) {
+/* 138 */
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n    <modal :show.sync=\"scriptModal\" effect=\"fade\" width=\"800px\" _v-15113fe8=\"\">\n        <div slot=\"modal-header\" class=\"modal-header\" _v-15113fe8=\"\">\n            <h4 class=\"modal-title\" _v-15113fe8=\"\">脚本编写</h4>\n        </div>\n        <div slot=\"modal-body\" class=\"modal-body\" _v-15113fe8=\"\">\n            <form class=\"form-horizontal\" _v-15113fe8=\"\">\n                <div class=\"form-group text-center\" _v-15113fe8=\"\">\n                    <v-select :value.sync=\"rule\" :options=\"rules\" placeholder=\"请选择\" _v-15113fe8=\"\">\n                    </v-select>\n                </div>\n                <div class=\"form-group\" _v-15113fe8=\"\">\n                    <textarea id=\"editScript\" class=\"form-group\" name=\"editScript\" _v-15113fe8=\"\"></textarea>\n                </div>\n            </form>\n        </div>\n        <div slot=\"modal-footer\" class=\"modal-footer\" _v-15113fe8=\"\">\n            <button type=\"button\" class=\"btn btn-default\" _v-15113fe8=\"\">保存</button>\n            <button type=\"button\" class=\"btn btn-default\" _v-15113fe8=\"\">取消</button>\n        </div>\n    </modal>\n";
+	// CodeMirror, copyright (c) by Marijn Haverbeke and others
+	// Distributed under an MIT license: http://codemirror.net/LICENSE
+	
+	(function(mod) {
+	  if (true) // CommonJS
+	    mod(__webpack_require__(132));
+	  else if (typeof define == "function" && define.amd) // AMD
+	    define(["../../lib/codemirror"], mod);
+	  else // Plain browser env
+	    mod(CodeMirror);
+	})(function(CodeMirror) {
+	  "use strict";
+	
+	  function wordRegexp(words) {
+	    return new RegExp("^((" + words.join(")|(") + "))\\b");
+	  }
+	
+	  var wordOperators = wordRegexp(["and", "or", "not", "is"]);
+	  var commonKeywords = ["as", "assert", "break", "class", "continue",
+	                        "def", "del", "elif", "else", "except", "finally",
+	                        "for", "from", "global", "if", "import",
+	                        "lambda", "pass", "raise", "return",
+	                        "try", "while", "with", "yield", "in"];
+	  var commonBuiltins = ["abs", "all", "any", "bin", "bool", "bytearray", "callable", "chr",
+	                        "classmethod", "compile", "complex", "delattr", "dict", "dir", "divmod",
+	                        "enumerate", "eval", "filter", "float", "format", "frozenset",
+	                        "getattr", "globals", "hasattr", "hash", "help", "hex", "id",
+	                        "input", "int", "isinstance", "issubclass", "iter", "len",
+	                        "list", "locals", "map", "max", "memoryview", "min", "next",
+	                        "object", "oct", "open", "ord", "pow", "property", "range",
+	                        "repr", "reversed", "round", "set", "setattr", "slice",
+	                        "sorted", "staticmethod", "str", "sum", "super", "tuple",
+	                        "type", "vars", "zip", "__import__", "NotImplemented",
+	                        "Ellipsis", "__debug__"];
+	  CodeMirror.registerHelper("hintWords", "python", commonKeywords.concat(commonBuiltins));
+	
+	  function top(state) {
+	    return state.scopes[state.scopes.length - 1];
+	  }
+	
+	  CodeMirror.defineMode("python", function(conf, parserConf) {
+	    var ERRORCLASS = "error";
+	
+	    var singleDelimiters = parserConf.singleDelimiters || /^[\(\)\[\]\{\}@,:`=;\.]/;
+	    var doubleOperators = parserConf.doubleOperators || /^([!<>]==|<>|<<|>>|\/\/|\*\*)/;
+	    var doubleDelimiters = parserConf.doubleDelimiters || /^(\+=|\-=|\*=|%=|\/=|&=|\|=|\^=)/;
+	    var tripleDelimiters = parserConf.tripleDelimiters || /^(\/\/=|>>=|<<=|\*\*=)/;
+	
+	    var hangingIndent = parserConf.hangingIndent || conf.indentUnit;
+	
+	    var myKeywords = commonKeywords, myBuiltins = commonBuiltins;
+	    if (parserConf.extra_keywords != undefined)
+	      myKeywords = myKeywords.concat(parserConf.extra_keywords);
+	
+	    if (parserConf.extra_builtins != undefined)
+	      myBuiltins = myBuiltins.concat(parserConf.extra_builtins);
+	
+	    var py3 = parserConf.version && parseInt(parserConf.version, 10) == 3
+	    if (py3) {
+	      // since http://legacy.python.org/dev/peps/pep-0465/ @ is also an operator
+	      var singleOperators = parserConf.singleOperators || /^[\+\-\*\/%&|\^~<>!@]/;
+	      var identifiers = parserConf.identifiers|| /^[_A-Za-z\u00A1-\uFFFF][_A-Za-z0-9\u00A1-\uFFFF]*/;
+	      myKeywords = myKeywords.concat(["nonlocal", "False", "True", "None", "async", "await"]);
+	      myBuiltins = myBuiltins.concat(["ascii", "bytes", "exec", "print"]);
+	      var stringPrefixes = new RegExp("^(([rbuf]|(br))?('{3}|\"{3}|['\"]))", "i");
+	    } else {
+	      var singleOperators = parserConf.singleOperators || /^[\+\-\*\/%&|\^~<>!]/;
+	      var identifiers = parserConf.identifiers|| /^[_A-Za-z][_A-Za-z0-9]*/;
+	      myKeywords = myKeywords.concat(["exec", "print"]);
+	      myBuiltins = myBuiltins.concat(["apply", "basestring", "buffer", "cmp", "coerce", "execfile",
+	                                      "file", "intern", "long", "raw_input", "reduce", "reload",
+	                                      "unichr", "unicode", "xrange", "False", "True", "None"]);
+	      var stringPrefixes = new RegExp("^(([rub]|(ur)|(br))?('{3}|\"{3}|['\"]))", "i");
+	    }
+	    var keywords = wordRegexp(myKeywords);
+	    var builtins = wordRegexp(myBuiltins);
+	
+	    // tokenizers
+	    function tokenBase(stream, state) {
+	      if (stream.sol()) state.indent = stream.indentation()
+	      // Handle scope changes
+	      if (stream.sol() && top(state).type == "py") {
+	        var scopeOffset = top(state).offset;
+	        if (stream.eatSpace()) {
+	          var lineOffset = stream.indentation();
+	          if (lineOffset > scopeOffset)
+	            pushPyScope(state);
+	          else if (lineOffset < scopeOffset && dedent(stream, state))
+	            state.errorToken = true;
+	          return null;
+	        } else {
+	          var style = tokenBaseInner(stream, state);
+	          if (scopeOffset > 0 && dedent(stream, state))
+	            style += " " + ERRORCLASS;
+	          return style;
+	        }
+	      }
+	      return tokenBaseInner(stream, state);
+	    }
+	
+	    function tokenBaseInner(stream, state) {
+	      if (stream.eatSpace()) return null;
+	
+	      var ch = stream.peek();
+	
+	      // Handle Comments
+	      if (ch == "#") {
+	        stream.skipToEnd();
+	        return "comment";
+	      }
+	
+	      // Handle Number Literals
+	      if (stream.match(/^[0-9\.]/, false)) {
+	        var floatLiteral = false;
+	        // Floats
+	        if (stream.match(/^\d*\.\d+(e[\+\-]?\d+)?/i)) { floatLiteral = true; }
+	        if (stream.match(/^\d+\.\d*/)) { floatLiteral = true; }
+	        if (stream.match(/^\.\d+/)) { floatLiteral = true; }
+	        if (floatLiteral) {
+	          // Float literals may be "imaginary"
+	          stream.eat(/J/i);
+	          return "number";
+	        }
+	        // Integers
+	        var intLiteral = false;
+	        // Hex
+	        if (stream.match(/^0x[0-9a-f]+/i)) intLiteral = true;
+	        // Binary
+	        if (stream.match(/^0b[01]+/i)) intLiteral = true;
+	        // Octal
+	        if (stream.match(/^0o[0-7]+/i)) intLiteral = true;
+	        // Decimal
+	        if (stream.match(/^[1-9]\d*(e[\+\-]?\d+)?/)) {
+	          // Decimal literals may be "imaginary"
+	          stream.eat(/J/i);
+	          // TODO - Can you have imaginary longs?
+	          intLiteral = true;
+	        }
+	        // Zero by itself with no other piece of number.
+	        if (stream.match(/^0(?![\dx])/i)) intLiteral = true;
+	        if (intLiteral) {
+	          // Integer literals may be "long"
+	          stream.eat(/L/i);
+	          return "number";
+	        }
+	      }
+	
+	      // Handle Strings
+	      if (stream.match(stringPrefixes)) {
+	        state.tokenize = tokenStringFactory(stream.current());
+	        return state.tokenize(stream, state);
+	      }
+	
+	      // Handle operators and Delimiters
+	      if (stream.match(tripleDelimiters) || stream.match(doubleDelimiters))
+	        return "punctuation";
+	
+	      if (stream.match(doubleOperators) || stream.match(singleOperators))
+	        return "operator";
+	
+	      if (stream.match(singleDelimiters))
+	        return "punctuation";
+	
+	      if (state.lastToken == "." && stream.match(identifiers))
+	        return "property";
+	
+	      if (stream.match(keywords) || stream.match(wordOperators))
+	        return "keyword";
+	
+	      if (stream.match(builtins))
+	        return "builtin";
+	
+	      if (stream.match(/^(self|cls)\b/))
+	        return "variable-2";
+	
+	      if (stream.match(identifiers)) {
+	        if (state.lastToken == "def" || state.lastToken == "class")
+	          return "def";
+	        return "variable";
+	      }
+	
+	      // Handle non-detected items
+	      stream.next();
+	      return ERRORCLASS;
+	    }
+	
+	    function tokenStringFactory(delimiter) {
+	      while ("rub".indexOf(delimiter.charAt(0).toLowerCase()) >= 0)
+	        delimiter = delimiter.substr(1);
+	
+	      var singleline = delimiter.length == 1;
+	      var OUTCLASS = "string";
+	
+	      function tokenString(stream, state) {
+	        while (!stream.eol()) {
+	          stream.eatWhile(/[^'"\\]/);
+	          if (stream.eat("\\")) {
+	            stream.next();
+	            if (singleline && stream.eol())
+	              return OUTCLASS;
+	          } else if (stream.match(delimiter)) {
+	            state.tokenize = tokenBase;
+	            return OUTCLASS;
+	          } else {
+	            stream.eat(/['"]/);
+	          }
+	        }
+	        if (singleline) {
+	          if (parserConf.singleLineStringErrors)
+	            return ERRORCLASS;
+	          else
+	            state.tokenize = tokenBase;
+	        }
+	        return OUTCLASS;
+	      }
+	      tokenString.isString = true;
+	      return tokenString;
+	    }
+	
+	    function pushPyScope(state) {
+	      while (top(state).type != "py") state.scopes.pop()
+	      state.scopes.push({offset: top(state).offset + conf.indentUnit,
+	                         type: "py",
+	                         align: null})
+	    }
+	
+	    function pushBracketScope(stream, state, type) {
+	      var align = stream.match(/^([\s\[\{\(]|#.*)*$/, false) ? null : stream.column() + 1
+	      state.scopes.push({offset: state.indent + hangingIndent,
+	                         type: type,
+	                         align: align})
+	    }
+	
+	    function dedent(stream, state) {
+	      var indented = stream.indentation();
+	      while (top(state).offset > indented) {
+	        if (top(state).type != "py") return true;
+	        state.scopes.pop();
+	      }
+	      return top(state).offset != indented;
+	    }
+	
+	    function tokenLexer(stream, state) {
+	      if (stream.sol()) state.beginningOfLine = true;
+	
+	      var style = state.tokenize(stream, state);
+	      var current = stream.current();
+	
+	      // Handle decorators
+	      if (state.beginningOfLine && current == "@")
+	        return stream.match(identifiers, false) ? "meta" : py3 ? "operator" : ERRORCLASS;
+	
+	      if (/\S/.test(current)) state.beginningOfLine = false;
+	
+	      if ((style == "variable" || style == "builtin")
+	          && state.lastToken == "meta")
+	        style = "meta";
+	
+	      // Handle scope changes.
+	      if (current == "pass" || current == "return")
+	        state.dedent += 1;
+	
+	      if (current == "lambda") state.lambda = true;
+	      if (current == ":" && !state.lambda && top(state).type == "py")
+	        pushPyScope(state);
+	
+	      var delimiter_index = current.length == 1 ? "[({".indexOf(current) : -1;
+	      if (delimiter_index != -1)
+	        pushBracketScope(stream, state, "])}".slice(delimiter_index, delimiter_index+1));
+	
+	      delimiter_index = "])}".indexOf(current);
+	      if (delimiter_index != -1) {
+	        if (top(state).type == current) state.indent = state.scopes.pop().offset - hangingIndent
+	        else return ERRORCLASS;
+	      }
+	      if (state.dedent > 0 && stream.eol() && top(state).type == "py") {
+	        if (state.scopes.length > 1) state.scopes.pop();
+	        state.dedent -= 1;
+	      }
+	
+	      return style;
+	    }
+	
+	    var external = {
+	      startState: function(basecolumn) {
+	        return {
+	          tokenize: tokenBase,
+	          scopes: [{offset: basecolumn || 0, type: "py", align: null}],
+	          indent: basecolumn || 0,
+	          lastToken: null,
+	          lambda: false,
+	          dedent: 0
+	        };
+	      },
+	
+	      token: function(stream, state) {
+	        var addErr = state.errorToken;
+	        if (addErr) state.errorToken = false;
+	        var style = tokenLexer(stream, state);
+	
+	        if (style && style != "comment")
+	          state.lastToken = (style == "keyword" || style == "punctuation") ? stream.current() : style;
+	        if (style == "punctuation") style = null;
+	
+	        if (stream.eol() && state.lambda)
+	          state.lambda = false;
+	        return addErr ? style + " " + ERRORCLASS : style;
+	      },
+	
+	      indent: function(state, textAfter) {
+	        if (state.tokenize != tokenBase)
+	          return state.tokenize.isString ? CodeMirror.Pass : 0;
+	
+	        var scope = top(state), closing = scope.type == textAfter.charAt(0)
+	        if (scope.align != null)
+	          return scope.align - (closing ? 1 : 0)
+	        else
+	          return scope.offset - (closing ? hangingIndent : 0)
+	      },
+	
+	      electricInput: /^\s*[\}\]\)]$/,
+	      closeBrackets: {triples: "'\""},
+	      lineComment: "#",
+	      fold: "indent"
+	    };
+	    return external;
+	  });
+	
+	  CodeMirror.defineMIME("text/x-python", "python");
+	
+	  var words = function(str) { return str.split(" "); };
+	
+	  CodeMirror.defineMIME("text/x-cython", {
+	    name: "python",
+	    extra_keywords: words("by cdef cimport cpdef ctypedef enum except"+
+	                          "extern gil include nogil property public"+
+	                          "readonly struct union DEF IF ELIF ELSE")
+	  });
+	
+	});
+
 
 /***/ },
-/* 137 */
+/* 139 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// CodeMirror, copyright (c) by Marijn Haverbeke and others
+	// Distributed under an MIT license: http://codemirror.net/LICENSE
+	
+	// CodeMirror2 mode/perl/perl.js (text/x-perl) beta 0.10 (2011-11-08)
+	// This is a part of CodeMirror from https://github.com/sabaca/CodeMirror_mode_perl (mail@sabaca.com)
+	
+	(function(mod) {
+	  if (true) // CommonJS
+	    mod(__webpack_require__(132));
+	  else if (typeof define == "function" && define.amd) // AMD
+	    define(["../../lib/codemirror"], mod);
+	  else // Plain browser env
+	    mod(CodeMirror);
+	})(function(CodeMirror) {
+	"use strict";
+	
+	CodeMirror.defineMode("perl",function(){
+	        // http://perldoc.perl.org
+	        var PERL={                                      //   null - magic touch
+	                                                        //   1 - keyword
+	                                                        //   2 - def
+	                                                        //   3 - atom
+	                                                        //   4 - operator
+	                                                        //   5 - variable-2 (predefined)
+	                                                        //   [x,y] - x=1,2,3; y=must be defined if x{...}
+	                                                //      PERL operators
+	                '->'                            :   4,
+	                '++'                            :   4,
+	                '--'                            :   4,
+	                '**'                            :   4,
+	                                                        //   ! ~ \ and unary + and -
+	                '=~'                            :   4,
+	                '!~'                            :   4,
+	                '*'                             :   4,
+	                '/'                             :   4,
+	                '%'                             :   4,
+	                'x'                             :   4,
+	                '+'                             :   4,
+	                '-'                             :   4,
+	                '.'                             :   4,
+	                '<<'                            :   4,
+	                '>>'                            :   4,
+	                                                        //   named unary operators
+	                '<'                             :   4,
+	                '>'                             :   4,
+	                '<='                            :   4,
+	                '>='                            :   4,
+	                'lt'                            :   4,
+	                'gt'                            :   4,
+	                'le'                            :   4,
+	                'ge'                            :   4,
+	                '=='                            :   4,
+	                '!='                            :   4,
+	                '<=>'                           :   4,
+	                'eq'                            :   4,
+	                'ne'                            :   4,
+	                'cmp'                           :   4,
+	                '~~'                            :   4,
+	                '&'                             :   4,
+	                '|'                             :   4,
+	                '^'                             :   4,
+	                '&&'                            :   4,
+	                '||'                            :   4,
+	                '//'                            :   4,
+	                '..'                            :   4,
+	                '...'                           :   4,
+	                '?'                             :   4,
+	                ':'                             :   4,
+	                '='                             :   4,
+	                '+='                            :   4,
+	                '-='                            :   4,
+	                '*='                            :   4,  //   etc. ???
+	                ','                             :   4,
+	                '=>'                            :   4,
+	                '::'                            :   4,
+	                                                        //   list operators (rightward)
+	                'not'                           :   4,
+	                'and'                           :   4,
+	                'or'                            :   4,
+	                'xor'                           :   4,
+	                                                //      PERL predefined variables (I know, what this is a paranoid idea, but may be needed for people, who learn PERL, and for me as well, ...and may be for you?;)
+	                'BEGIN'                         :   [5,1],
+	                'END'                           :   [5,1],
+	                'PRINT'                         :   [5,1],
+	                'PRINTF'                        :   [5,1],
+	                'GETC'                          :   [5,1],
+	                'READ'                          :   [5,1],
+	                'READLINE'                      :   [5,1],
+	                'DESTROY'                       :   [5,1],
+	                'TIE'                           :   [5,1],
+	                'TIEHANDLE'                     :   [5,1],
+	                'UNTIE'                         :   [5,1],
+	                'STDIN'                         :    5,
+	                'STDIN_TOP'                     :    5,
+	                'STDOUT'                        :    5,
+	                'STDOUT_TOP'                    :    5,
+	                'STDERR'                        :    5,
+	                'STDERR_TOP'                    :    5,
+	                '$ARG'                          :    5,
+	                '$_'                            :    5,
+	                '@ARG'                          :    5,
+	                '@_'                            :    5,
+	                '$LIST_SEPARATOR'               :    5,
+	                '$"'                            :    5,
+	                '$PROCESS_ID'                   :    5,
+	                '$PID'                          :    5,
+	                '$$'                            :    5,
+	                '$REAL_GROUP_ID'                :    5,
+	                '$GID'                          :    5,
+	                '$('                            :    5,
+	                '$EFFECTIVE_GROUP_ID'           :    5,
+	                '$EGID'                         :    5,
+	                '$)'                            :    5,
+	                '$PROGRAM_NAME'                 :    5,
+	                '$0'                            :    5,
+	                '$SUBSCRIPT_SEPARATOR'          :    5,
+	                '$SUBSEP'                       :    5,
+	                '$;'                            :    5,
+	                '$REAL_USER_ID'                 :    5,
+	                '$UID'                          :    5,
+	                '$<'                            :    5,
+	                '$EFFECTIVE_USER_ID'            :    5,
+	                '$EUID'                         :    5,
+	                '$>'                            :    5,
+	                '$a'                            :    5,
+	                '$b'                            :    5,
+	                '$COMPILING'                    :    5,
+	                '$^C'                           :    5,
+	                '$DEBUGGING'                    :    5,
+	                '$^D'                           :    5,
+	                '${^ENCODING}'                  :    5,
+	                '$ENV'                          :    5,
+	                '%ENV'                          :    5,
+	                '$SYSTEM_FD_MAX'                :    5,
+	                '$^F'                           :    5,
+	                '@F'                            :    5,
+	                '${^GLOBAL_PHASE}'              :    5,
+	                '$^H'                           :    5,
+	                '%^H'                           :    5,
+	                '@INC'                          :    5,
+	                '%INC'                          :    5,
+	                '$INPLACE_EDIT'                 :    5,
+	                '$^I'                           :    5,
+	                '$^M'                           :    5,
+	                '$OSNAME'                       :    5,
+	                '$^O'                           :    5,
+	                '${^OPEN}'                      :    5,
+	                '$PERLDB'                       :    5,
+	                '$^P'                           :    5,
+	                '$SIG'                          :    5,
+	                '%SIG'                          :    5,
+	                '$BASETIME'                     :    5,
+	                '$^T'                           :    5,
+	                '${^TAINT}'                     :    5,
+	                '${^UNICODE}'                   :    5,
+	                '${^UTF8CACHE}'                 :    5,
+	                '${^UTF8LOCALE}'                :    5,
+	                '$PERL_VERSION'                 :    5,
+	                '$^V'                           :    5,
+	                '${^WIN32_SLOPPY_STAT}'         :    5,
+	                '$EXECUTABLE_NAME'              :    5,
+	                '$^X'                           :    5,
+	                '$1'                            :    5, // - regexp $1, $2...
+	                '$MATCH'                        :    5,
+	                '$&'                            :    5,
+	                '${^MATCH}'                     :    5,
+	                '$PREMATCH'                     :    5,
+	                '$`'                            :    5,
+	                '${^PREMATCH}'                  :    5,
+	                '$POSTMATCH'                    :    5,
+	                "$'"                            :    5,
+	                '${^POSTMATCH}'                 :    5,
+	                '$LAST_PAREN_MATCH'             :    5,
+	                '$+'                            :    5,
+	                '$LAST_SUBMATCH_RESULT'         :    5,
+	                '$^N'                           :    5,
+	                '@LAST_MATCH_END'               :    5,
+	                '@+'                            :    5,
+	                '%LAST_PAREN_MATCH'             :    5,
+	                '%+'                            :    5,
+	                '@LAST_MATCH_START'             :    5,
+	                '@-'                            :    5,
+	                '%LAST_MATCH_START'             :    5,
+	                '%-'                            :    5,
+	                '$LAST_REGEXP_CODE_RESULT'      :    5,
+	                '$^R'                           :    5,
+	                '${^RE_DEBUG_FLAGS}'            :    5,
+	                '${^RE_TRIE_MAXBUF}'            :    5,
+	                '$ARGV'                         :    5,
+	                '@ARGV'                         :    5,
+	                'ARGV'                          :    5,
+	                'ARGVOUT'                       :    5,
+	                '$OUTPUT_FIELD_SEPARATOR'       :    5,
+	                '$OFS'                          :    5,
+	                '$,'                            :    5,
+	                '$INPUT_LINE_NUMBER'            :    5,
+	                '$NR'                           :    5,
+	                '$.'                            :    5,
+	                '$INPUT_RECORD_SEPARATOR'       :    5,
+	                '$RS'                           :    5,
+	                '$/'                            :    5,
+	                '$OUTPUT_RECORD_SEPARATOR'      :    5,
+	                '$ORS'                          :    5,
+	                '$\\'                           :    5,
+	                '$OUTPUT_AUTOFLUSH'             :    5,
+	                '$|'                            :    5,
+	                '$ACCUMULATOR'                  :    5,
+	                '$^A'                           :    5,
+	                '$FORMAT_FORMFEED'              :    5,
+	                '$^L'                           :    5,
+	                '$FORMAT_PAGE_NUMBER'           :    5,
+	                '$%'                            :    5,
+	                '$FORMAT_LINES_LEFT'            :    5,
+	                '$-'                            :    5,
+	                '$FORMAT_LINE_BREAK_CHARACTERS' :    5,
+	                '$:'                            :    5,
+	                '$FORMAT_LINES_PER_PAGE'        :    5,
+	                '$='                            :    5,
+	                '$FORMAT_TOP_NAME'              :    5,
+	                '$^'                            :    5,
+	                '$FORMAT_NAME'                  :    5,
+	                '$~'                            :    5,
+	                '${^CHILD_ERROR_NATIVE}'        :    5,
+	                '$EXTENDED_OS_ERROR'            :    5,
+	                '$^E'                           :    5,
+	                '$EXCEPTIONS_BEING_CAUGHT'      :    5,
+	                '$^S'                           :    5,
+	                '$WARNING'                      :    5,
+	                '$^W'                           :    5,
+	                '${^WARNING_BITS}'              :    5,
+	                '$OS_ERROR'                     :    5,
+	                '$ERRNO'                        :    5,
+	                '$!'                            :    5,
+	                '%OS_ERROR'                     :    5,
+	                '%ERRNO'                        :    5,
+	                '%!'                            :    5,
+	                '$CHILD_ERROR'                  :    5,
+	                '$?'                            :    5,
+	                '$EVAL_ERROR'                   :    5,
+	                '$@'                            :    5,
+	                '$OFMT'                         :    5,
+	                '$#'                            :    5,
+	                '$*'                            :    5,
+	                '$ARRAY_BASE'                   :    5,
+	                '$['                            :    5,
+	                '$OLD_PERL_VERSION'             :    5,
+	                '$]'                            :    5,
+	                                                //      PERL blocks
+	                'if'                            :[1,1],
+	                elsif                           :[1,1],
+	                'else'                          :[1,1],
+	                'while'                         :[1,1],
+	                unless                          :[1,1],
+	                'for'                           :[1,1],
+	                foreach                         :[1,1],
+	                                                //      PERL functions
+	                'abs'                           :1,     // - absolute value function
+	                accept                          :1,     // - accept an incoming socket connect
+	                alarm                           :1,     // - schedule a SIGALRM
+	                'atan2'                         :1,     // - arctangent of Y/X in the range -PI to PI
+	                bind                            :1,     // - binds an address to a socket
+	                binmode                         :1,     // - prepare binary files for I/O
+	                bless                           :1,     // - create an object
+	                bootstrap                       :1,     //
+	                'break'                         :1,     // - break out of a "given" block
+	                caller                          :1,     // - get context of the current subroutine call
+	                chdir                           :1,     // - change your current working directory
+	                chmod                           :1,     // - changes the permissions on a list of files
+	                chomp                           :1,     // - remove a trailing record separator from a string
+	                chop                            :1,     // - remove the last character from a string
+	                chown                           :1,     // - change the ownership on a list of files
+	                chr                             :1,     // - get character this number represents
+	                chroot                          :1,     // - make directory new root for path lookups
+	                close                           :1,     // - close file (or pipe or socket) handle
+	                closedir                        :1,     // - close directory handle
+	                connect                         :1,     // - connect to a remote socket
+	                'continue'                      :[1,1], // - optional trailing block in a while or foreach
+	                'cos'                           :1,     // - cosine function
+	                crypt                           :1,     // - one-way passwd-style encryption
+	                dbmclose                        :1,     // - breaks binding on a tied dbm file
+	                dbmopen                         :1,     // - create binding on a tied dbm file
+	                'default'                       :1,     //
+	                defined                         :1,     // - test whether a value, variable, or function is defined
+	                'delete'                        :1,     // - deletes a value from a hash
+	                die                             :1,     // - raise an exception or bail out
+	                'do'                            :1,     // - turn a BLOCK into a TERM
+	                dump                            :1,     // - create an immediate core dump
+	                each                            :1,     // - retrieve the next key/value pair from a hash
+	                endgrent                        :1,     // - be done using group file
+	                endhostent                      :1,     // - be done using hosts file
+	                endnetent                       :1,     // - be done using networks file
+	                endprotoent                     :1,     // - be done using protocols file
+	                endpwent                        :1,     // - be done using passwd file
+	                endservent                      :1,     // - be done using services file
+	                eof                             :1,     // - test a filehandle for its end
+	                'eval'                          :1,     // - catch exceptions or compile and run code
+	                'exec'                          :1,     // - abandon this program to run another
+	                exists                          :1,     // - test whether a hash key is present
+	                exit                            :1,     // - terminate this program
+	                'exp'                           :1,     // - raise I to a power
+	                fcntl                           :1,     // - file control system call
+	                fileno                          :1,     // - return file descriptor from filehandle
+	                flock                           :1,     // - lock an entire file with an advisory lock
+	                fork                            :1,     // - create a new process just like this one
+	                format                          :1,     // - declare a picture format with use by the write() function
+	                formline                        :1,     // - internal function used for formats
+	                getc                            :1,     // - get the next character from the filehandle
+	                getgrent                        :1,     // - get next group record
+	                getgrgid                        :1,     // - get group record given group user ID
+	                getgrnam                        :1,     // - get group record given group name
+	                gethostbyaddr                   :1,     // - get host record given its address
+	                gethostbyname                   :1,     // - get host record given name
+	                gethostent                      :1,     // - get next hosts record
+	                getlogin                        :1,     // - return who logged in at this tty
+	                getnetbyaddr                    :1,     // - get network record given its address
+	                getnetbyname                    :1,     // - get networks record given name
+	                getnetent                       :1,     // - get next networks record
+	                getpeername                     :1,     // - find the other end of a socket connection
+	                getpgrp                         :1,     // - get process group
+	                getppid                         :1,     // - get parent process ID
+	                getpriority                     :1,     // - get current nice value
+	                getprotobyname                  :1,     // - get protocol record given name
+	                getprotobynumber                :1,     // - get protocol record numeric protocol
+	                getprotoent                     :1,     // - get next protocols record
+	                getpwent                        :1,     // - get next passwd record
+	                getpwnam                        :1,     // - get passwd record given user login name
+	                getpwuid                        :1,     // - get passwd record given user ID
+	                getservbyname                   :1,     // - get services record given its name
+	                getservbyport                   :1,     // - get services record given numeric port
+	                getservent                      :1,     // - get next services record
+	                getsockname                     :1,     // - retrieve the sockaddr for a given socket
+	                getsockopt                      :1,     // - get socket options on a given socket
+	                given                           :1,     //
+	                glob                            :1,     // - expand filenames using wildcards
+	                gmtime                          :1,     // - convert UNIX time into record or string using Greenwich time
+	                'goto'                          :1,     // - create spaghetti code
+	                grep                            :1,     // - locate elements in a list test true against a given criterion
+	                hex                             :1,     // - convert a string to a hexadecimal number
+	                'import'                        :1,     // - patch a module's namespace into your own
+	                index                           :1,     // - find a substring within a string
+	                'int'                           :1,     // - get the integer portion of a number
+	                ioctl                           :1,     // - system-dependent device control system call
+	                'join'                          :1,     // - join a list into a string using a separator
+	                keys                            :1,     // - retrieve list of indices from a hash
+	                kill                            :1,     // - send a signal to a process or process group
+	                last                            :1,     // - exit a block prematurely
+	                lc                              :1,     // - return lower-case version of a string
+	                lcfirst                         :1,     // - return a string with just the next letter in lower case
+	                length                          :1,     // - return the number of bytes in a string
+	                'link'                          :1,     // - create a hard link in the filesytem
+	                listen                          :1,     // - register your socket as a server
+	                local                           : 2,    // - create a temporary value for a global variable (dynamic scoping)
+	                localtime                       :1,     // - convert UNIX time into record or string using local time
+	                lock                            :1,     // - get a thread lock on a variable, subroutine, or method
+	                'log'                           :1,     // - retrieve the natural logarithm for a number
+	                lstat                           :1,     // - stat a symbolic link
+	                m                               :null,  // - match a string with a regular expression pattern
+	                map                             :1,     // - apply a change to a list to get back a new list with the changes
+	                mkdir                           :1,     // - create a directory
+	                msgctl                          :1,     // - SysV IPC message control operations
+	                msgget                          :1,     // - get SysV IPC message queue
+	                msgrcv                          :1,     // - receive a SysV IPC message from a message queue
+	                msgsnd                          :1,     // - send a SysV IPC message to a message queue
+	                my                              : 2,    // - declare and assign a local variable (lexical scoping)
+	                'new'                           :1,     //
+	                next                            :1,     // - iterate a block prematurely
+	                no                              :1,     // - unimport some module symbols or semantics at compile time
+	                oct                             :1,     // - convert a string to an octal number
+	                open                            :1,     // - open a file, pipe, or descriptor
+	                opendir                         :1,     // - open a directory
+	                ord                             :1,     // - find a character's numeric representation
+	                our                             : 2,    // - declare and assign a package variable (lexical scoping)
+	                pack                            :1,     // - convert a list into a binary representation
+	                'package'                       :1,     // - declare a separate global namespace
+	                pipe                            :1,     // - open a pair of connected filehandles
+	                pop                             :1,     // - remove the last element from an array and return it
+	                pos                             :1,     // - find or set the offset for the last/next m//g search
+	                print                           :1,     // - output a list to a filehandle
+	                printf                          :1,     // - output a formatted list to a filehandle
+	                prototype                       :1,     // - get the prototype (if any) of a subroutine
+	                push                            :1,     // - append one or more elements to an array
+	                q                               :null,  // - singly quote a string
+	                qq                              :null,  // - doubly quote a string
+	                qr                              :null,  // - Compile pattern
+	                quotemeta                       :null,  // - quote regular expression magic characters
+	                qw                              :null,  // - quote a list of words
+	                qx                              :null,  // - backquote quote a string
+	                rand                            :1,     // - retrieve the next pseudorandom number
+	                read                            :1,     // - fixed-length buffered input from a filehandle
+	                readdir                         :1,     // - get a directory from a directory handle
+	                readline                        :1,     // - fetch a record from a file
+	                readlink                        :1,     // - determine where a symbolic link is pointing
+	                readpipe                        :1,     // - execute a system command and collect standard output
+	                recv                            :1,     // - receive a message over a Socket
+	                redo                            :1,     // - start this loop iteration over again
+	                ref                             :1,     // - find out the type of thing being referenced
+	                rename                          :1,     // - change a filename
+	                require                         :1,     // - load in external functions from a library at runtime
+	                reset                           :1,     // - clear all variables of a given name
+	                'return'                        :1,     // - get out of a function early
+	                reverse                         :1,     // - flip a string or a list
+	                rewinddir                       :1,     // - reset directory handle
+	                rindex                          :1,     // - right-to-left substring search
+	                rmdir                           :1,     // - remove a directory
+	                s                               :null,  // - replace a pattern with a string
+	                say                             :1,     // - print with newline
+	                scalar                          :1,     // - force a scalar context
+	                seek                            :1,     // - reposition file pointer for random-access I/O
+	                seekdir                         :1,     // - reposition directory pointer
+	                select                          :1,     // - reset default output or do I/O multiplexing
+	                semctl                          :1,     // - SysV semaphore control operations
+	                semget                          :1,     // - get set of SysV semaphores
+	                semop                           :1,     // - SysV semaphore operations
+	                send                            :1,     // - send a message over a socket
+	                setgrent                        :1,     // - prepare group file for use
+	                sethostent                      :1,     // - prepare hosts file for use
+	                setnetent                       :1,     // - prepare networks file for use
+	                setpgrp                         :1,     // - set the process group of a process
+	                setpriority                     :1,     // - set a process's nice value
+	                setprotoent                     :1,     // - prepare protocols file for use
+	                setpwent                        :1,     // - prepare passwd file for use
+	                setservent                      :1,     // - prepare services file for use
+	                setsockopt                      :1,     // - set some socket options
+	                shift                           :1,     // - remove the first element of an array, and return it
+	                shmctl                          :1,     // - SysV shared memory operations
+	                shmget                          :1,     // - get SysV shared memory segment identifier
+	                shmread                         :1,     // - read SysV shared memory
+	                shmwrite                        :1,     // - write SysV shared memory
+	                shutdown                        :1,     // - close down just half of a socket connection
+	                'sin'                           :1,     // - return the sine of a number
+	                sleep                           :1,     // - block for some number of seconds
+	                socket                          :1,     // - create a socket
+	                socketpair                      :1,     // - create a pair of sockets
+	                'sort'                          :1,     // - sort a list of values
+	                splice                          :1,     // - add or remove elements anywhere in an array
+	                'split'                         :1,     // - split up a string using a regexp delimiter
+	                sprintf                         :1,     // - formatted print into a string
+	                'sqrt'                          :1,     // - square root function
+	                srand                           :1,     // - seed the random number generator
+	                stat                            :1,     // - get a file's status information
+	                state                           :1,     // - declare and assign a state variable (persistent lexical scoping)
+	                study                           :1,     // - optimize input data for repeated searches
+	                'sub'                           :1,     // - declare a subroutine, possibly anonymously
+	                'substr'                        :1,     // - get or alter a portion of a stirng
+	                symlink                         :1,     // - create a symbolic link to a file
+	                syscall                         :1,     // - execute an arbitrary system call
+	                sysopen                         :1,     // - open a file, pipe, or descriptor
+	                sysread                         :1,     // - fixed-length unbuffered input from a filehandle
+	                sysseek                         :1,     // - position I/O pointer on handle used with sysread and syswrite
+	                system                          :1,     // - run a separate program
+	                syswrite                        :1,     // - fixed-length unbuffered output to a filehandle
+	                tell                            :1,     // - get current seekpointer on a filehandle
+	                telldir                         :1,     // - get current seekpointer on a directory handle
+	                tie                             :1,     // - bind a variable to an object class
+	                tied                            :1,     // - get a reference to the object underlying a tied variable
+	                time                            :1,     // - return number of seconds since 1970
+	                times                           :1,     // - return elapsed time for self and child processes
+	                tr                              :null,  // - transliterate a string
+	                truncate                        :1,     // - shorten a file
+	                uc                              :1,     // - return upper-case version of a string
+	                ucfirst                         :1,     // - return a string with just the next letter in upper case
+	                umask                           :1,     // - set file creation mode mask
+	                undef                           :1,     // - remove a variable or function definition
+	                unlink                          :1,     // - remove one link to a file
+	                unpack                          :1,     // - convert binary structure into normal perl variables
+	                unshift                         :1,     // - prepend more elements to the beginning of a list
+	                untie                           :1,     // - break a tie binding to a variable
+	                use                             :1,     // - load in a module at compile time
+	                utime                           :1,     // - set a file's last access and modify times
+	                values                          :1,     // - return a list of the values in a hash
+	                vec                             :1,     // - test or set particular bits in a string
+	                wait                            :1,     // - wait for any child process to die
+	                waitpid                         :1,     // - wait for a particular child process to die
+	                wantarray                       :1,     // - get void vs scalar vs list context of current subroutine call
+	                warn                            :1,     // - print debugging info
+	                when                            :1,     //
+	                write                           :1,     // - print a picture record
+	                y                               :null}; // - transliterate a string
+	
+	        var RXstyle="string-2";
+	        var RXmodifiers=/[goseximacplud]/;              // NOTE: "m", "s", "y" and "tr" need to correct real modifiers for each regexp type
+	
+	        function tokenChain(stream,state,chain,style,tail){     // NOTE: chain.length > 2 is not working now (it's for s[...][...]geos;)
+	                state.chain=null;                               //                                                          12   3tail
+	                state.style=null;
+	                state.tail=null;
+	                state.tokenize=function(stream,state){
+	                        var e=false,c,i=0;
+	                        while(c=stream.next()){
+	                                if(c===chain[i]&&!e){
+	                                        if(chain[++i]!==undefined){
+	                                                state.chain=chain[i];
+	                                                state.style=style;
+	                                                state.tail=tail;}
+	                                        else if(tail)
+	                                                stream.eatWhile(tail);
+	                                        state.tokenize=tokenPerl;
+	                                        return style;}
+	                                e=!e&&c=="\\";}
+	                        return style;};
+	                return state.tokenize(stream,state);}
+	
+	        function tokenSOMETHING(stream,state,string){
+	                state.tokenize=function(stream,state){
+	                        if(stream.string==string)
+	                                state.tokenize=tokenPerl;
+	                        stream.skipToEnd();
+	                        return "string";};
+	                return state.tokenize(stream,state);}
+	
+	        function tokenPerl(stream,state){
+	                if(stream.eatSpace())
+	                        return null;
+	                if(state.chain)
+	                        return tokenChain(stream,state,state.chain,state.style,state.tail);
+	                if(stream.match(/^\-?[\d\.]/,false))
+	                        if(stream.match(/^(\-?(\d*\.\d+(e[+-]?\d+)?|\d+\.\d*)|0x[\da-fA-F]+|0b[01]+|\d+(e[+-]?\d+)?)/))
+	                                return 'number';
+	                if(stream.match(/^<<(?=\w)/)){                  // NOTE: <<SOMETHING\n...\nSOMETHING\n
+	                        stream.eatWhile(/\w/);
+	                        return tokenSOMETHING(stream,state,stream.current().substr(2));}
+	                if(stream.sol()&&stream.match(/^\=item(?!\w)/)){// NOTE: \n=item...\n=cut\n
+	                        return tokenSOMETHING(stream,state,'=cut');}
+	                var ch=stream.next();
+	                if(ch=='"'||ch=="'"){                           // NOTE: ' or " or <<'SOMETHING'\n...\nSOMETHING\n or <<"SOMETHING"\n...\nSOMETHING\n
+	                        if(prefix(stream, 3)=="<<"+ch){
+	                                var p=stream.pos;
+	                                stream.eatWhile(/\w/);
+	                                var n=stream.current().substr(1);
+	                                if(n&&stream.eat(ch))
+	                                        return tokenSOMETHING(stream,state,n);
+	                                stream.pos=p;}
+	                        return tokenChain(stream,state,[ch],"string");}
+	                if(ch=="q"){
+	                        var c=look(stream, -2);
+	                        if(!(c&&/\w/.test(c))){
+	                                c=look(stream, 0);
+	                                if(c=="x"){
+	                                        c=look(stream, 1);
+	                                        if(c=="("){
+	                                                eatSuffix(stream, 2);
+	                                                return tokenChain(stream,state,[")"],RXstyle,RXmodifiers);}
+	                                        if(c=="["){
+	                                                eatSuffix(stream, 2);
+	                                                return tokenChain(stream,state,["]"],RXstyle,RXmodifiers);}
+	                                        if(c=="{"){
+	                                                eatSuffix(stream, 2);
+	                                                return tokenChain(stream,state,["}"],RXstyle,RXmodifiers);}
+	                                        if(c=="<"){
+	                                                eatSuffix(stream, 2);
+	                                                return tokenChain(stream,state,[">"],RXstyle,RXmodifiers);}
+	                                        if(/[\^'"!~\/]/.test(c)){
+	                                                eatSuffix(stream, 1);
+	                                                return tokenChain(stream,state,[stream.eat(c)],RXstyle,RXmodifiers);}}
+	                                else if(c=="q"){
+	                                        c=look(stream, 1);
+	                                        if(c=="("){
+	                                                eatSuffix(stream, 2);
+	                                                return tokenChain(stream,state,[")"],"string");}
+	                                        if(c=="["){
+	                                                eatSuffix(stream, 2);
+	                                                return tokenChain(stream,state,["]"],"string");}
+	                                        if(c=="{"){
+	                                                eatSuffix(stream, 2);
+	                                                return tokenChain(stream,state,["}"],"string");}
+	                                        if(c=="<"){
+	                                                eatSuffix(stream, 2);
+	                                                return tokenChain(stream,state,[">"],"string");}
+	                                        if(/[\^'"!~\/]/.test(c)){
+	                                                eatSuffix(stream, 1);
+	                                                return tokenChain(stream,state,[stream.eat(c)],"string");}}
+	                                else if(c=="w"){
+	                                        c=look(stream, 1);
+	                                        if(c=="("){
+	                                                eatSuffix(stream, 2);
+	                                                return tokenChain(stream,state,[")"],"bracket");}
+	                                        if(c=="["){
+	                                                eatSuffix(stream, 2);
+	                                                return tokenChain(stream,state,["]"],"bracket");}
+	                                        if(c=="{"){
+	                                                eatSuffix(stream, 2);
+	                                                return tokenChain(stream,state,["}"],"bracket");}
+	                                        if(c=="<"){
+	                                                eatSuffix(stream, 2);
+	                                                return tokenChain(stream,state,[">"],"bracket");}
+	                                        if(/[\^'"!~\/]/.test(c)){
+	                                                eatSuffix(stream, 1);
+	                                                return tokenChain(stream,state,[stream.eat(c)],"bracket");}}
+	                                else if(c=="r"){
+	                                        c=look(stream, 1);
+	                                        if(c=="("){
+	                                                eatSuffix(stream, 2);
+	                                                return tokenChain(stream,state,[")"],RXstyle,RXmodifiers);}
+	                                        if(c=="["){
+	                                                eatSuffix(stream, 2);
+	                                                return tokenChain(stream,state,["]"],RXstyle,RXmodifiers);}
+	                                        if(c=="{"){
+	                                                eatSuffix(stream, 2);
+	                                                return tokenChain(stream,state,["}"],RXstyle,RXmodifiers);}
+	                                        if(c=="<"){
+	                                                eatSuffix(stream, 2);
+	                                                return tokenChain(stream,state,[">"],RXstyle,RXmodifiers);}
+	                                        if(/[\^'"!~\/]/.test(c)){
+	                                                eatSuffix(stream, 1);
+	                                                return tokenChain(stream,state,[stream.eat(c)],RXstyle,RXmodifiers);}}
+	                                else if(/[\^'"!~\/(\[{<]/.test(c)){
+	                                        if(c=="("){
+	                                                eatSuffix(stream, 1);
+	                                                return tokenChain(stream,state,[")"],"string");}
+	                                        if(c=="["){
+	                                                eatSuffix(stream, 1);
+	                                                return tokenChain(stream,state,["]"],"string");}
+	                                        if(c=="{"){
+	                                                eatSuffix(stream, 1);
+	                                                return tokenChain(stream,state,["}"],"string");}
+	                                        if(c=="<"){
+	                                                eatSuffix(stream, 1);
+	                                                return tokenChain(stream,state,[">"],"string");}
+	                                        if(/[\^'"!~\/]/.test(c)){
+	                                                return tokenChain(stream,state,[stream.eat(c)],"string");}}}}
+	                if(ch=="m"){
+	                        var c=look(stream, -2);
+	                        if(!(c&&/\w/.test(c))){
+	                                c=stream.eat(/[(\[{<\^'"!~\/]/);
+	                                if(c){
+	                                        if(/[\^'"!~\/]/.test(c)){
+	                                                return tokenChain(stream,state,[c],RXstyle,RXmodifiers);}
+	                                        if(c=="("){
+	                                                return tokenChain(stream,state,[")"],RXstyle,RXmodifiers);}
+	                                        if(c=="["){
+	                                                return tokenChain(stream,state,["]"],RXstyle,RXmodifiers);}
+	                                        if(c=="{"){
+	                                                return tokenChain(stream,state,["}"],RXstyle,RXmodifiers);}
+	                                        if(c=="<"){
+	                                                return tokenChain(stream,state,[">"],RXstyle,RXmodifiers);}}}}
+	                if(ch=="s"){
+	                        var c=/[\/>\]})\w]/.test(look(stream, -2));
+	                        if(!c){
+	                                c=stream.eat(/[(\[{<\^'"!~\/]/);
+	                                if(c){
+	                                        if(c=="[")
+	                                                return tokenChain(stream,state,["]","]"],RXstyle,RXmodifiers);
+	                                        if(c=="{")
+	                                                return tokenChain(stream,state,["}","}"],RXstyle,RXmodifiers);
+	                                        if(c=="<")
+	                                                return tokenChain(stream,state,[">",">"],RXstyle,RXmodifiers);
+	                                        if(c=="(")
+	                                                return tokenChain(stream,state,[")",")"],RXstyle,RXmodifiers);
+	                                        return tokenChain(stream,state,[c,c],RXstyle,RXmodifiers);}}}
+	                if(ch=="y"){
+	                        var c=/[\/>\]})\w]/.test(look(stream, -2));
+	                        if(!c){
+	                                c=stream.eat(/[(\[{<\^'"!~\/]/);
+	                                if(c){
+	                                        if(c=="[")
+	                                                return tokenChain(stream,state,["]","]"],RXstyle,RXmodifiers);
+	                                        if(c=="{")
+	                                                return tokenChain(stream,state,["}","}"],RXstyle,RXmodifiers);
+	                                        if(c=="<")
+	                                                return tokenChain(stream,state,[">",">"],RXstyle,RXmodifiers);
+	                                        if(c=="(")
+	                                                return tokenChain(stream,state,[")",")"],RXstyle,RXmodifiers);
+	                                        return tokenChain(stream,state,[c,c],RXstyle,RXmodifiers);}}}
+	                if(ch=="t"){
+	                        var c=/[\/>\]})\w]/.test(look(stream, -2));
+	                        if(!c){
+	                                c=stream.eat("r");if(c){
+	                                c=stream.eat(/[(\[{<\^'"!~\/]/);
+	                                if(c){
+	                                        if(c=="[")
+	                                                return tokenChain(stream,state,["]","]"],RXstyle,RXmodifiers);
+	                                        if(c=="{")
+	                                                return tokenChain(stream,state,["}","}"],RXstyle,RXmodifiers);
+	                                        if(c=="<")
+	                                                return tokenChain(stream,state,[">",">"],RXstyle,RXmodifiers);
+	                                        if(c=="(")
+	                                                return tokenChain(stream,state,[")",")"],RXstyle,RXmodifiers);
+	                                        return tokenChain(stream,state,[c,c],RXstyle,RXmodifiers);}}}}
+	                if(ch=="`"){
+	                        return tokenChain(stream,state,[ch],"variable-2");}
+	                if(ch=="/"){
+	                        if(!/~\s*$/.test(prefix(stream)))
+	                                return "operator";
+	                        else
+	                                return tokenChain(stream,state,[ch],RXstyle,RXmodifiers);}
+	                if(ch=="$"){
+	                        var p=stream.pos;
+	                        if(stream.eatWhile(/\d/)||stream.eat("{")&&stream.eatWhile(/\d/)&&stream.eat("}"))
+	                                return "variable-2";
+	                        else
+	                                stream.pos=p;}
+	                if(/[$@%]/.test(ch)){
+	                        var p=stream.pos;
+	                        if(stream.eat("^")&&stream.eat(/[A-Z]/)||!/[@$%&]/.test(look(stream, -2))&&stream.eat(/[=|\\\-#?@;:&`~\^!\[\]*'"$+.,\/<>()]/)){
+	                                var c=stream.current();
+	                                if(PERL[c])
+	                                        return "variable-2";}
+	                        stream.pos=p;}
+	                if(/[$@%&]/.test(ch)){
+	                        if(stream.eatWhile(/[\w$\[\]]/)||stream.eat("{")&&stream.eatWhile(/[\w$\[\]]/)&&stream.eat("}")){
+	                                var c=stream.current();
+	                                if(PERL[c])
+	                                        return "variable-2";
+	                                else
+	                                        return "variable";}}
+	                if(ch=="#"){
+	                        if(look(stream, -2)!="$"){
+	                                stream.skipToEnd();
+	                                return "comment";}}
+	                if(/[:+\-\^*$&%@=<>!?|\/~\.]/.test(ch)){
+	                        var p=stream.pos;
+	                        stream.eatWhile(/[:+\-\^*$&%@=<>!?|\/~\.]/);
+	                        if(PERL[stream.current()])
+	                                return "operator";
+	                        else
+	                                stream.pos=p;}
+	                if(ch=="_"){
+	                        if(stream.pos==1){
+	                                if(suffix(stream, 6)=="_END__"){
+	                                        return tokenChain(stream,state,['\0'],"comment");}
+	                                else if(suffix(stream, 7)=="_DATA__"){
+	                                        return tokenChain(stream,state,['\0'],"variable-2");}
+	                                else if(suffix(stream, 7)=="_C__"){
+	                                        return tokenChain(stream,state,['\0'],"string");}}}
+	                if(/\w/.test(ch)){
+	                        var p=stream.pos;
+	                        if(look(stream, -2)=="{"&&(look(stream, 0)=="}"||stream.eatWhile(/\w/)&&look(stream, 0)=="}"))
+	                                return "string";
+	                        else
+	                                stream.pos=p;}
+	                if(/[A-Z]/.test(ch)){
+	                        var l=look(stream, -2);
+	                        var p=stream.pos;
+	                        stream.eatWhile(/[A-Z_]/);
+	                        if(/[\da-z]/.test(look(stream, 0))){
+	                                stream.pos=p;}
+	                        else{
+	                                var c=PERL[stream.current()];
+	                                if(!c)
+	                                        return "meta";
+	                                if(c[1])
+	                                        c=c[0];
+	                                if(l!=":"){
+	                                        if(c==1)
+	                                                return "keyword";
+	                                        else if(c==2)
+	                                                return "def";
+	                                        else if(c==3)
+	                                                return "atom";
+	                                        else if(c==4)
+	                                                return "operator";
+	                                        else if(c==5)
+	                                                return "variable-2";
+	                                        else
+	                                                return "meta";}
+	                                else
+	                                        return "meta";}}
+	                if(/[a-zA-Z_]/.test(ch)){
+	                        var l=look(stream, -2);
+	                        stream.eatWhile(/\w/);
+	                        var c=PERL[stream.current()];
+	                        if(!c)
+	                                return "meta";
+	                        if(c[1])
+	                                c=c[0];
+	                        if(l!=":"){
+	                                if(c==1)
+	                                        return "keyword";
+	                                else if(c==2)
+	                                        return "def";
+	                                else if(c==3)
+	                                        return "atom";
+	                                else if(c==4)
+	                                        return "operator";
+	                                else if(c==5)
+	                                        return "variable-2";
+	                                else
+	                                        return "meta";}
+	                        else
+	                                return "meta";}
+	                return null;}
+	
+	        return {
+	            startState: function() {
+	                return {
+	                    tokenize: tokenPerl,
+	                    chain: null,
+	                    style: null,
+	                    tail: null
+	                };
+	            },
+	            token: function(stream, state) {
+	                return (state.tokenize || tokenPerl)(stream, state);
+	            },
+	            lineComment: '#'
+	        };
+	});
+	
+	CodeMirror.registerHelper("wordChars", "perl", /[\w$]/);
+	
+	CodeMirror.defineMIME("text/x-perl", "perl");
+	
+	// it's like "peek", but need for look-ahead or look-behind if index < 0
+	function look(stream, c){
+	  return stream.string.charAt(stream.pos+(c||0));
+	}
+	
+	// return a part of prefix of current stream from current position
+	function prefix(stream, c){
+	  if(c){
+	    var x=stream.pos-c;
+	    return stream.string.substr((x>=0?x:0),c);}
+	  else{
+	    return stream.string.substr(0,stream.pos-1);
+	  }
+	}
+	
+	// return a part of suffix of current stream from current position
+	function suffix(stream, c){
+	  var y=stream.string.length;
+	  var x=y-stream.pos+1;
+	  return stream.string.substr(stream.pos,(c&&c<y?c:x));
+	}
+	
+	// eating and vomiting a part of stream from current position
+	function eatSuffix(stream, c){
+	  var x=stream.pos+c;
+	  var y;
+	  if(x<=0)
+	    stream.pos=0;
+	  else if(x>=(y=stream.string.length-1))
+	    stream.pos=y;
+	  else
+	    stream.pos=x;
+	}
+	
+	});
+
+
+/***/ },
+/* 140 */
+/***/ function(module, exports) {
+
+	module.exports = "\n    <modal :show.sync=\"scriptModal\" effect=\"fade\" width=\"800px\" _v-15113fe8=\"\">\n        <div slot=\"modal-header\" class=\"modal-header\" _v-15113fe8=\"\">\n            <button type=\"button\" class=\"close\" @click=\"scriptModal = false\" _v-15113fe8=\"\">\n                <span _v-15113fe8=\"\">×</span>\n            </button>\n            <h4 class=\"modal-title\" _v-15113fe8=\"\">脚本编写</h4>\n        </div>\n        <div slot=\"modal-body\" class=\"modal-body\" _v-15113fe8=\"\">\n            <form id=\"file_form\" class=\"form-horizontal\" _v-15113fe8=\"\">\n                <div class=\"form-group\" _v-15113fe8=\"\">\n                    <label class=\"col-sm-2 control-label\" _v-15113fe8=\"\">规则名：<span class=\"text-danger\" _v-15113fe8=\"\">*</span></label>\n                    <div class=\"col-sm-6\" _v-15113fe8=\"\">\n                        <v-select :value.sync=\"rule\" :options=\"ruleList\" placeholder=\"请选择\" _v-15113fe8=\"\">\n                        </v-select>\n                    </div>\n                </div>\n                <div class=\"form-group\" _v-15113fe8=\"\">\n                    <label class=\"col-sm-2 control-label\" _v-15113fe8=\"\">脚本来源：</label>\n                    <div class=\"col-sm-6\" _v-15113fe8=\"\">\n                        <radio-group :value.sync=\"scriptOriginSelected\" type=\"default\" _v-15113fe8=\"\">\n                            <radio :value=\"'1'\" _v-15113fe8=\"\">手工录入</radio>\n                            <radio :value=\"'2'\" _v-15113fe8=\"\">本地脚本</radio>\n                        </radio-group>\n                    </div>\n                </div>\n                <div class=\"form-group\" v-if=\"scriptOriginSelected === '2'\" _v-15113fe8=\"\">\n                    <div class=\"col-sm-5 col-sm-offset-2\" _v-15113fe8=\"\">\n                        <input type=\"text\" class=\"form-control\" :readonly=\"true\" v-model=\"road\" _v-15113fe8=\"\">\n                        <input id=\"file\" type=\"file\" name=\"file\" v-show=\"false\" @change=\"fileChange\" _v-15113fe8=\"\">\n                    </div>\n                    <div class=\"col-sm-4\" _v-15113fe8=\"\">\n                        <button type=\"button\" class=\"btn btn-default\" @click=\"fileSearch\" _v-15113fe8=\"\">浏览</button>\n                        <button type=\"button\" class=\"btn btn-default\" @click=\"fileUpload\" _v-15113fe8=\"\">上传</button>\n                    </div>\n                </div>\n                <div class=\"form-group\" _v-15113fe8=\"\">\n                    <label class=\"col-sm-2 control-label\" _v-15113fe8=\"\">脚本类型：</label>\n                    <div class=\"col-sm-6\" _v-15113fe8=\"\">\n                        <radio-group :value.sync=\"scriptTypeSelected\" type=\"default\" _v-15113fe8=\"\">\n                            <radio v-for=\"scriptType in scriptTypes\" :value=\"scriptType.value\" _v-15113fe8=\"\">{{ scriptType.label }}</radio>\n                        </radio-group>\n                    </div>\n                </div>\n                <div class=\"form-group\" v-show=\"rule\" _v-15113fe8=\"\">\n                    <textarea id=\"editScript\" class=\"form-group\" _v-15113fe8=\"\"></textarea>\n                </div>\n            </form>\n        </div>\n        <div slot=\"modal-footer\" class=\"modal-footer\" _v-15113fe8=\"\">\n            <button type=\"button\" class=\"btn btn-default\" :disabled=\"rule ? false : true\" @click=\"saveScript\" _v-15113fe8=\"\">保存</button>\n            <button type=\"button\" class=\"btn btn-default\" @click=\"scriptModal = false\" _v-15113fe8=\"\">取消</button>\n        </div>\n    </modal>\n";
+
+/***/ },
+/* 141 */
 /***/ function(module, exports) {
 
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
 	exports.getRunTypes = getRunTypes;
+	exports.getRules = getRules;
+	exports.getRuleList = getRuleList;
+	exports.getAppTypes = getAppTypes;
 	/**
 	 * 
 	 * @authors luozh@snail.com
@@ -12048,22 +13546,71 @@ webpackJsonp([1],Array(25).concat([
 	
 	// 获取运行环境类型
 	function getRunTypes(_ref) {
-	  var dispatch = _ref.dispatch;
-	  var state = _ref.state;
+	    var dispatch = _ref.dispatch;
+	    var state = _ref.state;
 	
-	  this.$http({
-	    url: '/env_add/',
-	    method: 'GET'
-	  }).then(function (response) {
-	    dispatch('GETRUNTYPES', response.data.types);
-	  });
+	    this.$http({
+	        url: '/env_add/',
+	        method: 'GET'
+	    }).then(function (response) {
+	        dispatch('GETRUNTYPES', response.data.types);
+	    });
+	}
+	
+	// 获取规则
+	function getRules(_ref2, param) {
+	    var dispatch = _ref2.dispatch;
+	    var state = _ref2.state;
+	
+	    this.$http({
+	        url: '/rule_edit/?id=' + param,
+	        method: 'GET'
+	    }).then(function (response) {
+	        if (response.data.result) {
+	            if (response.data.rules.length) {
+	                dispatch('GETRULES', response.data.rules);
+	            } else {
+	                dispatch('GETRULES', [{ value: '', label: '' }]);
+	            }
+	
+	            dispatch('GETRULEID', param);
+	        } else {
+	            dispatch('GETRULEID', null);
+	        }
+	    });
+	}
+	
+	// 获取规则列表
+	function getRuleList(_ref3, param) {
+	    var dispatch = _ref3.dispatch;
+	    var state = _ref3.state;
+	
+	    this.$http({
+	        url: '/rule_edit/?id=' + param,
+	        method: 'GET'
+	    }).then(function (response) {
+	        dispatch('GETRULELIST', response.data.rules);
+	    });
+	}
+	
+	// 获取应用配置类型
+	function getAppTypes(_ref4) {
+	    var dispatch = _ref4.dispatch;
+	    var state = _ref4.state;
+	
+	    this.$http({
+	        url: '/package_add/',
+	        method: 'GET'
+	    }).then(function (response) {
+	        dispatch('GETAPPTYPES', response.data.types);
+	    });
 	}
 
 /***/ },
-/* 138 */
+/* 142 */
 /***/ function(module, exports) {
 
-	module.exports = "\n    <div _v-3c857cf8=\"\">\n        <form class=\"form-inline\" _v-3c857cf8=\"\">\n            <div class=\"form-group\" _v-3c857cf8=\"\">\n                <label _v-3c857cf8=\"\">名称：</label>\n                <input type=\"text\" class=\"form-control\" v-model=\"param.name\" _v-3c857cf8=\"\">\n            </div>\n            <div class=\"form-group\" _v-3c857cf8=\"\">\n                <label _v-3c857cf8=\"\">类型：</label>\n                <v-select :value.sync=\"param.type\" :options=\"typeArr.concat(types)\" placeholder=\"\" _v-3c857cf8=\"\">\n                </v-select>\n            </div>\n            <div class=\"mt30 table-btn\" _v-3c857cf8=\"\">\n                <button type=\"button\" class=\"btn btn-default btn-pd\" @click=\"$broadcast('showAdd')\" _v-3c857cf8=\"\">\n                    <span class=\"glyphicon glyphicon-plus\" _v-3c857cf8=\"\"></span>\n                    添加\n                </button>\n            </div>\n            <table class=\"table table-hover table-bordered table-bg\" _v-3c857cf8=\"\">\n                <thead _v-3c857cf8=\"\">\n                    <tr _v-3c857cf8=\"\">\n                        <th _v-3c857cf8=\"\">名称</th>\n                        <th _v-3c857cf8=\"\">类型</th>\n                        <th _v-3c857cf8=\"\">版本/型号</th>\n                        <th _v-3c857cf8=\"\">检查规则</th>\n                        <th _v-3c857cf8=\"\">备注</th>\n                        <th _v-3c857cf8=\"\">操作</th>\n                    </tr>\n                </thead>\n                <tbody _v-3c857cf8=\"\">\n                    <tr v-for=\"list in tableList\" _v-3c857cf8=\"\">\n                        <td v-text=\"list.name\" _v-3c857cf8=\"\"></td>\n                        <td v-text=\"list.type\" _v-3c857cf8=\"\"></td>\n                        <td v-text=\"list.version\" :title=\"list.version\" _v-3c857cf8=\"\"></td>\n                        <td _v-3c857cf8=\"\">\n                            <button type=\"button\" class=\"btn btn-default btn-small\" @click=\"$broadcast('showRule')\" _v-3c857cf8=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-list-alt\" _v-3c857cf8=\"\"></span>\n                                规则\n                            </button>\n                            <button type=\"button\" class=\"btn btn-default btn-small\" @click=\"$broadcast('showScript')\" _v-3c857cf8=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-duplicate\" _v-3c857cf8=\"\"></span>\n                                脚本\n                            </button>\n                        </td>\n                        <td v-text=\"list.remark\" _v-3c857cf8=\"\"></td>\n                        <td _v-3c857cf8=\"\">\n                            <button type=\"button\" class=\"btn btn-default btn-small\" @click=\"$broadcast('showModify', tableList[$index].id)\" _v-3c857cf8=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-edit\" _v-3c857cf8=\"\"></span>\n                                修改\n                            </button>\n                            <button type=\"button\" class=\"btn btn-default btn-small\" @click=\"$broadcast('showConfirm', tableList[$index].id)\" _v-3c857cf8=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-trash\" _v-3c857cf8=\"\"></span>\n                                删除\n                            </button>\n                        </td>\n                    </tr>\n                    <tr v-if=\"tableList.length === 0\" _v-3c857cf8=\"\">\n                        <td class=\"text-center\" colspan=\"6\" _v-3c857cf8=\"\">\n                            暂无数据\n                        </td>\n                    </tr>\n                </tbody>\n                <tfoot _v-3c857cf8=\"\">\n                    <tr _v-3c857cf8=\"\">\n                        <td colspan=\"6\" _v-3c857cf8=\"\">\n                            <div class=\"pull-right\" _v-3c857cf8=\"\">\n                                <boot-page :async=\"true\" :lens=\"lenArr\" :page-len=\"pageLen\" :url=\"url\" :param=\"param\" _v-3c857cf8=\"\"></boot-page>\n                            </div>\n                        </td>\n                    </tr>\n                </tfoot>\n            </table>\n        </form>\n        <add-modal _v-3c857cf8=\"\"></add-modal>\n        <rule-modal _v-3c857cf8=\"\"></rule-modal>\n        <modify-modal _v-3c857cf8=\"\"></modify-modal>\n        <delete-modal _v-3c857cf8=\"\"></delete-modal>\n        <editscript-modal _v-3c857cf8=\"\"></editscript-modal>\n    </div>\n";
+	module.exports = "\n    <div _v-3c857cf8=\"\">\n        <form class=\"form-inline\" _v-3c857cf8=\"\">\n            <div class=\"form-group\" _v-3c857cf8=\"\">\n                <label _v-3c857cf8=\"\">名称：</label>\n                <input type=\"text\" class=\"form-control\" v-model=\"param.name\" _v-3c857cf8=\"\">\n            </div>\n            <div class=\"form-group\" _v-3c857cf8=\"\">\n                <label _v-3c857cf8=\"\">类型：</label>\n                <v-select :value.sync=\"param.type\" :options=\"typeArr.concat(types)\" placeholder=\"\" _v-3c857cf8=\"\">\n                </v-select>\n            </div>\n            <div class=\"mt30 table-btn\" _v-3c857cf8=\"\">\n                <button type=\"button\" class=\"btn btn-default btn-pd\" @click=\"$broadcast('showAdd')\" _v-3c857cf8=\"\">\n                    <span class=\"glyphicon glyphicon-plus\" _v-3c857cf8=\"\"></span>\n                    添加\n                </button>\n            </div>\n            <table class=\"table table-hover table-bordered table-bg\" _v-3c857cf8=\"\">\n                <thead _v-3c857cf8=\"\">\n                    <tr _v-3c857cf8=\"\">\n                        <th _v-3c857cf8=\"\">名称</th>\n                        <th _v-3c857cf8=\"\">类型</th>\n                        <th _v-3c857cf8=\"\">版本/型号</th>\n                        <th _v-3c857cf8=\"\">检查规则</th>\n                        <th _v-3c857cf8=\"\">备注</th>\n                        <th _v-3c857cf8=\"\">操作</th>\n                    </tr>\n                </thead>\n                <tbody _v-3c857cf8=\"\">\n                    <tr v-for=\"list in tableList\" _v-3c857cf8=\"\">\n                        <td v-text=\"list.name\" _v-3c857cf8=\"\"></td>\n                        <td v-text=\"list.type\" _v-3c857cf8=\"\"></td>\n                        <td v-text=\"list.version\" :title=\"list.version\" _v-3c857cf8=\"\"></td>\n                        <td _v-3c857cf8=\"\">\n                            <button type=\"button\" class=\"btn btn-default btn-small\" @click=\"getRuleFn($index)\" _v-3c857cf8=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-list-alt\" _v-3c857cf8=\"\"></span>\n                                规则\n                            </button>\n                            <button type=\"button\" class=\"btn btn-default btn-small\" @click=\"getRuleListFn($index)\" _v-3c857cf8=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-duplicate\" _v-3c857cf8=\"\"></span>\n                                脚本\n                            </button>\n                        </td>\n                        <td v-text=\"list.remark\" _v-3c857cf8=\"\"></td>\n                        <td _v-3c857cf8=\"\">\n                            <button type=\"button\" class=\"btn btn-default btn-small\" @click=\"$broadcast('showModify', tableList[$index].id)\" _v-3c857cf8=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-edit\" _v-3c857cf8=\"\"></span>\n                                修改\n                            </button>\n                            <button type=\"button\" class=\"btn btn-default btn-small\" @click=\"$broadcast('showConfirm', tableList[$index].id)\" _v-3c857cf8=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-trash\" _v-3c857cf8=\"\"></span>\n                                删除\n                            </button>\n                        </td>\n                    </tr>\n                    <tr v-if=\"tableList.length === 0\" _v-3c857cf8=\"\">\n                        <td class=\"text-center\" colspan=\"6\" _v-3c857cf8=\"\">\n                            暂无数据\n                        </td>\n                    </tr>\n                </tbody>\n                <tfoot _v-3c857cf8=\"\">\n                    <tr _v-3c857cf8=\"\">\n                        <td colspan=\"6\" _v-3c857cf8=\"\">\n                            <div class=\"pull-right\" _v-3c857cf8=\"\">\n                                <boot-page :async=\"true\" :lens=\"lenArr\" :page-len=\"pageLen\" :url=\"url\" :param=\"param\" _v-3c857cf8=\"\"></boot-page>\n                            </div>\n                        </td>\n                    </tr>\n                </tfoot>\n            </table>\n        </form>\n        <add-modal _v-3c857cf8=\"\"></add-modal>\n        <rule-modal _v-3c857cf8=\"\"></rule-modal>\n        <modify-modal _v-3c857cf8=\"\"></modify-modal>\n        <delete-modal _v-3c857cf8=\"\"></delete-modal>\n        <editscript-modal _v-3c857cf8=\"\"></editscript-modal>\n    </div>\n";
 
 /***/ }
 ]));

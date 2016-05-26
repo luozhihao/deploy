@@ -10,8 +10,8 @@
  // 我们可以利用 ES6 的解构（destructuring）语法来简化参数的使用
  
 
- // 获取运行环境类型
- export function getRunTypes({ dispatch, state }) {
+// 获取运行环境类型
+export function getRunTypes({ dispatch, state }) {
     this.$http({
         url: '/env_add/',
         method: 'GET'
@@ -19,5 +19,48 @@
     .then(response => {
         dispatch('GETRUNTYPES', response.data.types)
     })
- }
+}
+
+// 获取规则
+export function getRules({ dispatch, state }, param) {
+    this.$http({
+        url: '/rule_edit/?id=' + param,
+        method: 'GET'
+    })
+    .then(response => {
+        if (response.data.result) {
+            if (response.data.rules.length) {
+                dispatch('GETRULES', response.data.rules)
+            } else {
+                dispatch('GETRULES', [{value: '', label: ''}])
+            }
+
+            dispatch('GETRULEID', param)
+        } else {
+            dispatch('GETRULEID', null)
+        }
+    })
+}
+
+// 获取规则列表
+export function getRuleList({ dispatch, state }, param) {
+    this.$http({
+        url: '/rule_edit/?id=' + param,
+        method: 'GET'
+    })
+    .then(response => {
+        dispatch('GETRULELIST', response.data.rules)
+    })
+}
+
+// 获取应用配置类型
+export function getAppTypes({ dispatch, state }) {
+    this.$http({
+        url: '/package_add/',
+        method: 'GET'
+    })
+    .then(response => {
+        dispatch('GETAPPTYPES', response.data.types)
+    })
+}
 
