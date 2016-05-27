@@ -2,16 +2,16 @@
     <div>
         <form class="form-inline">
             <div class="form-group">
-                <label>项目名称：</label>
-                <input type="text" class="form-control" v-model="projectName">
+                <label>部署包名称：</label>
+                <input type="text" class="form-control" v-model="param.name">
             </div>
             <div class="form-group">
-                <label>部署包名称：</label>
-                <input type="text" class="form-control" v-model="packName">
+                <label>项目名称：</label>
+                <input type="text" class="form-control" v-model="param.project">
             </div>
             <div class="form-group">
                 <label>项目类型：</label>
-                <v-select :value.sync="type" :options="appTypes" placeholder="请选择">
+                <v-select :value.sync="param.type" :options="typeArr.concat(appTypes)" placeholder="">
                 </v-select>
             </div>
             <div class="mt30 table-btn">
@@ -37,37 +37,54 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>sncp-imprest</td>
-                        <td>充值服务</td>
-                        <td>计费</td>
-                        <td>1.01</td>
+                    <tr v-for="list in tableList">
+                        <td v-text="list.name" :title="list.name"></td>
+                        <td v-text="list.project"></td>
+                        <td v-text="list.type"></td>
+                        <td v-text="list.version"></td>
                         <td>
-                            <button type="button" class="btn btn-default btn-small">
+                            <button type="button" class="btn btn-default btn-small" @click="$broadcast('showEditEnv', tableList[$index].id)">
                                 <span class="table-icon glyphicon glyphicon-pencil"></span>
                                 编辑
                             </button>
-                            <button type="button" class="btn btn-default btn-small">
+                            <button type="button" class="btn btn-default btn-small" @click="$broadcast('showViewEnv', tableList[$index].id)">
                                 <span class="table-icon glyphicon glyphicon-eye-open"></span>
                                 查看
                             </button>
                         </td>
-                        <td></td>
+                        <td v-text="list.remark" :title="list.remark"></td>
                         <td>
-                            <button type="button" class="btn btn-default btn-small">
+                            <button type="button" class="btn btn-default btn-small" @click="$broadcast('showModify', tableList[$index].id)">
                                 <span class="table-icon glyphicon glyphicon-edit"></span>
                                 修改
                             </button>
-                            <button type="button" class="btn btn-default btn-small" @click="$broadcast('showConfirm')">
+                            <button type="button" class="btn btn-default btn-small" @click="$broadcast('showConfirm', tableList[$index].id)">
                                 <span class="table-icon glyphicon glyphicon-trash"></span>
                                 删除
                             </button>
                         </td>
                     </tr>
+                    <tr v-if="tableList.length === 0">
+                        <td class="text-center" colspan="7">
+                            暂无数据
+                        </td>
+                    </tr>
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="7">
+                            <div class="pull-right">
+                                <boot-page :async="true" :lens="lenArr" :page-len="pageLen" :url="url" :param="param"></boot-page>
+                            </div>
+                        </td>
+                    </tr>
+                </tfoot>
             </table>
         </form>
         <add-modal></add-modal>
+        <modify-modal></modify-modal>
+        <edit-env-modal></edit-env-modal>
+        <view-env-modal></view-env-modal>
         <copy-modal></copy-modal>
         <delete-modal></delete-modal>
     </div>
@@ -76,26 +93,48 @@
 <script>
 import vSelect from '../../global/Select.vue'
 import addModal from './Add.vue'
+import ModifyModal from './Modify.vue'
 import copyModal from './Copy.vue'
+import editEnvModal from './EditEnv.vue'
+import viewEnvModal from './ViewEnv.vue'
 import deleteModal from '../../global/Confirm.vue'
+import bootPage from '../../global/BootPage.vue'
 import { getAppTypes } from '../../../vuex/action.js'
 import { appTypes } from '../../../vuex/getters.js'
 
 let origin = {
-        type: '',
-        projectName: '',
-        packName: ''
+        pageLen: 5,
+        lenArr: [10, 50, 100],
+        url: '/package_config/',
+        param: {
+            project: '',
+            name: '',
+            type: ''
+        },
+        typeArr: [{value: '', label: '全部'}],
+        tableList: []
     }
 
 export default {
     data () {
         return origin
     },
+    methods: {
+
+        // 刷新数据
+        refresh () {
+            this.$broadcast('refresh')
+        }
+    },
     components: {
         vSelect,
         addModal,
         copyModal,
-        deleteModal
+        deleteModal,
+        bootPage,
+        ModifyModal,
+        editEnvModal,
+        viewEnvModal
     },
     vuex: {
         getters: {
@@ -107,6 +146,43 @@ export default {
     },
     ready () {
         this.getAppTypes()
+    },
+    events: {
+        'data' (param) {
+            this.tableList = param.data
+        },
+        'refresh' () {
+            this.refresh()
+        },
+        'confirm' (param) {
+            this.$http({
+                url: '/package_delete/',
+                method: 'POST',
+                data: {
+                    id: param
+                }
+            })
+            .then(response => {
+                if (response.data.result) {
+                    this.refresh()
+
+                    this.$dispatch('show-success', '删除成功') 
+                } else {
+                    this.$dispatch('show-error', '删除失败')
+                }
+            })
+        }
+    },
+    watch: {
+        'param.project' (newVal) {
+            this.refresh()
+        },
+        'param.name' (newVal) {
+            this.refresh()
+        },
+        'param.type' (newVal) {
+            this.refresh()
+        }
     }
 }
 </script>

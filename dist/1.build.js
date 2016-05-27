@@ -5,7 +5,7 @@ webpackJsonp([1],Array(25).concat([
 	var __vue_script__, __vue_template__
 	__webpack_require__(26)
 	__vue_script__ = __webpack_require__(30)
-	__vue_template__ = __webpack_require__(142)
+	__vue_template__ = __webpack_require__(147)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -93,15 +93,15 @@ webpackJsonp([1],Array(25).concat([
 	
 	var _BootPage2 = _interopRequireDefault(_BootPage);
 	
-	var _Confirm = __webpack_require__(112);
+	var _Confirm = __webpack_require__(128);
 	
 	var _Confirm2 = _interopRequireDefault(_Confirm);
 	
-	var _Script = __webpack_require__(128);
+	var _Script = __webpack_require__(133);
 	
 	var _Script2 = _interopRequireDefault(_Script);
 	
-	var _action = __webpack_require__(141);
+	var _action = __webpack_require__(146);
 	
 	var _getters = __webpack_require__(104);
 	
@@ -217,15 +217,15 @@ webpackJsonp([1],Array(25).concat([
 	
 	        // 获取编辑规则名
 	        getRuleFn: function getRuleFn(index) {
-	            this.$broadcast('showRule');
 	            this.getRules(this.tableList[index].id);
+	            this.$broadcast('showRule');
 	        },
 	
 	
 	        // 获取已建规则列表
 	        getRuleListFn: function getRuleListFn(index) {
-	            this.$broadcast('showScript');
 	            this.getRuleList(this.tableList[index].id);
+	            this.$broadcast('showScript');
 	        }
 	    },
 	    vuex: {
@@ -1827,56 +1827,7 @@ webpackJsonp([1],Array(25).concat([
 
 /***/ },
 /* 103 */,
-/* 104 */
-/***/ function(module, exports) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", {
-	   value: true
-	});
-	exports.types = types;
-	exports.rules = rules;
-	exports.ruleId = ruleId;
-	exports.ruleList = ruleList;
-	exports.appTypes = appTypes;
-	/**
-	 * 
-	 * @authors Your Name (you@example.org)
-	 * @date    2016-05-12 10:42:13
-	 * @version $Id$
-	 */
-	
-	// 这个 getter 函数会返回 count 的值
-	// 在 ES6 里你可以写成：
-	// export const getCount = state => state.count
-	
-	// 获取类型
-	function types(state) {
-	   return state.types;
-	}
-	
-	// 获取规则
-	function rules(state) {
-	   return state.rules;
-	}
-	
-	// 获取规则id
-	function ruleId(state) {
-	   return state.ruleId;
-	}
-	
-	// 获取规则列表
-	function ruleList(state) {
-	   return state.ruleList;
-	}
-	
-	// 获取规则列表
-	function appTypes(state) {
-	   return state.appTypes;
-	}
-
-/***/ },
+/* 104 */,
 /* 105 */
 /***/ function(module, exports) {
 
@@ -1897,7 +1848,7 @@ webpackJsonp([1],Array(25).concat([
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "D:\\work\\Aptana Studio 3 Workspace\\charging_conf\\charging_conf\\static\\src\\components\\deploy_manage\\run_board\\EditRule.vue"
+	  var id = "D:\\work\\Aptana Studio 3 Workspace\\charging_conf\\charging_conf\\static\\src\\components\\deploy_manage\\run_board\\rule\\EditRule.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -1921,8 +1872,8 @@ webpackJsonp([1],Array(25).concat([
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js?sourceMap!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-788a4083&file=EditRule.vue&scoped=true!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./EditRule.vue", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js?sourceMap!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-788a4083&file=EditRule.vue&scoped=true!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./EditRule.vue");
+			module.hot.accept("!!./../../../../../node_modules/css-loader/index.js?sourceMap!./../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-67fb2739&file=EditRule.vue&scoped=true!./../../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./EditRule.vue", function() {
+				var newContent = require("!!./../../../../../node_modules/css-loader/index.js?sourceMap!./../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-67fb2739&file=EditRule.vue&scoped=true!./../../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./EditRule.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -1940,7 +1891,7 @@ webpackJsonp([1],Array(25).concat([
 	
 	
 	// module
-	exports.push([module.id, "\r\n.add-menu[_v-788a4083] {\r\n    height: 34px;\r\n    line-height: 34px;\r\n    padding: 0;\r\n    color: #009688;\r\n    cursor: pointer;\r\n}\r\n", "", {"version":3,"sources":["/./src/components/deploy_manage/run_board/EditRule.vue.style"],"names":[],"mappings":";AA8HA;IACA,aAAA;IACA,kBAAA;IACA,WAAA;IACA,eAAA;IACA,gBAAA;CACA","file":"EditRule.vue","sourcesContent":["<template>\r\n    <modal :show.sync=\"ruleModal\" effect=\"fade\" width=\"450px\">\r\n        <div slot=\"modal-header\" class=\"modal-header\">\r\n            <h4 class=\"modal-title\">规则配置</h4>\r\n        </div>\r\n        <div slot=\"modal-body\" class=\"modal-body\">\r\n            <form class=\"form-horizontal\">\r\n                <div class=\"form-group\" v-for=\"list in rules\" track-by=\"$index\">\r\n                    <label class=\"control-label col-sm-3\">规则{{ $index + 1 }}：</label>\r\n                    <div class=\"col-sm-7\">\r\n                        <input type=\"text\" class=\"form-control\" v-model=\"list.label\">\r\n                    </div>\r\n                    <div class=\"col-sm-2 add-menu\" v-if=\"$index === 0\" @click=\"addRules\">\r\n                        <span class=\"glyphicon glyphicon-plus\"></span>\r\n                    </div>\r\n                    <div class=\"col-sm-2 add-menu\" @click=\"removeRules($index)\" v-else>\r\n                        <span class=\"glyphicon glyphicon-minus text-danger\"></span>\r\n                    </div>\r\n                </div>\r\n            </form>\r\n        </div>\r\n        <div slot=\"modal-footer\" class=\"modal-footer\">\r\n            <button type=\"button\" class=\"btn btn-default\" @click=\"saveRules\">保存</button>\r\n            <button type=\"button\" class=\"btn btn-default\" @click='ruleModal = false'>取消</button>\r\n        </div>\r\n    </modal>\r\n    <delete-modal></delete-modal>\r\n</template>\r\n\r\n<script>\r\nimport { modal } from 'vue-strap'\r\nimport { rules, ruleId } from '../../../vuex/getters.js'\r\nimport deleteModal from '../../global/Confirm.vue'\r\n\r\nlet origin = {\r\n        ruleModal: false\r\n    }\r\n\r\nexport default {\r\n    data () {\r\n        return origin\r\n    },\r\n    methods: {\r\n\r\n        // 添加规则\r\n        addRules () {\r\n            this.rules.push({value: '', label: ''})\r\n        },\r\n\r\n        // 删除规则\r\n        removeRules (index) {\r\n            if (this.rules[index].value) {\r\n                this.$broadcast('showConfirm', index)\r\n                this.$broadcast('setMsg', '该规则下对应的脚本也会删除，是否确认？')\r\n            } else {\r\n                this.rules.splice(index, 1)\r\n            }\r\n        },\r\n\r\n        // 保存规则\r\n        saveRules () {\r\n            let isPass = true\r\n\r\n            this.rules.forEach(e => {\r\n                if (!e.label.trim()) {\r\n                    isPass = false\r\n                    this.$dispatch('show-notify', '规则名不能为空')\r\n\r\n                    return false\r\n                }\r\n            })\r\n\r\n            if (isPass) {\r\n                this.$http({\r\n                    url: '/rule_edit/',\r\n                    method: 'POST',\r\n                    data: {\r\n                        id: this.ruleId,\r\n                        rules: JSON.stringify(this.rules)\r\n                    }\r\n                })\r\n                .then(response => {\r\n                    if (response.data.result) {\r\n                        this.ruleModal = false\r\n\r\n                        this.$dispatch('show-success')\r\n                    } else {\r\n                        this.$dispatch('show-error')\r\n                    }\r\n                })\r\n            }\r\n        }\r\n    },\r\n    components: {\r\n        modal,\r\n        deleteModal\r\n    },\r\n    vuex: {\r\n        getters: {\r\n            rules,\r\n            ruleId\r\n        }\r\n    },\r\n    events: {\r\n        'showRule' () {\r\n            this.ruleModal = true\r\n        },\r\n        'confirm' (param) {\r\n\r\n            // 删除规则\r\n            this.$http({\r\n                url: '/rule_delete/',\r\n                method: 'POST',\r\n                data: {\r\n                    id: this.rules[param].value\r\n                }\r\n            })\r\n            .then(response => {\r\n                response.data.result ? this.rules.splice(param, 1) : ''\r\n            })\r\n        }\r\n    }\r\n}\r\n</script>\r\n\r\n<style scoped>\r\n.add-menu {\r\n    height: 34px;\r\n    line-height: 34px;\r\n    padding: 0;\r\n    color: #009688;\r\n    cursor: pointer;\r\n}\r\n</style>"],"sourceRoot":"webpack://"}]);
+	exports.push([module.id, "\r\n.add-menu[_v-67fb2739] {\r\n    height: 34px;\r\n    line-height: 34px;\r\n    padding: 0;\r\n    color: #009688;\r\n    cursor: pointer;\r\n}\r\n", "", {"version":3,"sources":["/./src/components/deploy_manage/run_board/rule/EditRule.vue.style"],"names":[],"mappings":";AA8HA;IACA,aAAA;IACA,kBAAA;IACA,WAAA;IACA,eAAA;IACA,gBAAA;CACA","file":"EditRule.vue","sourcesContent":["<template>\r\n    <modal :show.sync=\"ruleModal\" effect=\"fade\" width=\"450px\">\r\n        <div slot=\"modal-header\" class=\"modal-header\">\r\n            <h4 class=\"modal-title\">规则配置</h4>\r\n        </div>\r\n        <div slot=\"modal-body\" class=\"modal-body\">\r\n            <form class=\"form-horizontal\">\r\n                <div class=\"form-group\" v-for=\"list in rules\" track-by=\"$index\">\r\n                    <label class=\"control-label col-sm-3\">规则{{ $index + 1 }}：</label>\r\n                    <div class=\"col-sm-7\">\r\n                        <input type=\"text\" class=\"form-control\" v-model=\"list.label\">\r\n                    </div>\r\n                    <div class=\"col-sm-2 add-menu\" v-if=\"$index === 0\" @click=\"addRules\">\r\n                        <span class=\"glyphicon glyphicon-plus\"></span>\r\n                    </div>\r\n                    <div class=\"col-sm-2 add-menu\" @click=\"removeRules($index)\" v-else>\r\n                        <span class=\"glyphicon glyphicon-minus text-danger\"></span>\r\n                    </div>\r\n                </div>\r\n            </form>\r\n        </div>\r\n        <div slot=\"modal-footer\" class=\"modal-footer\">\r\n            <button type=\"button\" class=\"btn btn-default\" @click=\"saveRules\">保存</button>\r\n            <button type=\"button\" class=\"btn btn-default\" @click='ruleModal = false'>取消</button>\r\n        </div>\r\n    </modal>\r\n    <delete-modal></delete-modal>\r\n</template>\r\n\r\n<script>\r\nimport { modal } from 'vue-strap'\r\nimport { rules, ruleId } from '../../../../vuex/getters.js'\r\nimport deleteModal from './Confirm.vue'\r\n\r\nlet origin = {\r\n        ruleModal: false\r\n    }\r\n\r\nexport default {\r\n    data () {\r\n        return origin\r\n    },\r\n    methods: {\r\n\r\n        // 添加规则\r\n        addRules () {\r\n            this.rules.push({value: '', label: ''})\r\n        },\r\n\r\n        // 删除规则\r\n        removeRules (index) {\r\n            if (this.rules[index].value) {\r\n                this.$broadcast('showDelete', index)\r\n                this.$broadcast('setMsg', '该规则下对应的脚本也会删除，是否确认？')\r\n            } else {\r\n                this.rules.splice(index, 1)\r\n            }\r\n        },\r\n\r\n        // 保存规则\r\n        saveRules () {\r\n            let isPass = true\r\n\r\n            this.rules.forEach(e => {\r\n                if (!e.label.trim()) {\r\n                    isPass = false\r\n                    this.$dispatch('show-notify', '规则名不能为空')\r\n\r\n                    return false\r\n                }\r\n            })\r\n\r\n            if (isPass) {\r\n                this.$http({\r\n                    url: '/rule_edit/',\r\n                    method: 'POST',\r\n                    data: {\r\n                        id: this.ruleId,\r\n                        rules: JSON.stringify(this.rules)\r\n                    }\r\n                })\r\n                .then(response => {\r\n                    if (response.data.result) {\r\n                        this.ruleModal = false\r\n\r\n                        this.$dispatch('show-success')\r\n                    } else {\r\n                        this.$dispatch('show-error')\r\n                    }\r\n                })\r\n            }\r\n        }\r\n    },\r\n    components: {\r\n        modal,\r\n        deleteModal\r\n    },\r\n    vuex: {\r\n        getters: {\r\n            rules,\r\n            ruleId\r\n        }\r\n    },\r\n    events: {\r\n        'showRule' () {\r\n            this.ruleModal = true\r\n        },\r\n        'deleteRule' (param) {\r\n\r\n            // 删除规则\r\n            this.$http({\r\n                url: '/rule_delete/',\r\n                method: 'POST',\r\n                data: {\r\n                    id: this.rules[param].value\r\n                }\r\n            })\r\n            .then(response => {\r\n                response.data.result ? this.rules.splice(param, 1) : ''\r\n            })\r\n        }\r\n    }\r\n}\r\n</script>\r\n\r\n<style scoped>\r\n.add-menu {\r\n    height: 34px;\r\n    line-height: 34px;\r\n    padding: 0;\r\n    color: #009688;\r\n    cursor: pointer;\r\n}\r\n</style>"],"sourceRoot":"webpack://"}]);
 	
 	// exports
 
@@ -2020,7 +1971,7 @@ webpackJsonp([1],Array(25).concat([
 	        // 删除规则
 	        removeRules: function removeRules(index) {
 	            if (this.rules[index].value) {
-	                this.$broadcast('showConfirm', index);
+	                this.$broadcast('showDelete', index);
 	                this.$broadcast('setMsg', '该规则下对应的脚本也会删除，是否确认？');
 	            } else {
 	                this.rules.splice(index, 1);
@@ -2077,7 +2028,7 @@ webpackJsonp([1],Array(25).concat([
 	        'showRule': function showRule() {
 	            this.ruleModal = true;
 	        },
-	        'confirm': function confirm(param) {
+	        'deleteRule': function deleteRule(param) {
 	            var _this2 = this;
 	
 	            // 删除规则
@@ -2137,7 +2088,7 @@ webpackJsonp([1],Array(25).concat([
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "D:\\work\\Aptana Studio 3 Workspace\\charging_conf\\charging_conf\\static\\src\\components\\global\\Confirm.vue"
+	  var id = "D:\\work\\Aptana Studio 3 Workspace\\charging_conf\\charging_conf\\static\\src\\components\\deploy_manage\\run_board\\rule\\Confirm.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -2161,8 +2112,8 @@ webpackJsonp([1],Array(25).concat([
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-cd8cc08a&file=Confirm.vue!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Confirm.vue", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-cd8cc08a&file=Confirm.vue!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Confirm.vue");
+			module.hot.accept("!!./../../../../../node_modules/css-loader/index.js?sourceMap!./../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-4b45ca7d&file=Confirm.vue!./../../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Confirm.vue", function() {
+				var newContent = require("!!./../../../../../node_modules/css-loader/index.js?sourceMap!./../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-4b45ca7d&file=Confirm.vue!./../../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Confirm.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -2210,7 +2161,7 @@ webpackJsonp([1],Array(25).concat([
 	        okFn: function okFn() {
 	            var _this = this;
 	
-	            this.$dispatch('confirm', _this.tag);
+	            this.$dispatch('deleteRule', _this.tag);
 	            this.confirmModal = false;
 	        }
 	    },
@@ -2218,7 +2169,7 @@ webpackJsonp([1],Array(25).concat([
 	        modal: _vueStrap.modal
 	    },
 	    events: {
-	        'showConfirm': function showConfirm(param) {
+	        'showDelete': function showDelete(param) {
 	            this.confirmModal = true;
 	
 	            if (param) {
@@ -2270,7 +2221,7 @@ webpackJsonp([1],Array(25).concat([
 /* 117 */
 /***/ function(module, exports) {
 
-	module.exports = "\n    <modal :show.sync=\"ruleModal\" effect=\"fade\" width=\"450px\" _v-788a4083=\"\">\n        <div slot=\"modal-header\" class=\"modal-header\" _v-788a4083=\"\">\n            <h4 class=\"modal-title\" _v-788a4083=\"\">规则配置</h4>\n        </div>\n        <div slot=\"modal-body\" class=\"modal-body\" _v-788a4083=\"\">\n            <form class=\"form-horizontal\" _v-788a4083=\"\">\n                <div class=\"form-group\" v-for=\"list in rules\" track-by=\"$index\" _v-788a4083=\"\">\n                    <label class=\"control-label col-sm-3\" _v-788a4083=\"\">规则{{ $index + 1 }}：</label>\n                    <div class=\"col-sm-7\" _v-788a4083=\"\">\n                        <input type=\"text\" class=\"form-control\" v-model=\"list.label\" _v-788a4083=\"\">\n                    </div>\n                    <div class=\"col-sm-2 add-menu\" v-if=\"$index === 0\" @click=\"addRules\" _v-788a4083=\"\">\n                        <span class=\"glyphicon glyphicon-plus\" _v-788a4083=\"\"></span>\n                    </div>\n                    <div class=\"col-sm-2 add-menu\" @click=\"removeRules($index)\" v-else=\"\" _v-788a4083=\"\">\n                        <span class=\"glyphicon glyphicon-minus text-danger\" _v-788a4083=\"\"></span>\n                    </div>\n                </div>\n            </form>\n        </div>\n        <div slot=\"modal-footer\" class=\"modal-footer\" _v-788a4083=\"\">\n            <button type=\"button\" class=\"btn btn-default\" @click=\"saveRules\" _v-788a4083=\"\">保存</button>\n            <button type=\"button\" class=\"btn btn-default\" @click=\"ruleModal = false\" _v-788a4083=\"\">取消</button>\n        </div>\n    </modal>\n    <delete-modal _v-788a4083=\"\"></delete-modal>\n";
+	module.exports = "\n    <modal :show.sync=\"ruleModal\" effect=\"fade\" width=\"450px\" _v-67fb2739=\"\">\n        <div slot=\"modal-header\" class=\"modal-header\" _v-67fb2739=\"\">\n            <h4 class=\"modal-title\" _v-67fb2739=\"\">规则配置</h4>\n        </div>\n        <div slot=\"modal-body\" class=\"modal-body\" _v-67fb2739=\"\">\n            <form class=\"form-horizontal\" _v-67fb2739=\"\">\n                <div class=\"form-group\" v-for=\"list in rules\" track-by=\"$index\" _v-67fb2739=\"\">\n                    <label class=\"control-label col-sm-3\" _v-67fb2739=\"\">规则{{ $index + 1 }}：</label>\n                    <div class=\"col-sm-7\" _v-67fb2739=\"\">\n                        <input type=\"text\" class=\"form-control\" v-model=\"list.label\" _v-67fb2739=\"\">\n                    </div>\n                    <div class=\"col-sm-2 add-menu\" v-if=\"$index === 0\" @click=\"addRules\" _v-67fb2739=\"\">\n                        <span class=\"glyphicon glyphicon-plus\" _v-67fb2739=\"\"></span>\n                    </div>\n                    <div class=\"col-sm-2 add-menu\" @click=\"removeRules($index)\" v-else=\"\" _v-67fb2739=\"\">\n                        <span class=\"glyphicon glyphicon-minus text-danger\" _v-67fb2739=\"\"></span>\n                    </div>\n                </div>\n            </form>\n        </div>\n        <div slot=\"modal-footer\" class=\"modal-footer\" _v-67fb2739=\"\">\n            <button type=\"button\" class=\"btn btn-default\" @click=\"saveRules\" _v-67fb2739=\"\">保存</button>\n            <button type=\"button\" class=\"btn btn-default\" @click=\"ruleModal = false\" _v-67fb2739=\"\">取消</button>\n        </div>\n    </modal>\n    <delete-modal _v-67fb2739=\"\"></delete-modal>\n";
 
 /***/ },
 /* 118 */
@@ -2330,7 +2281,7 @@ webpackJsonp([1],Array(25).concat([
 	
 	
 	// module
-	exports.push([module.id, "\r\n.add-menu[_v-e1194f52] {\r\n    height: 34px;\r\n    line-height: 34px;\r\n    padding: 0;\r\n    color: #009688;\r\n    cursor: pointer;\r\n}\r\n", "", {"version":3,"sources":["/./src/components/deploy_manage/run_board/Modify.vue.style"],"names":[],"mappings":";AA6HA;IACA,aAAA;IACA,kBAAA;IACA,WAAA;IACA,eAAA;IACA,gBAAA;CACA","file":"Modify.vue","sourcesContent":["<template>\r\n    <modal :show.sync=\"modifyModal\" effect=\"fade\" width=\"450px\">\r\n        <div slot=\"modal-header\" class=\"modal-header\">\r\n            <h4 class=\"modal-title\">修改</h4>\r\n        </div>\r\n        <div slot=\"modal-body\" class=\"modal-body\">\r\n            <form class=\"form-horizontal\">\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label col-sm-3\">名称：<span class=\"text-danger\">*</span></label>\r\n                    <div class=\"col-sm-8\">\r\n                        <input type=\"text\" class=\"form-control\" v-model=\"name\"></label>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group input-box\">\r\n                    <label class=\"control-label col-sm-3\">类型：<span class=\"text-danger\">*</span></label>\r\n                    <div class=\"col-sm-8\">\r\n                        <v-select :value.sync=\"type\" :options=\"types\" placeholder=\"请选择\">\r\n                        </v-select>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\" v-for=\"version in versions\" track-by=\"$index\">\r\n                    <label class=\"control-label col-sm-3\" v-show=\"$index === 0\">版本/型号：</label>\r\n                    <div :class=\"$index === 0 ? 'col-sm-8' : 'col-sm-8 col-sm-offset-3'\">\r\n                        <input type=\"text\" class=\"form-control\" v-model=\"version\">\r\n                    </div>\r\n                    <div class=\"col-sm-1 add-menu\" v-if=\"$index === 0\" @click=\"versions.push('')\">\r\n                        <span class=\"glyphicon glyphicon-plus\"></span>\r\n                    </div>\r\n                    <div class=\"col-sm-1 add-menu\" v-else @click=\"versions.splice($index, 1)\">\r\n                        <span class=\"glyphicon glyphicon-minus text-danger\"></span>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label col-sm-3\">备注：</label>\r\n                    <div class=\"col-sm-8\">\r\n                        <textarea class=\"form-control\" rows=\"5\" v-model=\"remark\"></textarea>\r\n                    </div>\r\n                </div>\r\n            </form>\r\n        </div>\r\n        <div slot=\"modal-footer\" class=\"modal-footer\">\r\n            <button type=\"button\" class=\"btn btn-default\" :disabled=\"name.trim() && type ? false : true\" @click=\"saveFn\">保存</button>\r\n            <button type=\"button\" class=\"btn btn-default\" @click='modifyModal = false'>取消</button>\r\n        </div>\r\n    </modal>\r\n</template>\r\n\r\n<script>\r\nimport { modal } from 'vue-strap'\r\nimport vSelect from '../../global/Select.vue'\r\nimport { types } from '../../../vuex/getters.js'\r\n\r\nlet origin = {\r\n        modifyModal: false,\r\n        name: '',\r\n        type: '',\r\n        versions: [''],\r\n        remark: '',\r\n        id: null\r\n    }\r\n\r\nexport default {\r\n    data () {\r\n        return origin\r\n    },\r\n    methods: {\r\n\r\n        // 保存修改\r\n        saveFn () {\r\n            this.$http({\r\n                url: '/env_edit/',\r\n                method: 'POST',\r\n                data: {\r\n                    id: this.id,\r\n                    name: this.name,\r\n                    type: this.type,\r\n                    versions: this.versions,\r\n                    remark: this.remark\r\n                }\r\n            })\r\n            .then(response => {\r\n                if (response.data.result) {\r\n                    this.modifyModal = false\r\n\r\n                    this.$dispatch('refresh')\r\n                    this.$dispatch('show-success')\r\n                } else {\r\n                    this.$dispatch('show-error')\r\n                }\r\n            })\r\n        }\r\n    },\r\n    components: {\r\n        modal,\r\n        vSelect\r\n    },\r\n    vuex: {\r\n        getters: {\r\n            types\r\n        }\r\n    },\r\n    events: {\r\n        'showModify' (param) {\r\n            this.modifyModal = true\r\n\r\n            this.$http({\r\n                url: '/env_edit/',\r\n                method: 'GET',\r\n                data: {\r\n                    id: param\r\n                }\r\n            })\r\n            .then(response => {\r\n                this.name = response.data.name\r\n                this.type = response.data.type\r\n                this.versions = response.data.versions\r\n                this.remark = response.data.remark\r\n                this.id = param\r\n            })\r\n        }\r\n    }\r\n}\r\n</script>\r\n\r\n<style scoped>\r\n.add-menu {\r\n    height: 34px;\r\n    line-height: 34px;\r\n    padding: 0;\r\n    color: #009688;\r\n    cursor: pointer;\r\n}\r\n</style>"],"sourceRoot":"webpack://"}]);
+	exports.push([module.id, "\r\n.add-menu[_v-e1194f52] {\r\n    height: 34px;\r\n    line-height: 34px;\r\n    padding: 0;\r\n    color: #009688;\r\n    cursor: pointer;\r\n}\r\n", "", {"version":3,"sources":["/./src/components/deploy_manage/run_board/Modify.vue.style"],"names":[],"mappings":";AA0HA;IACA,aAAA;IACA,kBAAA;IACA,WAAA;IACA,eAAA;IACA,gBAAA;CACA","file":"Modify.vue","sourcesContent":["<template>\r\n    <modal :show.sync=\"modifyModal\" effect=\"fade\" width=\"450px\">\r\n        <div slot=\"modal-header\" class=\"modal-header\">\r\n            <h4 class=\"modal-title\">修改</h4>\r\n        </div>\r\n        <div slot=\"modal-body\" class=\"modal-body\">\r\n            <form class=\"form-horizontal\">\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label col-sm-3\">名称：<span class=\"text-danger\">*</span></label>\r\n                    <div class=\"col-sm-8\">\r\n                        <input type=\"text\" class=\"form-control\" v-model=\"name\"></label>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group input-box\">\r\n                    <label class=\"control-label col-sm-3\">类型：<span class=\"text-danger\">*</span></label>\r\n                    <div class=\"col-sm-8\">\r\n                        <v-select :value.sync=\"type\" :options=\"types\" placeholder=\"请选择\">\r\n                        </v-select>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\" v-for=\"version in versions\" track-by=\"$index\">\r\n                    <label class=\"control-label col-sm-3\" v-show=\"$index === 0\">版本/型号：</label>\r\n                    <div :class=\"$index === 0 ? 'col-sm-8' : 'col-sm-8 col-sm-offset-3'\">\r\n                        <input type=\"text\" class=\"form-control\" v-model=\"version\">\r\n                    </div>\r\n                    <div class=\"col-sm-1 add-menu\" v-if=\"$index === 0\" @click=\"versions.push('')\">\r\n                        <span class=\"glyphicon glyphicon-plus\"></span>\r\n                    </div>\r\n                    <div class=\"col-sm-1 add-menu\" v-else @click=\"versions.splice($index, 1)\">\r\n                        <span class=\"glyphicon glyphicon-minus text-danger\"></span>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label col-sm-3\">备注：</label>\r\n                    <div class=\"col-sm-8\">\r\n                        <textarea class=\"form-control\" rows=\"5\" v-model=\"remark\"></textarea>\r\n                    </div>\r\n                </div>\r\n            </form>\r\n        </div>\r\n        <div slot=\"modal-footer\" class=\"modal-footer\">\r\n            <button type=\"button\" class=\"btn btn-default\" :disabled=\"name.trim() && type ? false : true\" @click=\"saveFn\">保存</button>\r\n            <button type=\"button\" class=\"btn btn-default\" @click='modifyModal = false'>取消</button>\r\n        </div>\r\n    </modal>\r\n</template>\r\n\r\n<script>\r\nimport { modal } from 'vue-strap'\r\nimport vSelect from '../../global/Select.vue'\r\nimport { types } from '../../../vuex/getters.js'\r\n\r\nlet origin = {\r\n        modifyModal: false,\r\n        name: '',\r\n        type: '',\r\n        versions: [''],\r\n        remark: '',\r\n        id: null\r\n    }\r\n\r\nexport default {\r\n    data () {\r\n        return origin\r\n    },\r\n    methods: {\r\n\r\n        // 保存修改\r\n        saveFn () {\r\n            this.$http({\r\n                url: '/env_edit/',\r\n                method: 'POST',\r\n                data: {\r\n                    id: this.id,\r\n                    name: this.name,\r\n                    type: this.type,\r\n                    versions: this.versions,\r\n                    remark: this.remark\r\n                }\r\n            })\r\n            .then(response => {\r\n                if (response.data.result) {\r\n                    this.modifyModal = false\r\n\r\n                    this.$dispatch('refresh')\r\n                    this.$dispatch('show-success')\r\n                } else {\r\n                    this.$dispatch('show-error')\r\n                }\r\n            })\r\n        }\r\n    },\r\n    components: {\r\n        modal,\r\n        vSelect\r\n    },\r\n    vuex: {\r\n        getters: {\r\n            types\r\n        }\r\n    },\r\n    events: {\r\n        'showModify' (param) {\r\n            this.modifyModal = true\r\n\r\n            this.$http({\r\n                url: '/env_edit/?id=' + param,\r\n                method: 'GET'\r\n            })\r\n            .then(response => {\r\n                this.name = response.data.name\r\n                this.type = response.data.type\r\n                this.versions = response.data.versions\r\n                this.remark = response.data.remark\r\n                this.id = param\r\n            })\r\n        }\r\n    }\r\n}\r\n</script>\r\n\r\n<style scoped>\r\n.add-menu {\r\n    height: 34px;\r\n    line-height: 34px;\r\n    padding: 0;\r\n    color: #009688;\r\n    cursor: pointer;\r\n}\r\n</style>"],"sourceRoot":"webpack://"}]);
 	
 	// exports
 
@@ -2462,11 +2413,8 @@ webpackJsonp([1],Array(25).concat([
 	            this.modifyModal = true;
 	
 	            this.$http({
-	                url: '/env_edit/',
-	                method: 'GET',
-	                data: {
-	                    id: param
-	                }
+	                url: '/env_edit/?id=' + param,
+	                method: 'GET'
 	            }).then(function (response) {
 	                _this2.name = response.data.name;
 	                _this2.type = response.data.type;
@@ -2863,7 +2811,7 @@ webpackJsonp([1],Array(25).concat([
 	var __vue_script__, __vue_template__
 	__webpack_require__(129)
 	__vue_script__ = __webpack_require__(131)
-	__vue_template__ = __webpack_require__(140)
+	__vue_template__ = __webpack_require__(132)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -2871,7 +2819,7 @@ webpackJsonp([1],Array(25).concat([
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "D:\\work\\Aptana Studio 3 Workspace\\charging_conf\\charging_conf\\static\\src\\components\\deploy_manage\\run_board\\Script.vue"
+	  var id = "D:\\work\\Aptana Studio 3 Workspace\\charging_conf\\charging_conf\\static\\src\\components\\global\\Confirm.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -2895,8 +2843,8 @@ webpackJsonp([1],Array(25).concat([
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js?sourceMap!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-15113fe8&file=Script.vue&scoped=true!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Script.vue", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js?sourceMap!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-15113fe8&file=Script.vue&scoped=true!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Script.vue");
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-cd8cc08a&file=Confirm.vue!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Confirm.vue", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-cd8cc08a&file=Confirm.vue!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Confirm.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -2914,13 +2862,157 @@ webpackJsonp([1],Array(25).concat([
 	
 	
 	// module
-	exports.push([module.id, "\r\n\r\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"Script.vue","sourceRoot":"webpack://"}]);
+	exports.push([module.id, "\r\n    \r\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"Confirm.vue","sourceRoot":"webpack://"}]);
 	
 	// exports
 
 
 /***/ },
 /* 131 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _vueStrap = __webpack_require__(103);
+	
+	exports.default = {
+	    data: function data() {
+	        return {
+	            confirmModal: false,
+	            tag: '',
+	            msg: '确认要删除此配置？'
+	        };
+	    },
+	
+	    methods: {
+	        okFn: function okFn() {
+	            var _this = this;
+	
+	            this.$dispatch('confirm', _this.tag);
+	            this.confirmModal = false;
+	        }
+	    },
+	    components: {
+	        modal: _vueStrap.modal
+	    },
+	    events: {
+	        'showConfirm': function showConfirm(param) {
+	            this.confirmModal = true;
+	
+	            if (param) {
+	                this.tag = param;
+	            }
+	        },
+	        'setMsg': function setMsg(param) {
+	            this.msg = param;
+	        }
+	    }
+	};
+	// </script>
+	//
+	// <style>
+	//
+	// </style>
+	/* generated by vue-loader */
+	// <!-- 确认操作组件 -->
+	// <template>
+	//     <modal :show.sync="confirmModal" effect="fade" width="450px">
+	//         <div slot="modal-header" class="modal-header">
+	//             <h4 class="modal-title">
+	//                 确认操作
+	//             </h4>
+	//         </div>
+	//         <div slot="modal-body" class="modal-body">
+	//             <h4 class="text-center" v-text="msg"></h4>
+	//         </div>
+	//         <div slot="modal-footer" class="modal-footer">
+	//             <button type="button" class="btn btn-warning" @click="okFn">
+	//                 确认
+	//             </button>
+	//             <button type="button" class="btn btn-default" @click="confirmModal = false">
+	//                 取消
+	//             </button>
+	//         </div>
+	//     </modal>
+	// </template>
+	//
+	// <script>
+
+/***/ },
+/* 132 */
+/***/ function(module, exports) {
+
+	module.exports = "\r\n    <modal :show.sync=\"confirmModal\" effect=\"fade\" width=\"450px\">\r\n        <div slot=\"modal-header\" class=\"modal-header\">\r\n            <h4 class=\"modal-title\">\r\n                确认操作\r\n            </h4>\r\n        </div>\r\n        <div slot=\"modal-body\" class=\"modal-body\">\r\n            <h4 class=\"text-center\" v-text=\"msg\"></h4>\r\n        </div>\r\n        <div slot=\"modal-footer\" class=\"modal-footer\">\r\n            <button type=\"button\" class=\"btn btn-warning\" @click=\"okFn\">\r\n                确认\r\n            </button>\r\n            <button type=\"button\" class=\"btn btn-default\" @click=\"confirmModal = false\">\r\n                取消\r\n            </button>\r\n        </div>\r\n    </modal>\r\n";
+
+/***/ },
+/* 133 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__webpack_require__(134)
+	__vue_script__ = __webpack_require__(136)
+	__vue_template__ = __webpack_require__(145)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "D:\\work\\Aptana Studio 3 Workspace\\charging_conf\\charging_conf\\static\\src\\components\\deploy_manage\\run_board\\Script.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 134 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(135);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(29)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js?sourceMap!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-15113fe8&file=Script.vue&scoped=true!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Script.vue", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js?sourceMap!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-15113fe8&file=Script.vue&scoped=true!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Script.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 135 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(28)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "\r\n\r\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"Script.vue","sourceRoot":"webpack://"}]);
+	
+	// exports
+
+
+/***/ },
+/* 136 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function($) {'use strict';
@@ -2935,27 +3027,27 @@ webpackJsonp([1],Array(25).concat([
 	
 	var _Select2 = _interopRequireDefault(_Select);
 	
-	var _codemirror = __webpack_require__(132);
+	var _codemirror = __webpack_require__(137);
 	
 	var _codemirror2 = _interopRequireDefault(_codemirror);
 	
-	var _codemirror3 = __webpack_require__(133);
+	var _codemirror3 = __webpack_require__(138);
 	
 	var _codemirror4 = _interopRequireDefault(_codemirror3);
 	
-	var _erlangDark = __webpack_require__(135);
+	var _erlangDark = __webpack_require__(140);
 	
 	var _erlangDark2 = _interopRequireDefault(_erlangDark);
 	
-	var _shell = __webpack_require__(137);
+	var _shell = __webpack_require__(142);
 	
 	var _shell2 = _interopRequireDefault(_shell);
 	
-	var _python = __webpack_require__(138);
+	var _python = __webpack_require__(143);
 	
 	var _python2 = _interopRequireDefault(_python);
 	
-	var _perl = __webpack_require__(139);
+	var _perl = __webpack_require__(144);
 	
 	var _perl2 = _interopRequireDefault(_perl);
 	
@@ -3040,6 +3132,8 @@ webpackJsonp([1],Array(25).concat([
 	
 	        saveScript: function saveScript() {
 	            var _this2 = this;
+	
+	            console.log(this.rule);
 	
 	            this.$http({
 	                url: '/script_edit/',
@@ -3142,6 +3236,8 @@ webpackJsonp([1],Array(25).concat([
 	    events: {
 	        'showScript': function showScript() {
 	            this.scriptModal = true;
+	
+	            this.rule = '';
 	        }
 	    },
 	    watch: {
@@ -3151,14 +3247,16 @@ webpackJsonp([1],Array(25).concat([
 	        'rule': function rule(newVal) {
 	            var _this4 = this;
 	
-	            this.$http({
-	                url: '/script_edit/?id=' + newVal,
-	                method: 'GET'
-	            }).then(function (response) {
-	                response.data.script ? editor.setValue(response.data.script) : editor.setValue('');
+	            if (newVal) {
+	                this.$http({
+	                    url: '/script_edit/?id=' + newVal,
+	                    method: 'GET'
+	                }).then(function (response) {
+	                    response.data.script ? editor.setValue(response.data.script) : editor.setValue('');
 	
-	                response.data.script_type ? _this4.scriptTypeSelected = response.data.script_type : _this4.scriptTypeSelected = '1';
-	            });
+	                    response.data.script_type ? _this4.scriptTypeSelected = response.data.script_type : _this4.scriptTypeSelected = '1';
+	                });
+	            }
 	        },
 	
 	
@@ -3187,7 +3285,7 @@ webpackJsonp([1],Array(25).concat([
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 132 */
+/* 137 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// CodeMirror, copyright (c) by Marijn Haverbeke and others
@@ -12101,13 +12199,13 @@ webpackJsonp([1],Array(25).concat([
 
 
 /***/ },
-/* 133 */
+/* 138 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(134);
+	var content = __webpack_require__(139);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(29)(content, {});
@@ -12127,7 +12225,7 @@ webpackJsonp([1],Array(25).concat([
 	}
 
 /***/ },
-/* 134 */
+/* 139 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(28)();
@@ -12141,13 +12239,13 @@ webpackJsonp([1],Array(25).concat([
 
 
 /***/ },
-/* 135 */
+/* 140 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(136);
+	var content = __webpack_require__(141);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(29)(content, {});
@@ -12167,7 +12265,7 @@ webpackJsonp([1],Array(25).concat([
 	}
 
 /***/ },
-/* 136 */
+/* 141 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(28)();
@@ -12181,7 +12279,7 @@ webpackJsonp([1],Array(25).concat([
 
 
 /***/ },
-/* 137 */
+/* 142 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// CodeMirror, copyright (c) by Marijn Haverbeke and others
@@ -12189,7 +12287,7 @@ webpackJsonp([1],Array(25).concat([
 	
 	(function(mod) {
 	  if (true) // CommonJS
-	    mod(__webpack_require__(132));
+	    mod(__webpack_require__(137));
 	  else if (typeof define == "function" && define.amd) // AMD
 	    define(["../../lib/codemirror"], mod);
 	  else // Plain browser env
@@ -12326,7 +12424,7 @@ webpackJsonp([1],Array(25).concat([
 
 
 /***/ },
-/* 138 */
+/* 143 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// CodeMirror, copyright (c) by Marijn Haverbeke and others
@@ -12334,7 +12432,7 @@ webpackJsonp([1],Array(25).concat([
 	
 	(function(mod) {
 	  if (true) // CommonJS
-	    mod(__webpack_require__(132));
+	    mod(__webpack_require__(137));
 	  else if (typeof define == "function" && define.amd) // AMD
 	    define(["../../lib/codemirror"], mod);
 	  else // Plain browser env
@@ -12672,7 +12770,7 @@ webpackJsonp([1],Array(25).concat([
 
 
 /***/ },
-/* 139 */
+/* 144 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// CodeMirror, copyright (c) by Marijn Haverbeke and others
@@ -12683,7 +12781,7 @@ webpackJsonp([1],Array(25).concat([
 	
 	(function(mod) {
 	  if (true) // CommonJS
-	    mod(__webpack_require__(132));
+	    mod(__webpack_require__(137));
 	  else if (typeof define == "function" && define.amd) // AMD
 	    define(["../../lib/codemirror"], mod);
 	  else // Plain browser env
@@ -13515,99 +13613,14 @@ webpackJsonp([1],Array(25).concat([
 
 
 /***/ },
-/* 140 */
+/* 145 */
 /***/ function(module, exports) {
 
 	module.exports = "\n    <modal :show.sync=\"scriptModal\" effect=\"fade\" width=\"800px\" _v-15113fe8=\"\">\n        <div slot=\"modal-header\" class=\"modal-header\" _v-15113fe8=\"\">\n            <button type=\"button\" class=\"close\" @click=\"scriptModal = false\" _v-15113fe8=\"\">\n                <span _v-15113fe8=\"\">×</span>\n            </button>\n            <h4 class=\"modal-title\" _v-15113fe8=\"\">脚本编写</h4>\n        </div>\n        <div slot=\"modal-body\" class=\"modal-body\" _v-15113fe8=\"\">\n            <form id=\"file_form\" class=\"form-horizontal\" _v-15113fe8=\"\">\n                <div class=\"form-group\" _v-15113fe8=\"\">\n                    <label class=\"col-sm-2 control-label\" _v-15113fe8=\"\">规则名：<span class=\"text-danger\" _v-15113fe8=\"\">*</span></label>\n                    <div class=\"col-sm-6\" _v-15113fe8=\"\">\n                        <v-select :value.sync=\"rule\" :options=\"ruleList\" placeholder=\"请选择\" _v-15113fe8=\"\">\n                        </v-select>\n                    </div>\n                </div>\n                <div class=\"form-group\" _v-15113fe8=\"\">\n                    <label class=\"col-sm-2 control-label\" _v-15113fe8=\"\">脚本来源：</label>\n                    <div class=\"col-sm-6\" _v-15113fe8=\"\">\n                        <radio-group :value.sync=\"scriptOriginSelected\" type=\"default\" _v-15113fe8=\"\">\n                            <radio :value=\"'1'\" _v-15113fe8=\"\">手工录入</radio>\n                            <radio :value=\"'2'\" _v-15113fe8=\"\">本地脚本</radio>\n                        </radio-group>\n                    </div>\n                </div>\n                <div class=\"form-group\" v-if=\"scriptOriginSelected === '2'\" _v-15113fe8=\"\">\n                    <div class=\"col-sm-5 col-sm-offset-2\" _v-15113fe8=\"\">\n                        <input type=\"text\" class=\"form-control\" :readonly=\"true\" v-model=\"road\" _v-15113fe8=\"\">\n                        <input id=\"file\" type=\"file\" name=\"file\" v-show=\"false\" @change=\"fileChange\" _v-15113fe8=\"\">\n                    </div>\n                    <div class=\"col-sm-4\" _v-15113fe8=\"\">\n                        <button type=\"button\" class=\"btn btn-default\" @click=\"fileSearch\" _v-15113fe8=\"\">浏览</button>\n                        <button type=\"button\" class=\"btn btn-default\" @click=\"fileUpload\" _v-15113fe8=\"\">上传</button>\n                    </div>\n                </div>\n                <div class=\"form-group\" _v-15113fe8=\"\">\n                    <label class=\"col-sm-2 control-label\" _v-15113fe8=\"\">脚本类型：</label>\n                    <div class=\"col-sm-6\" _v-15113fe8=\"\">\n                        <radio-group :value.sync=\"scriptTypeSelected\" type=\"default\" _v-15113fe8=\"\">\n                            <radio v-for=\"scriptType in scriptTypes\" :value=\"scriptType.value\" _v-15113fe8=\"\">{{ scriptType.label }}</radio>\n                        </radio-group>\n                    </div>\n                </div>\n                <div class=\"form-group\" v-show=\"rule\" _v-15113fe8=\"\">\n                    <textarea id=\"editScript\" class=\"form-group\" _v-15113fe8=\"\"></textarea>\n                </div>\n            </form>\n        </div>\n        <div slot=\"modal-footer\" class=\"modal-footer\" _v-15113fe8=\"\">\n            <button type=\"button\" class=\"btn btn-default\" :disabled=\"rule ? false : true\" @click=\"saveScript\" _v-15113fe8=\"\">保存</button>\n            <button type=\"button\" class=\"btn btn-default\" @click=\"scriptModal = false\" _v-15113fe8=\"\">取消</button>\n        </div>\n    </modal>\n";
 
 /***/ },
-/* 141 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	exports.getRunTypes = getRunTypes;
-	exports.getRules = getRules;
-	exports.getRuleList = getRuleList;
-	exports.getAppTypes = getAppTypes;
-	/**
-	 * 
-	 * @authors luozh@snail.com
-	 * @date    2016-05-12 10:35:58
-	 * @version v1.0
-	 */
-	
-	// action 会收到 store 作为它的第一个参数
-	// 在 store 里我们只需要 dispatch （在有些情况下需要 state）
-	// 我们可以利用 ES6 的解构（destructuring）语法来简化参数的使用
-	
-	// 获取运行环境类型
-	function getRunTypes(_ref) {
-	    var dispatch = _ref.dispatch;
-	    var state = _ref.state;
-	
-	    this.$http({
-	        url: '/env_add/',
-	        method: 'GET'
-	    }).then(function (response) {
-	        dispatch('GETRUNTYPES', response.data.types);
-	    });
-	}
-	
-	// 获取规则
-	function getRules(_ref2, param) {
-	    var dispatch = _ref2.dispatch;
-	    var state = _ref2.state;
-	
-	    this.$http({
-	        url: '/rule_edit/?id=' + param,
-	        method: 'GET'
-	    }).then(function (response) {
-	        if (response.data.result) {
-	            if (response.data.rules.length) {
-	                dispatch('GETRULES', response.data.rules);
-	            } else {
-	                dispatch('GETRULES', [{ value: '', label: '' }]);
-	            }
-	
-	            dispatch('GETRULEID', param);
-	        } else {
-	            dispatch('GETRULEID', null);
-	        }
-	    });
-	}
-	
-	// 获取规则列表
-	function getRuleList(_ref3, param) {
-	    var dispatch = _ref3.dispatch;
-	    var state = _ref3.state;
-	
-	    this.$http({
-	        url: '/rule_edit/?id=' + param,
-	        method: 'GET'
-	    }).then(function (response) {
-	        dispatch('GETRULELIST', response.data.rules);
-	    });
-	}
-	
-	// 获取应用配置类型
-	function getAppTypes(_ref4) {
-	    var dispatch = _ref4.dispatch;
-	    var state = _ref4.state;
-	
-	    this.$http({
-	        url: '/package_add/',
-	        method: 'GET'
-	    }).then(function (response) {
-	        dispatch('GETAPPTYPES', response.data.types);
-	    });
-	}
-
-/***/ },
-/* 142 */
+/* 146 */,
+/* 147 */
 /***/ function(module, exports) {
 
 	module.exports = "\n    <div _v-3c857cf8=\"\">\n        <form class=\"form-inline\" _v-3c857cf8=\"\">\n            <div class=\"form-group\" _v-3c857cf8=\"\">\n                <label _v-3c857cf8=\"\">名称：</label>\n                <input type=\"text\" class=\"form-control\" v-model=\"param.name\" _v-3c857cf8=\"\">\n            </div>\n            <div class=\"form-group\" _v-3c857cf8=\"\">\n                <label _v-3c857cf8=\"\">类型：</label>\n                <v-select :value.sync=\"param.type\" :options=\"typeArr.concat(types)\" placeholder=\"\" _v-3c857cf8=\"\">\n                </v-select>\n            </div>\n            <div class=\"mt30 table-btn\" _v-3c857cf8=\"\">\n                <button type=\"button\" class=\"btn btn-default btn-pd\" @click=\"$broadcast('showAdd')\" _v-3c857cf8=\"\">\n                    <span class=\"glyphicon glyphicon-plus\" _v-3c857cf8=\"\"></span>\n                    添加\n                </button>\n            </div>\n            <table class=\"table table-hover table-bordered table-bg\" _v-3c857cf8=\"\">\n                <thead _v-3c857cf8=\"\">\n                    <tr _v-3c857cf8=\"\">\n                        <th _v-3c857cf8=\"\">名称</th>\n                        <th _v-3c857cf8=\"\">类型</th>\n                        <th _v-3c857cf8=\"\">版本/型号</th>\n                        <th _v-3c857cf8=\"\">检查规则</th>\n                        <th _v-3c857cf8=\"\">备注</th>\n                        <th _v-3c857cf8=\"\">操作</th>\n                    </tr>\n                </thead>\n                <tbody _v-3c857cf8=\"\">\n                    <tr v-for=\"list in tableList\" _v-3c857cf8=\"\">\n                        <td v-text=\"list.name\" _v-3c857cf8=\"\"></td>\n                        <td v-text=\"list.type\" _v-3c857cf8=\"\"></td>\n                        <td v-text=\"list.version\" :title=\"list.version\" _v-3c857cf8=\"\"></td>\n                        <td _v-3c857cf8=\"\">\n                            <button type=\"button\" class=\"btn btn-default btn-small\" @click=\"getRuleFn($index)\" _v-3c857cf8=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-list-alt\" _v-3c857cf8=\"\"></span>\n                                规则\n                            </button>\n                            <button type=\"button\" class=\"btn btn-default btn-small\" @click=\"getRuleListFn($index)\" _v-3c857cf8=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-duplicate\" _v-3c857cf8=\"\"></span>\n                                脚本\n                            </button>\n                        </td>\n                        <td v-text=\"list.remark\" _v-3c857cf8=\"\"></td>\n                        <td _v-3c857cf8=\"\">\n                            <button type=\"button\" class=\"btn btn-default btn-small\" @click=\"$broadcast('showModify', tableList[$index].id)\" _v-3c857cf8=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-edit\" _v-3c857cf8=\"\"></span>\n                                修改\n                            </button>\n                            <button type=\"button\" class=\"btn btn-default btn-small\" @click=\"$broadcast('showConfirm', tableList[$index].id)\" _v-3c857cf8=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-trash\" _v-3c857cf8=\"\"></span>\n                                删除\n                            </button>\n                        </td>\n                    </tr>\n                    <tr v-if=\"tableList.length === 0\" _v-3c857cf8=\"\">\n                        <td class=\"text-center\" colspan=\"6\" _v-3c857cf8=\"\">\n                            暂无数据\n                        </td>\n                    </tr>\n                </tbody>\n                <tfoot _v-3c857cf8=\"\">\n                    <tr _v-3c857cf8=\"\">\n                        <td colspan=\"6\" _v-3c857cf8=\"\">\n                            <div class=\"pull-right\" _v-3c857cf8=\"\">\n                                <boot-page :async=\"true\" :lens=\"lenArr\" :page-len=\"pageLen\" :url=\"url\" :param=\"param\" _v-3c857cf8=\"\"></boot-page>\n                            </div>\n                        </td>\n                    </tr>\n                </tfoot>\n            </table>\n        </form>\n        <add-modal _v-3c857cf8=\"\"></add-modal>\n        <rule-modal _v-3c857cf8=\"\"></rule-modal>\n        <modify-modal _v-3c857cf8=\"\"></modify-modal>\n        <delete-modal _v-3c857cf8=\"\"></delete-modal>\n        <editscript-modal _v-3c857cf8=\"\"></editscript-modal>\n    </div>\n";

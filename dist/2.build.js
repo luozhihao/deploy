@@ -1240,63 +1240,80 @@ webpackJsonp([2],Array(31).concat([
 /* 94 */,
 /* 95 */,
 /* 96 */,
-/* 97 */,
-/* 98 */,
-/* 99 */,
-/* 100 */,
-/* 101 */,
-/* 102 */,
-/* 103 */,
-/* 104 */
-/***/ function(module, exports) {
+/* 97 */
+/***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", {
-	   value: true
-	});
-	exports.types = types;
-	exports.rules = rules;
-	exports.ruleId = ruleId;
-	exports.ruleList = ruleList;
-	exports.appTypes = appTypes;
-	/**
-	 * 
-	 * @authors Your Name (you@example.org)
-	 * @date    2016-05-12 10:42:13
-	 * @version $Id$
-	 */
-	
-	// 这个 getter 函数会返回 count 的值
-	// 在 ES6 里你可以写成：
-	// export const getCount = state => state.count
-	
-	// 获取类型
-	function types(state) {
-	   return state.types;
-	}
-	
-	// 获取规则
-	function rules(state) {
-	   return state.rules;
-	}
-	
-	// 获取规则id
-	function ruleId(state) {
-	   return state.ruleId;
-	}
-	
-	// 获取规则列表
-	function ruleList(state) {
-	   return state.ruleList;
-	}
-	
-	// 获取规则列表
-	function appTypes(state) {
-	   return state.appTypes;
-	}
+	module.exports = { "default": __webpack_require__(98), __esModule: true };
 
 /***/ },
+/* 98 */
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(99);
+	module.exports = __webpack_require__(41).Object.assign;
+
+/***/ },
+/* 99 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// 19.1.3.1 Object.assign(target, source)
+	var $export = __webpack_require__(39);
+	
+	$export($export.S + $export.F, 'Object', {assign: __webpack_require__(100)});
+
+/***/ },
+/* 100 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	// 19.1.2.1 Object.assign(target, source, ...)
+	var getKeys  = __webpack_require__(72)
+	  , gOPS     = __webpack_require__(101)
+	  , pIE      = __webpack_require__(102)
+	  , toObject = __webpack_require__(86)
+	  , IObject  = __webpack_require__(62)
+	  , $assign  = Object.assign;
+	
+	// should work with symbols and should have deterministic property order (V8 bug)
+	module.exports = !$assign || __webpack_require__(50)(function(){
+	  var A = {}
+	    , B = {}
+	    , S = Symbol()
+	    , K = 'abcdefghijklmnopqrst';
+	  A[S] = 7;
+	  K.split('').forEach(function(k){ B[k] = k; });
+	  return $assign({}, A)[S] != 7 || Object.keys($assign({}, B)).join('') != K;
+	}) ? function assign(target, source){ // eslint-disable-line no-unused-vars
+	  var T     = toObject(target)
+	    , aLen  = arguments.length
+	    , index = 1
+	    , getSymbols = gOPS.f
+	    , isEnum     = pIE.f;
+	  while(aLen > index){
+	    var S      = IObject(arguments[index++])
+	      , keys   = getSymbols ? getKeys(S).concat(getSymbols(S)) : getKeys(S)
+	      , length = keys.length
+	      , j      = 0
+	      , key;
+	    while(length > j)if(isEnum.call(S, key = keys[j++]))T[key] = S[key];
+	  } return T;
+	} : $assign;
+
+/***/ },
+/* 101 */
+/***/ function(module, exports) {
+
+	exports.f = Object.getOwnPropertySymbols;
+
+/***/ },
+/* 102 */
+/***/ function(module, exports) {
+
+	exports.f = {}.propertyIsEnumerable;
+
+/***/ },
+/* 103 */,
+/* 104 */,
 /* 105 */,
 /* 106 */,
 /* 107 */,
@@ -1304,13 +1321,384 @@ webpackJsonp([2],Array(31).concat([
 /* 109 */,
 /* 110 */,
 /* 111 */,
-/* 112 */
+/* 112 */,
+/* 113 */,
+/* 114 */,
+/* 115 */,
+/* 116 */,
+/* 117 */,
+/* 118 */,
+/* 119 */,
+/* 120 */,
+/* 121 */,
+/* 122 */,
+/* 123 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(113)
-	__vue_script__ = __webpack_require__(115)
-	__vue_template__ = __webpack_require__(116)
+	__webpack_require__(124)
+	__vue_script__ = __webpack_require__(126)
+	__vue_template__ = __webpack_require__(127)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "D:\\work\\Aptana Studio 3 Workspace\\charging_conf\\charging_conf\\static\\src\\components\\global\\BootPage.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 124 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(125);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(29)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-329bae94&file=BootPage.vue&scoped=true!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./BootPage.vue", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-329bae94&file=BootPage.vue&scoped=true!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./BootPage.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 125 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(28)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "\r\n.boot-select[_v-329bae94] {\r\n    float: left;\r\n    width: 80px;\r\n}\r\n\r\n.boot-nav[_v-329bae94] {\r\n    float: right;\r\n}\r\n\r\n.boot-page[_v-329bae94] {\r\n    display: inline-block;\r\n    margin: 2px 10px 0 20px;\r\n    vertical-align: middle;\r\n}\r\n\r\n.page-total[_v-329bae94] {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n", "", {"version":3,"sources":["/./src/components/global/BootPage.vue.style"],"names":[],"mappings":";AA2PA;IACA,YAAA;IACA,YAAA;CACA;;AAEA;IACA,aAAA;CACA;;AAEA;IACA,sBAAA;IACA,wBAAA;IACA,uBAAA;CACA;;AAEA;IACA,sBAAA;IACA,uBAAA;CACA","file":"BootPage.vue","sourcesContent":["<!-- 表格分页组件 -->\r\n<template>\r\n    <select class=\"form-control boot-select\" v-model=\"len\">\r\n        <option v-for=\"arr in lens\" :value=\"arr\" v-text=\"arr\" :selected=\"$index === 0 ? true : false\"></option>\r\n    </select>\r\n    <nav class=\"boot-nav\">\r\n        <ul class=\"pagination boot-page\">\r\n            <li>\r\n                <a href=\"javascript:void(0)\" aria-label=\"Previous\" @click=\"onPrevClick()\">\r\n                    <span aria-hidden=\"true\">&laquo;</span>\r\n                </a>\r\n            </li>\r\n            <li v-for=\"page in pages\" :class=\"activeNum === $index ? 'active' : ''\">\r\n                <a href=\"javascript:void(0)\" v-text=\"page\" @click=\"onPageClick($index)\"></a>\r\n            </li>\r\n            <li>\r\n                <a href=\"javascript:void(0)\" aria-label=\"Next\" @click=\"onNextClick()\">\r\n                    <span aria-hidden=\"true\">&raquo;</span>\r\n                </a>\r\n            </li>\r\n        </ul>\r\n        <div class=\"page-total\">\r\n            共 <span v-text=\"pageTotal\"></span> 页\r\n        </div>\r\n    </nav>\r\n</template>\r\n\r\n<script>\r\nexport default {\r\n    props: {\r\n\r\n        // 页码\r\n        pages: {\r\n            type: Array,\r\n            default: function () {\r\n                return [1]\r\n            }\r\n        },\r\n\r\n        // 是否请求服务器端数据\r\n        async: {\r\n            type: Boolean,\r\n            default: false\r\n        },\r\n\r\n        // 每页显示个数\r\n        len: {\r\n            type: Number,\r\n            default: 10\r\n        },\r\n\r\n        // 显示个数数组\r\n        lens: {\r\n            type: Array,\r\n            default: function () {\r\n                return [10, 50, 100]\r\n            }\r\n        },\r\n\r\n        // 表格数据（数组）\r\n        data: {\r\n            type: Array,\r\n            default: function () {\r\n                return []\r\n            }\r\n        },\r\n\r\n        // AJAX地址\r\n        url: {\r\n            type: String,\r\n            default: ''\r\n        },\r\n\r\n        // 显示页数\r\n        pageLen: {\r\n            type: Number,\r\n            default: 5\r\n        },\r\n\r\n        // 总页数 \r\n        pageTotal: {\r\n            type: Number,\r\n            default: 1\r\n        },\r\n\r\n        // 参数内容\r\n        param: {\r\n            type: Object,\r\n            default: function () {\r\n                return {}\r\n            }\r\n        }\r\n    },\r\n    data () {\r\n        return {\r\n            activeNum: 0\r\n        }\r\n    },\r\n    methods: {\r\n\r\n        // 点击页码刷新数据\r\n        onPageClick (index) {\r\n            this.activeNum = index\r\n        },\r\n\r\n        // 上一页\r\n        onPrevClick () {\r\n\r\n            // 当前页是否为当前最小页码\r\n            if (this.activeNum > 0) {\r\n                this.activeNum = this.activeNum - 1\r\n            } else {\r\n                if (this.pages[0] !== 1) {\r\n                    let newPages = []\r\n\r\n                    for (let i = 0; i < this.pages.length; i++) {\r\n                        newPages[i] = this.pages[i] - 1\r\n                    }\r\n\r\n                    this.pages = newPages\r\n                    this.getData()\r\n                }\r\n            }\r\n        },\r\n\r\n        // 下一页\r\n        onNextClick () {\r\n\r\n            // 当前页是否为当前最大页码\r\n            if (this.activeNum < this.pages.length - 1) {\r\n                this.activeNum = this.activeNum + 1\r\n            } else {\r\n                if (this.pages[this.pages.length - 1] < this.pageTotal) {\r\n                    let newPages = []\r\n\r\n                    for (let i = 0; i < this.pages.length; i++) {\r\n                        newPages[i] = this.pages[i] + 1\r\n                    }\r\n\r\n                    this.pages = newPages\r\n\r\n                    this.getData()\r\n                }\r\n            }\r\n        },\r\n\r\n        // 获取页码\r\n        getPages () {\r\n            this.pages = []\r\n\r\n            if (!this.async) {\r\n                this.pageTotal = Math.ceil(this.data.length / this.len)\r\n            }\r\n\r\n            // 比较总页码和显示页数\r\n            if (this.pageTotal <= this.pageLen) {\r\n                for (let i = 1; i <= this.pageTotal; i++) {\r\n                    this.pages.push(i)\r\n                }\r\n            } else {\r\n                for (let i = 1; i <= this.pageLen; i++) {\r\n                    this.pages.push(i)\r\n                }\r\n            }\r\n        },\r\n\r\n        // 页码变化获取数据\r\n        getData () {\r\n            if (!this.async) {\r\n                let len = this.len,\r\n                    pageNum = this.pages[this.activeNum] - 1,\r\n                    newData = [];\r\n\r\n                for (let i = pageNum * len; i < (pageNum * len + len); i++) {\r\n                    this.data[i] !== undefined ? newData.push(this.data[i]) : ''\r\n                }\r\n                \r\n                this.$dispatch('data', newData)\r\n            } else {\r\n                this.param.active = this.pages[this.activeNum]\r\n                this.param.len = this.len\r\n\r\n                this.$http({\r\n                    url: this.url, \r\n                    method: 'POST',\r\n                    data: this.param\r\n                })\r\n                .then(function (response) {\r\n                    this.pageTotal = response.data.page_num\r\n\r\n                    if (this.pages.length !== this.pageLen || this.pageTotal < this.pageLen) {\r\n                        this.getPages()\r\n                    }\r\n\r\n                    this.$dispatch('data', response.data)\r\n                })\r\n            }\r\n        },\r\n\r\n        // 刷新表格\r\n        refresh () {\r\n            this.pages = [1]\r\n\r\n            this.activeNum = 0\r\n\r\n            this.getData()\r\n        }\r\n    },\r\n    ready () {\r\n        if (!this.async) {\r\n            this.getPages()\r\n            this.getData()\r\n\r\n            let _this = this\r\n        } else {\r\n            this.getData()\r\n        }\r\n    },\r\n    watch: {\r\n\r\n        // 监听显示数量\r\n        'len' (newVal, oldVal) {\r\n            if (!this.async) {\r\n                this.getPages()\r\n\r\n                let _this = this\r\n\r\n                if (this.activeNum + 1 > this.pages.length) {\r\n                    this.activeNum = this.pages.length - 1\r\n                }\r\n\r\n                this.getData()\r\n            } else {\r\n                this.refresh()\r\n            }\r\n        },\r\n\r\n        // 监测当前页变化\r\n        'activeNum' (newVal, oldVal) {\r\n            this.getData()\r\n        }\r\n    },\r\n    events: {\r\n        'refresh' () {\r\n            this.refresh()\r\n        }\r\n    }\r\n}\r\n</script>\r\n\r\n<style scoped>\r\n.boot-select {\r\n    float: left;\r\n    width: 80px;\r\n}\r\n\r\n.boot-nav {\r\n    float: right;\r\n}\r\n\r\n.boot-page {\r\n    display: inline-block;\r\n    margin: 2px 10px 0 20px;\r\n    vertical-align: middle;\r\n}\r\n\r\n.page-total {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n</style>"],"sourceRoot":"webpack://"}]);
+	
+	// exports
+
+
+/***/ },
+/* 126 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	// <!-- 表格分页组件 -->
+	// <template>
+	//     <select class="form-control boot-select" v-model="len">
+	//         <option v-for="arr in lens" :value="arr" v-text="arr" :selected="$index === 0 ? true : false"></option>
+	//     </select>
+	//     <nav class="boot-nav">
+	//         <ul class="pagination boot-page">
+	//             <li>
+	//                 <a href="javascript:void(0)" aria-label="Previous" @click="onPrevClick()">
+	//                     <span aria-hidden="true">&laquo;</span>
+	//                 </a>
+	//             </li>
+	//             <li v-for="page in pages" :class="activeNum === $index ? 'active' : ''">
+	//                 <a href="javascript:void(0)" v-text="page" @click="onPageClick($index)"></a>
+	//             </li>
+	//             <li>
+	//                 <a href="javascript:void(0)" aria-label="Next" @click="onNextClick()">
+	//                     <span aria-hidden="true">&raquo;</span>
+	//                 </a>
+	//             </li>
+	//         </ul>
+	//         <div class="page-total">
+	//             共 <span v-text="pageTotal"></span> 页
+	//         </div>
+	//     </nav>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	    props: {
+	
+	        // 页码
+	        pages: {
+	            type: Array,
+	            default: function _default() {
+	                return [1];
+	            }
+	        },
+	
+	        // 是否请求服务器端数据
+	        async: {
+	            type: Boolean,
+	            default: false
+	        },
+	
+	        // 每页显示个数
+	        len: {
+	            type: Number,
+	            default: 10
+	        },
+	
+	        // 显示个数数组
+	        lens: {
+	            type: Array,
+	            default: function _default() {
+	                return [10, 50, 100];
+	            }
+	        },
+	
+	        // 表格数据（数组）
+	        data: {
+	            type: Array,
+	            default: function _default() {
+	                return [];
+	            }
+	        },
+	
+	        // AJAX地址
+	        url: {
+	            type: String,
+	            default: ''
+	        },
+	
+	        // 显示页数
+	        pageLen: {
+	            type: Number,
+	            default: 5
+	        },
+	
+	        // 总页数
+	        pageTotal: {
+	            type: Number,
+	            default: 1
+	        },
+	
+	        // 参数内容
+	        param: {
+	            type: Object,
+	            default: function _default() {
+	                return {};
+	            }
+	        }
+	    },
+	    data: function data() {
+	        return {
+	            activeNum: 0
+	        };
+	    },
+	
+	    methods: {
+	
+	        // 点击页码刷新数据
+	
+	        onPageClick: function onPageClick(index) {
+	            this.activeNum = index;
+	        },
+	
+	
+	        // 上一页
+	        onPrevClick: function onPrevClick() {
+	
+	            // 当前页是否为当前最小页码
+	            if (this.activeNum > 0) {
+	                this.activeNum = this.activeNum - 1;
+	            } else {
+	                if (this.pages[0] !== 1) {
+	                    var newPages = [];
+	
+	                    for (var i = 0; i < this.pages.length; i++) {
+	                        newPages[i] = this.pages[i] - 1;
+	                    }
+	
+	                    this.pages = newPages;
+	                    this.getData();
+	                }
+	            }
+	        },
+	
+	
+	        // 下一页
+	        onNextClick: function onNextClick() {
+	
+	            // 当前页是否为当前最大页码
+	            if (this.activeNum < this.pages.length - 1) {
+	                this.activeNum = this.activeNum + 1;
+	            } else {
+	                if (this.pages[this.pages.length - 1] < this.pageTotal) {
+	                    var newPages = [];
+	
+	                    for (var i = 0; i < this.pages.length; i++) {
+	                        newPages[i] = this.pages[i] + 1;
+	                    }
+	
+	                    this.pages = newPages;
+	
+	                    this.getData();
+	                }
+	            }
+	        },
+	
+	
+	        // 获取页码
+	        getPages: function getPages() {
+	            this.pages = [];
+	
+	            if (!this.async) {
+	                this.pageTotal = Math.ceil(this.data.length / this.len);
+	            }
+	
+	            // 比较总页码和显示页数
+	            if (this.pageTotal <= this.pageLen) {
+	                for (var i = 1; i <= this.pageTotal; i++) {
+	                    this.pages.push(i);
+	                }
+	            } else {
+	                for (var _i = 1; _i <= this.pageLen; _i++) {
+	                    this.pages.push(_i);
+	                }
+	            }
+	        },
+	
+	
+	        // 页码变化获取数据
+	        getData: function getData() {
+	            if (!this.async) {
+	                var len = this.len,
+	                    pageNum = this.pages[this.activeNum] - 1,
+	                    newData = [];
+	
+	                for (var i = pageNum * len; i < pageNum * len + len; i++) {
+	                    this.data[i] !== undefined ? newData.push(this.data[i]) : '';
+	                }
+	
+	                this.$dispatch('data', newData);
+	            } else {
+	                this.param.active = this.pages[this.activeNum];
+	                this.param.len = this.len;
+	
+	                this.$http({
+	                    url: this.url,
+	                    method: 'POST',
+	                    data: this.param
+	                }).then(function (response) {
+	                    this.pageTotal = response.data.page_num;
+	
+	                    if (this.pages.length !== this.pageLen || this.pageTotal < this.pageLen) {
+	                        this.getPages();
+	                    }
+	
+	                    this.$dispatch('data', response.data);
+	                });
+	            }
+	        },
+	
+	
+	        // 刷新表格
+	        refresh: function refresh() {
+	            this.pages = [1];
+	
+	            this.activeNum = 0;
+	
+	            this.getData();
+	        }
+	    },
+	    ready: function ready() {
+	        if (!this.async) {
+	            this.getPages();
+	            this.getData();
+	
+	            var _this = this;
+	        } else {
+	            this.getData();
+	        }
+	    },
+	
+	    watch: {
+	
+	        // 监听显示数量
+	
+	        'len': function len(newVal, oldVal) {
+	            if (!this.async) {
+	                this.getPages();
+	
+	                var _this = this;
+	
+	                if (this.activeNum + 1 > this.pages.length) {
+	                    this.activeNum = this.pages.length - 1;
+	                }
+	
+	                this.getData();
+	            } else {
+	                this.refresh();
+	            }
+	        },
+	
+	
+	        // 监测当前页变化
+	        'activeNum': function activeNum(newVal, oldVal) {
+	            this.getData();
+	        }
+	    },
+	    events: {
+	        'refresh': function refresh() {
+	            this.refresh();
+	        }
+	    }
+	};
+	// </script>
+	//
+	// <style scoped>
+	// .boot-select {
+	//     float: left;
+	//     width: 80px;
+	// }
+	//
+	// .boot-nav {
+	//     float: right;
+	// }
+	//
+	// .boot-page {
+	//     display: inline-block;
+	//     margin: 2px 10px 0 20px;
+	//     vertical-align: middle;
+	// }
+	//
+	// .page-total {
+	//     display: inline-block;
+	//     vertical-align: middle;
+	// }
+	// </style>
+	/* generated by vue-loader */
+
+/***/ },
+/* 127 */
+/***/ function(module, exports) {
+
+	module.exports = "\n    <select class=\"form-control boot-select\" v-model=\"len\" _v-329bae94=\"\">\n        <option v-for=\"arr in lens\" :value=\"arr\" v-text=\"arr\" :selected=\"$index === 0 ? true : false\" _v-329bae94=\"\"></option>\n    </select>\n    <nav class=\"boot-nav\" _v-329bae94=\"\">\n        <ul class=\"pagination boot-page\" _v-329bae94=\"\">\n            <li _v-329bae94=\"\">\n                <a href=\"javascript:void(0)\" aria-label=\"Previous\" @click=\"onPrevClick()\" _v-329bae94=\"\">\n                    <span aria-hidden=\"true\" _v-329bae94=\"\">«</span>\n                </a>\n            </li>\n            <li v-for=\"page in pages\" :class=\"activeNum === $index ? 'active' : ''\" _v-329bae94=\"\">\n                <a href=\"javascript:void(0)\" v-text=\"page\" @click=\"onPageClick($index)\" _v-329bae94=\"\"></a>\n            </li>\n            <li _v-329bae94=\"\">\n                <a href=\"javascript:void(0)\" aria-label=\"Next\" @click=\"onNextClick()\" _v-329bae94=\"\">\n                    <span aria-hidden=\"true\" _v-329bae94=\"\">»</span>\n                </a>\n            </li>\n        </ul>\n        <div class=\"page-total\" _v-329bae94=\"\">\n            共 <span v-text=\"pageTotal\" _v-329bae94=\"\"></span> 页\n        </div>\n    </nav>\n";
+
+/***/ },
+/* 128 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__webpack_require__(129)
+	__vue_script__ = __webpack_require__(131)
+	__vue_template__ = __webpack_require__(132)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -1327,13 +1715,13 @@ webpackJsonp([2],Array(31).concat([
 	})()}
 
 /***/ },
-/* 113 */
+/* 129 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(114);
+	var content = __webpack_require__(130);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(29)(content, {});
@@ -1353,7 +1741,7 @@ webpackJsonp([2],Array(31).concat([
 	}
 
 /***/ },
-/* 114 */
+/* 130 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(28)();
@@ -1367,7 +1755,7 @@ webpackJsonp([2],Array(31).concat([
 
 
 /***/ },
-/* 115 */
+/* 131 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1442,28 +1830,12 @@ webpackJsonp([2],Array(31).concat([
 	// <script>
 
 /***/ },
-/* 116 */
+/* 132 */
 /***/ function(module, exports) {
 
 	module.exports = "\r\n    <modal :show.sync=\"confirmModal\" effect=\"fade\" width=\"450px\">\r\n        <div slot=\"modal-header\" class=\"modal-header\">\r\n            <h4 class=\"modal-title\">\r\n                确认操作\r\n            </h4>\r\n        </div>\r\n        <div slot=\"modal-body\" class=\"modal-body\">\r\n            <h4 class=\"text-center\" v-text=\"msg\"></h4>\r\n        </div>\r\n        <div slot=\"modal-footer\" class=\"modal-footer\">\r\n            <button type=\"button\" class=\"btn btn-warning\" @click=\"okFn\">\r\n                确认\r\n            </button>\r\n            <button type=\"button\" class=\"btn btn-default\" @click=\"confirmModal = false\">\r\n                取消\r\n            </button>\r\n        </div>\r\n    </modal>\r\n";
 
 /***/ },
-/* 117 */,
-/* 118 */,
-/* 119 */,
-/* 120 */,
-/* 121 */,
-/* 122 */,
-/* 123 */,
-/* 124 */,
-/* 125 */,
-/* 126 */,
-/* 127 */,
-/* 128 */,
-/* 129 */,
-/* 130 */,
-/* 131 */,
-/* 132 */,
 /* 133 */,
 /* 134 */,
 /* 135 */,
@@ -1472,100 +1844,20 @@ webpackJsonp([2],Array(31).concat([
 /* 138 */,
 /* 139 */,
 /* 140 */,
-/* 141 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	exports.getRunTypes = getRunTypes;
-	exports.getRules = getRules;
-	exports.getRuleList = getRuleList;
-	exports.getAppTypes = getAppTypes;
-	/**
-	 * 
-	 * @authors luozh@snail.com
-	 * @date    2016-05-12 10:35:58
-	 * @version v1.0
-	 */
-	
-	// action 会收到 store 作为它的第一个参数
-	// 在 store 里我们只需要 dispatch （在有些情况下需要 state）
-	// 我们可以利用 ES6 的解构（destructuring）语法来简化参数的使用
-	
-	// 获取运行环境类型
-	function getRunTypes(_ref) {
-	    var dispatch = _ref.dispatch;
-	    var state = _ref.state;
-	
-	    this.$http({
-	        url: '/env_add/',
-	        method: 'GET'
-	    }).then(function (response) {
-	        dispatch('GETRUNTYPES', response.data.types);
-	    });
-	}
-	
-	// 获取规则
-	function getRules(_ref2, param) {
-	    var dispatch = _ref2.dispatch;
-	    var state = _ref2.state;
-	
-	    this.$http({
-	        url: '/rule_edit/?id=' + param,
-	        method: 'GET'
-	    }).then(function (response) {
-	        if (response.data.result) {
-	            if (response.data.rules.length) {
-	                dispatch('GETRULES', response.data.rules);
-	            } else {
-	                dispatch('GETRULES', [{ value: '', label: '' }]);
-	            }
-	
-	            dispatch('GETRULEID', param);
-	        } else {
-	            dispatch('GETRULEID', null);
-	        }
-	    });
-	}
-	
-	// 获取规则列表
-	function getRuleList(_ref3, param) {
-	    var dispatch = _ref3.dispatch;
-	    var state = _ref3.state;
-	
-	    this.$http({
-	        url: '/rule_edit/?id=' + param,
-	        method: 'GET'
-	    }).then(function (response) {
-	        dispatch('GETRULELIST', response.data.rules);
-	    });
-	}
-	
-	// 获取应用配置类型
-	function getAppTypes(_ref4) {
-	    var dispatch = _ref4.dispatch;
-	    var state = _ref4.state;
-	
-	    this.$http({
-	        url: '/package_add/',
-	        method: 'GET'
-	    }).then(function (response) {
-	        dispatch('GETAPPTYPES', response.data.types);
-	    });
-	}
-
-/***/ },
+/* 141 */,
 /* 142 */,
-/* 143 */
+/* 143 */,
+/* 144 */,
+/* 145 */,
+/* 146 */,
+/* 147 */,
+/* 148 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(144)
-	__vue_script__ = __webpack_require__(146)
-	__vue_template__ = __webpack_require__(157)
+	__webpack_require__(149)
+	__vue_script__ = __webpack_require__(151)
+	__vue_template__ = __webpack_require__(177)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -1582,13 +1874,13 @@ webpackJsonp([2],Array(31).concat([
 	})()}
 
 /***/ },
-/* 144 */
+/* 149 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(145);
+	var content = __webpack_require__(150);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(29)(content, {});
@@ -1608,7 +1900,7 @@ webpackJsonp([2],Array(31).concat([
 	}
 
 /***/ },
-/* 145 */
+/* 150 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(28)();
@@ -1622,7 +1914,7 @@ webpackJsonp([2],Array(31).concat([
 
 
 /***/ },
-/* 146 */
+/* 151 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1635,19 +1927,35 @@ webpackJsonp([2],Array(31).concat([
 	
 	var _Select2 = _interopRequireDefault(_Select);
 	
-	var _Add = __webpack_require__(147);
+	var _Add = __webpack_require__(152);
 	
 	var _Add2 = _interopRequireDefault(_Add);
 	
-	var _Copy = __webpack_require__(152);
+	var _Modify = __webpack_require__(157);
+	
+	var _Modify2 = _interopRequireDefault(_Modify);
+	
+	var _Copy = __webpack_require__(162);
 	
 	var _Copy2 = _interopRequireDefault(_Copy);
 	
-	var _Confirm = __webpack_require__(112);
+	var _EditEnv = __webpack_require__(167);
+	
+	var _EditEnv2 = _interopRequireDefault(_EditEnv);
+	
+	var _ViewEnv = __webpack_require__(172);
+	
+	var _ViewEnv2 = _interopRequireDefault(_ViewEnv);
+	
+	var _Confirm = __webpack_require__(128);
 	
 	var _Confirm2 = _interopRequireDefault(_Confirm);
 	
-	var _action = __webpack_require__(141);
+	var _BootPage = __webpack_require__(123);
+	
+	var _BootPage2 = _interopRequireDefault(_BootPage);
+	
+	var _action = __webpack_require__(146);
 	
 	var _getters = __webpack_require__(104);
 	
@@ -1657,16 +1965,16 @@ webpackJsonp([2],Array(31).concat([
 	//     <div>
 	//         <form class="form-inline">
 	//             <div class="form-group">
-	//                 <label>项目名称：</label>
-	//                 <input type="text" class="form-control" v-model="projectName">
+	//                 <label>部署包名称：</label>
+	//                 <input type="text" class="form-control" v-model="param.name">
 	//             </div>
 	//             <div class="form-group">
-	//                 <label>部署包名称：</label>
-	//                 <input type="text" class="form-control" v-model="packName">
+	//                 <label>项目名称：</label>
+	//                 <input type="text" class="form-control" v-model="param.project">
 	//             </div>
 	//             <div class="form-group">
 	//                 <label>项目类型：</label>
-	//                 <v-select :value.sync="type" :options="appTypes" placeholder="请选择">
+	//                 <v-select :value.sync="param.type" :options="typeArr.concat(appTypes)" placeholder="">
 	//                 </v-select>
 	//             </div>
 	//             <div class="mt30 table-btn">
@@ -1692,37 +2000,54 @@ webpackJsonp([2],Array(31).concat([
 	//                     </tr>
 	//                 </thead>
 	//                 <tbody>
-	//                     <tr>
-	//                         <td>sncp-imprest</td>
-	//                         <td>充值服务</td>
-	//                         <td>计费</td>
-	//                         <td>1.01</td>
+	//                     <tr v-for="list in tableList">
+	//                         <td v-text="list.name" :title="list.name"></td>
+	//                         <td v-text="list.project"></td>
+	//                         <td v-text="list.type"></td>
+	//                         <td v-text="list.version"></td>
 	//                         <td>
-	//                             <button type="button" class="btn btn-default btn-small">
+	//                             <button type="button" class="btn btn-default btn-small" @click="$broadcast('showEditEnv', tableList[$index].id)">
 	//                                 <span class="table-icon glyphicon glyphicon-pencil"></span>
 	//                                 编辑
 	//                             </button>
-	//                             <button type="button" class="btn btn-default btn-small">
+	//                             <button type="button" class="btn btn-default btn-small" @click="$broadcast('showViewEnv', tableList[$index].id)">
 	//                                 <span class="table-icon glyphicon glyphicon-eye-open"></span>
 	//                                 查看
 	//                             </button>
 	//                         </td>
-	//                         <td></td>
+	//                         <td v-text="list.remark" :title="list.remark"></td>
 	//                         <td>
-	//                             <button type="button" class="btn btn-default btn-small">
+	//                             <button type="button" class="btn btn-default btn-small" @click="$broadcast('showModify', tableList[$index].id)">
 	//                                 <span class="table-icon glyphicon glyphicon-edit"></span>
 	//                                 修改
 	//                             </button>
-	//                             <button type="button" class="btn btn-default btn-small" @click="$broadcast('showConfirm')">
+	//                             <button type="button" class="btn btn-default btn-small" @click="$broadcast('showConfirm', tableList[$index].id)">
 	//                                 <span class="table-icon glyphicon glyphicon-trash"></span>
 	//                                 删除
 	//                             </button>
 	//                         </td>
 	//                     </tr>
+	//                     <tr v-if="tableList.length === 0">
+	//                         <td class="text-center" colspan="7">
+	//                             暂无数据
+	//                         </td>
+	//                     </tr>
 	//                 </tbody>
+	//                 <tfoot>
+	//                     <tr>
+	//                         <td colspan="7">
+	//                             <div class="pull-right">
+	//                                 <boot-page :async="true" :lens="lenArr" :page-len="pageLen" :url="url" :param="param"></boot-page>
+	//                             </div>
+	//                         </td>
+	//                     </tr>
+	//                 </tfoot>
 	//             </table>
 	//         </form>
 	//         <add-modal></add-modal>
+	//         <modify-modal></modify-modal>
+	//         <edit-env-modal></edit-env-modal>
+	//         <view-env-modal></view-env-modal>
 	//         <copy-modal></copy-modal>
 	//         <delete-modal></delete-modal>
 	//     </div>
@@ -1732,9 +2057,16 @@ webpackJsonp([2],Array(31).concat([
 	
 	
 	var origin = {
-	    type: '',
-	    projectName: '',
-	    packName: ''
+	    pageLen: 5,
+	    lenArr: [10, 50, 100],
+	    url: '/package_config/',
+	    param: {
+	        project: '',
+	        name: '',
+	        type: ''
+	    },
+	    typeArr: [{ value: '', label: '全部' }],
+	    tableList: []
 	};
 	
 	exports.default = {
@@ -1742,11 +2074,23 @@ webpackJsonp([2],Array(31).concat([
 	        return origin;
 	    },
 	
+	    methods: {
+	
+	        // 刷新数据
+	
+	        refresh: function refresh() {
+	            this.$broadcast('refresh');
+	        }
+	    },
 	    components: {
 	        vSelect: _Select2.default,
 	        addModal: _Add2.default,
 	        copyModal: _Copy2.default,
-	        deleteModal: _Confirm2.default
+	        deleteModal: _Confirm2.default,
+	        bootPage: _BootPage2.default,
+	        ModifyModal: _Modify2.default,
+	        editEnvModal: _EditEnv2.default,
+	        viewEnvModal: _ViewEnv2.default
 	    },
 	    vuex: {
 	        getters: {
@@ -1758,6 +2102,45 @@ webpackJsonp([2],Array(31).concat([
 	    },
 	    ready: function ready() {
 	        this.getAppTypes();
+	    },
+	
+	    events: {
+	        'data': function data(param) {
+	            this.tableList = param.data;
+	        },
+	        'refresh': function refresh() {
+	            this.refresh();
+	        },
+	        'confirm': function confirm(param) {
+	            var _this = this;
+	
+	            this.$http({
+	                url: '/package_delete/',
+	                method: 'POST',
+	                data: {
+	                    id: param
+	                }
+	            }).then(function (response) {
+	                if (response.data.result) {
+	                    _this.refresh();
+	
+	                    _this.$dispatch('show-success', '删除成功');
+	                } else {
+	                    _this.$dispatch('show-error', '删除失败');
+	                }
+	            });
+	        }
+	    },
+	    watch: {
+	        'param.project': function paramProject(newVal) {
+	            this.refresh();
+	        },
+	        'param.name': function paramName(newVal) {
+	            this.refresh();
+	        },
+	        'param.type': function paramType(newVal) {
+	            this.refresh();
+	        }
 	    }
 	};
 	// </script>
@@ -1768,13 +2151,13 @@ webpackJsonp([2],Array(31).concat([
 	/* generated by vue-loader */
 
 /***/ },
-/* 147 */
+/* 152 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(148)
-	__vue_script__ = __webpack_require__(150)
-	__vue_template__ = __webpack_require__(151)
+	__webpack_require__(153)
+	__vue_script__ = __webpack_require__(155)
+	__vue_template__ = __webpack_require__(156)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -1791,13 +2174,13 @@ webpackJsonp([2],Array(31).concat([
 	})()}
 
 /***/ },
-/* 148 */
+/* 153 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(149);
+	var content = __webpack_require__(154);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(29)(content, {});
@@ -1817,7 +2200,7 @@ webpackJsonp([2],Array(31).concat([
 	}
 
 /***/ },
-/* 149 */
+/* 154 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(28)();
@@ -1825,13 +2208,13 @@ webpackJsonp([2],Array(31).concat([
 	
 	
 	// module
-	exports.push([module.id, "\r\n.add-menu[_v-6b7b5fea] {\r\n    height: 34px;\r\n    line-height: 34px;\r\n    padding: 0;\r\n    color: #009688;\r\n    cursor: pointer;\r\n}\r\n", "", {"version":3,"sources":["/./src/components/deploy_manage/app_board/Add.vue.style"],"names":[],"mappings":";AAmFA;IACA,aAAA;IACA,kBAAA;IACA,WAAA;IACA,eAAA;IACA,gBAAA;CACA","file":"Add.vue","sourcesContent":["<template>\r\n    <modal :show.sync=\"addModal\" effect=\"fade\" width=\"450px\">\r\n        <div slot=\"modal-header\" class=\"modal-header\">\r\n            <h4 class=\"modal-title\">添加</h4>\r\n        </div>\r\n        <div slot=\"modal-body\" class=\"modal-body\">\r\n            <form class=\"form-horizontal\">\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label col-sm-3\">部署包名：</label>\r\n                    <div class=\"col-sm-8\">\r\n                        <input type=\"text\" class=\"form-control\" v-model=\"packName\">\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group input-box\">\r\n                    <label class=\"control-label col-sm-3\">类型：</label>\r\n                    <div class=\"col-sm-8\">\r\n                        <v-select :value.sync=\"type\" :options=\"appTypes\" placeholder=\"请选择\">\r\n                        </v-select>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label col-sm-3\">项目名：</label>\r\n                    <div class=\"col-sm-8\">\r\n                        <input type=\"text\" class=\"form-control\" v-model=\"projectName\">\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label col-sm-3\">版本号：</label>\r\n                    <div class=\"col-sm-8\">\r\n                        <input type=\"text\" class=\"form-control\" v-model=\"version\">\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label col-sm-3\">备注：</label>\r\n                    <div class=\"col-sm-8\">\r\n                        <textarea class=\"form-control\" rows=\"5\" v-model=\"remark\"></textarea>\r\n                    </div>\r\n                </div>\r\n            </form>\r\n        </div>\r\n        <div slot=\"modal-footer\" class=\"modal-footer\">\r\n            <button type=\"button\" class=\"btn btn-default\">保存</button>\r\n            <button type=\"button\" class=\"btn btn-default\" @click='addModal = false'>取消</button>\r\n        </div>\r\n    </modal>\r\n</template>\r\n\r\n<script>\r\nimport { modal } from 'vue-strap'\r\nimport vSelect from '../../global/Select.vue'\r\nimport { appTypes } from '../../../vuex/getters.js'\r\n\r\nlet origin = {\r\n        addModal: false,\r\n        packName: '',\r\n        projectName: '',\r\n        type: '',\r\n        version: '',\r\n        remark: ''\r\n    }\r\n\r\nexport default {\r\n    data () {\r\n        return origin\r\n    },\r\n    components: {\r\n        modal,\r\n        vSelect\r\n    },\r\n    vuex: {\r\n        getters: {\r\n            appTypes\r\n        }\r\n    },\r\n    events: {\r\n        'showAdd' () {\r\n            this.addModal = true\r\n        }\r\n    }\r\n}\r\n</script>\r\n\r\n<style scoped>\r\n.add-menu {\r\n    height: 34px;\r\n    line-height: 34px;\r\n    padding: 0;\r\n    color: #009688;\r\n    cursor: pointer;\r\n}\r\n</style>"],"sourceRoot":"webpack://"}]);
+	exports.push([module.id, "\r\n.add-menu[_v-6b7b5fea] {\r\n    height: 34px;\r\n    line-height: 34px;\r\n    padding: 0;\r\n    color: #009688;\r\n    cursor: pointer;\r\n}\r\n", "", {"version":3,"sources":["/./src/components/deploy_manage/app_board/Add.vue.style"],"names":[],"mappings":";AAgHA;IACA,aAAA;IACA,kBAAA;IACA,WAAA;IACA,eAAA;IACA,gBAAA;CACA","file":"Add.vue","sourcesContent":["<template>\r\n    <modal :show.sync=\"addModal\" effect=\"fade\" width=\"450px\">\r\n        <div slot=\"modal-header\" class=\"modal-header\">\r\n            <h4 class=\"modal-title\">添加</h4>\r\n        </div>\r\n        <div slot=\"modal-body\" class=\"modal-body\">\r\n            <form class=\"form-horizontal\">\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label col-sm-3\">部署包名：<span class=\"text-danger\">*</span></label>\r\n                    <div class=\"col-sm-8\">\r\n                        <input type=\"text\" class=\"form-control\" v-model=\"packName\">\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group input-box\">\r\n                    <label class=\"control-label col-sm-3\">类型：<span class=\"text-danger\">*</span></label>\r\n                    <div class=\"col-sm-8\">\r\n                        <v-select :value.sync=\"type\" :options=\"appTypes\" placeholder=\"请选择\">\r\n                        </v-select>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label col-sm-3\">项目名：</label>\r\n                    <div class=\"col-sm-8\">\r\n                        <input type=\"text\" class=\"form-control\" v-model=\"projectName\">\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label col-sm-3\">版本号：</label>\r\n                    <div class=\"col-sm-8\">\r\n                        <input type=\"text\" class=\"form-control\" v-model=\"version\">\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label col-sm-3\">备注：</label>\r\n                    <div class=\"col-sm-8\">\r\n                        <textarea class=\"form-control\" rows=\"5\" v-model=\"remark\"></textarea>\r\n                    </div>\r\n                </div>\r\n            </form>\r\n        </div>\r\n        <div slot=\"modal-footer\" class=\"modal-footer\">\r\n            <button type=\"button\" class=\"btn btn-default\" @click=\"saveFn\" :disabled=\"packName && type ? false : true\">保存</button>\r\n            <button type=\"button\" class=\"btn btn-default\" @click='addModal = false'>取消</button>\r\n        </div>\r\n    </modal>\r\n</template>\r\n\r\n<script>\r\nimport { modal } from 'vue-strap'\r\nimport vSelect from '../../global/Select.vue'\r\nimport { appTypes } from '../../../vuex/getters.js'\r\n\r\nlet origin = {\r\n        addModal: false,\r\n        packName: '',\r\n        projectName: '',\r\n        type: '',\r\n        version: '',\r\n        remark: ''\r\n    },\r\n    init = Object.assign({}, origin);\r\n\r\nexport default {\r\n    data () {\r\n        return origin\r\n    },\r\n    methods: {\r\n\r\n        // 保存事件\r\n        saveFn () {\r\n            this.$http({\r\n                url: '/package_add/',\r\n                method: 'POST',\r\n                data: {\r\n                    name: this.packName,\r\n                    type: this.type,\r\n                    project: this.projectName,\r\n                    version: this.version,\r\n                    remark: this.remark\r\n                }\r\n            })\r\n            .then(response => {\r\n                if (response.data.result) {\r\n                    this.addModal = false\r\n                    this.$data = Object.assign(origin, init)\r\n\r\n                    this.$dispatch('refresh')\r\n                    this.$dispatch('show-success')\r\n                } else {\r\n                    this.$dispatch('show-error')\r\n                }\r\n            })\r\n        }\r\n    },\r\n    components: {\r\n        modal,\r\n        vSelect\r\n    },\r\n    vuex: {\r\n        getters: {\r\n            appTypes\r\n        }\r\n    },\r\n    events: {\r\n        'showAdd' () {\r\n            this.addModal = true\r\n        }\r\n    }\r\n}\r\n</script>\r\n\r\n<style scoped>\r\n.add-menu {\r\n    height: 34px;\r\n    line-height: 34px;\r\n    padding: 0;\r\n    color: #009688;\r\n    cursor: pointer;\r\n}\r\n</style>"],"sourceRoot":"webpack://"}]);
 	
 	// exports
 
 
 /***/ },
-/* 150 */
+/* 155 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1839,6 +2222,10 @@ webpackJsonp([2],Array(31).concat([
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+	
+	var _assign = __webpack_require__(97);
+	
+	var _assign2 = _interopRequireDefault(_assign);
 	
 	var _vueStrap = __webpack_require__(103);
 	
@@ -1857,7 +2244,8 @@ webpackJsonp([2],Array(31).concat([
 	    type: '',
 	    version: '',
 	    remark: ''
-	}; // <template>
+	},
+	    init = (0, _assign2.default)({}, origin); // <template>
 	//     <modal :show.sync="addModal" effect="fade" width="450px">
 	//         <div slot="modal-header" class="modal-header">
 	//             <h4 class="modal-title">添加</h4>
@@ -1865,13 +2253,13 @@ webpackJsonp([2],Array(31).concat([
 	//         <div slot="modal-body" class="modal-body">
 	//             <form class="form-horizontal">
 	//                 <div class="form-group">
-	//                     <label class="control-label col-sm-3">部署包名：</label>
+	//                     <label class="control-label col-sm-3">部署包名：<span class="text-danger">*</span></label>
 	//                     <div class="col-sm-8">
 	//                         <input type="text" class="form-control" v-model="packName">
 	//                     </div>
 	//                 </div>
 	//                 <div class="form-group input-box">
-	//                     <label class="control-label col-sm-3">类型：</label>
+	//                     <label class="control-label col-sm-3">类型：<span class="text-danger">*</span></label>
 	//                     <div class="col-sm-8">
 	//                         <v-select :value.sync="type" :options="appTypes" placeholder="请选择">
 	//                         </v-select>
@@ -1898,7 +2286,7 @@ webpackJsonp([2],Array(31).concat([
 	//             </form>
 	//         </div>
 	//         <div slot="modal-footer" class="modal-footer">
-	//             <button type="button" class="btn btn-default">保存</button>
+	//             <button type="button" class="btn btn-default" @click="saveFn" :disabled="packName && type ? false : true">保存</button>
 	//             <button type="button" class="btn btn-default" @click='addModal = false'>取消</button>
 	//         </div>
 	//     </modal>
@@ -1912,6 +2300,36 @@ webpackJsonp([2],Array(31).concat([
 	        return origin;
 	    },
 	
+	    methods: {
+	
+	        // 保存事件
+	
+	        saveFn: function saveFn() {
+	            var _this = this;
+	
+	            this.$http({
+	                url: '/package_add/',
+	                method: 'POST',
+	                data: {
+	                    name: this.packName,
+	                    type: this.type,
+	                    project: this.projectName,
+	                    version: this.version,
+	                    remark: this.remark
+	                }
+	            }).then(function (response) {
+	                if (response.data.result) {
+	                    _this.addModal = false;
+	                    _this.$data = (0, _assign2.default)(origin, init);
+	
+	                    _this.$dispatch('refresh');
+	                    _this.$dispatch('show-success');
+	                } else {
+	                    _this.$dispatch('show-error');
+	                }
+	            });
+	        }
+	    },
 	    components: {
 	        modal: _vueStrap.modal,
 	        vSelect: _Select2.default
@@ -1941,19 +2359,251 @@ webpackJsonp([2],Array(31).concat([
 	/* generated by vue-loader */
 
 /***/ },
-/* 151 */
+/* 156 */
 /***/ function(module, exports) {
 
-	module.exports = "\n    <modal :show.sync=\"addModal\" effect=\"fade\" width=\"450px\" _v-6b7b5fea=\"\">\n        <div slot=\"modal-header\" class=\"modal-header\" _v-6b7b5fea=\"\">\n            <h4 class=\"modal-title\" _v-6b7b5fea=\"\">添加</h4>\n        </div>\n        <div slot=\"modal-body\" class=\"modal-body\" _v-6b7b5fea=\"\">\n            <form class=\"form-horizontal\" _v-6b7b5fea=\"\">\n                <div class=\"form-group\" _v-6b7b5fea=\"\">\n                    <label class=\"control-label col-sm-3\" _v-6b7b5fea=\"\">部署包名：</label>\n                    <div class=\"col-sm-8\" _v-6b7b5fea=\"\">\n                        <input type=\"text\" class=\"form-control\" v-model=\"packName\" _v-6b7b5fea=\"\">\n                    </div>\n                </div>\n                <div class=\"form-group input-box\" _v-6b7b5fea=\"\">\n                    <label class=\"control-label col-sm-3\" _v-6b7b5fea=\"\">类型：</label>\n                    <div class=\"col-sm-8\" _v-6b7b5fea=\"\">\n                        <v-select :value.sync=\"type\" :options=\"appTypes\" placeholder=\"请选择\" _v-6b7b5fea=\"\">\n                        </v-select>\n                    </div>\n                </div>\n                <div class=\"form-group\" _v-6b7b5fea=\"\">\n                    <label class=\"control-label col-sm-3\" _v-6b7b5fea=\"\">项目名：</label>\n                    <div class=\"col-sm-8\" _v-6b7b5fea=\"\">\n                        <input type=\"text\" class=\"form-control\" v-model=\"projectName\" _v-6b7b5fea=\"\">\n                    </div>\n                </div>\n                <div class=\"form-group\" _v-6b7b5fea=\"\">\n                    <label class=\"control-label col-sm-3\" _v-6b7b5fea=\"\">版本号：</label>\n                    <div class=\"col-sm-8\" _v-6b7b5fea=\"\">\n                        <input type=\"text\" class=\"form-control\" v-model=\"version\" _v-6b7b5fea=\"\">\n                    </div>\n                </div>\n                <div class=\"form-group\" _v-6b7b5fea=\"\">\n                    <label class=\"control-label col-sm-3\" _v-6b7b5fea=\"\">备注：</label>\n                    <div class=\"col-sm-8\" _v-6b7b5fea=\"\">\n                        <textarea class=\"form-control\" rows=\"5\" v-model=\"remark\" _v-6b7b5fea=\"\"></textarea>\n                    </div>\n                </div>\n            </form>\n        </div>\n        <div slot=\"modal-footer\" class=\"modal-footer\" _v-6b7b5fea=\"\">\n            <button type=\"button\" class=\"btn btn-default\" _v-6b7b5fea=\"\">保存</button>\n            <button type=\"button\" class=\"btn btn-default\" @click=\"addModal = false\" _v-6b7b5fea=\"\">取消</button>\n        </div>\n    </modal>\n";
+	module.exports = "\n    <modal :show.sync=\"addModal\" effect=\"fade\" width=\"450px\" _v-6b7b5fea=\"\">\n        <div slot=\"modal-header\" class=\"modal-header\" _v-6b7b5fea=\"\">\n            <h4 class=\"modal-title\" _v-6b7b5fea=\"\">添加</h4>\n        </div>\n        <div slot=\"modal-body\" class=\"modal-body\" _v-6b7b5fea=\"\">\n            <form class=\"form-horizontal\" _v-6b7b5fea=\"\">\n                <div class=\"form-group\" _v-6b7b5fea=\"\">\n                    <label class=\"control-label col-sm-3\" _v-6b7b5fea=\"\">部署包名：<span class=\"text-danger\" _v-6b7b5fea=\"\">*</span></label>\n                    <div class=\"col-sm-8\" _v-6b7b5fea=\"\">\n                        <input type=\"text\" class=\"form-control\" v-model=\"packName\" _v-6b7b5fea=\"\">\n                    </div>\n                </div>\n                <div class=\"form-group input-box\" _v-6b7b5fea=\"\">\n                    <label class=\"control-label col-sm-3\" _v-6b7b5fea=\"\">类型：<span class=\"text-danger\" _v-6b7b5fea=\"\">*</span></label>\n                    <div class=\"col-sm-8\" _v-6b7b5fea=\"\">\n                        <v-select :value.sync=\"type\" :options=\"appTypes\" placeholder=\"请选择\" _v-6b7b5fea=\"\">\n                        </v-select>\n                    </div>\n                </div>\n                <div class=\"form-group\" _v-6b7b5fea=\"\">\n                    <label class=\"control-label col-sm-3\" _v-6b7b5fea=\"\">项目名：</label>\n                    <div class=\"col-sm-8\" _v-6b7b5fea=\"\">\n                        <input type=\"text\" class=\"form-control\" v-model=\"projectName\" _v-6b7b5fea=\"\">\n                    </div>\n                </div>\n                <div class=\"form-group\" _v-6b7b5fea=\"\">\n                    <label class=\"control-label col-sm-3\" _v-6b7b5fea=\"\">版本号：</label>\n                    <div class=\"col-sm-8\" _v-6b7b5fea=\"\">\n                        <input type=\"text\" class=\"form-control\" v-model=\"version\" _v-6b7b5fea=\"\">\n                    </div>\n                </div>\n                <div class=\"form-group\" _v-6b7b5fea=\"\">\n                    <label class=\"control-label col-sm-3\" _v-6b7b5fea=\"\">备注：</label>\n                    <div class=\"col-sm-8\" _v-6b7b5fea=\"\">\n                        <textarea class=\"form-control\" rows=\"5\" v-model=\"remark\" _v-6b7b5fea=\"\"></textarea>\n                    </div>\n                </div>\n            </form>\n        </div>\n        <div slot=\"modal-footer\" class=\"modal-footer\" _v-6b7b5fea=\"\">\n            <button type=\"button\" class=\"btn btn-default\" @click=\"saveFn\" :disabled=\"packName &amp;&amp; type ? false : true\" _v-6b7b5fea=\"\">保存</button>\n            <button type=\"button\" class=\"btn btn-default\" @click=\"addModal = false\" _v-6b7b5fea=\"\">取消</button>\n        </div>\n    </modal>\n";
 
 /***/ },
-/* 152 */
+/* 157 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(153)
-	__vue_script__ = __webpack_require__(155)
-	__vue_template__ = __webpack_require__(156)
+	__webpack_require__(158)
+	__vue_script__ = __webpack_require__(160)
+	__vue_template__ = __webpack_require__(161)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "D:\\work\\Aptana Studio 3 Workspace\\charging_conf\\charging_conf\\static\\src\\components\\deploy_manage\\app_board\\Modify.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 158 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(159);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(29)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js?sourceMap!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-9af810fe&file=Modify.vue&scoped=true!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Modify.vue", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js?sourceMap!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-9af810fe&file=Modify.vue&scoped=true!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Modify.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 159 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(28)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "\r\n.add-menu[_v-9af810fe] {\r\n    height: 34px;\r\n    line-height: 34px;\r\n    padding: 0;\r\n    color: #009688;\r\n    cursor: pointer;\r\n}\r\n", "", {"version":3,"sources":["/./src/components/deploy_manage/app_board/Modify.vue.style"],"names":[],"mappings":";AAiIA;IACA,aAAA;IACA,kBAAA;IACA,WAAA;IACA,eAAA;IACA,gBAAA;CACA","file":"Modify.vue","sourcesContent":["<template>\r\n    <modal :show.sync=\"modifyModal\" effect=\"fade\" width=\"450px\">\r\n        <div slot=\"modal-header\" class=\"modal-header\">\r\n            <h4 class=\"modal-title\">修改</h4>\r\n        </div>\r\n        <div slot=\"modal-body\" class=\"modal-body\">\r\n            <form class=\"form-horizontal\">\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label col-sm-3\">部署包名：<span class=\"text-danger\">*</span></label>\r\n                    <div class=\"col-sm-8\">\r\n                        <input type=\"text\" class=\"form-control\" v-model=\"packName\">\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group input-box\">\r\n                    <label class=\"control-label col-sm-3\">类型：<span class=\"text-danger\">*</span></label>\r\n                    <div class=\"col-sm-8\">\r\n                        <v-select :value.sync=\"type\" :options=\"appTypes\" placeholder=\"请选择\">\r\n                        </v-select>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label col-sm-3\">项目名：</label>\r\n                    <div class=\"col-sm-8\">\r\n                        <input type=\"text\" class=\"form-control\" v-model=\"projectName\">\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label col-sm-3\">版本号：</label>\r\n                    <div class=\"col-sm-8\">\r\n                        <input type=\"text\" class=\"form-control\" v-model=\"version\">\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label col-sm-3\">备注：</label>\r\n                    <div class=\"col-sm-8\">\r\n                        <textarea class=\"form-control\" rows=\"5\" v-model=\"remark\"></textarea>\r\n                    </div>\r\n                </div>\r\n            </form>\r\n        </div>\r\n        <div slot=\"modal-footer\" class=\"modal-footer\">\r\n            <button type=\"button\" class=\"btn btn-default\" @click=\"saveFn\" :disabled=\"packName && type ? false : true\">保存</button>\r\n            <button type=\"button\" class=\"btn btn-default\" @click='modifyModal = false'>取消</button>\r\n        </div>\r\n    </modal>\r\n</template>\r\n\r\n<script>\r\nimport { modal } from 'vue-strap'\r\nimport vSelect from '../../global/Select.vue'\r\nimport { appTypes } from '../../../vuex/getters.js'\r\n\r\nlet origin = {\r\n        modifyModal: false,\r\n        packName: '',\r\n        projectName: '',\r\n        type: '',\r\n        version: '',\r\n        remark: '',\r\n        id: null\r\n    },\r\n    init = Object.assign({}, origin);\r\n\r\nexport default {\r\n    data () {\r\n        return origin\r\n    },\r\n    methods: {\r\n\r\n        // 保存事件\r\n        saveFn () {\r\n            this.$http({\r\n                url: '/package_edit/',\r\n                method: 'POST',\r\n                data: {\r\n                    id: this.id,\r\n                    name: this.packName,\r\n                    type: this.type,\r\n                    project: this.projectName,\r\n                    version: this.version,\r\n                    remark: this.remark\r\n                }\r\n            })\r\n            .then(response => {\r\n                if (response.data.result) {\r\n                    this.addModal = false\r\n                    this.$data = Object.assign(origin, init)\r\n\r\n                    this.$dispatch('refresh')\r\n                    this.$dispatch('show-success')\r\n                } else {\r\n                    this.$dispatch('show-error')\r\n                }\r\n            })\r\n        }\r\n    },\r\n    components: {\r\n        modal,\r\n        vSelect\r\n    },\r\n    vuex: {\r\n        getters: {\r\n            appTypes\r\n        }\r\n    },\r\n    events: {\r\n        'showModify' (param) {\r\n            this.modifyModal = true\r\n\r\n            this.$http({\r\n                url: '/package_edit/?id=' + param,\r\n                method: 'GET'\r\n            })\r\n            .then(response => {\r\n                let dict = response.data\r\n\r\n                this.packName = dict.name\r\n                this.projectName = dict.project\r\n                this.type = dict.type\r\n                this.version = dict.version\r\n                this.remark = dict.remark\r\n                this.id = param\r\n            })\r\n        }\r\n    }\r\n}\r\n</script>\r\n\r\n<style scoped>\r\n.add-menu {\r\n    height: 34px;\r\n    line-height: 34px;\r\n    padding: 0;\r\n    color: #009688;\r\n    cursor: pointer;\r\n}\r\n</style>"],"sourceRoot":"webpack://"}]);
+	
+	// exports
+
+
+/***/ },
+/* 160 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _assign = __webpack_require__(97);
+	
+	var _assign2 = _interopRequireDefault(_assign);
+	
+	var _vueStrap = __webpack_require__(103);
+	
+	var _Select = __webpack_require__(31);
+	
+	var _Select2 = _interopRequireDefault(_Select);
+	
+	var _getters = __webpack_require__(104);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var origin = {
+	    modifyModal: false,
+	    packName: '',
+	    projectName: '',
+	    type: '',
+	    version: '',
+	    remark: '',
+	    id: null
+	},
+	    init = (0, _assign2.default)({}, origin); // <template>
+	//     <modal :show.sync="modifyModal" effect="fade" width="450px">
+	//         <div slot="modal-header" class="modal-header">
+	//             <h4 class="modal-title">修改</h4>
+	//         </div>
+	//         <div slot="modal-body" class="modal-body">
+	//             <form class="form-horizontal">
+	//                 <div class="form-group">
+	//                     <label class="control-label col-sm-3">部署包名：<span class="text-danger">*</span></label>
+	//                     <div class="col-sm-8">
+	//                         <input type="text" class="form-control" v-model="packName">
+	//                     </div>
+	//                 </div>
+	//                 <div class="form-group input-box">
+	//                     <label class="control-label col-sm-3">类型：<span class="text-danger">*</span></label>
+	//                     <div class="col-sm-8">
+	//                         <v-select :value.sync="type" :options="appTypes" placeholder="请选择">
+	//                         </v-select>
+	//                     </div>
+	//                 </div>
+	//                 <div class="form-group">
+	//                     <label class="control-label col-sm-3">项目名：</label>
+	//                     <div class="col-sm-8">
+	//                         <input type="text" class="form-control" v-model="projectName">
+	//                     </div>
+	//                 </div>
+	//                 <div class="form-group">
+	//                     <label class="control-label col-sm-3">版本号：</label>
+	//                     <div class="col-sm-8">
+	//                         <input type="text" class="form-control" v-model="version">
+	//                     </div>
+	//                 </div>
+	//                 <div class="form-group">
+	//                     <label class="control-label col-sm-3">备注：</label>
+	//                     <div class="col-sm-8">
+	//                         <textarea class="form-control" rows="5" v-model="remark"></textarea>
+	//                     </div>
+	//                 </div>
+	//             </form>
+	//         </div>
+	//         <div slot="modal-footer" class="modal-footer">
+	//             <button type="button" class="btn btn-default" @click="saveFn" :disabled="packName && type ? false : true">保存</button>
+	//             <button type="button" class="btn btn-default" @click='modifyModal = false'>取消</button>
+	//         </div>
+	//     </modal>
+	// </template>
+	//
+	// <script>
+	
+	
+	exports.default = {
+	    data: function data() {
+	        return origin;
+	    },
+	
+	    methods: {
+	
+	        // 保存事件
+	
+	        saveFn: function saveFn() {
+	            var _this = this;
+	
+	            this.$http({
+	                url: '/package_edit/',
+	                method: 'POST',
+	                data: {
+	                    id: this.id,
+	                    name: this.packName,
+	                    type: this.type,
+	                    project: this.projectName,
+	                    version: this.version,
+	                    remark: this.remark
+	                }
+	            }).then(function (response) {
+	                if (response.data.result) {
+	                    _this.addModal = false;
+	                    _this.$data = (0, _assign2.default)(origin, init);
+	
+	                    _this.$dispatch('refresh');
+	                    _this.$dispatch('show-success');
+	                } else {
+	                    _this.$dispatch('show-error');
+	                }
+	            });
+	        }
+	    },
+	    components: {
+	        modal: _vueStrap.modal,
+	        vSelect: _Select2.default
+	    },
+	    vuex: {
+	        getters: {
+	            appTypes: _getters.appTypes
+	        }
+	    },
+	    events: {
+	        'showModify': function showModify(param) {
+	            var _this2 = this;
+	
+	            this.modifyModal = true;
+	
+	            this.$http({
+	                url: '/package_edit/?id=' + param,
+	                method: 'GET'
+	            }).then(function (response) {
+	                var dict = response.data;
+	
+	                _this2.packName = dict.name;
+	                _this2.projectName = dict.project;
+	                _this2.type = dict.type;
+	                _this2.version = dict.version;
+	                _this2.remark = dict.remark;
+	                _this2.id = param;
+	            });
+	        }
+	    }
+	};
+	// </script>
+	//
+	// <style scoped>
+	// .add-menu {
+	//     height: 34px;
+	//     line-height: 34px;
+	//     padding: 0;
+	//     color: #009688;
+	//     cursor: pointer;
+	// }
+	// </style>
+	/* generated by vue-loader */
+
+/***/ },
+/* 161 */
+/***/ function(module, exports) {
+
+	module.exports = "\n    <modal :show.sync=\"modifyModal\" effect=\"fade\" width=\"450px\" _v-9af810fe=\"\">\n        <div slot=\"modal-header\" class=\"modal-header\" _v-9af810fe=\"\">\n            <h4 class=\"modal-title\" _v-9af810fe=\"\">修改</h4>\n        </div>\n        <div slot=\"modal-body\" class=\"modal-body\" _v-9af810fe=\"\">\n            <form class=\"form-horizontal\" _v-9af810fe=\"\">\n                <div class=\"form-group\" _v-9af810fe=\"\">\n                    <label class=\"control-label col-sm-3\" _v-9af810fe=\"\">部署包名：<span class=\"text-danger\" _v-9af810fe=\"\">*</span></label>\n                    <div class=\"col-sm-8\" _v-9af810fe=\"\">\n                        <input type=\"text\" class=\"form-control\" v-model=\"packName\" _v-9af810fe=\"\">\n                    </div>\n                </div>\n                <div class=\"form-group input-box\" _v-9af810fe=\"\">\n                    <label class=\"control-label col-sm-3\" _v-9af810fe=\"\">类型：<span class=\"text-danger\" _v-9af810fe=\"\">*</span></label>\n                    <div class=\"col-sm-8\" _v-9af810fe=\"\">\n                        <v-select :value.sync=\"type\" :options=\"appTypes\" placeholder=\"请选择\" _v-9af810fe=\"\">\n                        </v-select>\n                    </div>\n                </div>\n                <div class=\"form-group\" _v-9af810fe=\"\">\n                    <label class=\"control-label col-sm-3\" _v-9af810fe=\"\">项目名：</label>\n                    <div class=\"col-sm-8\" _v-9af810fe=\"\">\n                        <input type=\"text\" class=\"form-control\" v-model=\"projectName\" _v-9af810fe=\"\">\n                    </div>\n                </div>\n                <div class=\"form-group\" _v-9af810fe=\"\">\n                    <label class=\"control-label col-sm-3\" _v-9af810fe=\"\">版本号：</label>\n                    <div class=\"col-sm-8\" _v-9af810fe=\"\">\n                        <input type=\"text\" class=\"form-control\" v-model=\"version\" _v-9af810fe=\"\">\n                    </div>\n                </div>\n                <div class=\"form-group\" _v-9af810fe=\"\">\n                    <label class=\"control-label col-sm-3\" _v-9af810fe=\"\">备注：</label>\n                    <div class=\"col-sm-8\" _v-9af810fe=\"\">\n                        <textarea class=\"form-control\" rows=\"5\" v-model=\"remark\" _v-9af810fe=\"\"></textarea>\n                    </div>\n                </div>\n            </form>\n        </div>\n        <div slot=\"modal-footer\" class=\"modal-footer\" _v-9af810fe=\"\">\n            <button type=\"button\" class=\"btn btn-default\" @click=\"saveFn\" :disabled=\"packName &amp;&amp; type ? false : true\" _v-9af810fe=\"\">保存</button>\n            <button type=\"button\" class=\"btn btn-default\" @click=\"modifyModal = false\" _v-9af810fe=\"\">取消</button>\n        </div>\n    </modal>\n";
+
+/***/ },
+/* 162 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__webpack_require__(163)
+	__vue_script__ = __webpack_require__(165)
+	__vue_template__ = __webpack_require__(166)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -1970,13 +2620,13 @@ webpackJsonp([2],Array(31).concat([
 	})()}
 
 /***/ },
-/* 153 */
+/* 163 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(154);
+	var content = __webpack_require__(164);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(29)(content, {});
@@ -1996,7 +2646,7 @@ webpackJsonp([2],Array(31).concat([
 	}
 
 /***/ },
-/* 154 */
+/* 164 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(28)();
@@ -2004,13 +2654,13 @@ webpackJsonp([2],Array(31).concat([
 	
 	
 	// module
-	exports.push([module.id, "\r\n.add-menu[_v-3211d87c] {\r\n    height: 34px;\r\n    line-height: 34px;\r\n    padding: 0;\r\n    color: #009688;\r\n    cursor: pointer;\r\n}\r\n", "", {"version":3,"sources":["/./src/components/deploy_manage/app_board/Copy.vue.style"],"names":[],"mappings":";AA6CA;IACA,aAAA;IACA,kBAAA;IACA,WAAA;IACA,eAAA;IACA,gBAAA;CACA","file":"Copy.vue","sourcesContent":["<template>\r\n    <modal :show.sync=\"copyModal\" effect=\"fade\" width=\"450px\">\r\n        <div slot=\"modal-header\" class=\"modal-header\">\r\n            <h4 class=\"modal-title\">复制</h4>\r\n        </div>\r\n        <div slot=\"modal-body\" class=\"modal-body text-center\">\r\n            从\r\n            <v-select :value.sync=\"setting\" :options=\"settings\" placeholder=\"请选择\">\r\n            </v-select>\r\n            上复制生成新的应用配置?\r\n        </div>\r\n        <div slot=\"modal-footer\" class=\"modal-footer\">\r\n            <button type=\"button\" class=\"btn btn-default\">确定</button>\r\n            <button type=\"button\" class=\"btn btn-default\" @click='copyModal = false'>取消</button>\r\n        </div>\r\n    </modal>\r\n</template>\r\n\r\n<script>\r\nimport { modal } from 'vue-strap'\r\nimport vSelect from '../../global/Select.vue'\r\n\r\nlet origin = {\r\n        copyModal: false,\r\n        settings: [],\r\n        setting: ''\r\n    }\r\n\r\nexport default {\r\n    data () {\r\n        return origin\r\n    },\r\n    components: {\r\n        modal,\r\n        vSelect\r\n    },\r\n    events: {\r\n        'showCopy' () {\r\n            this.copyModal = true\r\n        }\r\n    }\r\n}\r\n</script>\r\n\r\n<style scoped>\r\n.add-menu {\r\n    height: 34px;\r\n    line-height: 34px;\r\n    padding: 0;\r\n    color: #009688;\r\n    cursor: pointer;\r\n}\r\n</style>"],"sourceRoot":"webpack://"}]);
+	exports.push([module.id, "\r\n.add-menu[_v-3211d87c] {\r\n    height: 34px;\r\n    line-height: 34px;\r\n    padding: 0;\r\n    color: #009688;\r\n    cursor: pointer;\r\n}\r\n\r\n.copy-body[_v-3211d87c] {\r\n    min-height: 200px;\r\n}\r\n", "", {"version":3,"sources":["/./src/components/deploy_manage/app_board/Copy.vue.style"],"names":[],"mappings":";AA6EA;IACA,aAAA;IACA,kBAAA;IACA,WAAA;IACA,eAAA;IACA,gBAAA;CACA;;AAEA;IACA,kBAAA;CACA","file":"Copy.vue","sourcesContent":["<template>\r\n    <modal :show.sync=\"copyModal\" effect=\"fade\" width=\"450px\">\r\n        <div slot=\"modal-header\" class=\"modal-header\">\r\n            <h4 class=\"modal-title\">复制</h4>\r\n        </div>\r\n        <div slot=\"modal-body\" class=\"modal-body copy-body text-center\">\r\n            从\r\n            <v-select :value.sync=\"setting\" :options=\"settings\" :search=\"true\" placeholder=\"请选择\">\r\n            </v-select>\r\n            上复制生成新的应用配置?\r\n        </div>\r\n        <div slot=\"modal-footer\" class=\"modal-footer\">\r\n            <button type=\"button\" class=\"btn btn-default\" :disabled=\"setting ? false : true\" @click=\"okFn\">确定</button>\r\n            <button type=\"button\" class=\"btn btn-default\" @click='copyModal = false'>取消</button>\r\n        </div>\r\n    </modal>\r\n</template>\r\n\r\n<script>\r\nimport { modal } from 'vue-strap'\r\nimport vSelect from '../../global/Select.vue'\r\n\r\nlet origin = {\r\n        copyModal: false,\r\n        settings: [],\r\n        setting: ''\r\n    }\r\n\r\nexport default {\r\n    data () {\r\n        return origin\r\n    },\r\n    methods: {\r\n\r\n        // 确认复制\r\n        okFn () {\r\n            this.$http({\r\n                url: '/package_copy/',\r\n                method: 'POST',\r\n                data: {\r\n                    id: this.setting\r\n                }\r\n            })\r\n            .then(response => {\r\n                if (response.data.result) {\r\n                    this.setting = ''\r\n                    this.copyModal = false\r\n\r\n                    this.$dispatch('refresh')\r\n                    this.$dispatch('show-success')\r\n                } else {\r\n                    this.$dispatch('show-error')\r\n                }\r\n            })\r\n        }\r\n    },\r\n    components: {\r\n        modal,\r\n        vSelect\r\n    },\r\n    events: {\r\n        'showCopy' () {\r\n            this.copyModal = true\r\n\r\n            this.$http({\r\n                url: '/package_copy/',\r\n                method: 'GET'\r\n            })\r\n            .then(response => {\r\n                this.settings = response.data.packages\r\n            })\r\n        }\r\n    }\r\n}\r\n</script>\r\n\r\n<style scoped>\r\n.add-menu {\r\n    height: 34px;\r\n    line-height: 34px;\r\n    padding: 0;\r\n    color: #009688;\r\n    cursor: pointer;\r\n}\r\n\r\n.copy-body {\r\n    min-height: 200px;\r\n}\r\n</style>"],"sourceRoot":"webpack://"}]);
 	
 	// exports
 
 
 /***/ },
-/* 155 */
+/* 165 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2032,14 +2682,14 @@ webpackJsonp([2],Array(31).concat([
 	//         <div slot="modal-header" class="modal-header">
 	//             <h4 class="modal-title">复制</h4>
 	//         </div>
-	//         <div slot="modal-body" class="modal-body text-center">
+	//         <div slot="modal-body" class="modal-body copy-body text-center">
 	//             从
-	//             <v-select :value.sync="setting" :options="settings" placeholder="请选择">
+	//             <v-select :value.sync="setting" :options="settings" :search="true" placeholder="请选择">
 	//             </v-select>
 	//             上复制生成新的应用配置?
 	//         </div>
 	//         <div slot="modal-footer" class="modal-footer">
-	//             <button type="button" class="btn btn-default">确定</button>
+	//             <button type="button" class="btn btn-default" :disabled="setting ? false : true" @click="okFn">确定</button>
 	//             <button type="button" class="btn btn-default" @click='copyModal = false'>取消</button>
 	//         </div>
 	//     </modal>
@@ -2059,13 +2709,48 @@ webpackJsonp([2],Array(31).concat([
 	        return origin;
 	    },
 	
+	    methods: {
+	
+	        // 确认复制
+	
+	        okFn: function okFn() {
+	            var _this = this;
+	
+	            this.$http({
+	                url: '/package_copy/',
+	                method: 'POST',
+	                data: {
+	                    id: this.setting
+	                }
+	            }).then(function (response) {
+	                if (response.data.result) {
+	                    _this.setting = '';
+	                    _this.copyModal = false;
+	
+	                    _this.$dispatch('refresh');
+	                    _this.$dispatch('show-success');
+	                } else {
+	                    _this.$dispatch('show-error');
+	                }
+	            });
+	        }
+	    },
 	    components: {
 	        modal: _vueStrap.modal,
 	        vSelect: _Select2.default
 	    },
 	    events: {
 	        'showCopy': function showCopy() {
+	            var _this2 = this;
+	
 	            this.copyModal = true;
+	
+	            this.$http({
+	                url: '/package_copy/',
+	                method: 'GET'
+	            }).then(function (response) {
+	                _this2.settings = response.data.packages;
+	            });
 	        }
 	    }
 	};
@@ -2079,20 +2764,402 @@ webpackJsonp([2],Array(31).concat([
 	//     color: #009688;
 	//     cursor: pointer;
 	// }
+	//
+	// .copy-body {
+	//     min-height: 200px;
+	// }
 	// </style>
 	/* generated by vue-loader */
 
 /***/ },
-/* 156 */
+/* 166 */
 /***/ function(module, exports) {
 
-	module.exports = "\n    <modal :show.sync=\"copyModal\" effect=\"fade\" width=\"450px\" _v-3211d87c=\"\">\n        <div slot=\"modal-header\" class=\"modal-header\" _v-3211d87c=\"\">\n            <h4 class=\"modal-title\" _v-3211d87c=\"\">复制</h4>\n        </div>\n        <div slot=\"modal-body\" class=\"modal-body text-center\" _v-3211d87c=\"\">\n            从\n            <v-select :value.sync=\"setting\" :options=\"settings\" placeholder=\"请选择\" _v-3211d87c=\"\">\n            </v-select>\n            上复制生成新的应用配置?\n        </div>\n        <div slot=\"modal-footer\" class=\"modal-footer\" _v-3211d87c=\"\">\n            <button type=\"button\" class=\"btn btn-default\" _v-3211d87c=\"\">确定</button>\n            <button type=\"button\" class=\"btn btn-default\" @click=\"copyModal = false\" _v-3211d87c=\"\">取消</button>\n        </div>\n    </modal>\n";
+	module.exports = "\n    <modal :show.sync=\"copyModal\" effect=\"fade\" width=\"450px\" _v-3211d87c=\"\">\n        <div slot=\"modal-header\" class=\"modal-header\" _v-3211d87c=\"\">\n            <h4 class=\"modal-title\" _v-3211d87c=\"\">复制</h4>\n        </div>\n        <div slot=\"modal-body\" class=\"modal-body copy-body text-center\" _v-3211d87c=\"\">\n            从\n            <v-select :value.sync=\"setting\" :options=\"settings\" :search=\"true\" placeholder=\"请选择\" _v-3211d87c=\"\">\n            </v-select>\n            上复制生成新的应用配置?\n        </div>\n        <div slot=\"modal-footer\" class=\"modal-footer\" _v-3211d87c=\"\">\n            <button type=\"button\" class=\"btn btn-default\" :disabled=\"setting ? false : true\" @click=\"okFn\" _v-3211d87c=\"\">确定</button>\n            <button type=\"button\" class=\"btn btn-default\" @click=\"copyModal = false\" _v-3211d87c=\"\">取消</button>\n        </div>\n    </modal>\n";
 
 /***/ },
-/* 157 */
+/* 167 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__webpack_require__(168)
+	__vue_script__ = __webpack_require__(170)
+	__vue_template__ = __webpack_require__(171)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "D:\\work\\Aptana Studio 3 Workspace\\charging_conf\\charging_conf\\static\\src\\components\\deploy_manage\\app_board\\EditEnv.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 168 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(169);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(29)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js?sourceMap!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-19d8d768&file=EditEnv.vue&scoped=true!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./EditEnv.vue", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js?sourceMap!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-19d8d768&file=EditEnv.vue&scoped=true!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./EditEnv.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 169 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(28)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "\r\n.env-from[_v-19d8d768] {\r\n    min-height: 400px;\r\n}\r\n", "", {"version":3,"sources":["/./src/components/deploy_manage/app_board/EditEnv.vue.style"],"names":[],"mappings":";AA2GA;IACA,kBAAA;CACA","file":"EditEnv.vue","sourcesContent":["<template>\r\n    <modal :show.sync=\"editEnvModal\" effect=\"fade\" width=\"450px\">\r\n        <div slot=\"modal-header\" class=\"modal-header\">\r\n            <h4 class=\"modal-title\">运行环境配置</h4>\r\n        </div>\r\n        <div slot=\"modal-body\" class=\"modal-body\">\r\n            <form class=\"form-horizontal env-from\">\r\n                <div class=\"form-group text-center\">\r\n                    <v-select :value.sync=\"env\" :options=\"envArr\" placeholder=\"请选择\" :search=\"true\">\r\n                    </v-select>\r\n                </div>\r\n                <div class=\"form-group text-center env-rule\" v-if=\"env !== ''\">\r\n                    <checkbox-group :value.sync=\"envValue\">\r\n                        <checkbox :value=\"rule.value\" v-for=\"rule in rules\">{{ rule.label }}</checkbox>\r\n                    </checkbox-group>\r\n                </div>\r\n            </form>\r\n        </div>\r\n        <div slot=\"modal-footer\" class=\"modal-footer\">\r\n            <button type=\"button\" class=\"btn btn-default\" :disabled=\"env ? false : true\" @click=\"saveFn\">保存</button>\r\n            <button type=\"button\" class=\"btn btn-default\" @click='editEnvModal = false'>取消</button>\r\n        </div>\r\n    </modal>\r\n</template>\r\n\r\n<script>\r\nimport vSelect from '../../global/Select.vue'\r\nimport { modal, checkboxGroup, checkboxBtn } from 'vue-strap'\r\n\r\nlet origin = {\r\n        editEnvModal: false,\r\n        env: '',\r\n        envArr: [],\r\n        envValue: [],\r\n        rules: [],\r\n        envId: null\r\n    };\r\n\r\nexport default {\r\n    data () {\r\n        return origin\r\n    },\r\n    methods: {\r\n\r\n        // 保存环境\r\n        saveFn () {\r\n            if (this.env) {\r\n                this.$http({\r\n                    url: '/package_rules/',\r\n                    method: 'POST',\r\n                    data: {\r\n                        package_id: this.envId,\r\n                        rules: this.envValue,\r\n                        env_id: this.env\r\n                    }   \r\n                })\r\n                .then(response => {\r\n                    if (response.data.result) {\r\n                        this.env = ''\r\n                        this.envId = null\r\n                        this.rules = []\r\n                        this.envValue = []\r\n\r\n                        this.editEnvModal = false\r\n\r\n                        this.$dispatch('show-success')\r\n                    }\r\n                })\r\n            }\r\n        }\r\n    },\r\n    components: {\r\n        modal,\r\n        vSelect,\r\n        checkboxGroup,\r\n        checkbox: checkboxBtn\r\n    },\r\n    events: {\r\n        'showEditEnv' (param) {\r\n            this.editEnvModal = true\r\n            this.envId = param\r\n\r\n            this.$http({\r\n                url: '/package_envs/',\r\n                method: 'GET'\r\n            })\r\n            .then(response => {\r\n                this.envArr = response.data.envs\r\n            })\r\n        }\r\n    },\r\n    watch: {\r\n        'env' (newVal) {\r\n            this.$http({\r\n                url: '/package_rules/?env_id=' + newVal + '&package_id=' + this.envId,\r\n                method: 'GET'\r\n            })\r\n            .then(response => {\r\n                this.envValue = response.data.rules\r\n                this.rules = response.data.rule_list\r\n            })\r\n        }\r\n    }\r\n}\r\n</script>\r\n\r\n<style scoped>\r\n.env-from {\r\n    min-height: 400px;\r\n}\r\n</style>"],"sourceRoot":"webpack://"}]);
+	
+	// exports
+
+
+/***/ },
+/* 170 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _Select = __webpack_require__(31);
+	
+	var _Select2 = _interopRequireDefault(_Select);
+	
+	var _vueStrap = __webpack_require__(103);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	// <template>
+	//     <modal :show.sync="editEnvModal" effect="fade" width="450px">
+	//         <div slot="modal-header" class="modal-header">
+	//             <h4 class="modal-title">运行环境配置</h4>
+	//         </div>
+	//         <div slot="modal-body" class="modal-body">
+	//             <form class="form-horizontal env-from">
+	//                 <div class="form-group text-center">
+	//                     <v-select :value.sync="env" :options="envArr" placeholder="请选择" :search="true">
+	//                     </v-select>
+	//                 </div>
+	//                 <div class="form-group text-center env-rule" v-if="env !== ''">
+	//                     <checkbox-group :value.sync="envValue">
+	//                         <checkbox :value="rule.value" v-for="rule in rules">{{ rule.label }}</checkbox>
+	//                     </checkbox-group>
+	//                 </div>
+	//             </form>
+	//         </div>
+	//         <div slot="modal-footer" class="modal-footer">
+	//             <button type="button" class="btn btn-default" :disabled="env ? false : true" @click="saveFn">保存</button>
+	//             <button type="button" class="btn btn-default" @click='editEnvModal = false'>取消</button>
+	//         </div>
+	//     </modal>
+	// </template>
+	//
+	// <script>
+	
+	
+	var origin = {
+	    editEnvModal: false,
+	    env: '',
+	    envArr: [],
+	    envValue: [],
+	    rules: [],
+	    envId: null
+	};
+	
+	exports.default = {
+	    data: function data() {
+	        return origin;
+	    },
+	
+	    methods: {
+	
+	        // 保存环境
+	
+	        saveFn: function saveFn() {
+	            var _this = this;
+	
+	            if (this.env) {
+	                this.$http({
+	                    url: '/package_rules/',
+	                    method: 'POST',
+	                    data: {
+	                        package_id: this.envId,
+	                        rules: this.envValue,
+	                        env_id: this.env
+	                    }
+	                }).then(function (response) {
+	                    if (response.data.result) {
+	                        _this.env = '';
+	                        _this.envId = null;
+	                        _this.rules = [];
+	                        _this.envValue = [];
+	
+	                        _this.editEnvModal = false;
+	
+	                        _this.$dispatch('show-success');
+	                    }
+	                });
+	            }
+	        }
+	    },
+	    components: {
+	        modal: _vueStrap.modal,
+	        vSelect: _Select2.default,
+	        checkboxGroup: _vueStrap.checkboxGroup,
+	        checkbox: _vueStrap.checkboxBtn
+	    },
+	    events: {
+	        'showEditEnv': function showEditEnv(param) {
+	            var _this2 = this;
+	
+	            this.editEnvModal = true;
+	            this.envId = param;
+	
+	            this.$http({
+	                url: '/package_envs/',
+	                method: 'GET'
+	            }).then(function (response) {
+	                _this2.envArr = response.data.envs;
+	            });
+	        }
+	    },
+	    watch: {
+	        'env': function env(newVal) {
+	            var _this3 = this;
+	
+	            this.$http({
+	                url: '/package_rules/?env_id=' + newVal + '&package_id=' + this.envId,
+	                method: 'GET'
+	            }).then(function (response) {
+	                _this3.envValue = response.data.rules;
+	                _this3.rules = response.data.rule_list;
+	            });
+	        }
+	    }
+	};
+	// </script>
+	//
+	// <style scoped>
+	// .env-from {
+	//     min-height: 400px;
+	// }
+	// </style>
+	/* generated by vue-loader */
+
+/***/ },
+/* 171 */
 /***/ function(module, exports) {
 
-	module.exports = "\n    <div _v-5b3a62cc=\"\">\n        <form class=\"form-inline\" _v-5b3a62cc=\"\">\n            <div class=\"form-group\" _v-5b3a62cc=\"\">\n                <label _v-5b3a62cc=\"\">项目名称：</label>\n                <input type=\"text\" class=\"form-control\" v-model=\"projectName\" _v-5b3a62cc=\"\">\n            </div>\n            <div class=\"form-group\" _v-5b3a62cc=\"\">\n                <label _v-5b3a62cc=\"\">部署包名称：</label>\n                <input type=\"text\" class=\"form-control\" v-model=\"packName\" _v-5b3a62cc=\"\">\n            </div>\n            <div class=\"form-group\" _v-5b3a62cc=\"\">\n                <label _v-5b3a62cc=\"\">项目类型：</label>\n                <v-select :value.sync=\"type\" :options=\"appTypes\" placeholder=\"请选择\" _v-5b3a62cc=\"\">\n                </v-select>\n            </div>\n            <div class=\"mt30 table-btn\" _v-5b3a62cc=\"\">\n                <button type=\"button\" class=\"btn btn-default btn-pd\" @click=\"$broadcast('showAdd')\" _v-5b3a62cc=\"\">\n                    <span class=\"glyphicon glyphicon-plus\" _v-5b3a62cc=\"\"></span>\n                    添加\n                </button>\n                <button type=\"button\" class=\"btn btn-default btn-pd\" @click=\"$broadcast('showCopy')\" _v-5b3a62cc=\"\">\n                    <span class=\"glyphicon glyphicon-duplicate\" _v-5b3a62cc=\"\"></span>\n                    配置复制\n                </button>\n            </div>\n            <table class=\"table table-hover table-bordered table-bg\" _v-5b3a62cc=\"\">\n                <thead _v-5b3a62cc=\"\">\n                    <tr _v-5b3a62cc=\"\">\n                        <th _v-5b3a62cc=\"\">部署包名称</th>\n                        <th _v-5b3a62cc=\"\">项目名称</th>\n                        <th _v-5b3a62cc=\"\">项目类型</th>\n                        <th _v-5b3a62cc=\"\">版本</th>\n                        <th _v-5b3a62cc=\"\">运行环境</th>\n                        <th _v-5b3a62cc=\"\">备注</th>\n                        <th _v-5b3a62cc=\"\">操作</th>\n                    </tr>\n                </thead>\n                <tbody _v-5b3a62cc=\"\">\n                    <tr _v-5b3a62cc=\"\">\n                        <td _v-5b3a62cc=\"\">sncp-imprest</td>\n                        <td _v-5b3a62cc=\"\">充值服务</td>\n                        <td _v-5b3a62cc=\"\">计费</td>\n                        <td _v-5b3a62cc=\"\">1.01</td>\n                        <td _v-5b3a62cc=\"\">\n                            <button type=\"button\" class=\"btn btn-default btn-small\" _v-5b3a62cc=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-pencil\" _v-5b3a62cc=\"\"></span>\n                                编辑\n                            </button>\n                            <button type=\"button\" class=\"btn btn-default btn-small\" _v-5b3a62cc=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-eye-open\" _v-5b3a62cc=\"\"></span>\n                                查看\n                            </button>\n                        </td>\n                        <td _v-5b3a62cc=\"\"></td>\n                        <td _v-5b3a62cc=\"\">\n                            <button type=\"button\" class=\"btn btn-default btn-small\" _v-5b3a62cc=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-edit\" _v-5b3a62cc=\"\"></span>\n                                修改\n                            </button>\n                            <button type=\"button\" class=\"btn btn-default btn-small\" @click=\"$broadcast('showConfirm')\" _v-5b3a62cc=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-trash\" _v-5b3a62cc=\"\"></span>\n                                删除\n                            </button>\n                        </td>\n                    </tr>\n                </tbody>\n            </table>\n        </form>\n        <add-modal _v-5b3a62cc=\"\"></add-modal>\n        <copy-modal _v-5b3a62cc=\"\"></copy-modal>\n        <delete-modal _v-5b3a62cc=\"\"></delete-modal>\n    </div>\n";
+	module.exports = "\n    <modal :show.sync=\"editEnvModal\" effect=\"fade\" width=\"450px\" _v-19d8d768=\"\">\n        <div slot=\"modal-header\" class=\"modal-header\" _v-19d8d768=\"\">\n            <h4 class=\"modal-title\" _v-19d8d768=\"\">运行环境配置</h4>\n        </div>\n        <div slot=\"modal-body\" class=\"modal-body\" _v-19d8d768=\"\">\n            <form class=\"form-horizontal env-from\" _v-19d8d768=\"\">\n                <div class=\"form-group text-center\" _v-19d8d768=\"\">\n                    <v-select :value.sync=\"env\" :options=\"envArr\" placeholder=\"请选择\" :search=\"true\" _v-19d8d768=\"\">\n                    </v-select>\n                </div>\n                <div class=\"form-group text-center env-rule\" v-if=\"env !== ''\" _v-19d8d768=\"\">\n                    <checkbox-group :value.sync=\"envValue\" _v-19d8d768=\"\">\n                        <checkbox :value=\"rule.value\" v-for=\"rule in rules\" _v-19d8d768=\"\">{{ rule.label }}</checkbox>\n                    </checkbox-group>\n                </div>\n            </form>\n        </div>\n        <div slot=\"modal-footer\" class=\"modal-footer\" _v-19d8d768=\"\">\n            <button type=\"button\" class=\"btn btn-default\" :disabled=\"env ? false : true\" @click=\"saveFn\" _v-19d8d768=\"\">保存</button>\n            <button type=\"button\" class=\"btn btn-default\" @click=\"editEnvModal = false\" _v-19d8d768=\"\">取消</button>\n        </div>\n    </modal>\n";
+
+/***/ },
+/* 172 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__webpack_require__(173)
+	__vue_script__ = __webpack_require__(175)
+	__vue_template__ = __webpack_require__(176)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "D:\\work\\Aptana Studio 3 Workspace\\charging_conf\\charging_conf\\static\\src\\components\\deploy_manage\\app_board\\ViewEnv.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 173 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(174);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(29)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js?sourceMap!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-fb77195e&file=ViewEnv.vue&scoped=true!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./ViewEnv.vue", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js?sourceMap!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-fb77195e&file=ViewEnv.vue&scoped=true!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./ViewEnv.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 174 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(28)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "\r\n.env-from[_v-fb77195e] {\r\n    max-height: 550px;\r\n    overflow: auto;\r\n    padding: 0 20px;\r\n}\r\n\r\n.selected-tag[_v-fb77195e],\r\n.tagexp[_v-fb77195e] {\r\n    border: 1px solid #ccc;\r\n    border-radius: 4px;\r\n    height: 26px;\r\n    margin: 4px 1px 0 3px;\r\n    padding: 0 .25em;\r\n    float: left;\r\n    line-height: 1.7em;\r\n    color: #147688;\r\n    background-color: #fff;\r\n    border-color: #91ddec;\r\n}\r\n\r\n.selected-tag.active[_v-fb77195e],\r\n.tagexp.active[_v-fb77195e] {\r\n    background-color: #d7f3f9;\r\n}\r\n\r\n.tagexp[_v-fb77195e] {\r\n    float: none;\r\n}\r\n", "", {"version":3,"sources":["/./src/components/deploy_manage/app_board/ViewEnv.vue.style"],"names":[],"mappings":";AA8DA;IACA,kBAAA;IACA,eAAA;IACA,gBAAA;CACA;;AAEA;;IAEA,uBAAA;IACA,mBAAA;IACA,aAAA;IACA,sBAAA;IACA,iBAAA;IACA,YAAA;IACA,mBAAA;IACA,eAAA;IACA,uBAAA;IACA,sBAAA;CACA;;AAEA;;IAEA,0BAAA;CACA;;AAEA;IACA,YAAA;CACA","file":"ViewEnv.vue","sourcesContent":["<template>\r\n    <modal :show.sync=\"viewEnvModal\" effect=\"fade\" width=\"450px\">\r\n        <div slot=\"modal-header\" class=\"modal-header\">\r\n            <h4 class=\"modal-title\">运行前置条件</h4>\r\n        </div>\r\n        <div slot=\"modal-body\" class=\"modal-body\">\r\n            <form class=\"form-horizontal env-from\">\r\n                <div class=\"form-group text-center\">\r\n                    <span class=\"tagexp active\"></span>添加\r\n                    <span class=\"tagexp\"></span>未添加\r\n                </div>\r\n                <div class=\"form-group\" v-for=\"list in envList\">\r\n                    <label class=\"control-label\" v-text=\"$key\"></label>\r\n                    <div>\r\n                        <span class=\"selected-tag\" v-for=\"env in list\" :class=\"env.check ? 'selected-tag active' : 'selected-tag'\">\r\n                            <span v-text=\"env.rule\"></span>\r\n                        </span>\r\n                    </div>\r\n                </div>\r\n            </form>\r\n        </div>\r\n        <div slot=\"modal-footer\" class=\"modal-footer\">\r\n            <button type=\"button\" class=\"btn btn-default\" @click='viewEnvModal = false'>关闭</button>\r\n        </div>\r\n    </modal>\r\n</template>\r\n\r\n<script>\r\nimport { modal } from 'vue-strap'\r\n\r\nlet origin = {\r\n        viewEnvModal: false,\r\n        envList: {}\r\n    };\r\n\r\nexport default {\r\n    data () {\r\n        return origin\r\n    },\r\n    components: {\r\n        modal\r\n    },\r\n    events: {\r\n        'showViewEnv' (param) {\r\n            this.viewEnvModal = true\r\n\r\n            this.$http({\r\n                url: '/package_env_view/',\r\n                method: 'POST',\r\n                data: {\r\n                    id: param\r\n                }\r\n            })\r\n            .then(response => {\r\n                this.envList = response.data.ret\r\n            })\r\n        }\r\n    }\r\n}\r\n</script>\r\n\r\n<style scoped>\r\n.env-from {\r\n    max-height: 550px;\r\n    overflow: auto;\r\n    padding: 0 20px;\r\n}\r\n\r\n.selected-tag,\r\n.tagexp {\r\n    border: 1px solid #ccc;\r\n    border-radius: 4px;\r\n    height: 26px;\r\n    margin: 4px 1px 0 3px;\r\n    padding: 0 .25em;\r\n    float: left;\r\n    line-height: 1.7em;\r\n    color: #147688;\r\n    background-color: #fff;\r\n    border-color: #91ddec;\r\n}\r\n\r\n.selected-tag.active,\r\n.tagexp.active {\r\n    background-color: #d7f3f9;\r\n}\r\n\r\n.tagexp {\r\n    float: none;\r\n}\r\n</style>"],"sourceRoot":"webpack://"}]);
+	
+	// exports
+
+
+/***/ },
+/* 175 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _vueStrap = __webpack_require__(103);
+	
+	var origin = {
+	    viewEnvModal: false,
+	    envList: {}
+	}; // <template>
+	//     <modal :show.sync="viewEnvModal" effect="fade" width="450px">
+	//         <div slot="modal-header" class="modal-header">
+	//             <h4 class="modal-title">运行前置条件</h4>
+	//         </div>
+	//         <div slot="modal-body" class="modal-body">
+	//             <form class="form-horizontal env-from">
+	//                 <div class="form-group text-center">
+	//                     <span class="tagexp active"></span>添加
+	//                     <span class="tagexp"></span>未添加
+	//                 </div>
+	//                 <div class="form-group" v-for="list in envList">
+	//                     <label class="control-label" v-text="$key"></label>
+	//                     <div>
+	//                         <span class="selected-tag" v-for="env in list" :class="env.check ? 'selected-tag active' : 'selected-tag'">
+	//                             <span v-text="env.rule"></span>
+	//                         </span>
+	//                     </div>
+	//                 </div>
+	//             </form>
+	//         </div>
+	//         <div slot="modal-footer" class="modal-footer">
+	//             <button type="button" class="btn btn-default" @click='viewEnvModal = false'>关闭</button>
+	//         </div>
+	//     </modal>
+	// </template>
+	//
+	// <script>
+	
+	
+	exports.default = {
+	    data: function data() {
+	        return origin;
+	    },
+	
+	    components: {
+	        modal: _vueStrap.modal
+	    },
+	    events: {
+	        'showViewEnv': function showViewEnv(param) {
+	            var _this = this;
+	
+	            this.viewEnvModal = true;
+	
+	            this.$http({
+	                url: '/package_env_view/',
+	                method: 'POST',
+	                data: {
+	                    id: param
+	                }
+	            }).then(function (response) {
+	                _this.envList = response.data.ret;
+	            });
+	        }
+	    }
+	};
+	// </script>
+	//
+	// <style scoped>
+	// .env-from {
+	//     max-height: 550px;
+	//     overflow: auto;
+	//     padding: 0 20px;
+	// }
+	//
+	// .selected-tag,
+	// .tagexp {
+	//     border: 1px solid #ccc;
+	//     border-radius: 4px;
+	//     height: 26px;
+	//     margin: 4px 1px 0 3px;
+	//     padding: 0 .25em;
+	//     float: left;
+	//     line-height: 1.7em;
+	//     color: #147688;
+	//     background-color: #fff;
+	//     border-color: #91ddec;
+	// }
+	//
+	// .selected-tag.active,
+	// .tagexp.active {
+	//     background-color: #d7f3f9;
+	// }
+	//
+	// .tagexp {
+	//     float: none;
+	// }
+	// </style>
+	/* generated by vue-loader */
+
+/***/ },
+/* 176 */
+/***/ function(module, exports) {
+
+	module.exports = "\n    <modal :show.sync=\"viewEnvModal\" effect=\"fade\" width=\"450px\" _v-fb77195e=\"\">\n        <div slot=\"modal-header\" class=\"modal-header\" _v-fb77195e=\"\">\n            <h4 class=\"modal-title\" _v-fb77195e=\"\">运行前置条件</h4>\n        </div>\n        <div slot=\"modal-body\" class=\"modal-body\" _v-fb77195e=\"\">\n            <form class=\"form-horizontal env-from\" _v-fb77195e=\"\">\n                <div class=\"form-group text-center\" _v-fb77195e=\"\">\n                    <span class=\"tagexp active\" _v-fb77195e=\"\"></span>添加\n                    <span class=\"tagexp\" _v-fb77195e=\"\"></span>未添加\n                </div>\n                <div class=\"form-group\" v-for=\"list in envList\" _v-fb77195e=\"\">\n                    <label class=\"control-label\" v-text=\"$key\" _v-fb77195e=\"\"></label>\n                    <div _v-fb77195e=\"\">\n                        <span class=\"selected-tag\" v-for=\"env in list\" :class=\"env.check ? 'selected-tag active' : 'selected-tag'\" _v-fb77195e=\"\">\n                            <span v-text=\"env.rule\" _v-fb77195e=\"\"></span>\n                        </span>\n                    </div>\n                </div>\n            </form>\n        </div>\n        <div slot=\"modal-footer\" class=\"modal-footer\" _v-fb77195e=\"\">\n            <button type=\"button\" class=\"btn btn-default\" @click=\"viewEnvModal = false\" _v-fb77195e=\"\">关闭</button>\n        </div>\n    </modal>\n";
+
+/***/ },
+/* 177 */
+/***/ function(module, exports) {
+
+	module.exports = "\n    <div _v-5b3a62cc=\"\">\n        <form class=\"form-inline\" _v-5b3a62cc=\"\">\n            <div class=\"form-group\" _v-5b3a62cc=\"\">\n                <label _v-5b3a62cc=\"\">部署包名称：</label>\n                <input type=\"text\" class=\"form-control\" v-model=\"param.name\" _v-5b3a62cc=\"\">\n            </div>\n            <div class=\"form-group\" _v-5b3a62cc=\"\">\n                <label _v-5b3a62cc=\"\">项目名称：</label>\n                <input type=\"text\" class=\"form-control\" v-model=\"param.project\" _v-5b3a62cc=\"\">\n            </div>\n            <div class=\"form-group\" _v-5b3a62cc=\"\">\n                <label _v-5b3a62cc=\"\">项目类型：</label>\n                <v-select :value.sync=\"param.type\" :options=\"typeArr.concat(appTypes)\" placeholder=\"\" _v-5b3a62cc=\"\">\n                </v-select>\n            </div>\n            <div class=\"mt30 table-btn\" _v-5b3a62cc=\"\">\n                <button type=\"button\" class=\"btn btn-default btn-pd\" @click=\"$broadcast('showAdd')\" _v-5b3a62cc=\"\">\n                    <span class=\"glyphicon glyphicon-plus\" _v-5b3a62cc=\"\"></span>\n                    添加\n                </button>\n                <button type=\"button\" class=\"btn btn-default btn-pd\" @click=\"$broadcast('showCopy')\" _v-5b3a62cc=\"\">\n                    <span class=\"glyphicon glyphicon-duplicate\" _v-5b3a62cc=\"\"></span>\n                    配置复制\n                </button>\n            </div>\n            <table class=\"table table-hover table-bordered table-bg\" _v-5b3a62cc=\"\">\n                <thead _v-5b3a62cc=\"\">\n                    <tr _v-5b3a62cc=\"\">\n                        <th _v-5b3a62cc=\"\">部署包名称</th>\n                        <th _v-5b3a62cc=\"\">项目名称</th>\n                        <th _v-5b3a62cc=\"\">项目类型</th>\n                        <th _v-5b3a62cc=\"\">版本</th>\n                        <th _v-5b3a62cc=\"\">运行环境</th>\n                        <th _v-5b3a62cc=\"\">备注</th>\n                        <th _v-5b3a62cc=\"\">操作</th>\n                    </tr>\n                </thead>\n                <tbody _v-5b3a62cc=\"\">\n                    <tr v-for=\"list in tableList\" _v-5b3a62cc=\"\">\n                        <td v-text=\"list.name\" :title=\"list.name\" _v-5b3a62cc=\"\"></td>\n                        <td v-text=\"list.project\" _v-5b3a62cc=\"\"></td>\n                        <td v-text=\"list.type\" _v-5b3a62cc=\"\"></td>\n                        <td v-text=\"list.version\" _v-5b3a62cc=\"\"></td>\n                        <td _v-5b3a62cc=\"\">\n                            <button type=\"button\" class=\"btn btn-default btn-small\" @click=\"$broadcast('showEditEnv', tableList[$index].id)\" _v-5b3a62cc=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-pencil\" _v-5b3a62cc=\"\"></span>\n                                编辑\n                            </button>\n                            <button type=\"button\" class=\"btn btn-default btn-small\" @click=\"$broadcast('showViewEnv', tableList[$index].id)\" _v-5b3a62cc=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-eye-open\" _v-5b3a62cc=\"\"></span>\n                                查看\n                            </button>\n                        </td>\n                        <td v-text=\"list.remark\" :title=\"list.remark\" _v-5b3a62cc=\"\"></td>\n                        <td _v-5b3a62cc=\"\">\n                            <button type=\"button\" class=\"btn btn-default btn-small\" @click=\"$broadcast('showModify', tableList[$index].id)\" _v-5b3a62cc=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-edit\" _v-5b3a62cc=\"\"></span>\n                                修改\n                            </button>\n                            <button type=\"button\" class=\"btn btn-default btn-small\" @click=\"$broadcast('showConfirm', tableList[$index].id)\" _v-5b3a62cc=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-trash\" _v-5b3a62cc=\"\"></span>\n                                删除\n                            </button>\n                        </td>\n                    </tr>\n                    <tr v-if=\"tableList.length === 0\" _v-5b3a62cc=\"\">\n                        <td class=\"text-center\" colspan=\"7\" _v-5b3a62cc=\"\">\n                            暂无数据\n                        </td>\n                    </tr>\n                </tbody>\n                <tfoot _v-5b3a62cc=\"\">\n                    <tr _v-5b3a62cc=\"\">\n                        <td colspan=\"7\" _v-5b3a62cc=\"\">\n                            <div class=\"pull-right\" _v-5b3a62cc=\"\">\n                                <boot-page :async=\"true\" :lens=\"lenArr\" :page-len=\"pageLen\" :url=\"url\" :param=\"param\" _v-5b3a62cc=\"\"></boot-page>\n                            </div>\n                        </td>\n                    </tr>\n                </tfoot>\n            </table>\n        </form>\n        <add-modal _v-5b3a62cc=\"\"></add-modal>\n        <modify-modal _v-5b3a62cc=\"\"></modify-modal>\n        <edit-env-modal _v-5b3a62cc=\"\"></edit-env-modal>\n        <view-env-modal _v-5b3a62cc=\"\"></view-env-modal>\n        <copy-modal _v-5b3a62cc=\"\"></copy-modal>\n        <delete-modal _v-5b3a62cc=\"\"></delete-modal>\n    </div>\n";
 
 /***/ }
 ]));

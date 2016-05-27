@@ -3,14 +3,14 @@
         <div slot="modal-header" class="modal-header">
             <h4 class="modal-title">复制</h4>
         </div>
-        <div slot="modal-body" class="modal-body text-center">
+        <div slot="modal-body" class="modal-body copy-body text-center">
             从
-            <v-select :value.sync="setting" :options="settings" placeholder="请选择">
+            <v-select :value.sync="setting" :options="settings" :search="true" placeholder="请选择">
             </v-select>
             上复制生成新的应用配置?
         </div>
         <div slot="modal-footer" class="modal-footer">
-            <button type="button" class="btn btn-default">确定</button>
+            <button type="button" class="btn btn-default" :disabled="setting ? false : true" @click="okFn">确定</button>
             <button type="button" class="btn btn-default" @click='copyModal = false'>取消</button>
         </div>
     </modal>
@@ -30,6 +30,30 @@ export default {
     data () {
         return origin
     },
+    methods: {
+
+        // 确认复制
+        okFn () {
+            this.$http({
+                url: '/package_copy/',
+                method: 'POST',
+                data: {
+                    id: this.setting
+                }
+            })
+            .then(response => {
+                if (response.data.result) {
+                    this.setting = ''
+                    this.copyModal = false
+
+                    this.$dispatch('refresh')
+                    this.$dispatch('show-success')
+                } else {
+                    this.$dispatch('show-error')
+                }
+            })
+        }
+    },
     components: {
         modal,
         vSelect
@@ -37,6 +61,14 @@ export default {
     events: {
         'showCopy' () {
             this.copyModal = true
+
+            this.$http({
+                url: '/package_copy/',
+                method: 'GET'
+            })
+            .then(response => {
+                this.settings = response.data.packages
+            })
         }
     }
 }
@@ -49,5 +81,9 @@ export default {
     padding: 0;
     color: #009688;
     cursor: pointer;
+}
+
+.copy-body {
+    min-height: 200px;
 }
 </style>

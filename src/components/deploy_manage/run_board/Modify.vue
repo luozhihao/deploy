@@ -104,11 +104,8 @@ export default {
             this.modifyModal = true
 
             this.$http({
-                url: '/env_edit/',
-                method: 'GET',
-                data: {
-                    id: param
-                }
+                url: '/env_edit/?id=' + param,
+                method: 'GET'
             })
             .then(response => {
                 this.name = response.data.name

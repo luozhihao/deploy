@@ -1,7 +1,7 @@
 <template>
-    <modal :show.sync="addModal" effect="fade" width="450px">
+    <modal :show.sync="modifyModal" effect="fade" width="450px">
         <div slot="modal-header" class="modal-header">
-            <h4 class="modal-title">添加</h4>
+            <h4 class="modal-title">修改</h4>
         </div>
         <div slot="modal-body" class="modal-body">
             <form class="form-horizontal">
@@ -40,7 +40,7 @@
         </div>
         <div slot="modal-footer" class="modal-footer">
             <button type="button" class="btn btn-default" @click="saveFn" :disabled="packName && type ? false : true">保存</button>
-            <button type="button" class="btn btn-default" @click='addModal = false'>取消</button>
+            <button type="button" class="btn btn-default" @click='modifyModal = false'>取消</button>
         </div>
     </modal>
 </template>
@@ -51,12 +51,13 @@ import vSelect from '../../global/Select.vue'
 import { appTypes } from '../../../vuex/getters.js'
 
 let origin = {
-        addModal: false,
+        modifyModal: false,
         packName: '',
         projectName: '',
         type: '',
         version: '',
-        remark: ''
+        remark: '',
+        id: null
     },
     init = Object.assign({}, origin);
 
@@ -69,9 +70,10 @@ export default {
         // 保存事件
         saveFn () {
             this.$http({
-                url: '/package_add/',
+                url: '/package_edit/',
                 method: 'POST',
                 data: {
+                    id: this.id,
                     name: this.packName,
                     type: this.type,
                     project: this.projectName,
@@ -102,8 +104,23 @@ export default {
         }
     },
     events: {
-        'showAdd' () {
-            this.addModal = true
+        'showModify' (param) {
+            this.modifyModal = true
+
+            this.$http({
+                url: '/package_edit/?id=' + param,
+                method: 'GET'
+            })
+            .then(response => {
+                let dict = response.data
+
+                this.packName = dict.name
+                this.projectName = dict.project
+                this.type = dict.type
+                this.version = dict.version
+                this.remark = dict.remark
+                this.id = param
+            })
         }
     }
 }

@@ -1,6 +1,6 @@
 /**
  * 
- * @authors Your Name (you@example.org)
+ * @authors luozh@snail.com
  * @date    2016-05-12 10:29:11
  * @version $Id$
  */
@@ -15,6 +15,7 @@ Vue.use(Vue_Resource)
 
 // 创建一个 object 存储应用启动时的状态
 const state = {
+    username: '',
     types: [],
     rules: [],
     ruleId: null,
@@ -24,6 +25,11 @@ const state = {
 
 // 创建一个 object 存储 mutation 函数
 const mutations = {
+
+    // 获取用户名
+    GETUSER (state, data) {
+        state.username = data
+    },
 
     // 运行环境类型
     GETRUNTYPES (state, data) {

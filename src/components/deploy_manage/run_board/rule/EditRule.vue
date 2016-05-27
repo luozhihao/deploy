@@ -29,8 +29,8 @@
 
 <script>
 import { modal } from 'vue-strap'
-import { rules, ruleId } from '../../../vuex/getters.js'
-import deleteModal from '../../global/Confirm.vue'
+import { rules, ruleId } from '../../../../vuex/getters.js'
+import deleteModal from './Confirm.vue'
 
 let origin = {
         ruleModal: false
@@ -50,7 +50,7 @@ export default {
         // 删除规则
         removeRules (index) {
             if (this.rules[index].value) {
-                this.$broadcast('showConfirm', index)
+                this.$broadcast('showDelete', index)
                 this.$broadcast('setMsg', '该规则下对应的脚本也会删除，是否确认？')
             } else {
                 this.rules.splice(index, 1)
@@ -105,7 +105,7 @@ export default {
         'showRule' () {
             this.ruleModal = true
         },
-        'confirm' (param) {
+        'deleteRule' (param) {
 
             // 删除规则
             this.$http({

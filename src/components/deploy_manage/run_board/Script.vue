@@ -86,6 +86,8 @@ export default {
 
         // 保存脚本
         saveScript () {
+            console.log(this.rule)
+
             this.$http({
                 url: '/script_edit/',
                 method: 'POST',
@@ -177,25 +179,29 @@ export default {
             value: document.documentElement.innerHTML,
             theme: 'erlang-dark'
         }); 
-    },
+    }, 
     events: {
         'showScript' () {
             this.scriptModal = true
+
+            this.rule = ''
         }
     },
     watch: {
 
         // 监测规则名
         'rule' (newVal) {
-            this.$http({
-                url: '/script_edit/?id=' + newVal,
-                method: 'GET'
-            })
-            .then(response => {
-                response.data.script ? editor.setValue(response.data.script) : editor.setValue('')
+            if (newVal) {
+                this.$http({
+                    url: '/script_edit/?id=' + newVal,
+                    method: 'GET'
+                })
+                .then(response => {
+                    response.data.script ? editor.setValue(response.data.script) : editor.setValue('')
 
-                response.data.script_type ? this.scriptTypeSelected = response.data.script_type : this.scriptTypeSelected = '1'
-            })
+                    response.data.script_type ? this.scriptTypeSelected = response.data.script_type : this.scriptTypeSelected = '1'
+                })
+            }
         },
 
         // 监测脚本类型

@@ -8,7 +8,7 @@
                 <div class="aside-header">
                     <span class="icon glyphicon glyphicon-home"></span>
                     <span>总览</span>
-                    <span class="icon-arrow glyphicon glyphicon-menu-down"></span>
+                    <!-- <span class="icon-arrow glyphicon glyphicon-menu-down"></span> -->
                 </div>
                 <ul class="aside-lists">
                     <li v-link="{ path: '/runBoard' }">

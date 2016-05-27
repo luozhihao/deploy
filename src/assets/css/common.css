@@ -166,3 +166,8 @@ fieldset[disabled] .form-control {
 .alert {
     z-index: 9999 !important;
 }
+
+.env-rule .btn-group>.btn {
+    width: 100%;
+    margin-bottom: 10px;
+}

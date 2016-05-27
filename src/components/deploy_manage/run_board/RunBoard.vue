@@ -82,7 +82,7 @@
 <script>
 import vSelect from '../../global/Select.vue'
 import addModal from './Add.vue'
-import ruleModal from './EditRule.vue'
+import ruleModal from './rule/EditRule.vue'
 import modifyModal from './Modify.vue'
 import bootPage from '../../global/BootPage.vue'
 import deleteModal from '../../global/Confirm.vue'
@@ -115,14 +115,14 @@ export default {
 
         // 获取编辑规则名
         getRuleFn (index) {
-            this.$broadcast('showRule')
             this.getRules(this.tableList[index].id)
+            this.$broadcast('showRule')
         },
 
         // 获取已建规则列表
         getRuleListFn (index) {
-            this.$broadcast('showScript')
             this.getRuleList(this.tableList[index].id)
+            this.$broadcast('showScript')
         }
     },
     vuex: {

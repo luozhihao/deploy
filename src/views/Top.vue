@@ -5,11 +5,11 @@
         <dropdown class="pull-right"> 
             <div data-toggle="dropdown" class="username">
                 <span class="glyphicon glyphicon-user"></span>
-                luozh
+                {{ username }}
                 <span class="caret"></span>
             </div>
             <ul slot="dropdown-menu" class="dropdown-menu">
-                <li><a href="#">退出</a></li>
+                <li><a @click="exitFn">退出</a></li>
             </ul>
         </dropdown>
     </div>
@@ -17,10 +17,29 @@
 
 <script>
 import { dropdown } from 'vue-strap'
+import { username } from '../vuex/getters.js'
 
 export default {
+    methods: {
+
+        // 退出
+        exitFn () {
+            this.$http({
+                url: '/logout/',
+                method: 'POST',
+            })
+            .then(function (response) {
+                location.href="/"
+            })
+        }
+    },
     components: {
         dropdown
+    },
+    vuex: {
+        getters: {
+            username
+        }
     }
 }
 </script>
