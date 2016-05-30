@@ -171,3 +171,11 @@ fieldset[disabled] .form-control {
     width: 100%;
     margin-bottom: 10px;
 }
+
+.env-rule .btn-group {
+    min-width: 300px;
+}
+
+.env-rule .btn-default.active {
+    background-color: #AEC9E2;
+}

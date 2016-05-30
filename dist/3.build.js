@@ -1240,12 +1240,78 @@ webpackJsonp([3],Array(31).concat([
 /* 94 */,
 /* 95 */,
 /* 96 */,
-/* 97 */,
-/* 98 */,
-/* 99 */,
-/* 100 */,
-/* 101 */,
-/* 102 */,
+/* 97 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = { "default": __webpack_require__(98), __esModule: true };
+
+/***/ },
+/* 98 */
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(99);
+	module.exports = __webpack_require__(41).Object.assign;
+
+/***/ },
+/* 99 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// 19.1.3.1 Object.assign(target, source)
+	var $export = __webpack_require__(39);
+	
+	$export($export.S + $export.F, 'Object', {assign: __webpack_require__(100)});
+
+/***/ },
+/* 100 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	// 19.1.2.1 Object.assign(target, source, ...)
+	var getKeys  = __webpack_require__(72)
+	  , gOPS     = __webpack_require__(101)
+	  , pIE      = __webpack_require__(102)
+	  , toObject = __webpack_require__(86)
+	  , IObject  = __webpack_require__(62)
+	  , $assign  = Object.assign;
+	
+	// should work with symbols and should have deterministic property order (V8 bug)
+	module.exports = !$assign || __webpack_require__(50)(function(){
+	  var A = {}
+	    , B = {}
+	    , S = Symbol()
+	    , K = 'abcdefghijklmnopqrst';
+	  A[S] = 7;
+	  K.split('').forEach(function(k){ B[k] = k; });
+	  return $assign({}, A)[S] != 7 || Object.keys($assign({}, B)).join('') != K;
+	}) ? function assign(target, source){ // eslint-disable-line no-unused-vars
+	  var T     = toObject(target)
+	    , aLen  = arguments.length
+	    , index = 1
+	    , getSymbols = gOPS.f
+	    , isEnum     = pIE.f;
+	  while(aLen > index){
+	    var S      = IObject(arguments[index++])
+	      , keys   = getSymbols ? getKeys(S).concat(getSymbols(S)) : getKeys(S)
+	      , length = keys.length
+	      , j      = 0
+	      , key;
+	    while(length > j)if(isEnum.call(S, key = keys[j++]))T[key] = S[key];
+	  } return T;
+	} : $assign;
+
+/***/ },
+/* 101 */
+/***/ function(module, exports) {
+
+	exports.f = Object.getOwnPropertySymbols;
+
+/***/ },
+/* 102 */
+/***/ function(module, exports) {
+
+	exports.f = {}.propertyIsEnumerable;
+
+/***/ },
 /* 103 */,
 /* 104 */,
 /* 105 */,
@@ -1266,11 +1332,366 @@ webpackJsonp([3],Array(31).concat([
 /* 120 */,
 /* 121 */,
 /* 122 */,
-/* 123 */,
-/* 124 */,
-/* 125 */,
-/* 126 */,
-/* 127 */,
+/* 123 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__webpack_require__(124)
+	__vue_script__ = __webpack_require__(126)
+	__vue_template__ = __webpack_require__(127)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "D:\\work\\Aptana Studio 3 Workspace\\charging_conf\\charging_conf\\static\\src\\components\\global\\BootPage.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 124 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(125);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(29)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-329bae94&file=BootPage.vue&scoped=true!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./BootPage.vue", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-329bae94&file=BootPage.vue&scoped=true!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./BootPage.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 125 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(28)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "\r\n.boot-select[_v-329bae94] {\r\n    float: left;\r\n    width: 80px;\r\n}\r\n\r\n.boot-nav[_v-329bae94] {\r\n    float: right;\r\n}\r\n\r\n.boot-page[_v-329bae94] {\r\n    display: inline-block;\r\n    margin: 2px 10px 0 20px;\r\n    vertical-align: middle;\r\n}\r\n\r\n.page-total[_v-329bae94] {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n", "", {"version":3,"sources":["/./src/components/global/BootPage.vue.style"],"names":[],"mappings":";AA2PA;IACA,YAAA;IACA,YAAA;CACA;;AAEA;IACA,aAAA;CACA;;AAEA;IACA,sBAAA;IACA,wBAAA;IACA,uBAAA;CACA;;AAEA;IACA,sBAAA;IACA,uBAAA;CACA","file":"BootPage.vue","sourcesContent":["<!-- 表格分页组件 -->\r\n<template>\r\n    <select class=\"form-control boot-select\" v-model=\"len\">\r\n        <option v-for=\"arr in lens\" :value=\"arr\" v-text=\"arr\" :selected=\"$index === 0 ? true : false\"></option>\r\n    </select>\r\n    <nav class=\"boot-nav\">\r\n        <ul class=\"pagination boot-page\">\r\n            <li>\r\n                <a href=\"javascript:void(0)\" aria-label=\"Previous\" @click=\"onPrevClick()\">\r\n                    <span aria-hidden=\"true\">&laquo;</span>\r\n                </a>\r\n            </li>\r\n            <li v-for=\"page in pages\" :class=\"activeNum === $index ? 'active' : ''\">\r\n                <a href=\"javascript:void(0)\" v-text=\"page\" @click=\"onPageClick($index)\"></a>\r\n            </li>\r\n            <li>\r\n                <a href=\"javascript:void(0)\" aria-label=\"Next\" @click=\"onNextClick()\">\r\n                    <span aria-hidden=\"true\">&raquo;</span>\r\n                </a>\r\n            </li>\r\n        </ul>\r\n        <div class=\"page-total\">\r\n            共 <span v-text=\"pageTotal\"></span> 页\r\n        </div>\r\n    </nav>\r\n</template>\r\n\r\n<script>\r\nexport default {\r\n    props: {\r\n\r\n        // 页码\r\n        pages: {\r\n            type: Array,\r\n            default: function () {\r\n                return [1]\r\n            }\r\n        },\r\n\r\n        // 是否请求服务器端数据\r\n        async: {\r\n            type: Boolean,\r\n            default: false\r\n        },\r\n\r\n        // 每页显示个数\r\n        len: {\r\n            type: Number,\r\n            default: 10\r\n        },\r\n\r\n        // 显示个数数组\r\n        lens: {\r\n            type: Array,\r\n            default: function () {\r\n                return [10, 50, 100]\r\n            }\r\n        },\r\n\r\n        // 表格数据（数组）\r\n        data: {\r\n            type: Array,\r\n            default: function () {\r\n                return []\r\n            }\r\n        },\r\n\r\n        // AJAX地址\r\n        url: {\r\n            type: String,\r\n            default: ''\r\n        },\r\n\r\n        // 显示页数\r\n        pageLen: {\r\n            type: Number,\r\n            default: 5\r\n        },\r\n\r\n        // 总页数 \r\n        pageTotal: {\r\n            type: Number,\r\n            default: 1\r\n        },\r\n\r\n        // 参数内容\r\n        param: {\r\n            type: Object,\r\n            default: function () {\r\n                return {}\r\n            }\r\n        }\r\n    },\r\n    data () {\r\n        return {\r\n            activeNum: 0\r\n        }\r\n    },\r\n    methods: {\r\n\r\n        // 点击页码刷新数据\r\n        onPageClick (index) {\r\n            this.activeNum = index\r\n        },\r\n\r\n        // 上一页\r\n        onPrevClick () {\r\n\r\n            // 当前页是否为当前最小页码\r\n            if (this.activeNum > 0) {\r\n                this.activeNum = this.activeNum - 1\r\n            } else {\r\n                if (this.pages[0] !== 1) {\r\n                    let newPages = []\r\n\r\n                    for (let i = 0; i < this.pages.length; i++) {\r\n                        newPages[i] = this.pages[i] - 1\r\n                    }\r\n\r\n                    this.pages = newPages\r\n                    this.getData()\r\n                }\r\n            }\r\n        },\r\n\r\n        // 下一页\r\n        onNextClick () {\r\n\r\n            // 当前页是否为当前最大页码\r\n            if (this.activeNum < this.pages.length - 1) {\r\n                this.activeNum = this.activeNum + 1\r\n            } else {\r\n                if (this.pages[this.pages.length - 1] < this.pageTotal) {\r\n                    let newPages = []\r\n\r\n                    for (let i = 0; i < this.pages.length; i++) {\r\n                        newPages[i] = this.pages[i] + 1\r\n                    }\r\n\r\n                    this.pages = newPages\r\n\r\n                    this.getData()\r\n                }\r\n            }\r\n        },\r\n\r\n        // 获取页码\r\n        getPages () {\r\n            this.pages = []\r\n\r\n            if (!this.async) {\r\n                this.pageTotal = Math.ceil(this.data.length / this.len)\r\n            }\r\n\r\n            // 比较总页码和显示页数\r\n            if (this.pageTotal <= this.pageLen) {\r\n                for (let i = 1; i <= this.pageTotal; i++) {\r\n                    this.pages.push(i)\r\n                }\r\n            } else {\r\n                for (let i = 1; i <= this.pageLen; i++) {\r\n                    this.pages.push(i)\r\n                }\r\n            }\r\n        },\r\n\r\n        // 页码变化获取数据\r\n        getData () {\r\n            if (!this.async) {\r\n                let len = this.len,\r\n                    pageNum = this.pages[this.activeNum] - 1,\r\n                    newData = [];\r\n\r\n                for (let i = pageNum * len; i < (pageNum * len + len); i++) {\r\n                    this.data[i] !== undefined ? newData.push(this.data[i]) : ''\r\n                }\r\n                \r\n                this.$dispatch('data', newData)\r\n            } else {\r\n                this.param.active = this.pages[this.activeNum]\r\n                this.param.len = this.len\r\n\r\n                this.$http({\r\n                    url: this.url, \r\n                    method: 'POST',\r\n                    data: this.param\r\n                })\r\n                .then(function (response) {\r\n                    this.pageTotal = response.data.page_num\r\n\r\n                    if (this.pages.length !== this.pageLen || this.pageTotal < this.pageLen) {\r\n                        this.getPages()\r\n                    }\r\n\r\n                    this.$dispatch('data', response.data)\r\n                })\r\n            }\r\n        },\r\n\r\n        // 刷新表格\r\n        refresh () {\r\n            this.pages = [1]\r\n\r\n            this.activeNum = 0\r\n\r\n            this.getData()\r\n        }\r\n    },\r\n    ready () {\r\n        if (!this.async) {\r\n            this.getPages()\r\n            this.getData()\r\n\r\n            let _this = this\r\n        } else {\r\n            this.getData()\r\n        }\r\n    },\r\n    watch: {\r\n\r\n        // 监听显示数量\r\n        'len' (newVal, oldVal) {\r\n            if (!this.async) {\r\n                this.getPages()\r\n\r\n                let _this = this\r\n\r\n                if (this.activeNum + 1 > this.pages.length) {\r\n                    this.activeNum = this.pages.length - 1\r\n                }\r\n\r\n                this.getData()\r\n            } else {\r\n                this.refresh()\r\n            }\r\n        },\r\n\r\n        // 监测当前页变化\r\n        'activeNum' (newVal, oldVal) {\r\n            this.getData()\r\n        }\r\n    },\r\n    events: {\r\n        'refresh' () {\r\n            this.refresh()\r\n        }\r\n    }\r\n}\r\n</script>\r\n\r\n<style scoped>\r\n.boot-select {\r\n    float: left;\r\n    width: 80px;\r\n}\r\n\r\n.boot-nav {\r\n    float: right;\r\n}\r\n\r\n.boot-page {\r\n    display: inline-block;\r\n    margin: 2px 10px 0 20px;\r\n    vertical-align: middle;\r\n}\r\n\r\n.page-total {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n</style>"],"sourceRoot":"webpack://"}]);
+	
+	// exports
+
+
+/***/ },
+/* 126 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	// <!-- 表格分页组件 -->
+	// <template>
+	//     <select class="form-control boot-select" v-model="len">
+	//         <option v-for="arr in lens" :value="arr" v-text="arr" :selected="$index === 0 ? true : false"></option>
+	//     </select>
+	//     <nav class="boot-nav">
+	//         <ul class="pagination boot-page">
+	//             <li>
+	//                 <a href="javascript:void(0)" aria-label="Previous" @click="onPrevClick()">
+	//                     <span aria-hidden="true">&laquo;</span>
+	//                 </a>
+	//             </li>
+	//             <li v-for="page in pages" :class="activeNum === $index ? 'active' : ''">
+	//                 <a href="javascript:void(0)" v-text="page" @click="onPageClick($index)"></a>
+	//             </li>
+	//             <li>
+	//                 <a href="javascript:void(0)" aria-label="Next" @click="onNextClick()">
+	//                     <span aria-hidden="true">&raquo;</span>
+	//                 </a>
+	//             </li>
+	//         </ul>
+	//         <div class="page-total">
+	//             共 <span v-text="pageTotal"></span> 页
+	//         </div>
+	//     </nav>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	    props: {
+	
+	        // 页码
+	        pages: {
+	            type: Array,
+	            default: function _default() {
+	                return [1];
+	            }
+	        },
+	
+	        // 是否请求服务器端数据
+	        async: {
+	            type: Boolean,
+	            default: false
+	        },
+	
+	        // 每页显示个数
+	        len: {
+	            type: Number,
+	            default: 10
+	        },
+	
+	        // 显示个数数组
+	        lens: {
+	            type: Array,
+	            default: function _default() {
+	                return [10, 50, 100];
+	            }
+	        },
+	
+	        // 表格数据（数组）
+	        data: {
+	            type: Array,
+	            default: function _default() {
+	                return [];
+	            }
+	        },
+	
+	        // AJAX地址
+	        url: {
+	            type: String,
+	            default: ''
+	        },
+	
+	        // 显示页数
+	        pageLen: {
+	            type: Number,
+	            default: 5
+	        },
+	
+	        // 总页数
+	        pageTotal: {
+	            type: Number,
+	            default: 1
+	        },
+	
+	        // 参数内容
+	        param: {
+	            type: Object,
+	            default: function _default() {
+	                return {};
+	            }
+	        }
+	    },
+	    data: function data() {
+	        return {
+	            activeNum: 0
+	        };
+	    },
+	
+	    methods: {
+	
+	        // 点击页码刷新数据
+	
+	        onPageClick: function onPageClick(index) {
+	            this.activeNum = index;
+	        },
+	
+	
+	        // 上一页
+	        onPrevClick: function onPrevClick() {
+	
+	            // 当前页是否为当前最小页码
+	            if (this.activeNum > 0) {
+	                this.activeNum = this.activeNum - 1;
+	            } else {
+	                if (this.pages[0] !== 1) {
+	                    var newPages = [];
+	
+	                    for (var i = 0; i < this.pages.length; i++) {
+	                        newPages[i] = this.pages[i] - 1;
+	                    }
+	
+	                    this.pages = newPages;
+	                    this.getData();
+	                }
+	            }
+	        },
+	
+	
+	        // 下一页
+	        onNextClick: function onNextClick() {
+	
+	            // 当前页是否为当前最大页码
+	            if (this.activeNum < this.pages.length - 1) {
+	                this.activeNum = this.activeNum + 1;
+	            } else {
+	                if (this.pages[this.pages.length - 1] < this.pageTotal) {
+	                    var newPages = [];
+	
+	                    for (var i = 0; i < this.pages.length; i++) {
+	                        newPages[i] = this.pages[i] + 1;
+	                    }
+	
+	                    this.pages = newPages;
+	
+	                    this.getData();
+	                }
+	            }
+	        },
+	
+	
+	        // 获取页码
+	        getPages: function getPages() {
+	            this.pages = [];
+	
+	            if (!this.async) {
+	                this.pageTotal = Math.ceil(this.data.length / this.len);
+	            }
+	
+	            // 比较总页码和显示页数
+	            if (this.pageTotal <= this.pageLen) {
+	                for (var i = 1; i <= this.pageTotal; i++) {
+	                    this.pages.push(i);
+	                }
+	            } else {
+	                for (var _i = 1; _i <= this.pageLen; _i++) {
+	                    this.pages.push(_i);
+	                }
+	            }
+	        },
+	
+	
+	        // 页码变化获取数据
+	        getData: function getData() {
+	            if (!this.async) {
+	                var len = this.len,
+	                    pageNum = this.pages[this.activeNum] - 1,
+	                    newData = [];
+	
+	                for (var i = pageNum * len; i < pageNum * len + len; i++) {
+	                    this.data[i] !== undefined ? newData.push(this.data[i]) : '';
+	                }
+	
+	                this.$dispatch('data', newData);
+	            } else {
+	                this.param.active = this.pages[this.activeNum];
+	                this.param.len = this.len;
+	
+	                this.$http({
+	                    url: this.url,
+	                    method: 'POST',
+	                    data: this.param
+	                }).then(function (response) {
+	                    this.pageTotal = response.data.page_num;
+	
+	                    if (this.pages.length !== this.pageLen || this.pageTotal < this.pageLen) {
+	                        this.getPages();
+	                    }
+	
+	                    this.$dispatch('data', response.data);
+	                });
+	            }
+	        },
+	
+	
+	        // 刷新表格
+	        refresh: function refresh() {
+	            this.pages = [1];
+	
+	            this.activeNum = 0;
+	
+	            this.getData();
+	        }
+	    },
+	    ready: function ready() {
+	        if (!this.async) {
+	            this.getPages();
+	            this.getData();
+	
+	            var _this = this;
+	        } else {
+	            this.getData();
+	        }
+	    },
+	
+	    watch: {
+	
+	        // 监听显示数量
+	
+	        'len': function len(newVal, oldVal) {
+	            if (!this.async) {
+	                this.getPages();
+	
+	                var _this = this;
+	
+	                if (this.activeNum + 1 > this.pages.length) {
+	                    this.activeNum = this.pages.length - 1;
+	                }
+	
+	                this.getData();
+	            } else {
+	                this.refresh();
+	            }
+	        },
+	
+	
+	        // 监测当前页变化
+	        'activeNum': function activeNum(newVal, oldVal) {
+	            this.getData();
+	        }
+	    },
+	    events: {
+	        'refresh': function refresh() {
+	            this.refresh();
+	        }
+	    }
+	};
+	// </script>
+	//
+	// <style scoped>
+	// .boot-select {
+	//     float: left;
+	//     width: 80px;
+	// }
+	//
+	// .boot-nav {
+	//     float: right;
+	// }
+	//
+	// .boot-page {
+	//     display: inline-block;
+	//     margin: 2px 10px 0 20px;
+	//     vertical-align: middle;
+	// }
+	//
+	// .page-total {
+	//     display: inline-block;
+	//     vertical-align: middle;
+	// }
+	// </style>
+	/* generated by vue-loader */
+
+/***/ },
+/* 127 */
+/***/ function(module, exports) {
+
+	module.exports = "\n    <select class=\"form-control boot-select\" v-model=\"len\" _v-329bae94=\"\">\n        <option v-for=\"arr in lens\" :value=\"arr\" v-text=\"arr\" :selected=\"$index === 0 ? true : false\" _v-329bae94=\"\"></option>\n    </select>\n    <nav class=\"boot-nav\" _v-329bae94=\"\">\n        <ul class=\"pagination boot-page\" _v-329bae94=\"\">\n            <li _v-329bae94=\"\">\n                <a href=\"javascript:void(0)\" aria-label=\"Previous\" @click=\"onPrevClick()\" _v-329bae94=\"\">\n                    <span aria-hidden=\"true\" _v-329bae94=\"\">«</span>\n                </a>\n            </li>\n            <li v-for=\"page in pages\" :class=\"activeNum === $index ? 'active' : ''\" _v-329bae94=\"\">\n                <a href=\"javascript:void(0)\" v-text=\"page\" @click=\"onPageClick($index)\" _v-329bae94=\"\"></a>\n            </li>\n            <li _v-329bae94=\"\">\n                <a href=\"javascript:void(0)\" aria-label=\"Next\" @click=\"onNextClick()\" _v-329bae94=\"\">\n                    <span aria-hidden=\"true\" _v-329bae94=\"\">»</span>\n                </a>\n            </li>\n        </ul>\n        <div class=\"page-total\" _v-329bae94=\"\">\n            共 <span v-text=\"pageTotal\" _v-329bae94=\"\"></span> 页\n        </div>\n    </nav>\n";
+
+/***/ },
 /* 128 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -1517,7 +1938,7 @@ webpackJsonp([3],Array(31).concat([
 	
 	
 	// module
-	exports.push([module.id, "\r\n.search-txt[_v-efb0e18c] {\r\n    width: 250px;\r\n}\r\n\r\n.set-btn[_v-efb0e18c] {\r\n    padding: 2px 8px;\r\n}\r\n\r\nul.dropdown-menu li[_v-efb0e18c] {\r\n    padding-left: 20px;\r\n}\r\n", "", {"version":3,"sources":["/./src/components/deploy_manage/example_board/ExampleBoard.vue.style"],"names":[],"mappings":";AAwGA;IACA,aAAA;CACA;;AAEA;IACA,iBAAA;CACA;;AAEA;IACA,mBAAA;CACA","file":"ExampleBoard.vue","sourcesContent":["<template>\r\n    <div>\r\n        <form class=\"form-inline\">\r\n            <div class=\"form-group\">\r\n                <label>搜索：</label>\r\n                <input type=\"text\" class=\"form-control search-txt\" v-model=\"search\" placeholder=\"项目名/域名/机器名/部署包名/状态\">\r\n            </div>\r\n            <div class=\"mt30 table-btn\">\r\n                <button type=\"button\" class=\"btn btn-default btn-pd\" @click=\"$broadcast('showAdd')\">\r\n                    <span class=\"glyphicon glyphicon-plus\"></span>\r\n                    添加\r\n                </button>\r\n                <dropdown class=\"pull-right\"> \r\n                    <button type=\"button\" class=\"btn btn-default set-btn\" data-toggle=\"dropdown\">\r\n                        <span class=\"glyphicon glyphicon-cog\"></span>\r\n                    </button>\r\n                    <ul slot=\"dropdown-menu\" class=\"dropdown-menu\">\r\n                        <li><input id=\"example_name\" type=\"checkbox\"> <label for=\"example_name\">实例名称</label></li>\r\n                        <li><input type=\"checkbox\"> <label>项目名称</label></li>\r\n                        <li><input type=\"checkbox\"> <label>部署包名称</label></li>\r\n                        <li><input type=\"checkbox\"> <label>域名</label></li>\r\n                        <li><input type=\"checkbox\"> <label>端口</label></li>\r\n                        <li><input type=\"checkbox\"> <label>版本</label></li>\r\n                        <li><input type=\"checkbox\"> <label>配置环境要求</label></li>\r\n                        <li><input type=\"checkbox\"> <label>机房位置</label></li>\r\n                        <li><input type=\"checkbox\"> <label>机器IP</label></li>\r\n                        <li><input type=\"checkbox\"> <label>服务部署目录</label></li>\r\n                        <li><input type=\"checkbox\"> <label>日志文件目录</label></li>\r\n                        <li><input type=\"checkbox\"> <label>配置文件目录</label></li>\r\n                        <li><input type=\"checkbox\"> <label>备注</label></li>\r\n                    </ul>\r\n                </dropdown>\r\n            </div>\r\n            <table class=\"table table-hover table-bordered table-bg\">\r\n                <thead>\r\n                    <tr>\r\n                        <th>实例名称</th>\r\n                        <th>项目名称</th>\r\n                        <th>部署包名称</th>\r\n                        <th>域名</th>\r\n                        <th>端口</th>\r\n                        <th>版本</th>\r\n                        <th>配置环境要求</th>\r\n                        <th>机房位置</th>\r\n                        <th>机器IP</th>\r\n                        <th>服务部署目录</th>\r\n                        <th>日志文件目录</th>\r\n                        <th>配置文件目录</th>\r\n                        <th>备注</th>\r\n                        <th>操作</th>\r\n                    </tr>\r\n                </thead>\r\n                <tbody>\r\n                    <tr>\r\n                        <td>imprest.woniu.com1</td>\r\n                        <td>账户服务</td>\r\n                        <td></td>\r\n                        <td></td>\r\n                        <td></td>\r\n                        <td></td>\r\n                        <td></td>\r\n                        <td></td>\r\n                        <td></td>\r\n                        <td></td>\r\n                        <td></td>\r\n                        <td></td>\r\n                        <td></td>\r\n                        <td>\r\n                            <button type=\"button\" class=\"btn btn-default btn-small\">\r\n                                <span class=\"table-icon glyphicon glyphicon-edit\"></span>\r\n                            </button>\r\n                            <button type=\"button\" class=\"btn btn-default btn-small\" @click=\"$broadcast('showConfirm')\">\r\n                                <span class=\"table-icon glyphicon glyphicon-trash\"></span>\r\n                            </button>\r\n                        </td>\r\n                    </tr>\r\n                </tbody>\r\n            </table>\r\n        </form>\r\n        <add-modal></add-modal>\r\n        <delete-modal></delete-modal>\r\n    </div>\r\n</template>\r\n\r\n<script>\r\nimport addModal from './Add.vue'\r\nimport deleteModal from '../../global/Confirm.vue'\r\nimport { dropdown } from 'vue-strap'\r\n\r\nexport default {\r\n    data () {\r\n        return {\r\n            search: ''\r\n        }\r\n    },\r\n    components: {\r\n        addModal,\r\n        deleteModal,\r\n        dropdown\r\n    }\r\n}\r\n</script>\r\n\r\n<style scoped>\r\n.search-txt {\r\n    width: 250px;\r\n}\r\n\r\n.set-btn {\r\n    padding: 2px 8px;\r\n}\r\n\r\nul.dropdown-menu li {\r\n    padding-left: 20px;\r\n}\r\n</style>"],"sourceRoot":"webpack://"}]);
+	exports.push([module.id, "\r\n.search-txt[_v-efb0e18c] {\r\n    width: 250px;\r\n}\r\n\r\n.set-btn[_v-efb0e18c] {\r\n    padding: 2px 8px;\r\n}\r\n\r\nul.dropdown-menu li[_v-efb0e18c] {\r\n    padding-left: 20px;\r\n}\r\n", "", {"version":3,"sources":["/./src/components/deploy_manage/example_board/ExampleBoard.vue.style"],"names":[],"mappings":";AAoNA;IACA,aAAA;CACA;;AAEA;IACA,iBAAA;CACA;;AAEA;IACA,mBAAA;CACA","file":"ExampleBoard.vue","sourcesContent":["<template>\r\n    <div>\r\n        <form class=\"form-inline\">\r\n            <div class=\"form-group\">\r\n                <label>搜索：</label>\r\n                <input type=\"text\" class=\"form-control search-txt\" v-model=\"param.search\" placeholder=\"项目名/域名/机器名/部署包名/状态\">\r\n            </div>\r\n            <div class=\"mt30 table-btn\">\r\n                <button type=\"button\" class=\"btn btn-default btn-pd\" @click=\"$broadcast('showAdd')\">\r\n                    <span class=\"glyphicon glyphicon-plus\"></span>\r\n                    添加\r\n                </button>\r\n                <dropdown class=\"pull-right\"> \r\n                    <button type=\"button\" class=\"btn btn-default set-btn\" data-toggle=\"dropdown\">\r\n                        <span class=\"glyphicon glyphicon-cog\"></span>\r\n                    </button>\r\n                    <ul slot=\"dropdown-menu\" class=\"dropdown-menu\">\r\n                        <li><input id=\"exampleName\" type=\"checkbox\" value=\"1\" v-model=\"checkedNames\"> <label for=\"exampleName\">实例名称</label></li>\r\n                        <li><input id=\"packName\" type=\"checkbox\" value=\"2\" v-model=\"checkedNames\"> <label for=\"packName\">部署包名称</label></li>\r\n                        <li><input id=\"projectName\" type=\"checkbox\" value=\"3\" v-model=\"checkedNames\"> <label for=\"projectName\">项目名称</label></li>\r\n                        <li><input id=\"projectType\" type=\"checkbox\" value=\"4\" v-model=\"checkedNames\"> <label for=\"projectType\">项目类型</label></li>\r\n                        <li><input id=\"version\" type=\"checkbox\" value=\"5\" v-model=\"checkedNames\"> <label for=\"version\">版本</label></li>\r\n                        <li><input id=\"hosts\" type=\"checkbox\" value=\"6\" v-model=\"checkedNames\"> <label for=\"hosts\">机房位置</label></li>\r\n                        <li><input id=\"ip\" type=\"checkbox\" value=\"7\" v-model=\"checkedNames\"> <label for=\"ip\">机器IP</label></li>\r\n                        <li><input id=\"port\" type=\"checkbox\" value=\"8\" v-model=\"checkedNames\"> <label for=\"port\">端口</label></li>\r\n                        <li><input id=\"domain\" type=\"checkbox\" value=\"9\" v-model=\"checkedNames\"> <label for=\"domain\">域名</label></li>\r\n                        <li><input id=\"deployPath\" type=\"checkbox\" value=\"10\" v-model=\"checkedNames\"> <label for=\"deployPath\">部署目录</label></li>\r\n                        <li><input id=\"logPath\" type=\"checkbox\" value=\"11\" v-model=\"checkedNames\"> <label for=\"logPath\">日志文件目录</label></li>\r\n                        <li><input id=\"docPath\" type=\"checkbox\" value=\"12\" v-model=\"checkedNames\"> <label for=\"docPath\">配置文件目录</label></li>\r\n                        <li><input id=\"remark\" type=\"checkbox\" value=\"13\" v-model=\"checkedNames\"> <label for=\"remark\">备注</label></li>\r\n                    </ul>\r\n                </dropdown>\r\n            </div>\r\n            <table class=\"table table-hover table-bordered table-bg\">\r\n                <thead>\r\n                    <tr>\r\n                        <th v-for=\"name in checkedArr\" v-text=\"name\" track-by=\"$index\"></th>\r\n                        <th>配置环境要求</th>\r\n                        <th>操作</th>\r\n                    </tr>\r\n                </thead>\r\n                <tbody>\r\n                    <tr v-for=\"list in tableList\">\r\n                        <td v-for=\"value in checkedArr\" v-text=\"list[value]\" track-by=\"$index\"></td>\r\n                        <td>配置环境要求</td>\r\n                        <td>\r\n                            <button type=\"button\" class=\"btn btn-default btn-small\">\r\n                                <span class=\"table-icon glyphicon glyphicon-edit\"></span>\r\n                            </button>\r\n                            <button type=\"button\" class=\"btn btn-default btn-small\" @click=\"$broadcast('showConfirm')\">\r\n                                <span class=\"table-icon glyphicon glyphicon-trash\"></span>\r\n                            </button>\r\n                        </td>\r\n                    </tr>\r\n                    <tr v-if=\"tableList.length === 0\">\r\n                        <td class=\"text-center\" :colspan=\"checkedArr.length + 2\">\r\n                            暂无数据\r\n                        </td>\r\n                    </tr>\r\n                    <tr>\r\n                        <td :colspan=\"checkedArr.length + 2\">\r\n                            <div class=\"pull-right\">\r\n                                <boot-page :async=\"true\" :lens=\"lenArr\" :page-len=\"pageLen\" :url=\"url\" :param=\"param\"></boot-page>\r\n                            </div>\r\n                        </td>\r\n                    </tr>\r\n                </tbody>\r\n            </table>\r\n        </form>\r\n        <add-modal></add-modal>\r\n        <delete-modal></delete-modal>\r\n    </div>\r\n</template>\r\n\r\n<script>\r\nimport addModal from './Add.vue'\r\nimport deleteModal from '../../global/Confirm.vue'\r\nimport bootPage from '../../global/BootPage.vue'\r\nimport { dropdown } from 'vue-strap'\r\n\r\nlet origin = {\r\n    lens: [10, 50, 100],\r\n    pageLen: 5,\r\n    url: '/instance_config/',\r\n    param: {\r\n        search: ''\r\n    },\r\n    checkedNames: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13'],\r\n    checkedArr: ['实例名称', '部署包名称', '项目名称', '项目类型', '版本', '机房位置', '机器IP', '端口', '域名', '部署目录', '日志文件目录', '配置文件目录', '备注'],\r\n    tableList: []\r\n}\r\n\r\nexport default {\r\n    data () {\r\n        return origin\r\n    },\r\n    methods: {\r\n\r\n        // 刷新数据\r\n        refresh () {\r\n            this.$broadcast('refresh')\r\n        },\r\n\r\n        // 数组转化\r\n        switchName (e) {\r\n            switch (e) {\r\n                case '1': \r\n                    return '实例名称'\r\n                    break\r\n                case '2':\r\n                    return '部署包名称'\r\n                    break\r\n                case '3':\r\n                    return '项目名称'\r\n                    break\r\n                case '4':\r\n                    return '项目类型'\r\n                    break\r\n                case '5':\r\n                    return '版本'\r\n                    break\r\n                case '6':\r\n                    return '机房位置'\r\n                    break\r\n                case '7':\r\n                    return '机器IP'\r\n                    break\r\n                case '8':\r\n                    return '端口'\r\n                    break\r\n                case '9':\r\n                    return '域名'\r\n                    break\r\n                case '10':\r\n                    return '部署目录'\r\n                    break\r\n                case '11': \r\n                    return '日志文件目录'\r\n                    break\r\n                case '12':\r\n                    return '配置文件目录'\r\n                    break\r\n                case '13':\r\n                    return '备注'\r\n                    break\r\n            }\r\n        }\r\n    },\r\n    components: {\r\n        addModal,\r\n        deleteModal,\r\n        dropdown,\r\n        bootPage\r\n    },\r\n    ready () {\r\n\r\n        // 读取localStorage\r\n        let checkedArr = window.localStorage.getItem('checkedNames').split(',')\r\n\r\n        console.log(checkedArr)\r\n\r\n        if (checkedArr.length) {\r\n            this.checkedArr = checkedArr\r\n        }\r\n    },\r\n    events: {\r\n        'data' (param) {\r\n            this.tableList = param.data\r\n        },\r\n        'refresh' () {\r\n            this.refresh()\r\n        }\r\n    },\r\n    watch: {\r\n        'checkedNames' (newVal) {\r\n            let _this = this,\r\n                checkedArr = []\r\n\r\n            console.log(newVal)\r\n\r\n            //自定义函数排序  \r\n            newVal.sort((a, b) => {  \r\n                var a1= parseInt(a),\r\n                    b1= parseInt(b)\r\n\r\n                console.log(112)\r\n\r\n                if (a1 < b1) {  \r\n                    return -1\r\n                } else if (a1 > b1) {  \r\n                    return 1\r\n                }  \r\n                return 0\r\n            })\r\n\r\n            console.log(newVal)\r\n\r\n            newVal.forEach(e => {\r\n                checkedArr.push(_this.switchName(e))\r\n            })\r\n\r\n            console.log(checkedArr)\r\n\r\n            this.checkedArr = checkedArr\r\n\r\n            window.localStorage.setItem('checkedNames', checkedArr)\r\n        }\r\n    }\r\n}\r\n</script>\r\n\r\n<style scoped>\r\n.search-txt {\r\n    width: 250px;\r\n}\r\n\r\n.set-btn {\r\n    padding: 2px 8px;\r\n}\r\n\r\nul.dropdown-menu li {\r\n    padding-left: 20px;\r\n}\r\n</style>"],"sourceRoot":"webpack://"}]);
 	
 	// exports
 
@@ -1540,21 +1961,222 @@ webpackJsonp([3],Array(31).concat([
 	
 	var _Confirm2 = _interopRequireDefault(_Confirm);
 	
+	var _BootPage = __webpack_require__(123);
+	
+	var _BootPage2 = _interopRequireDefault(_BootPage);
+	
 	var _vueStrap = __webpack_require__(103);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
+	// <template>
+	//     <div>
+	//         <form class="form-inline">
+	//             <div class="form-group">
+	//                 <label>搜索：</label>
+	//                 <input type="text" class="form-control search-txt" v-model="param.search" placeholder="项目名/域名/机器名/部署包名/状态">
+	//             </div>
+	//             <div class="mt30 table-btn">
+	//                 <button type="button" class="btn btn-default btn-pd" @click="$broadcast('showAdd')">
+	//                     <span class="glyphicon glyphicon-plus"></span>
+	//                     添加
+	//                 </button>
+	//                 <dropdown class="pull-right">
+	//                     <button type="button" class="btn btn-default set-btn" data-toggle="dropdown">
+	//                         <span class="glyphicon glyphicon-cog"></span>
+	//                     </button>
+	//                     <ul slot="dropdown-menu" class="dropdown-menu">
+	//                         <li><input id="exampleName" type="checkbox" value="1" v-model="checkedNames"> <label for="exampleName">实例名称</label></li>
+	//                         <li><input id="packName" type="checkbox" value="2" v-model="checkedNames"> <label for="packName">部署包名称</label></li>
+	//                         <li><input id="projectName" type="checkbox" value="3" v-model="checkedNames"> <label for="projectName">项目名称</label></li>
+	//                         <li><input id="projectType" type="checkbox" value="4" v-model="checkedNames"> <label for="projectType">项目类型</label></li>
+	//                         <li><input id="version" type="checkbox" value="5" v-model="checkedNames"> <label for="version">版本</label></li>
+	//                         <li><input id="hosts" type="checkbox" value="6" v-model="checkedNames"> <label for="hosts">机房位置</label></li>
+	//                         <li><input id="ip" type="checkbox" value="7" v-model="checkedNames"> <label for="ip">机器IP</label></li>
+	//                         <li><input id="port" type="checkbox" value="8" v-model="checkedNames"> <label for="port">端口</label></li>
+	//                         <li><input id="domain" type="checkbox" value="9" v-model="checkedNames"> <label for="domain">域名</label></li>
+	//                         <li><input id="deployPath" type="checkbox" value="10" v-model="checkedNames"> <label for="deployPath">部署目录</label></li>
+	//                         <li><input id="logPath" type="checkbox" value="11" v-model="checkedNames"> <label for="logPath">日志文件目录</label></li>
+	//                         <li><input id="docPath" type="checkbox" value="12" v-model="checkedNames"> <label for="docPath">配置文件目录</label></li>
+	//                         <li><input id="remark" type="checkbox" value="13" v-model="checkedNames"> <label for="remark">备注</label></li>
+	//                     </ul>
+	//                 </dropdown>
+	//             </div>
+	//             <table class="table table-hover table-bordered table-bg">
+	//                 <thead>
+	//                     <tr>
+	//                         <th v-for="name in checkedArr" v-text="name" track-by="$index"></th>
+	//                         <th>配置环境要求</th>
+	//                         <th>操作</th>
+	//                     </tr>
+	//                 </thead>
+	//                 <tbody>
+	//                     <tr v-for="list in tableList">
+	//                         <td v-for="value in checkedArr" v-text="list[value]" track-by="$index"></td>
+	//                         <td>配置环境要求</td>
+	//                         <td>
+	//                             <button type="button" class="btn btn-default btn-small">
+	//                                 <span class="table-icon glyphicon glyphicon-edit"></span>
+	//                             </button>
+	//                             <button type="button" class="btn btn-default btn-small" @click="$broadcast('showConfirm')">
+	//                                 <span class="table-icon glyphicon glyphicon-trash"></span>
+	//                             </button>
+	//                         </td>
+	//                     </tr>
+	//                     <tr v-if="tableList.length === 0">
+	//                         <td class="text-center" :colspan="checkedArr.length + 2">
+	//                             暂无数据
+	//                         </td>
+	//                     </tr>
+	//                     <tr>
+	//                         <td :colspan="checkedArr.length + 2">
+	//                             <div class="pull-right">
+	//                                 <boot-page :async="true" :lens="lenArr" :page-len="pageLen" :url="url" :param="param"></boot-page>
+	//                             </div>
+	//                         </td>
+	//                     </tr>
+	//                 </tbody>
+	//             </table>
+	//         </form>
+	//         <add-modal></add-modal>
+	//         <delete-modal></delete-modal>
+	//     </div>
+	// </template>
+	//
+	// <script>
+	
+	
+	var origin = {
+	    lens: [10, 50, 100],
+	    pageLen: 5,
+	    url: '/instance_config/',
+	    param: {
+	        search: ''
+	    },
+	    checkedNames: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13'],
+	    checkedArr: ['实例名称', '部署包名称', '项目名称', '项目类型', '版本', '机房位置', '机器IP', '端口', '域名', '部署目录', '日志文件目录', '配置文件目录', '备注'],
+	    tableList: []
+	};
+	
 	exports.default = {
 	    data: function data() {
-	        return {
-	            search: ''
-	        };
+	        return origin;
 	    },
 	
+	    methods: {
+	
+	        // 刷新数据
+	
+	        refresh: function refresh() {
+	            this.$broadcast('refresh');
+	        },
+	
+	
+	        // 数组转化
+	        switchName: function switchName(e) {
+	            switch (e) {
+	                case '1':
+	                    return '实例名称';
+	                    break;
+	                case '2':
+	                    return '部署包名称';
+	                    break;
+	                case '3':
+	                    return '项目名称';
+	                    break;
+	                case '4':
+	                    return '项目类型';
+	                    break;
+	                case '5':
+	                    return '版本';
+	                    break;
+	                case '6':
+	                    return '机房位置';
+	                    break;
+	                case '7':
+	                    return '机器IP';
+	                    break;
+	                case '8':
+	                    return '端口';
+	                    break;
+	                case '9':
+	                    return '域名';
+	                    break;
+	                case '10':
+	                    return '部署目录';
+	                    break;
+	                case '11':
+	                    return '日志文件目录';
+	                    break;
+	                case '12':
+	                    return '配置文件目录';
+	                    break;
+	                case '13':
+	                    return '备注';
+	                    break;
+	            }
+	        }
+	    },
 	    components: {
 	        addModal: _Add2.default,
 	        deleteModal: _Confirm2.default,
-	        dropdown: _vueStrap.dropdown
+	        dropdown: _vueStrap.dropdown,
+	        bootPage: _BootPage2.default
+	    },
+	    ready: function ready() {
+	
+	        // 读取localStorage
+	        var checkedArr = window.localStorage.getItem('checkedNames').split(',');
+	
+	        console.log(checkedArr);
+	
+	        if (checkedArr.length) {
+	            this.checkedArr = checkedArr;
+	        }
+	    },
+	
+	    events: {
+	        'data': function data(param) {
+	            this.tableList = param.data;
+	        },
+	        'refresh': function refresh() {
+	            this.refresh();
+	        }
+	    },
+	    watch: {
+	        'checkedNames': function checkedNames(newVal) {
+	            var _this = this,
+	                checkedArr = [];
+	
+	            console.log(newVal);
+	
+	            //自定义函数排序 
+	            newVal.sort(function (a, b) {
+	                var a1 = parseInt(a),
+	                    b1 = parseInt(b);
+	
+	                console.log(112);
+	
+	                if (a1 < b1) {
+	                    return -1;
+	                } else if (a1 > b1) {
+	                    return 1;
+	                }
+	                return 0;
+	            });
+	
+	            console.log(newVal);
+	
+	            newVal.forEach(function (e) {
+	                checkedArr.push(_this.switchName(e));
+	            });
+	
+	            console.log(checkedArr);
+	
+	            this.checkedArr = checkedArr;
+	
+	            window.localStorage.setItem('checkedNames', checkedArr);
+	        }
 	    }
 	};
 	// </script>
@@ -1573,91 +2195,6 @@ webpackJsonp([3],Array(31).concat([
 	// }
 	// </style>
 	/* generated by vue-loader */
-	// <template>
-	//     <div>
-	//         <form class="form-inline">
-	//             <div class="form-group">
-	//                 <label>搜索：</label>
-	//                 <input type="text" class="form-control search-txt" v-model="search" placeholder="项目名/域名/机器名/部署包名/状态">
-	//             </div>
-	//             <div class="mt30 table-btn">
-	//                 <button type="button" class="btn btn-default btn-pd" @click="$broadcast('showAdd')">
-	//                     <span class="glyphicon glyphicon-plus"></span>
-	//                     添加
-	//                 </button>
-	//                 <dropdown class="pull-right">
-	//                     <button type="button" class="btn btn-default set-btn" data-toggle="dropdown">
-	//                         <span class="glyphicon glyphicon-cog"></span>
-	//                     </button>
-	//                     <ul slot="dropdown-menu" class="dropdown-menu">
-	//                         <li><input id="example_name" type="checkbox"> <label for="example_name">实例名称</label></li>
-	//                         <li><input type="checkbox"> <label>项目名称</label></li>
-	//                         <li><input type="checkbox"> <label>部署包名称</label></li>
-	//                         <li><input type="checkbox"> <label>域名</label></li>
-	//                         <li><input type="checkbox"> <label>端口</label></li>
-	//                         <li><input type="checkbox"> <label>版本</label></li>
-	//                         <li><input type="checkbox"> <label>配置环境要求</label></li>
-	//                         <li><input type="checkbox"> <label>机房位置</label></li>
-	//                         <li><input type="checkbox"> <label>机器IP</label></li>
-	//                         <li><input type="checkbox"> <label>服务部署目录</label></li>
-	//                         <li><input type="checkbox"> <label>日志文件目录</label></li>
-	//                         <li><input type="checkbox"> <label>配置文件目录</label></li>
-	//                         <li><input type="checkbox"> <label>备注</label></li>
-	//                     </ul>
-	//                 </dropdown>
-	//             </div>
-	//             <table class="table table-hover table-bordered table-bg">
-	//                 <thead>
-	//                     <tr>
-	//                         <th>实例名称</th>
-	//                         <th>项目名称</th>
-	//                         <th>部署包名称</th>
-	//                         <th>域名</th>
-	//                         <th>端口</th>
-	//                         <th>版本</th>
-	//                         <th>配置环境要求</th>
-	//                         <th>机房位置</th>
-	//                         <th>机器IP</th>
-	//                         <th>服务部署目录</th>
-	//                         <th>日志文件目录</th>
-	//                         <th>配置文件目录</th>
-	//                         <th>备注</th>
-	//                         <th>操作</th>
-	//                     </tr>
-	//                 </thead>
-	//                 <tbody>
-	//                     <tr>
-	//                         <td>imprest.woniu.com1</td>
-	//                         <td>账户服务</td>
-	//                         <td></td>
-	//                         <td></td>
-	//                         <td></td>
-	//                         <td></td>
-	//                         <td></td>
-	//                         <td></td>
-	//                         <td></td>
-	//                         <td></td>
-	//                         <td></td>
-	//                         <td></td>
-	//                         <td></td>
-	//                         <td>
-	//                             <button type="button" class="btn btn-default btn-small">
-	//                                 <span class="table-icon glyphicon glyphicon-edit"></span>
-	//                             </button>
-	//                             <button type="button" class="btn btn-default btn-small" @click="$broadcast('showConfirm')">
-	//                                 <span class="table-icon glyphicon glyphicon-trash"></span>
-	//                             </button>
-	//                         </td>
-	//                     </tr>
-	//                 </tbody>
-	//             </table>
-	//         </form>
-	//         <add-modal></add-modal>
-	//         <delete-modal></delete-modal>
-	//     </div>
-	// </template>
-	//
-	// <script>
 
 /***/ },
 /* 182 */
@@ -1717,7 +2254,7 @@ webpackJsonp([3],Array(31).concat([
 	
 	
 	// module
-	exports.push([module.id, "\r\n.add-menu[_v-502888f3] {\r\n    height: 34px;\r\n    line-height: 34px;\r\n    padding: 0;\r\n    color: #009688;\r\n    cursor: pointer;\r\n}\r\n\r\n.form-small[_v-502888f3] {\r\n    font-size: 12px;\r\n}\r\n\r\n.form-small .form-group[_v-502888f3] {\r\n    margin-bottom: 8px;\r\n}\r\n", "", {"version":3,"sources":["/./src/components/deploy_manage/example_board/Add.vue.style"],"names":[],"mappings":";AAoIA;IACA,aAAA;IACA,kBAAA;IACA,WAAA;IACA,eAAA;IACA,gBAAA;CACA;;AAEA;IACA,gBAAA;CACA;;AAEA;IACA,mBAAA;CACA","file":"Add.vue","sourcesContent":["<template>\r\n    <modal :show.sync=\"addModal\" effect=\"fade\" width=\"450px\">\r\n        <div slot=\"modal-header\" class=\"modal-header\">\r\n            <h4 class=\"modal-title\">添加</h4>\r\n        </div>\r\n        <div slot=\"modal-body\" class=\"modal-body\">\r\n            <form class=\"form-horizontal form-small\">\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label col-sm-3\">实例名：</label>\r\n                    <div class=\"col-sm-8\">\r\n                        <input type=\"text\" class=\"form-control\" v-model=\"exampleName\">\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group input-box\">\r\n                    <label class=\"control-label col-sm-3\">项目类型：</label>\r\n                    <div class=\"col-sm-8\">\r\n                        <v-select :value.sync=\"type\" :options=\"types\" placeholder=\"请选择\">\r\n                        </v-select>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group input-box\">\r\n                    <label class=\"control-label col-sm-3\">部署包：</label>\r\n                    <div class=\"col-sm-8\">\r\n                        <v-select :value.sync=\"pack\" :options=\"packs\" placeholder=\"请选择\">\r\n                        </v-select>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group input-box\">\r\n                    <label class=\"control-label col-sm-3\">机房位置：</label>\r\n                    <div class=\"col-sm-8\">\r\n                        <v-select :value.sync=\"host\" :options=\"hosts\" placeholder=\"请选择\">\r\n                        </v-select>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label col-sm-3\">内网IP端口：</label>\r\n                    <div class=\"col-sm-5\">\r\n                        <input type=\"text\" class=\"form-control\" v-model=\"inip\">\r\n                    </div>\r\n                    <div class=\"col-sm-3\">\r\n                        <input type=\"text\" class=\"form-control\" v-model=\"inport\">\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label col-sm-3\">外网IP端口：</label>\r\n                    <div class=\"col-sm-5\">\r\n                        <input type=\"text\" class=\"form-control\" v-model=\"outip\">\r\n                    </div>\r\n                    <div class=\"col-sm-3\">\r\n                        <input type=\"text\" class=\"form-control\" v-model=\"outport\">\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label col-sm-3\">域名：</label>\r\n                    <div class=\"col-sm-8\">\r\n                        <input type=\"text\" class=\"form-control\" v-model=\"domain\">\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label col-sm-3\">部署目录：</label>\r\n                    <div class=\"col-sm-8\">\r\n                        <input type=\"text\" class=\"form-control\" v-model=\"deployPath\">\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label col-sm-3\">日志目录：</label>\r\n                    <div class=\"col-sm-8\">\r\n                        <input type=\"text\" class=\"form-control\" v-model=\"logPath\">\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label col-sm-3\">配置文件目录：</label>\r\n                    <div class=\"col-sm-8\">\r\n                        <input type=\"text\" class=\"form-control\" v-model=\"docPath\">\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label col-sm-3\">备注：</label>\r\n                    <div class=\"col-sm-8\">\r\n                        <textarea class=\"form-control\" rows=\"3\" v-model=\"remark\"></textarea>\r\n                    </div>\r\n                </div>\r\n            </form>\r\n        </div>\r\n        <div slot=\"modal-footer\" class=\"modal-footer\">\r\n            <button type=\"button\" class=\"btn btn-default\">保存</button>\r\n            <button type=\"button\" class=\"btn btn-default\" @click='addModal = false'>取消</button>\r\n        </div>\r\n    </modal>\r\n</template>\r\n\r\n<script>\r\nimport { modal } from 'vue-strap'\r\nimport vSelect from '../../global/Select.vue'\r\n\r\nlet origin = {\r\n        addModal: false,\r\n        exampleName: '',\r\n        types: [],\r\n        type: '',\r\n        packs: [],\r\n        pack: '',\r\n        hosts: [],\r\n        host: '',\r\n        inip: '',\r\n        inport: '',\r\n        outip: '',\r\n        outport: '',\r\n        domain: '',\r\n        deployPath: '',\r\n        logPath: '',\r\n        docPath: '',\r\n        remark: ''\r\n    }\r\n\r\nexport default {\r\n    data () {\r\n        return origin\r\n    },\r\n    components: {\r\n        modal,\r\n        vSelect\r\n    },\r\n    events: {\r\n        'showAdd' () {\r\n            this.addModal = true\r\n        }\r\n    }\r\n}\r\n</script>\r\n\r\n<style scoped>\r\n.add-menu {\r\n    height: 34px;\r\n    line-height: 34px;\r\n    padding: 0;\r\n    color: #009688;\r\n    cursor: pointer;\r\n}\r\n\r\n.form-small {\r\n    font-size: 12px;\r\n}\r\n\r\n.form-small .form-group {\r\n    margin-bottom: 8px;\r\n}\r\n</style>"],"sourceRoot":"webpack://"}]);
+	exports.push([module.id, "\r\n.add-menu[_v-502888f3] {\r\n    height: 34px;\r\n    line-height: 34px;\r\n    padding: 0;\r\n    color: #009688;\r\n    cursor: pointer;\r\n}\r\n\r\n.form-small[_v-502888f3] {\r\n    font-size: 12px;\r\n}\r\n\r\n.form-small .form-group[_v-502888f3] {\r\n    margin-bottom: 8px;\r\n}\r\n", "", {"version":3,"sources":["/./src/components/deploy_manage/example_board/Add.vue.style"],"names":[],"mappings":";AA2MA;IACA,aAAA;IACA,kBAAA;IACA,WAAA;IACA,eAAA;IACA,gBAAA;CACA;;AAEA;IACA,gBAAA;CACA;;AAEA;IACA,mBAAA;CACA","file":"Add.vue","sourcesContent":["<template>\r\n    <modal :show.sync=\"addModal\" effect=\"fade\" width=\"460px\">\r\n        <div slot=\"modal-header\" class=\"modal-header\">\r\n            <h4 class=\"modal-title\">添加</h4>\r\n        </div>\r\n        <div slot=\"modal-body\" class=\"modal-body\">\r\n            <form class=\"form-horizontal form-small\">\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label col-sm-3\">实例名：<span class=\"text-danger\">*</span></label>\r\n                    <div class=\"col-sm-8\">\r\n                        <input type=\"text\" class=\"form-control\" v-model=\"exampleName\">\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group input-box\">\r\n                    <label class=\"control-label col-sm-3\">部署包名：<span class=\"text-danger\">*</span></label>\r\n                    <div class=\"col-sm-8\">\r\n                        <v-select :value.sync=\"pack\" :options=\"packages\" :search=\"true\" placeholder=\"请选择\">\r\n                        </v-select>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group input-box\">\r\n                    <label class=\"control-label col-sm-3\">机房位置：<span class=\"text-danger\">*</span></label>\r\n                    <div class=\"col-sm-8\">\r\n                        <v-select :value.sync=\"idc\" :options=\"idcs\" :search=\"true\" placeholder=\"请选择\">\r\n                        </v-select>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group input-box\">\r\n                    <label class=\"control-label col-sm-3\">内网IP端口：<span class=\"text-danger\" v-show=\"!outip\">*</span></label>\r\n                    <div class=\"col-sm-5\">\r\n                        <v-select :value.sync=\"inip\" :options=\"inips\" :search=\"true\" placeholder=\"请选择\">\r\n                        </v-select>\r\n                    </div>\r\n                    <div class=\"col-sm-3\">\r\n                        <input type=\"text\" class=\"form-control\" v-model=\"inport\">\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group input-box\">\r\n                    <label class=\"control-label col-sm-3\">外网IP端口：<span class=\"text-danger\" v-show=\"!inip\">*</span></label>\r\n                    <div class=\"col-sm-5\">\r\n                        <v-select :value.sync=\"outip\" :options=\"outips\" :search=\"true\" placeholder=\"请选择\">\r\n                        </v-select>\r\n                    </div>\r\n                    <div class=\"col-sm-3\">\r\n                        <input type=\"text\" class=\"form-control\" v-model=\"outport\">\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label col-sm-3\">域名：</label>\r\n                    <div class=\"col-sm-8\">\r\n                        <input type=\"text\" class=\"form-control\" v-model=\"domain\">\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label col-sm-3\">部署目录：</label>\r\n                    <div class=\"col-sm-8\">\r\n                        <input type=\"text\" class=\"form-control\" v-model=\"deployPath\">\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label col-sm-3\">日志目录：</label>\r\n                    <div class=\"col-sm-8\">\r\n                        <input type=\"text\" class=\"form-control\" v-model=\"logPath\">\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label col-sm-3\">配置文件目录：</label>\r\n                    <div class=\"col-sm-8\">\r\n                        <input type=\"text\" class=\"form-control\" v-model=\"docPath\">\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label class=\"control-label col-sm-3\">备注：</label>\r\n                    <div class=\"col-sm-8\">\r\n                        <textarea class=\"form-control\" rows=\"3\" v-model=\"remark\"></textarea>\r\n                    </div>\r\n                </div>\r\n            </form>\r\n        </div>\r\n        <div slot=\"modal-footer\" class=\"modal-footer\">\r\n            <button type=\"button\" class=\"btn btn-default\" :disabled=\"exampleName && pack && idc && (inip || outip) ? false : true\" @click=\"saveFn\">保存</button>\r\n            <button type=\"button\" class=\"btn btn-default\" @click='addModal = false'>取消</button>\r\n        </div>\r\n    </modal>\r\n</template>\r\n\r\n<script>\r\nimport { modal } from 'vue-strap'\r\nimport vSelect from '../../global/Select.vue'\r\n\r\nlet origin = {\r\n        addModal: false,\r\n        exampleName: '',\r\n        packages: [],\r\n        pack: '',\r\n        idcs: [],\r\n        idc: '',\r\n        inips: [],\r\n        inip: '',\r\n        inport: '',\r\n        outips: [],\r\n        outip: '',\r\n        outport: '',\r\n        domain: '',\r\n        deployPath: '',\r\n        logPath: '',\r\n        docPath: '',\r\n        remark: ''\r\n    },\r\n    init = Object.assign({}, origin)\r\n\r\nexport default {\r\n    data () {\r\n        return origin\r\n    },\r\n    methods: {\r\n\r\n        // 添加方法\r\n        saveFn () {\r\n            if (this.inip.trim()) {\r\n                if (!this.inport.trim()) {\r\n                    this.$dispatch('show-notify', '请填写内网端口')\r\n\r\n                    return false\r\n                }\r\n            }\r\n\r\n            if (this.outip.trim()) {\r\n                if (!this.outport.trim()) {\r\n                    this.$dispatch('show-notify', '请填写外网端口')\r\n\r\n                    return false\r\n                }\r\n            }\r\n\r\n            this.$http({\r\n                url: '/instance_add/',\r\n                method: 'POST',\r\n                data: {\r\n                    exampleName: this.exampleName,\r\n                    pack: this.pack,\r\n                    idc: this.idc,\r\n                    inip: this.inip,\r\n                    outip: this.outip,\r\n                    inport: this.inport,\r\n                    outport: this.outport,\r\n                    domain: this.domain,\r\n                    deployPath: this.deployPath,\r\n                    logPath: this.logPath,\r\n                    docPath: this.docPath,\r\n                    remark: this.remark\r\n                }\r\n            })\r\n            .then(response => {\r\n                if (response.data.result) {\r\n                    this.$data = Object.assign({}, origin, init)\r\n\r\n                    this.$dispatch('refresh')\r\n                    this.$dispatch('show-success')\r\n                } else {\r\n                    this.$dispatch('show-error')\r\n                }\r\n            })\r\n\r\n        }\r\n    },\r\n    components: {\r\n        modal,\r\n        vSelect\r\n    },\r\n    events: {\r\n        'showAdd' () {\r\n            this.addModal = true\r\n\r\n            this.$http({\r\n                url: '/instance_add/',\r\n                method: 'GET'\r\n            })\r\n            .then(response => {\r\n                this.packages = response.data.packages\r\n                this.idcs = response.data.idcs\r\n            })\r\n        }\r\n    },\r\n    watch: {\r\n        'idc' (newVal) {\r\n            this.$http({\r\n                url: '/instance_ips/?idc_id=' + newVal,\r\n                method: 'GET'\r\n            })\r\n            .then(response => {\r\n                this.inips= response.data.inner_ips\r\n                this.outips= response.data.outer_ips\r\n\r\n                this.inip = ''\r\n                this.outip = ''\r\n            })\r\n        }\r\n    }\r\n}\r\n</script>\r\n\r\n<style scoped>\r\n.add-menu {\r\n    height: 34px;\r\n    line-height: 34px;\r\n    padding: 0;\r\n    color: #009688;\r\n    cursor: pointer;\r\n}\r\n\r\n.form-small {\r\n    font-size: 12px;\r\n}\r\n\r\n.form-small .form-group {\r\n    margin-bottom: 8px;\r\n}\r\n</style>"],"sourceRoot":"webpack://"}]);
 	
 	// exports
 
@@ -1732,6 +2269,10 @@ webpackJsonp([3],Array(31).concat([
 	    value: true
 	});
 	
+	var _assign = __webpack_require__(97);
+	
+	var _assign2 = _interopRequireDefault(_assign);
+	
 	var _vueStrap = __webpack_require__(103);
 	
 	var _Select = __webpack_require__(31);
@@ -1741,52 +2282,47 @@ webpackJsonp([3],Array(31).concat([
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	// <template>
-	//     <modal :show.sync="addModal" effect="fade" width="450px">
+	//     <modal :show.sync="addModal" effect="fade" width="460px">
 	//         <div slot="modal-header" class="modal-header">
 	//             <h4 class="modal-title">添加</h4>
 	//         </div>
 	//         <div slot="modal-body" class="modal-body">
 	//             <form class="form-horizontal form-small">
 	//                 <div class="form-group">
-	//                     <label class="control-label col-sm-3">实例名：</label>
+	//                     <label class="control-label col-sm-3">实例名：<span class="text-danger">*</span></label>
 	//                     <div class="col-sm-8">
 	//                         <input type="text" class="form-control" v-model="exampleName">
 	//                     </div>
 	//                 </div>
 	//                 <div class="form-group input-box">
-	//                     <label class="control-label col-sm-3">项目类型：</label>
+	//                     <label class="control-label col-sm-3">部署包名：<span class="text-danger">*</span></label>
 	//                     <div class="col-sm-8">
-	//                         <v-select :value.sync="type" :options="types" placeholder="请选择">
+	//                         <v-select :value.sync="pack" :options="packages" :search="true" placeholder="请选择">
 	//                         </v-select>
 	//                     </div>
 	//                 </div>
 	//                 <div class="form-group input-box">
-	//                     <label class="control-label col-sm-3">部署包：</label>
+	//                     <label class="control-label col-sm-3">机房位置：<span class="text-danger">*</span></label>
 	//                     <div class="col-sm-8">
-	//                         <v-select :value.sync="pack" :options="packs" placeholder="请选择">
+	//                         <v-select :value.sync="idc" :options="idcs" :search="true" placeholder="请选择">
 	//                         </v-select>
 	//                     </div>
 	//                 </div>
 	//                 <div class="form-group input-box">
-	//                     <label class="control-label col-sm-3">机房位置：</label>
-	//                     <div class="col-sm-8">
-	//                         <v-select :value.sync="host" :options="hosts" placeholder="请选择">
-	//                         </v-select>
-	//                     </div>
-	//                 </div>
-	//                 <div class="form-group">
-	//                     <label class="control-label col-sm-3">内网IP端口：</label>
+	//                     <label class="control-label col-sm-3">内网IP端口：<span class="text-danger" v-show="!outip">*</span></label>
 	//                     <div class="col-sm-5">
-	//                         <input type="text" class="form-control" v-model="inip">
+	//                         <v-select :value.sync="inip" :options="inips" :search="true" placeholder="请选择">
+	//                         </v-select>
 	//                     </div>
 	//                     <div class="col-sm-3">
 	//                         <input type="text" class="form-control" v-model="inport">
 	//                     </div>
 	//                 </div>
-	//                 <div class="form-group">
-	//                     <label class="control-label col-sm-3">外网IP端口：</label>
+	//                 <div class="form-group input-box">
+	//                     <label class="control-label col-sm-3">外网IP端口：<span class="text-danger" v-show="!inip">*</span></label>
 	//                     <div class="col-sm-5">
-	//                         <input type="text" class="form-control" v-model="outip">
+	//                         <v-select :value.sync="outip" :options="outips" :search="true" placeholder="请选择">
+	//                         </v-select>
 	//                     </div>
 	//                     <div class="col-sm-3">
 	//                         <input type="text" class="form-control" v-model="outport">
@@ -1825,7 +2361,7 @@ webpackJsonp([3],Array(31).concat([
 	//             </form>
 	//         </div>
 	//         <div slot="modal-footer" class="modal-footer">
-	//             <button type="button" class="btn btn-default">保存</button>
+	//             <button type="button" class="btn btn-default" :disabled="exampleName && pack && idc && (inip || outip) ? false : true" @click="saveFn">保存</button>
 	//             <button type="button" class="btn btn-default" @click='addModal = false'>取消</button>
 	//         </div>
 	//     </modal>
@@ -1837,14 +2373,14 @@ webpackJsonp([3],Array(31).concat([
 	var origin = {
 	    addModal: false,
 	    exampleName: '',
-	    types: [],
-	    type: '',
-	    packs: [],
+	    packages: [],
 	    pack: '',
-	    hosts: [],
-	    host: '',
+	    idcs: [],
+	    idc: '',
+	    inips: [],
 	    inip: '',
 	    inport: '',
+	    outips: [],
 	    outip: '',
 	    outport: '',
 	    domain: '',
@@ -1852,20 +2388,99 @@ webpackJsonp([3],Array(31).concat([
 	    logPath: '',
 	    docPath: '',
 	    remark: ''
-	};
+	},
+	    init = (0, _assign2.default)({}, origin);
 	
 	exports.default = {
 	    data: function data() {
 	        return origin;
 	    },
 	
+	    methods: {
+	
+	        // 添加方法
+	
+	        saveFn: function saveFn() {
+	            var _this = this;
+	
+	            if (this.inip.trim()) {
+	                if (!this.inport.trim()) {
+	                    this.$dispatch('show-notify', '请填写内网端口');
+	
+	                    return false;
+	                }
+	            }
+	
+	            if (this.outip.trim()) {
+	                if (!this.outport.trim()) {
+	                    this.$dispatch('show-notify', '请填写外网端口');
+	
+	                    return false;
+	                }
+	            }
+	
+	            this.$http({
+	                url: '/instance_add/',
+	                method: 'POST',
+	                data: {
+	                    exampleName: this.exampleName,
+	                    pack: this.pack,
+	                    idc: this.idc,
+	                    inip: this.inip,
+	                    outip: this.outip,
+	                    inport: this.inport,
+	                    outport: this.outport,
+	                    domain: this.domain,
+	                    deployPath: this.deployPath,
+	                    logPath: this.logPath,
+	                    docPath: this.docPath,
+	                    remark: this.remark
+	                }
+	            }).then(function (response) {
+	                if (response.data.result) {
+	                    _this.$data = (0, _assign2.default)({}, origin, init);
+	
+	                    _this.$dispatch('refresh');
+	                    _this.$dispatch('show-success');
+	                } else {
+	                    _this.$dispatch('show-error');
+	                }
+	            });
+	        }
+	    },
 	    components: {
 	        modal: _vueStrap.modal,
 	        vSelect: _Select2.default
 	    },
 	    events: {
 	        'showAdd': function showAdd() {
+	            var _this2 = this;
+	
 	            this.addModal = true;
+	
+	            this.$http({
+	                url: '/instance_add/',
+	                method: 'GET'
+	            }).then(function (response) {
+	                _this2.packages = response.data.packages;
+	                _this2.idcs = response.data.idcs;
+	            });
+	        }
+	    },
+	    watch: {
+	        'idc': function idc(newVal) {
+	            var _this3 = this;
+	
+	            this.$http({
+	                url: '/instance_ips/?idc_id=' + newVal,
+	                method: 'GET'
+	            }).then(function (response) {
+	                _this3.inips = response.data.inner_ips;
+	                _this3.outips = response.data.outer_ips;
+	
+	                _this3.inip = '';
+	                _this3.outip = '';
+	            });
 	        }
 	    }
 	};
@@ -1894,13 +2509,13 @@ webpackJsonp([3],Array(31).concat([
 /* 186 */
 /***/ function(module, exports) {
 
-	module.exports = "\n    <modal :show.sync=\"addModal\" effect=\"fade\" width=\"450px\" _v-502888f3=\"\">\n        <div slot=\"modal-header\" class=\"modal-header\" _v-502888f3=\"\">\n            <h4 class=\"modal-title\" _v-502888f3=\"\">添加</h4>\n        </div>\n        <div slot=\"modal-body\" class=\"modal-body\" _v-502888f3=\"\">\n            <form class=\"form-horizontal form-small\" _v-502888f3=\"\">\n                <div class=\"form-group\" _v-502888f3=\"\">\n                    <label class=\"control-label col-sm-3\" _v-502888f3=\"\">实例名：</label>\n                    <div class=\"col-sm-8\" _v-502888f3=\"\">\n                        <input type=\"text\" class=\"form-control\" v-model=\"exampleName\" _v-502888f3=\"\">\n                    </div>\n                </div>\n                <div class=\"form-group input-box\" _v-502888f3=\"\">\n                    <label class=\"control-label col-sm-3\" _v-502888f3=\"\">项目类型：</label>\n                    <div class=\"col-sm-8\" _v-502888f3=\"\">\n                        <v-select :value.sync=\"type\" :options=\"types\" placeholder=\"请选择\" _v-502888f3=\"\">\n                        </v-select>\n                    </div>\n                </div>\n                <div class=\"form-group input-box\" _v-502888f3=\"\">\n                    <label class=\"control-label col-sm-3\" _v-502888f3=\"\">部署包：</label>\n                    <div class=\"col-sm-8\" _v-502888f3=\"\">\n                        <v-select :value.sync=\"pack\" :options=\"packs\" placeholder=\"请选择\" _v-502888f3=\"\">\n                        </v-select>\n                    </div>\n                </div>\n                <div class=\"form-group input-box\" _v-502888f3=\"\">\n                    <label class=\"control-label col-sm-3\" _v-502888f3=\"\">机房位置：</label>\n                    <div class=\"col-sm-8\" _v-502888f3=\"\">\n                        <v-select :value.sync=\"host\" :options=\"hosts\" placeholder=\"请选择\" _v-502888f3=\"\">\n                        </v-select>\n                    </div>\n                </div>\n                <div class=\"form-group\" _v-502888f3=\"\">\n                    <label class=\"control-label col-sm-3\" _v-502888f3=\"\">内网IP端口：</label>\n                    <div class=\"col-sm-5\" _v-502888f3=\"\">\n                        <input type=\"text\" class=\"form-control\" v-model=\"inip\" _v-502888f3=\"\">\n                    </div>\n                    <div class=\"col-sm-3\" _v-502888f3=\"\">\n                        <input type=\"text\" class=\"form-control\" v-model=\"inport\" _v-502888f3=\"\">\n                    </div>\n                </div>\n                <div class=\"form-group\" _v-502888f3=\"\">\n                    <label class=\"control-label col-sm-3\" _v-502888f3=\"\">外网IP端口：</label>\n                    <div class=\"col-sm-5\" _v-502888f3=\"\">\n                        <input type=\"text\" class=\"form-control\" v-model=\"outip\" _v-502888f3=\"\">\n                    </div>\n                    <div class=\"col-sm-3\" _v-502888f3=\"\">\n                        <input type=\"text\" class=\"form-control\" v-model=\"outport\" _v-502888f3=\"\">\n                    </div>\n                </div>\n                <div class=\"form-group\" _v-502888f3=\"\">\n                    <label class=\"control-label col-sm-3\" _v-502888f3=\"\">域名：</label>\n                    <div class=\"col-sm-8\" _v-502888f3=\"\">\n                        <input type=\"text\" class=\"form-control\" v-model=\"domain\" _v-502888f3=\"\">\n                    </div>\n                </div>\n                <div class=\"form-group\" _v-502888f3=\"\">\n                    <label class=\"control-label col-sm-3\" _v-502888f3=\"\">部署目录：</label>\n                    <div class=\"col-sm-8\" _v-502888f3=\"\">\n                        <input type=\"text\" class=\"form-control\" v-model=\"deployPath\" _v-502888f3=\"\">\n                    </div>\n                </div>\n                <div class=\"form-group\" _v-502888f3=\"\">\n                    <label class=\"control-label col-sm-3\" _v-502888f3=\"\">日志目录：</label>\n                    <div class=\"col-sm-8\" _v-502888f3=\"\">\n                        <input type=\"text\" class=\"form-control\" v-model=\"logPath\" _v-502888f3=\"\">\n                    </div>\n                </div>\n                <div class=\"form-group\" _v-502888f3=\"\">\n                    <label class=\"control-label col-sm-3\" _v-502888f3=\"\">配置文件目录：</label>\n                    <div class=\"col-sm-8\" _v-502888f3=\"\">\n                        <input type=\"text\" class=\"form-control\" v-model=\"docPath\" _v-502888f3=\"\">\n                    </div>\n                </div>\n                <div class=\"form-group\" _v-502888f3=\"\">\n                    <label class=\"control-label col-sm-3\" _v-502888f3=\"\">备注：</label>\n                    <div class=\"col-sm-8\" _v-502888f3=\"\">\n                        <textarea class=\"form-control\" rows=\"3\" v-model=\"remark\" _v-502888f3=\"\"></textarea>\n                    </div>\n                </div>\n            </form>\n        </div>\n        <div slot=\"modal-footer\" class=\"modal-footer\" _v-502888f3=\"\">\n            <button type=\"button\" class=\"btn btn-default\" _v-502888f3=\"\">保存</button>\n            <button type=\"button\" class=\"btn btn-default\" @click=\"addModal = false\" _v-502888f3=\"\">取消</button>\n        </div>\n    </modal>\n";
+	module.exports = "\n    <modal :show.sync=\"addModal\" effect=\"fade\" width=\"460px\" _v-502888f3=\"\">\n        <div slot=\"modal-header\" class=\"modal-header\" _v-502888f3=\"\">\n            <h4 class=\"modal-title\" _v-502888f3=\"\">添加</h4>\n        </div>\n        <div slot=\"modal-body\" class=\"modal-body\" _v-502888f3=\"\">\n            <form class=\"form-horizontal form-small\" _v-502888f3=\"\">\n                <div class=\"form-group\" _v-502888f3=\"\">\n                    <label class=\"control-label col-sm-3\" _v-502888f3=\"\">实例名：<span class=\"text-danger\" _v-502888f3=\"\">*</span></label>\n                    <div class=\"col-sm-8\" _v-502888f3=\"\">\n                        <input type=\"text\" class=\"form-control\" v-model=\"exampleName\" _v-502888f3=\"\">\n                    </div>\n                </div>\n                <div class=\"form-group input-box\" _v-502888f3=\"\">\n                    <label class=\"control-label col-sm-3\" _v-502888f3=\"\">部署包名：<span class=\"text-danger\" _v-502888f3=\"\">*</span></label>\n                    <div class=\"col-sm-8\" _v-502888f3=\"\">\n                        <v-select :value.sync=\"pack\" :options=\"packages\" :search=\"true\" placeholder=\"请选择\" _v-502888f3=\"\">\n                        </v-select>\n                    </div>\n                </div>\n                <div class=\"form-group input-box\" _v-502888f3=\"\">\n                    <label class=\"control-label col-sm-3\" _v-502888f3=\"\">机房位置：<span class=\"text-danger\" _v-502888f3=\"\">*</span></label>\n                    <div class=\"col-sm-8\" _v-502888f3=\"\">\n                        <v-select :value.sync=\"idc\" :options=\"idcs\" :search=\"true\" placeholder=\"请选择\" _v-502888f3=\"\">\n                        </v-select>\n                    </div>\n                </div>\n                <div class=\"form-group input-box\" _v-502888f3=\"\">\n                    <label class=\"control-label col-sm-3\" _v-502888f3=\"\">内网IP端口：<span class=\"text-danger\" v-show=\"!outip\" _v-502888f3=\"\">*</span></label>\n                    <div class=\"col-sm-5\" _v-502888f3=\"\">\n                        <v-select :value.sync=\"inip\" :options=\"inips\" :search=\"true\" placeholder=\"请选择\" _v-502888f3=\"\">\n                        </v-select>\n                    </div>\n                    <div class=\"col-sm-3\" _v-502888f3=\"\">\n                        <input type=\"text\" class=\"form-control\" v-model=\"inport\" _v-502888f3=\"\">\n                    </div>\n                </div>\n                <div class=\"form-group input-box\" _v-502888f3=\"\">\n                    <label class=\"control-label col-sm-3\" _v-502888f3=\"\">外网IP端口：<span class=\"text-danger\" v-show=\"!inip\" _v-502888f3=\"\">*</span></label>\n                    <div class=\"col-sm-5\" _v-502888f3=\"\">\n                        <v-select :value.sync=\"outip\" :options=\"outips\" :search=\"true\" placeholder=\"请选择\" _v-502888f3=\"\">\n                        </v-select>\n                    </div>\n                    <div class=\"col-sm-3\" _v-502888f3=\"\">\n                        <input type=\"text\" class=\"form-control\" v-model=\"outport\" _v-502888f3=\"\">\n                    </div>\n                </div>\n                <div class=\"form-group\" _v-502888f3=\"\">\n                    <label class=\"control-label col-sm-3\" _v-502888f3=\"\">域名：</label>\n                    <div class=\"col-sm-8\" _v-502888f3=\"\">\n                        <input type=\"text\" class=\"form-control\" v-model=\"domain\" _v-502888f3=\"\">\n                    </div>\n                </div>\n                <div class=\"form-group\" _v-502888f3=\"\">\n                    <label class=\"control-label col-sm-3\" _v-502888f3=\"\">部署目录：</label>\n                    <div class=\"col-sm-8\" _v-502888f3=\"\">\n                        <input type=\"text\" class=\"form-control\" v-model=\"deployPath\" _v-502888f3=\"\">\n                    </div>\n                </div>\n                <div class=\"form-group\" _v-502888f3=\"\">\n                    <label class=\"control-label col-sm-3\" _v-502888f3=\"\">日志目录：</label>\n                    <div class=\"col-sm-8\" _v-502888f3=\"\">\n                        <input type=\"text\" class=\"form-control\" v-model=\"logPath\" _v-502888f3=\"\">\n                    </div>\n                </div>\n                <div class=\"form-group\" _v-502888f3=\"\">\n                    <label class=\"control-label col-sm-3\" _v-502888f3=\"\">配置文件目录：</label>\n                    <div class=\"col-sm-8\" _v-502888f3=\"\">\n                        <input type=\"text\" class=\"form-control\" v-model=\"docPath\" _v-502888f3=\"\">\n                    </div>\n                </div>\n                <div class=\"form-group\" _v-502888f3=\"\">\n                    <label class=\"control-label col-sm-3\" _v-502888f3=\"\">备注：</label>\n                    <div class=\"col-sm-8\" _v-502888f3=\"\">\n                        <textarea class=\"form-control\" rows=\"3\" v-model=\"remark\" _v-502888f3=\"\"></textarea>\n                    </div>\n                </div>\n            </form>\n        </div>\n        <div slot=\"modal-footer\" class=\"modal-footer\" _v-502888f3=\"\">\n            <button type=\"button\" class=\"btn btn-default\" :disabled=\"exampleName &amp;&amp; pack &amp;&amp; idc &amp;&amp; (inip || outip) ? false : true\" @click=\"saveFn\" _v-502888f3=\"\">保存</button>\n            <button type=\"button\" class=\"btn btn-default\" @click=\"addModal = false\" _v-502888f3=\"\">取消</button>\n        </div>\n    </modal>\n";
 
 /***/ },
 /* 187 */
 /***/ function(module, exports) {
 
-	module.exports = "\n    <div _v-efb0e18c=\"\">\n        <form class=\"form-inline\" _v-efb0e18c=\"\">\n            <div class=\"form-group\" _v-efb0e18c=\"\">\n                <label _v-efb0e18c=\"\">搜索：</label>\n                <input type=\"text\" class=\"form-control search-txt\" v-model=\"search\" placeholder=\"项目名/域名/机器名/部署包名/状态\" _v-efb0e18c=\"\">\n            </div>\n            <div class=\"mt30 table-btn\" _v-efb0e18c=\"\">\n                <button type=\"button\" class=\"btn btn-default btn-pd\" @click=\"$broadcast('showAdd')\" _v-efb0e18c=\"\">\n                    <span class=\"glyphicon glyphicon-plus\" _v-efb0e18c=\"\"></span>\n                    添加\n                </button>\n                <dropdown class=\"pull-right\" _v-efb0e18c=\"\"> \n                    <button type=\"button\" class=\"btn btn-default set-btn\" data-toggle=\"dropdown\" _v-efb0e18c=\"\">\n                        <span class=\"glyphicon glyphicon-cog\" _v-efb0e18c=\"\"></span>\n                    </button>\n                    <ul slot=\"dropdown-menu\" class=\"dropdown-menu\" _v-efb0e18c=\"\">\n                        <li _v-efb0e18c=\"\"><input id=\"example_name\" type=\"checkbox\" _v-efb0e18c=\"\"> <label for=\"example_name\" _v-efb0e18c=\"\">实例名称</label></li>\n                        <li _v-efb0e18c=\"\"><input type=\"checkbox\" _v-efb0e18c=\"\"> <label _v-efb0e18c=\"\">项目名称</label></li>\n                        <li _v-efb0e18c=\"\"><input type=\"checkbox\" _v-efb0e18c=\"\"> <label _v-efb0e18c=\"\">部署包名称</label></li>\n                        <li _v-efb0e18c=\"\"><input type=\"checkbox\" _v-efb0e18c=\"\"> <label _v-efb0e18c=\"\">域名</label></li>\n                        <li _v-efb0e18c=\"\"><input type=\"checkbox\" _v-efb0e18c=\"\"> <label _v-efb0e18c=\"\">端口</label></li>\n                        <li _v-efb0e18c=\"\"><input type=\"checkbox\" _v-efb0e18c=\"\"> <label _v-efb0e18c=\"\">版本</label></li>\n                        <li _v-efb0e18c=\"\"><input type=\"checkbox\" _v-efb0e18c=\"\"> <label _v-efb0e18c=\"\">配置环境要求</label></li>\n                        <li _v-efb0e18c=\"\"><input type=\"checkbox\" _v-efb0e18c=\"\"> <label _v-efb0e18c=\"\">机房位置</label></li>\n                        <li _v-efb0e18c=\"\"><input type=\"checkbox\" _v-efb0e18c=\"\"> <label _v-efb0e18c=\"\">机器IP</label></li>\n                        <li _v-efb0e18c=\"\"><input type=\"checkbox\" _v-efb0e18c=\"\"> <label _v-efb0e18c=\"\">服务部署目录</label></li>\n                        <li _v-efb0e18c=\"\"><input type=\"checkbox\" _v-efb0e18c=\"\"> <label _v-efb0e18c=\"\">日志文件目录</label></li>\n                        <li _v-efb0e18c=\"\"><input type=\"checkbox\" _v-efb0e18c=\"\"> <label _v-efb0e18c=\"\">配置文件目录</label></li>\n                        <li _v-efb0e18c=\"\"><input type=\"checkbox\" _v-efb0e18c=\"\"> <label _v-efb0e18c=\"\">备注</label></li>\n                    </ul>\n                </dropdown>\n            </div>\n            <table class=\"table table-hover table-bordered table-bg\" _v-efb0e18c=\"\">\n                <thead _v-efb0e18c=\"\">\n                    <tr _v-efb0e18c=\"\">\n                        <th _v-efb0e18c=\"\">实例名称</th>\n                        <th _v-efb0e18c=\"\">项目名称</th>\n                        <th _v-efb0e18c=\"\">部署包名称</th>\n                        <th _v-efb0e18c=\"\">域名</th>\n                        <th _v-efb0e18c=\"\">端口</th>\n                        <th _v-efb0e18c=\"\">版本</th>\n                        <th _v-efb0e18c=\"\">配置环境要求</th>\n                        <th _v-efb0e18c=\"\">机房位置</th>\n                        <th _v-efb0e18c=\"\">机器IP</th>\n                        <th _v-efb0e18c=\"\">服务部署目录</th>\n                        <th _v-efb0e18c=\"\">日志文件目录</th>\n                        <th _v-efb0e18c=\"\">配置文件目录</th>\n                        <th _v-efb0e18c=\"\">备注</th>\n                        <th _v-efb0e18c=\"\">操作</th>\n                    </tr>\n                </thead>\n                <tbody _v-efb0e18c=\"\">\n                    <tr _v-efb0e18c=\"\">\n                        <td _v-efb0e18c=\"\">imprest.woniu.com1</td>\n                        <td _v-efb0e18c=\"\">账户服务</td>\n                        <td _v-efb0e18c=\"\"></td>\n                        <td _v-efb0e18c=\"\"></td>\n                        <td _v-efb0e18c=\"\"></td>\n                        <td _v-efb0e18c=\"\"></td>\n                        <td _v-efb0e18c=\"\"></td>\n                        <td _v-efb0e18c=\"\"></td>\n                        <td _v-efb0e18c=\"\"></td>\n                        <td _v-efb0e18c=\"\"></td>\n                        <td _v-efb0e18c=\"\"></td>\n                        <td _v-efb0e18c=\"\"></td>\n                        <td _v-efb0e18c=\"\"></td>\n                        <td _v-efb0e18c=\"\">\n                            <button type=\"button\" class=\"btn btn-default btn-small\" _v-efb0e18c=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-edit\" _v-efb0e18c=\"\"></span>\n                            </button>\n                            <button type=\"button\" class=\"btn btn-default btn-small\" @click=\"$broadcast('showConfirm')\" _v-efb0e18c=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-trash\" _v-efb0e18c=\"\"></span>\n                            </button>\n                        </td>\n                    </tr>\n                </tbody>\n            </table>\n        </form>\n        <add-modal _v-efb0e18c=\"\"></add-modal>\n        <delete-modal _v-efb0e18c=\"\"></delete-modal>\n    </div>\n";
+	module.exports = "\n    <div _v-efb0e18c=\"\">\n        <form class=\"form-inline\" _v-efb0e18c=\"\">\n            <div class=\"form-group\" _v-efb0e18c=\"\">\n                <label _v-efb0e18c=\"\">搜索：</label>\n                <input type=\"text\" class=\"form-control search-txt\" v-model=\"param.search\" placeholder=\"项目名/域名/机器名/部署包名/状态\" _v-efb0e18c=\"\">\n            </div>\n            <div class=\"mt30 table-btn\" _v-efb0e18c=\"\">\n                <button type=\"button\" class=\"btn btn-default btn-pd\" @click=\"$broadcast('showAdd')\" _v-efb0e18c=\"\">\n                    <span class=\"glyphicon glyphicon-plus\" _v-efb0e18c=\"\"></span>\n                    添加\n                </button>\n                <dropdown class=\"pull-right\" _v-efb0e18c=\"\"> \n                    <button type=\"button\" class=\"btn btn-default set-btn\" data-toggle=\"dropdown\" _v-efb0e18c=\"\">\n                        <span class=\"glyphicon glyphicon-cog\" _v-efb0e18c=\"\"></span>\n                    </button>\n                    <ul slot=\"dropdown-menu\" class=\"dropdown-menu\" _v-efb0e18c=\"\">\n                        <li _v-efb0e18c=\"\"><input id=\"exampleName\" type=\"checkbox\" value=\"1\" v-model=\"checkedNames\" _v-efb0e18c=\"\"> <label for=\"exampleName\" _v-efb0e18c=\"\">实例名称</label></li>\n                        <li _v-efb0e18c=\"\"><input id=\"packName\" type=\"checkbox\" value=\"2\" v-model=\"checkedNames\" _v-efb0e18c=\"\"> <label for=\"packName\" _v-efb0e18c=\"\">部署包名称</label></li>\n                        <li _v-efb0e18c=\"\"><input id=\"projectName\" type=\"checkbox\" value=\"3\" v-model=\"checkedNames\" _v-efb0e18c=\"\"> <label for=\"projectName\" _v-efb0e18c=\"\">项目名称</label></li>\n                        <li _v-efb0e18c=\"\"><input id=\"projectType\" type=\"checkbox\" value=\"4\" v-model=\"checkedNames\" _v-efb0e18c=\"\"> <label for=\"projectType\" _v-efb0e18c=\"\">项目类型</label></li>\n                        <li _v-efb0e18c=\"\"><input id=\"version\" type=\"checkbox\" value=\"5\" v-model=\"checkedNames\" _v-efb0e18c=\"\"> <label for=\"version\" _v-efb0e18c=\"\">版本</label></li>\n                        <li _v-efb0e18c=\"\"><input id=\"hosts\" type=\"checkbox\" value=\"6\" v-model=\"checkedNames\" _v-efb0e18c=\"\"> <label for=\"hosts\" _v-efb0e18c=\"\">机房位置</label></li>\n                        <li _v-efb0e18c=\"\"><input id=\"ip\" type=\"checkbox\" value=\"7\" v-model=\"checkedNames\" _v-efb0e18c=\"\"> <label for=\"ip\" _v-efb0e18c=\"\">机器IP</label></li>\n                        <li _v-efb0e18c=\"\"><input id=\"port\" type=\"checkbox\" value=\"8\" v-model=\"checkedNames\" _v-efb0e18c=\"\"> <label for=\"port\" _v-efb0e18c=\"\">端口</label></li>\n                        <li _v-efb0e18c=\"\"><input id=\"domain\" type=\"checkbox\" value=\"9\" v-model=\"checkedNames\" _v-efb0e18c=\"\"> <label for=\"domain\" _v-efb0e18c=\"\">域名</label></li>\n                        <li _v-efb0e18c=\"\"><input id=\"deployPath\" type=\"checkbox\" value=\"10\" v-model=\"checkedNames\" _v-efb0e18c=\"\"> <label for=\"deployPath\" _v-efb0e18c=\"\">部署目录</label></li>\n                        <li _v-efb0e18c=\"\"><input id=\"logPath\" type=\"checkbox\" value=\"11\" v-model=\"checkedNames\" _v-efb0e18c=\"\"> <label for=\"logPath\" _v-efb0e18c=\"\">日志文件目录</label></li>\n                        <li _v-efb0e18c=\"\"><input id=\"docPath\" type=\"checkbox\" value=\"12\" v-model=\"checkedNames\" _v-efb0e18c=\"\"> <label for=\"docPath\" _v-efb0e18c=\"\">配置文件目录</label></li>\n                        <li _v-efb0e18c=\"\"><input id=\"remark\" type=\"checkbox\" value=\"13\" v-model=\"checkedNames\" _v-efb0e18c=\"\"> <label for=\"remark\" _v-efb0e18c=\"\">备注</label></li>\n                    </ul>\n                </dropdown>\n            </div>\n            <table class=\"table table-hover table-bordered table-bg\" _v-efb0e18c=\"\">\n                <thead _v-efb0e18c=\"\">\n                    <tr _v-efb0e18c=\"\">\n                        <th v-for=\"name in checkedArr\" v-text=\"name\" track-by=\"$index\" _v-efb0e18c=\"\"></th>\n                        <th _v-efb0e18c=\"\">配置环境要求</th>\n                        <th _v-efb0e18c=\"\">操作</th>\n                    </tr>\n                </thead>\n                <tbody _v-efb0e18c=\"\">\n                    <tr v-for=\"list in tableList\" _v-efb0e18c=\"\">\n                        <td v-for=\"value in checkedArr\" v-text=\"list[value]\" track-by=\"$index\" _v-efb0e18c=\"\"></td>\n                        <td _v-efb0e18c=\"\">配置环境要求</td>\n                        <td _v-efb0e18c=\"\">\n                            <button type=\"button\" class=\"btn btn-default btn-small\" _v-efb0e18c=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-edit\" _v-efb0e18c=\"\"></span>\n                            </button>\n                            <button type=\"button\" class=\"btn btn-default btn-small\" @click=\"$broadcast('showConfirm')\" _v-efb0e18c=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-trash\" _v-efb0e18c=\"\"></span>\n                            </button>\n                        </td>\n                    </tr>\n                    <tr v-if=\"tableList.length === 0\" _v-efb0e18c=\"\">\n                        <td class=\"text-center\" :colspan=\"checkedArr.length + 2\" _v-efb0e18c=\"\">\n                            暂无数据\n                        </td>\n                    </tr>\n                    <tr _v-efb0e18c=\"\">\n                        <td :colspan=\"checkedArr.length + 2\" _v-efb0e18c=\"\">\n                            <div class=\"pull-right\" _v-efb0e18c=\"\">\n                                <boot-page :async=\"true\" :lens=\"lenArr\" :page-len=\"pageLen\" :url=\"url\" :param=\"param\" _v-efb0e18c=\"\"></boot-page>\n                            </div>\n                        </td>\n                    </tr>\n                </tbody>\n            </table>\n        </form>\n        <add-modal _v-efb0e18c=\"\"></add-modal>\n        <delete-modal _v-efb0e18c=\"\"></delete-modal>\n    </div>\n";
 
 /***/ }
 ]));
