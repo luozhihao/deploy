@@ -152,22 +152,22 @@ webpackJsonp([1],Array(25).concat([
 	//                         <td v-text="list.type"></td>
 	//                         <td v-text="list.version" :title="list.version"></td>
 	//                         <td>
-	//                             <button type="button" class="btn btn-default btn-small" @click="getRuleFn($index)">
+	//                             <button type="button" class="btn btn-default btn-small" @click="getRuleFn(list)">
 	//                                 <span class="table-icon glyphicon glyphicon-list-alt"></span>
 	//                                 规则
 	//                             </button>
-	//                             <button type="button" class="btn btn-default btn-small" @click="getRuleListFn($index)">
+	//                             <button type="button" class="btn btn-default btn-small" @click="getRuleListFn(list)">
 	//                                 <span class="table-icon glyphicon glyphicon-duplicate"></span>
 	//                                 脚本
 	//                             </button>
 	//                         </td>
 	//                         <td v-text="list.remark"></td>
 	//                         <td>
-	//                             <button type="button" class="btn btn-default btn-small" @click="$broadcast('showModify', tableList[$index].id)">
+	//                             <button type="button" class="btn btn-default btn-small" @click="$broadcast('showModify', list.id)">
 	//                                 <span class="table-icon glyphicon glyphicon-edit"></span>
 	//                                 修改
 	//                             </button>
-	//                             <button type="button" class="btn btn-default btn-small" @click="$broadcast('showConfirm', tableList[$index].id)">
+	//                             <button type="button" class="btn btn-default btn-small" @click="$broadcast('showConfirm', list.id)">
 	//                                 <span class="table-icon glyphicon glyphicon-trash"></span>
 	//                                 删除
 	//                             </button>
@@ -216,15 +216,15 @@ webpackJsonp([1],Array(25).concat([
 	
 	
 	        // 获取编辑规则名
-	        getRuleFn: function getRuleFn(index) {
-	            this.getRules(this.tableList[index].id);
+	        getRuleFn: function getRuleFn(list) {
+	            this.getRules(list.id);
 	            this.$broadcast('showRule');
 	        },
 	
 	
 	        // 获取已建规则列表
-	        getRuleListFn: function getRuleListFn(index) {
-	            this.getRuleList(this.tableList[index].id);
+	        getRuleListFn: function getRuleListFn(list) {
+	            this.getRuleList(list.id);
 	            this.$broadcast('showScript');
 	        }
 	    },
@@ -3076,12 +3076,12 @@ webpackJsonp([1],Array(25).concat([
 	//                     <label class="col-sm-2 control-label">脚本来源：</label>
 	//                     <div class="col-sm-6">
 	//                         <radio-group :value.sync="scriptOriginSelected" type="default">
-	//                             <radio :value="'1'">手工录入</radio>
-	//                             <radio :value="'2'">本地脚本</radio>
+	//                             <radio :value="'1'">本地脚本</radio>
+	//                             <radio :value="'2'">手工录入</radio>
 	//                         </radio-group>
 	//                     </div>
 	//                 </div>
-	//                 <div class="form-group" v-if="scriptOriginSelected === '2'">
+	//                 <div class="form-group" v-if="scriptOriginSelected === '1'">
 	//                     <div class="col-sm-5 col-sm-offset-2">
 	//                         <input type="text" class="form-control" :readonly="true" v-model="road">
 	//                         <input id="file" type="file" name="file" v-show="false" @change="fileChange">
@@ -3099,8 +3099,22 @@ webpackJsonp([1],Array(25).concat([
 	//                         </radio-group>
 	//                     </div>
 	//                 </div>
-	//                 <div class="form-group" v-show="rule">
-	//                     <textarea id="editScript" class="form-group"></textarea>
+	//                 <div v-show="rule">
+	//                     <div class="form-group">
+	//                         <textarea id="editScript" class="form-group"></textarea>
+	//                     </div>
+	//                     <div class="form-group">
+	//                         <label class="col-sm-2 control-label">超时时间(s)：</label>
+	//                         <div class="col-sm-6">
+	//                             <input type="number" class="form-control" min="0" max="259200" v-model="timeout" placeholder="最长等待执行秒数，超时则系统返回失败">
+	//                         </div>
+	//                     </div>
+	//                     <div class="form-group">
+	//                         <label class="col-sm-2 control-label">入口参数：</label>
+	//                         <div class="col-sm-6">
+	//                             <input type="text" class="form-control" v-model="param" placeholder="该参数用于脚本的输入参数，以空格相隔，无则不填">
+	//                         </div>
+	//                     </div>
 	//                 </div>
 	//             </form>
 	//         </div>
@@ -3122,7 +3136,9 @@ webpackJsonp([1],Array(25).concat([
 	            scriptTypes: [{ value: '1', label: 'shell' }, { value: '2', label: 'bat' }, { value: '3', label: 'python' }],
 	            scriptTypeSelected: '1',
 	            scriptOriginSelected: '1',
-	            road: ''
+	            road: '',
+	            timeout: '',
+	            param: ''
 	        };
 	    },
 	
@@ -3133,13 +3149,13 @@ webpackJsonp([1],Array(25).concat([
 	        saveScript: function saveScript() {
 	            var _this2 = this;
 	
-	            console.log(this.rule);
-	
 	            this.$http({
 	                url: '/script_edit/',
 	                method: 'POST',
 	                data: {
 	                    id: this.rule,
+	                    param: this.param,
+	                    timeout: this.timeout,
 	                    script: editor.getValue(),
 	                    script_type: this.scriptTypeSelected
 	                }
@@ -3253,6 +3269,9 @@ webpackJsonp([1],Array(25).concat([
 	                    method: 'GET'
 	                }).then(function (response) {
 	                    response.data.script ? editor.setValue(response.data.script) : editor.setValue('');
+	
+	                    _this4.timeout = response.data.timeout;
+	                    _this4.param = response.data.param;
 	
 	                    response.data.script_type ? _this4.scriptTypeSelected = response.data.script_type : _this4.scriptTypeSelected = '1';
 	                });
@@ -13616,14 +13635,14 @@ webpackJsonp([1],Array(25).concat([
 /* 145 */
 /***/ function(module, exports) {
 
-	module.exports = "\n    <modal :show.sync=\"scriptModal\" effect=\"fade\" width=\"800px\" _v-15113fe8=\"\">\n        <div slot=\"modal-header\" class=\"modal-header\" _v-15113fe8=\"\">\n            <button type=\"button\" class=\"close\" @click=\"scriptModal = false\" _v-15113fe8=\"\">\n                <span _v-15113fe8=\"\">×</span>\n            </button>\n            <h4 class=\"modal-title\" _v-15113fe8=\"\">脚本编写</h4>\n        </div>\n        <div slot=\"modal-body\" class=\"modal-body\" _v-15113fe8=\"\">\n            <form id=\"file_form\" class=\"form-horizontal\" _v-15113fe8=\"\">\n                <div class=\"form-group\" _v-15113fe8=\"\">\n                    <label class=\"col-sm-2 control-label\" _v-15113fe8=\"\">规则名：<span class=\"text-danger\" _v-15113fe8=\"\">*</span></label>\n                    <div class=\"col-sm-6\" _v-15113fe8=\"\">\n                        <v-select :value.sync=\"rule\" :options=\"ruleList\" placeholder=\"请选择\" _v-15113fe8=\"\">\n                        </v-select>\n                    </div>\n                </div>\n                <div class=\"form-group\" _v-15113fe8=\"\">\n                    <label class=\"col-sm-2 control-label\" _v-15113fe8=\"\">脚本来源：</label>\n                    <div class=\"col-sm-6\" _v-15113fe8=\"\">\n                        <radio-group :value.sync=\"scriptOriginSelected\" type=\"default\" _v-15113fe8=\"\">\n                            <radio :value=\"'1'\" _v-15113fe8=\"\">手工录入</radio>\n                            <radio :value=\"'2'\" _v-15113fe8=\"\">本地脚本</radio>\n                        </radio-group>\n                    </div>\n                </div>\n                <div class=\"form-group\" v-if=\"scriptOriginSelected === '2'\" _v-15113fe8=\"\">\n                    <div class=\"col-sm-5 col-sm-offset-2\" _v-15113fe8=\"\">\n                        <input type=\"text\" class=\"form-control\" :readonly=\"true\" v-model=\"road\" _v-15113fe8=\"\">\n                        <input id=\"file\" type=\"file\" name=\"file\" v-show=\"false\" @change=\"fileChange\" _v-15113fe8=\"\">\n                    </div>\n                    <div class=\"col-sm-4\" _v-15113fe8=\"\">\n                        <button type=\"button\" class=\"btn btn-default\" @click=\"fileSearch\" _v-15113fe8=\"\">浏览</button>\n                        <button type=\"button\" class=\"btn btn-default\" @click=\"fileUpload\" _v-15113fe8=\"\">上传</button>\n                    </div>\n                </div>\n                <div class=\"form-group\" _v-15113fe8=\"\">\n                    <label class=\"col-sm-2 control-label\" _v-15113fe8=\"\">脚本类型：</label>\n                    <div class=\"col-sm-6\" _v-15113fe8=\"\">\n                        <radio-group :value.sync=\"scriptTypeSelected\" type=\"default\" _v-15113fe8=\"\">\n                            <radio v-for=\"scriptType in scriptTypes\" :value=\"scriptType.value\" _v-15113fe8=\"\">{{ scriptType.label }}</radio>\n                        </radio-group>\n                    </div>\n                </div>\n                <div class=\"form-group\" v-show=\"rule\" _v-15113fe8=\"\">\n                    <textarea id=\"editScript\" class=\"form-group\" _v-15113fe8=\"\"></textarea>\n                </div>\n            </form>\n        </div>\n        <div slot=\"modal-footer\" class=\"modal-footer\" _v-15113fe8=\"\">\n            <button type=\"button\" class=\"btn btn-default\" :disabled=\"rule ? false : true\" @click=\"saveScript\" _v-15113fe8=\"\">保存</button>\n            <button type=\"button\" class=\"btn btn-default\" @click=\"scriptModal = false\" _v-15113fe8=\"\">取消</button>\n        </div>\n    </modal>\n";
+	module.exports = "\n    <modal :show.sync=\"scriptModal\" effect=\"fade\" width=\"800px\" _v-15113fe8=\"\">\n        <div slot=\"modal-header\" class=\"modal-header\" _v-15113fe8=\"\">\n            <button type=\"button\" class=\"close\" @click=\"scriptModal = false\" _v-15113fe8=\"\">\n                <span _v-15113fe8=\"\">×</span>\n            </button>\n            <h4 class=\"modal-title\" _v-15113fe8=\"\">脚本编写</h4>\n        </div>\n        <div slot=\"modal-body\" class=\"modal-body\" _v-15113fe8=\"\">\n            <form id=\"file_form\" class=\"form-horizontal\" _v-15113fe8=\"\">\n                <div class=\"form-group\" _v-15113fe8=\"\">\n                    <label class=\"col-sm-2 control-label\" _v-15113fe8=\"\">规则名：<span class=\"text-danger\" _v-15113fe8=\"\">*</span></label>\n                    <div class=\"col-sm-6\" _v-15113fe8=\"\">\n                        <v-select :value.sync=\"rule\" :options=\"ruleList\" placeholder=\"请选择\" _v-15113fe8=\"\">\n                        </v-select>\n                    </div>\n                </div>\n                <div class=\"form-group\" _v-15113fe8=\"\">\n                    <label class=\"col-sm-2 control-label\" _v-15113fe8=\"\">脚本来源：</label>\n                    <div class=\"col-sm-6\" _v-15113fe8=\"\">\n                        <radio-group :value.sync=\"scriptOriginSelected\" type=\"default\" _v-15113fe8=\"\">\n                            <radio :value=\"'1'\" _v-15113fe8=\"\">本地脚本</radio>\n                            <radio :value=\"'2'\" _v-15113fe8=\"\">手工录入</radio>\n                        </radio-group>\n                    </div>\n                </div>\n                <div class=\"form-group\" v-if=\"scriptOriginSelected === '1'\" _v-15113fe8=\"\">\n                    <div class=\"col-sm-5 col-sm-offset-2\" _v-15113fe8=\"\">\n                        <input type=\"text\" class=\"form-control\" :readonly=\"true\" v-model=\"road\" _v-15113fe8=\"\">\n                        <input id=\"file\" type=\"file\" name=\"file\" v-show=\"false\" @change=\"fileChange\" _v-15113fe8=\"\">\n                    </div>\n                    <div class=\"col-sm-4\" _v-15113fe8=\"\">\n                        <button type=\"button\" class=\"btn btn-default\" @click=\"fileSearch\" _v-15113fe8=\"\">浏览</button>\n                        <button type=\"button\" class=\"btn btn-default\" @click=\"fileUpload\" _v-15113fe8=\"\">上传</button>\n                    </div>\n                </div>\n                <div class=\"form-group\" _v-15113fe8=\"\">\n                    <label class=\"col-sm-2 control-label\" _v-15113fe8=\"\">脚本类型：</label>\n                    <div class=\"col-sm-6\" _v-15113fe8=\"\">\n                        <radio-group :value.sync=\"scriptTypeSelected\" type=\"default\" _v-15113fe8=\"\">\n                            <radio v-for=\"scriptType in scriptTypes\" :value=\"scriptType.value\" _v-15113fe8=\"\">{{ scriptType.label }}</radio>\n                        </radio-group>\n                    </div>\n                </div>\n                <div v-show=\"rule\" _v-15113fe8=\"\">\n                    <div class=\"form-group\" _v-15113fe8=\"\">\n                        <textarea id=\"editScript\" class=\"form-group\" _v-15113fe8=\"\"></textarea>\n                    </div>\n                    <div class=\"form-group\" _v-15113fe8=\"\">\n                        <label class=\"col-sm-2 control-label\" _v-15113fe8=\"\">超时时间(s)：</label>\n                        <div class=\"col-sm-6\" _v-15113fe8=\"\">\n                            <input type=\"number\" class=\"form-control\" min=\"0\" max=\"259200\" v-model=\"timeout\" placeholder=\"最长等待执行秒数，超时则系统返回失败\" _v-15113fe8=\"\">\n                        </div>\n                    </div>\n                    <div class=\"form-group\" _v-15113fe8=\"\">\n                        <label class=\"col-sm-2 control-label\" _v-15113fe8=\"\">入口参数：</label>\n                        <div class=\"col-sm-6\" _v-15113fe8=\"\">\n                            <input type=\"text\" class=\"form-control\" v-model=\"param\" placeholder=\"该参数用于脚本的输入参数，以空格相隔，无则不填\" _v-15113fe8=\"\">\n                        </div>\n                    </div>\n                </div>\n            </form>\n        </div>\n        <div slot=\"modal-footer\" class=\"modal-footer\" _v-15113fe8=\"\">\n            <button type=\"button\" class=\"btn btn-default\" :disabled=\"rule ? false : true\" @click=\"saveScript\" _v-15113fe8=\"\">保存</button>\n            <button type=\"button\" class=\"btn btn-default\" @click=\"scriptModal = false\" _v-15113fe8=\"\">取消</button>\n        </div>\n    </modal>\n";
 
 /***/ },
 /* 146 */,
 /* 147 */
 /***/ function(module, exports) {
 
-	module.exports = "\n    <div _v-3c857cf8=\"\">\n        <form class=\"form-inline\" _v-3c857cf8=\"\">\n            <div class=\"form-group\" _v-3c857cf8=\"\">\n                <label _v-3c857cf8=\"\">名称：</label>\n                <input type=\"text\" class=\"form-control\" v-model=\"param.name\" _v-3c857cf8=\"\">\n            </div>\n            <div class=\"form-group\" _v-3c857cf8=\"\">\n                <label _v-3c857cf8=\"\">类型：</label>\n                <v-select :value.sync=\"param.type\" :options=\"typeArr.concat(types)\" placeholder=\"\" _v-3c857cf8=\"\">\n                </v-select>\n            </div>\n            <div class=\"mt30 table-btn\" _v-3c857cf8=\"\">\n                <button type=\"button\" class=\"btn btn-default btn-pd\" @click=\"$broadcast('showAdd')\" _v-3c857cf8=\"\">\n                    <span class=\"glyphicon glyphicon-plus\" _v-3c857cf8=\"\"></span>\n                    添加\n                </button>\n            </div>\n            <table class=\"table table-hover table-bordered table-bg\" _v-3c857cf8=\"\">\n                <thead _v-3c857cf8=\"\">\n                    <tr _v-3c857cf8=\"\">\n                        <th _v-3c857cf8=\"\">名称</th>\n                        <th _v-3c857cf8=\"\">类型</th>\n                        <th _v-3c857cf8=\"\">版本/型号</th>\n                        <th _v-3c857cf8=\"\">检查规则</th>\n                        <th _v-3c857cf8=\"\">备注</th>\n                        <th _v-3c857cf8=\"\">操作</th>\n                    </tr>\n                </thead>\n                <tbody _v-3c857cf8=\"\">\n                    <tr v-for=\"list in tableList\" _v-3c857cf8=\"\">\n                        <td v-text=\"list.name\" _v-3c857cf8=\"\"></td>\n                        <td v-text=\"list.type\" _v-3c857cf8=\"\"></td>\n                        <td v-text=\"list.version\" :title=\"list.version\" _v-3c857cf8=\"\"></td>\n                        <td _v-3c857cf8=\"\">\n                            <button type=\"button\" class=\"btn btn-default btn-small\" @click=\"getRuleFn($index)\" _v-3c857cf8=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-list-alt\" _v-3c857cf8=\"\"></span>\n                                规则\n                            </button>\n                            <button type=\"button\" class=\"btn btn-default btn-small\" @click=\"getRuleListFn($index)\" _v-3c857cf8=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-duplicate\" _v-3c857cf8=\"\"></span>\n                                脚本\n                            </button>\n                        </td>\n                        <td v-text=\"list.remark\" _v-3c857cf8=\"\"></td>\n                        <td _v-3c857cf8=\"\">\n                            <button type=\"button\" class=\"btn btn-default btn-small\" @click=\"$broadcast('showModify', tableList[$index].id)\" _v-3c857cf8=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-edit\" _v-3c857cf8=\"\"></span>\n                                修改\n                            </button>\n                            <button type=\"button\" class=\"btn btn-default btn-small\" @click=\"$broadcast('showConfirm', tableList[$index].id)\" _v-3c857cf8=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-trash\" _v-3c857cf8=\"\"></span>\n                                删除\n                            </button>\n                        </td>\n                    </tr>\n                    <tr v-if=\"tableList.length === 0\" _v-3c857cf8=\"\">\n                        <td class=\"text-center\" colspan=\"6\" _v-3c857cf8=\"\">\n                            暂无数据\n                        </td>\n                    </tr>\n                </tbody>\n                <tfoot _v-3c857cf8=\"\">\n                    <tr _v-3c857cf8=\"\">\n                        <td colspan=\"6\" _v-3c857cf8=\"\">\n                            <div class=\"pull-right\" _v-3c857cf8=\"\">\n                                <boot-page :async=\"true\" :lens=\"lenArr\" :page-len=\"pageLen\" :url=\"url\" :param=\"param\" _v-3c857cf8=\"\"></boot-page>\n                            </div>\n                        </td>\n                    </tr>\n                </tfoot>\n            </table>\n        </form>\n        <add-modal _v-3c857cf8=\"\"></add-modal>\n        <rule-modal _v-3c857cf8=\"\"></rule-modal>\n        <modify-modal _v-3c857cf8=\"\"></modify-modal>\n        <delete-modal _v-3c857cf8=\"\"></delete-modal>\n        <editscript-modal _v-3c857cf8=\"\"></editscript-modal>\n    </div>\n";
+	module.exports = "\n    <div _v-3c857cf8=\"\">\n        <form class=\"form-inline\" _v-3c857cf8=\"\">\n            <div class=\"form-group\" _v-3c857cf8=\"\">\n                <label _v-3c857cf8=\"\">名称：</label>\n                <input type=\"text\" class=\"form-control\" v-model=\"param.name\" _v-3c857cf8=\"\">\n            </div>\n            <div class=\"form-group\" _v-3c857cf8=\"\">\n                <label _v-3c857cf8=\"\">类型：</label>\n                <v-select :value.sync=\"param.type\" :options=\"typeArr.concat(types)\" placeholder=\"\" _v-3c857cf8=\"\">\n                </v-select>\n            </div>\n            <div class=\"mt30 table-btn\" _v-3c857cf8=\"\">\n                <button type=\"button\" class=\"btn btn-default btn-pd\" @click=\"$broadcast('showAdd')\" _v-3c857cf8=\"\">\n                    <span class=\"glyphicon glyphicon-plus\" _v-3c857cf8=\"\"></span>\n                    添加\n                </button>\n            </div>\n            <table class=\"table table-hover table-bordered table-bg\" _v-3c857cf8=\"\">\n                <thead _v-3c857cf8=\"\">\n                    <tr _v-3c857cf8=\"\">\n                        <th _v-3c857cf8=\"\">名称</th>\n                        <th _v-3c857cf8=\"\">类型</th>\n                        <th _v-3c857cf8=\"\">版本/型号</th>\n                        <th _v-3c857cf8=\"\">检查规则</th>\n                        <th _v-3c857cf8=\"\">备注</th>\n                        <th _v-3c857cf8=\"\">操作</th>\n                    </tr>\n                </thead>\n                <tbody _v-3c857cf8=\"\">\n                    <tr v-for=\"list in tableList\" _v-3c857cf8=\"\">\n                        <td v-text=\"list.name\" _v-3c857cf8=\"\"></td>\n                        <td v-text=\"list.type\" _v-3c857cf8=\"\"></td>\n                        <td v-text=\"list.version\" :title=\"list.version\" _v-3c857cf8=\"\"></td>\n                        <td _v-3c857cf8=\"\">\n                            <button type=\"button\" class=\"btn btn-default btn-small\" @click=\"getRuleFn(list)\" _v-3c857cf8=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-list-alt\" _v-3c857cf8=\"\"></span>\n                                规则\n                            </button>\n                            <button type=\"button\" class=\"btn btn-default btn-small\" @click=\"getRuleListFn(list)\" _v-3c857cf8=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-duplicate\" _v-3c857cf8=\"\"></span>\n                                脚本\n                            </button>\n                        </td>\n                        <td v-text=\"list.remark\" _v-3c857cf8=\"\"></td>\n                        <td _v-3c857cf8=\"\">\n                            <button type=\"button\" class=\"btn btn-default btn-small\" @click=\"$broadcast('showModify', list.id)\" _v-3c857cf8=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-edit\" _v-3c857cf8=\"\"></span>\n                                修改\n                            </button>\n                            <button type=\"button\" class=\"btn btn-default btn-small\" @click=\"$broadcast('showConfirm', list.id)\" _v-3c857cf8=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-trash\" _v-3c857cf8=\"\"></span>\n                                删除\n                            </button>\n                        </td>\n                    </tr>\n                    <tr v-if=\"tableList.length === 0\" _v-3c857cf8=\"\">\n                        <td class=\"text-center\" colspan=\"6\" _v-3c857cf8=\"\">\n                            暂无数据\n                        </td>\n                    </tr>\n                </tbody>\n                <tfoot _v-3c857cf8=\"\">\n                    <tr _v-3c857cf8=\"\">\n                        <td colspan=\"6\" _v-3c857cf8=\"\">\n                            <div class=\"pull-right\" _v-3c857cf8=\"\">\n                                <boot-page :async=\"true\" :lens=\"lenArr\" :page-len=\"pageLen\" :url=\"url\" :param=\"param\" _v-3c857cf8=\"\"></boot-page>\n                            </div>\n                        </td>\n                    </tr>\n                </tfoot>\n            </table>\n        </form>\n        <add-modal _v-3c857cf8=\"\"></add-modal>\n        <rule-modal _v-3c857cf8=\"\"></rule-modal>\n        <modify-modal _v-3c857cf8=\"\"></modify-modal>\n        <delete-modal _v-3c857cf8=\"\"></delete-modal>\n        <editscript-modal _v-3c857cf8=\"\"></editscript-modal>\n    </div>\n";
 
 /***/ }
 ]));

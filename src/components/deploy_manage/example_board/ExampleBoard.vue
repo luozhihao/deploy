@@ -3,10 +3,10 @@
         <form class="form-inline">
             <div class="form-group">
                 <label>搜索：</label>
-                <input type="text" class="form-control search-txt" v-model="param.search" placeholder="项目名/域名/机器名/部署包名/状态">
+                <input type="text" class="form-control search-txt" v-model="param.search" placeholder="项目名/域名/机器名/部署包名">
             </div>
             <div class="mt30 table-btn">
-                <button type="button" class="btn btn-default btn-pd" @click="$broadcast('showAdd')">
+                <button type="button" class="btn btn-default btn-pd" @click="addFn">
                     <span class="glyphicon glyphicon-plus"></span>
                     添加
                 </button>
@@ -15,19 +15,58 @@
                         <span class="glyphicon glyphicon-cog"></span>
                     </button>
                     <ul slot="dropdown-menu" class="dropdown-menu">
-                        <li><input id="exampleName" type="checkbox" value="1" v-model="checkedNames"> <label for="exampleName">实例名称</label></li>
-                        <li><input id="packName" type="checkbox" value="2" v-model="checkedNames"> <label for="packName">部署包名称</label></li>
-                        <li><input id="projectName" type="checkbox" value="3" v-model="checkedNames"> <label for="projectName">项目名称</label></li>
-                        <li><input id="projectType" type="checkbox" value="4" v-model="checkedNames"> <label for="projectType">项目类型</label></li>
-                        <li><input id="version" type="checkbox" value="5" v-model="checkedNames"> <label for="version">版本</label></li>
-                        <li><input id="hosts" type="checkbox" value="6" v-model="checkedNames"> <label for="hosts">机房位置</label></li>
-                        <li><input id="ip" type="checkbox" value="7" v-model="checkedNames"> <label for="ip">机器IP</label></li>
-                        <li><input id="port" type="checkbox" value="8" v-model="checkedNames"> <label for="port">端口</label></li>
-                        <li><input id="domain" type="checkbox" value="9" v-model="checkedNames"> <label for="domain">域名</label></li>
-                        <li><input id="deployPath" type="checkbox" value="10" v-model="checkedNames"> <label for="deployPath">部署目录</label></li>
-                        <li><input id="logPath" type="checkbox" value="11" v-model="checkedNames"> <label for="logPath">日志文件目录</label></li>
-                        <li><input id="docPath" type="checkbox" value="12" v-model="checkedNames"> <label for="docPath">配置文件目录</label></li>
-                        <li><input id="remark" type="checkbox" value="13" v-model="checkedNames"> <label for="remark">备注</label></li>
+                        <li>
+                            <input id="exampleName" type="checkbox" value="1" v-model="checkedNames"> 
+                            <label for="exampleName">实例名称</label>
+                        </li>
+                        <li>
+                            <input id="packName" type="checkbox" value="2" v-model="checkedNames"> 
+                            <label for="packName">部署包名称</label>
+                        </li>
+                        <li>
+                            <input id="projectName" type="checkbox" value="3" v-model="checkedNames"> 
+                            <label for="projectName">项目名称</label>
+                        </li>
+                        <li>
+                            <input id="projectType" type="checkbox" value="4" v-model="checkedNames"> 
+                            <label for="projectType">项目类型</label>
+                        </li>
+                        <li>
+                            <input id="version" type="checkbox" value="5" v-model="checkedNames"> 
+                            <label for="version">版本</label>
+                        </li>
+                        <li>
+                            <input id="hosts" type="checkbox" value="6" v-model="checkedNames"> 
+                            <label for="hosts">机房位置</label>
+                        </li>
+                        <li>
+                            <input id="ip" type="checkbox" value="7" v-model="checkedNames"> 
+                            <label for="ip">机器IP</label>
+                        </li>
+                        <li>
+                            <input id="port" type="checkbox" value="8" v-model="checkedNames"> 
+                            <label for="port">端口</label>
+                        </li>
+                        <li>
+                            <input id="domain" type="checkbox" value="9" v-model="checkedNames"> 
+                            <label for="domain">域名</label>
+                        </li>
+                        <li>
+                            <input id="deployPath" type="checkbox" value="10" v-model="checkedNames"> 
+                            <label for="deployPath">部署目录</label>
+                        </li>
+                        <li>
+                            <input id="logPath" type="checkbox" value="11" v-model="checkedNames">
+                            <label for="logPath">日志文件目录</label>
+                        </li>
+                        <li>
+                            <input id="docPath" type="checkbox" value="12" v-model="checkedNames"> 
+                            <label for="docPath">配置文件目录</label>
+                        </li>
+                        <li>
+                            <input id="remark" type="checkbox" value="13" v-model="checkedNames"> 
+                            <label for="remark">备注</label>
+                        </li>
                     </ul>
                 </dropdown>
             </div>
@@ -41,13 +80,20 @@
                 </thead>
                 <tbody>
                     <tr v-for="list in tableList">
-                        <td v-for="value in checkedArr" v-text="list[value]" track-by="$index"></td>
-                        <td>配置环境要求</td>
+                        <td v-for="value in checkedArr" v-text="list[value]" track-by="$index" :title="list[value]"></td>
                         <td>
+                            <button type="button" class="btn btn-default btn-small" @click="showViewEnv(list.id)">
+                                <span class="table-icon glyphicon glyphicon-eye-open"></span>
+                            </button>
                             <button type="button" class="btn btn-default btn-small">
+                                <span class="table-icon glyphicon glyphicon-record"></span>
+                            </button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-default btn-small" @click="modifyFn(list.id)">
                                 <span class="table-icon glyphicon glyphicon-edit"></span>
                             </button>
-                            <button type="button" class="btn btn-default btn-small" @click="$broadcast('showConfirm')">
+                            <button type="button" class="btn btn-default btn-small" @click="$broadcast('showConfirm', list.id)">
                                 <span class="table-icon glyphicon glyphicon-trash"></span>
                             </button>
                         </td>
@@ -57,6 +103,8 @@
                             暂无数据
                         </td>
                     </tr>
+                </tbody>
+                <tfoot>    
                     <tr>
                         <td :colspan="checkedArr.length + 2">
                             <div class="pull-right">
@@ -64,19 +112,24 @@
                             </div>
                         </td>
                     </tr>
-                </tbody>
+                </tfoot>
             </table>
         </form>
         <add-modal></add-modal>
+        <modify-modal></modify-modal>
+        <view-env-modal></view-env-modal>
         <delete-modal></delete-modal>
     </div>
 </template>
 
 <script>
 import addModal from './Add.vue'
+import modifyModal from './Modify.vue'
+import viewEnvModal from '../app_board/ViewEnv.vue'
 import deleteModal from '../../global/Confirm.vue'
 import bootPage from '../../global/BootPage.vue'
 import { dropdown } from 'vue-strap'
+import { getInstance } from '../../../vuex/action.js'
 
 let origin = {
     lens: [10, 50, 100],
@@ -99,6 +152,39 @@ export default {
         // 刷新数据
         refresh () {
             this.$broadcast('refresh')
+        },
+
+        // 添加数据
+        addFn () {
+            this.$broadcast('showAdd')
+
+            this.getInstance()
+        },
+
+        // 修改数据
+        modifyFn (id) {
+            this.$broadcast('showModify', id)
+
+            this.getInstance()
+        },
+
+        // 查看环境
+        showViewEnv (idNum) {
+            let param = {
+                id: idNum,
+                url: '/instance_env_view/'
+            }
+
+            this.$broadcast('showViewEnv', param)
+        },
+
+        // 数组排序
+        sortNumber (arr) {
+            arr.sort((a, b) => {
+                return a - b
+            })
+
+            return arr
         },
 
         // 数组转化
@@ -146,62 +232,90 @@ export default {
             }
         }
     },
+    vuex: {
+        actions: {
+            getInstance
+        }
+    },
     components: {
         addModal,
         deleteModal,
         dropdown,
-        bootPage
+        bootPage,
+        modifyModal,
+        viewEnvModal
     },
     ready () {
 
         // 读取localStorage
-        let checkedArr = window.localStorage.getItem('checkedNames').split(',')
+        let checkedItem = window.localStorage.getItem('checkedArr'),
+            nameItem = window.localStorage.getItem('checkedNames')
 
-        console.log(checkedArr)
+        if (nameItem === '') {
+            this.checkedNames = []
+        } else if (nameItem !== null) {
+            this.checkedNames = nameItem.split(',')
+        }
 
-        if (checkedArr.length) {
-            this.checkedArr = checkedArr
+        if (checkedItem === '') {
+            this.checkedArr = []
+        } else if (checkedItem !== null) {
+            this.checkedArr = checkedItem.split(',')
         }
     },
     events: {
+
+        // 获取表格数据
         'data' (param) {
             this.tableList = param.data
         },
+
+        // 刷新表格
         'refresh' () {
             this.refresh()
+        },
+
+        // 确认删除
+        'confirm' (param) {
+            this.$http({
+                url: '/instance_delete/',
+                method: 'POST',
+                data: {
+                    id: param
+                }
+            })
+            .then(response => {
+                if (response.data.result) {
+                    this.refresh()
+                    this.$dispatch('show-success')
+                } else {
+                    this.$dispatch('show-error')
+                }
+            })
         }
     },
     watch: {
+
+        // 自定义列
         'checkedNames' (newVal) {
             let _this = this,
                 checkedArr = []
 
-            console.log(newVal)
+            let val = this.sortNumber(newVal)
 
-            //自定义函数排序  
-            newVal.sort((a, b) => {  
-                let a1= parseInt(a),
-                    b1= parseInt(b)
-
-                if (a1 < b1) {  
-                    return -1
-                } else if (a1 > b1) {  
-                    return 1
-                }  
-                return 0
-            })
-
-            console.log(newVal)
-
-            newVal.forEach(e => {
+            val.forEach(e => {
                 checkedArr.push(_this.switchName(e))
             })
 
-            console.log(checkedArr)
-
             this.checkedArr = checkedArr
 
-            window.localStorage.setItem('checkedNames', checkedArr)
+            window.localStorage.setItem('checkedNames', newVal)
+            window.localStorage.setItem('checkedArr', checkedArr)
+        },
+
+        // 搜索
+        'param.search' () {
+            this.refresh()
         }
     }
 }

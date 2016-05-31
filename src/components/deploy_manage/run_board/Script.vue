@@ -19,12 +19,12 @@
                     <label class="col-sm-2 control-label">脚本来源：</label>
                     <div class="col-sm-6">
                         <radio-group :value.sync="scriptOriginSelected" type="default">
-                            <radio :value="'1'">手工录入</radio>
-                            <radio :value="'2'">本地脚本</radio>
+                            <radio :value="'1'">本地脚本</radio>
+                            <radio :value="'2'">手工录入</radio>
                         </radio-group>
                     </div>
                 </div>
-                <div class="form-group" v-if="scriptOriginSelected === '2'">
+                <div class="form-group" v-if="scriptOriginSelected === '1'">
                     <div class="col-sm-5 col-sm-offset-2">
                         <input type="text" class="form-control" :readonly="true" v-model="road">
                         <input id="file" type="file" name="file" v-show="false" @change="fileChange">
@@ -42,8 +42,22 @@
                         </radio-group>
                     </div>
                 </div>
-                <div class="form-group" v-show="rule">
-                    <textarea id="editScript" class="form-group"></textarea>
+                <div v-show="rule">
+                    <div class="form-group">
+                        <textarea id="editScript" class="form-group"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">超时时间(s)：</label>
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control" min="0" max="259200" v-model="timeout" placeholder="最长等待执行秒数，超时则系统返回失败">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">入口参数：</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" v-model="param" placeholder="该参数用于脚本的输入参数，以空格相隔，无则不填">
+                        </div>
+                    </div>
                 </div>
             </form>
         </div>
@@ -79,20 +93,22 @@ export default {
             ],
             scriptTypeSelected: '1',
             scriptOriginSelected: '1',
-            road: ''
+            road: '',
+            timeout: '',
+            param: ''
         }
     },
     methods: {
 
         // 保存脚本
         saveScript () {
-            console.log(this.rule)
-
             this.$http({
                 url: '/script_edit/',
                 method: 'POST',
                 data: {
                     id: this.rule,
+                    param: this.param,
+                    timeout: this.timeout,
                     script: editor.getValue(),
                     script_type: this.scriptTypeSelected
                 }
@@ -198,6 +214,9 @@ export default {
                 })
                 .then(response => {
                     response.data.script ? editor.setValue(response.data.script) : editor.setValue('')
+
+                    this.timeout = response.data.timeout
+                    this.param = response.data.param
 
                     response.data.script_type ? this.scriptTypeSelected = response.data.script_type : this.scriptTypeSelected = '1'
                 })

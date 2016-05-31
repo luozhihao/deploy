@@ -33,22 +33,22 @@
                         <td v-text="list.type"></td>
                         <td v-text="list.version" :title="list.version"></td>
                         <td>
-                            <button type="button" class="btn btn-default btn-small" @click="getRuleFn($index)">
+                            <button type="button" class="btn btn-default btn-small" @click="getRuleFn(list)">
                                 <span class="table-icon glyphicon glyphicon-list-alt"></span>
                                 规则
                             </button>
-                            <button type="button" class="btn btn-default btn-small" @click="getRuleListFn($index)">
+                            <button type="button" class="btn btn-default btn-small" @click="getRuleListFn(list)">
                                 <span class="table-icon glyphicon glyphicon-duplicate"></span>
                                 脚本
                             </button>
                         </td>
                         <td v-text="list.remark"></td>
                         <td>
-                            <button type="button" class="btn btn-default btn-small" @click="$broadcast('showModify', tableList[$index].id)">
+                            <button type="button" class="btn btn-default btn-small" @click="$broadcast('showModify', list.id)">
                                 <span class="table-icon glyphicon glyphicon-edit"></span>
                                 修改
                             </button>
-                            <button type="button" class="btn btn-default btn-small" @click="$broadcast('showConfirm', tableList[$index].id)">
+                            <button type="button" class="btn btn-default btn-small" @click="$broadcast('showConfirm', list.id)">
                                 <span class="table-icon glyphicon glyphicon-trash"></span>
                                 删除
                             </button>
@@ -114,14 +114,14 @@ export default {
         },
 
         // 获取编辑规则名
-        getRuleFn (index) {
-            this.getRules(this.tableList[index].id)
+        getRuleFn (list) {
+            this.getRules(list.id)
             this.$broadcast('showRule')
         },
 
         // 获取已建规则列表
-        getRuleListFn (index) {
-            this.getRuleList(this.tableList[index].id)
+        getRuleListFn (list) {
+            this.getRuleList(list.id)
             this.$broadcast('showScript')
         }
     },

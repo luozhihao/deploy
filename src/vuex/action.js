@@ -77,4 +77,16 @@ export function getAppTypes({ dispatch, state }) {
     })
 }
 
+// 获取部署包机房位置
+export function getInstance({ dispatch, state }) {
+    this.$http({
+        url: '/instance_add/',
+        method: 'GET'
+    })
+    .then(response => {
+        dispatch('GETPACKAGES', response.data.packages)
+        dispatch('GETIDCS', response.data.idcs)
+    })
+}
+
 

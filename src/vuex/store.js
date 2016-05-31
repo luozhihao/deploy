@@ -20,7 +20,9 @@ const state = {
     rules: [],
     ruleId: null,
     ruleList: [],
-    appTypes: []
+    appTypes: [],
+    packages: [],
+    idcs: []
 }   
 
 // 创建一个 object 存储 mutation 函数
@@ -54,7 +56,17 @@ const mutations = {
     // 应用配置类型
     GETAPPTYPES (state, data) {
         state.appTypes = data
-    }   
+    },
+
+    // 部署包名
+    GETPACKAGES (state, data) {
+        state.packages = data
+    },
+
+    // 机房位置
+    GETIDCS (state, data) {
+        state.idcs = data
+    }
 }
 
 // 通过 new Vuex.Store 结合初始 state 和 mutations，创建 store

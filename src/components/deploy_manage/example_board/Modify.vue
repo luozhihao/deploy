@@ -1,7 +1,7 @@
 <template>
-    <modal :show.sync="addModal" effect="fade" width="460px">
+    <modal :show.sync="modifyModal" effect="fade" width="460px">
         <div slot="modal-header" class="modal-header">
-            <h4 class="modal-title">添加</h4>
+            <h4 class="modal-title">修改</h4>
         </div>
         <div slot="modal-body" class="modal-body">
             <form class="form-horizontal form-small">
@@ -79,7 +79,7 @@
         </div>
         <div slot="modal-footer" class="modal-footer">
             <button type="button" class="btn btn-default" :disabled="exampleName && pack && idc && (inip || outip) ? false : true" @click="saveFn">保存</button>
-            <button type="button" class="btn btn-default" @click='addModal = false'>取消</button>
+            <button type="button" class="btn btn-default" @click='modifyModal = false'>取消</button>
         </div>
     </modal>
 </template>
@@ -90,7 +90,7 @@ import vSelect from '../../global/Select.vue'
 import { packages, idcs } from '../../../vuex/getters.js'
 
 let origin = {
-        addModal: false,
+        modifyModal: false,
         exampleName: '',
         pack: '',
         idc: '',
@@ -104,7 +104,8 @@ let origin = {
         deployPath: '',
         logPath: '',
         docPath: '',
-        remark: ''
+        remark: '',
+        idNum: null
     },
     init = Object.assign({}, origin)
 
@@ -114,7 +115,7 @@ export default {
     },
     methods: {
 
-        // 添加方法
+        // 保存修改
         saveFn () {
             if (this.inip.trim()) {
                 if (!this.inport.trim()) {
@@ -133,9 +134,10 @@ export default {
             }
 
             this.$http({
-                url: '/instance_add/',
+                url: '/instance_edit/',
                 method: 'POST',
                 data: {
+                    id: this.idNum,
                     exampleName: this.exampleName,
                     pack: this.pack,
                     idc: this.idc,
@@ -161,6 +163,18 @@ export default {
                 }
             })
 
+        },
+
+        // 获取IP
+        getIps () {
+            this.$http({
+                url: '/instance_ips/?idc_id=' + this.idc,
+                method: 'GET'
+            })
+            .then(response => {
+                this.inips = response.data.inner_ips
+                this.outips = response.data.outer_ips
+            })
         }
     },
     components: {
@@ -174,23 +188,30 @@ export default {
         }
     },
     events: {
-        'showAdd' () {
-            this.addModal = true
+        'showModify' (param) {
+            this.$http({
+                url: '/instance_edit/?id=' + param,
+                method: 'GET'
+            })
+            .then(response => {
+                this.$data = Object.assign({}, origin, response.data)
+
+                this.modifyModal = true
+
+                this.getIps()
+
+                this.inip = response.data.inip
+                this.outip = response.data.outip
+
+                this.idNum = param
+            })
         }
     },
     watch: {
         'idc' (newVal) {
-            this.$http({
-                url: '/instance_ips/?idc_id=' + newVal,
-                method: 'GET'
-            })
-            .then(response => {
-                this.inips= response.data.inner_ips
-                this.outips= response.data.outer_ips
-
-                this.inip = ''
-                this.outip = ''
-            })
+            if (newVal) {
+                this.getIps()
+            }
         }
     }
 }

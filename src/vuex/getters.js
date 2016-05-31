@@ -38,3 +38,13 @@ export function ruleList (state) {
 export function appTypes (state) {
    return state.appTypes
 }
+
+// 获取部署包
+export function packages (state) {
+   return state.packages
+}
+
+// 获取机房位置
+export function idcs (state) {
+   return state.idcs
+}

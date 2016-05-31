@@ -43,22 +43,22 @@
                         <td v-text="list.type"></td>
                         <td v-text="list.version"></td>
                         <td>
-                            <button type="button" class="btn btn-default btn-small" @click="$broadcast('showEditEnv', tableList[$index].id)">
+                            <button type="button" class="btn btn-default btn-small" @click="$broadcast('showEditEnv', list.id)">
                                 <span class="table-icon glyphicon glyphicon-pencil"></span>
                                 编辑
                             </button>
-                            <button type="button" class="btn btn-default btn-small" @click="$broadcast('showViewEnv', tableList[$index].id)">
+                            <button type="button" class="btn btn-default btn-small" @click="showViewEnv(list.id)">
                                 <span class="table-icon glyphicon glyphicon-eye-open"></span>
                                 查看
                             </button>
                         </td>
                         <td v-text="list.remark" :title="list.remark"></td>
                         <td>
-                            <button type="button" class="btn btn-default btn-small" @click="$broadcast('showModify', tableList[$index].id)">
+                            <button type="button" class="btn btn-default btn-small" @click="$broadcast('showModify', list.id)">
                                 <span class="table-icon glyphicon glyphicon-edit"></span>
                                 修改
                             </button>
-                            <button type="button" class="btn btn-default btn-small" @click="$broadcast('showConfirm', tableList[$index].id)">
+                            <button type="button" class="btn btn-default btn-small" @click="$broadcast('showConfirm', list.id)">
                                 <span class="table-icon glyphicon glyphicon-trash"></span>
                                 删除
                             </button>
@@ -124,6 +124,16 @@ export default {
         // 刷新数据
         refresh () {
             this.$broadcast('refresh')
+        },
+
+        // 查看环境
+        showViewEnv (idNum) {
+            let param = {
+                id: idNum,
+                url: '/package_env_view/'
+            }
+
+            this.$broadcast('showViewEnv', param)
         }
     },
     components: {
