@@ -1,7 +1,7 @@
 <template>
     <div class="main-header">
-        <div class="hide-menu">  
-        </div>
+        <!-- <div class="hide-menu">  
+        </div> -->
         <dropdown class="pull-right"> 
             <div data-toggle="dropdown" class="username">
                 <span class="glyphicon glyphicon-user"></span>

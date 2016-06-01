@@ -163,18 +163,6 @@ export default {
                 }
             })
 
-        },
-
-        // 获取IP
-        getIps () {
-            this.$http({
-                url: '/instance_ips/?idc_id=' + this.idc,
-                method: 'GET'
-            })
-            .then(response => {
-                this.inips = response.data.inner_ips
-                this.outips = response.data.outer_ips
-            })
         }
     },
     components: {
@@ -188,6 +176,8 @@ export default {
         }
     },
     events: {
+
+        // 获取修改数据
         'showModify' (param) {
             this.$http({
                 url: '/instance_edit/?id=' + param,
@@ -198,8 +188,6 @@ export default {
 
                 this.modifyModal = true
 
-                this.getIps()
-
                 this.inip = response.data.inip
                 this.outip = response.data.outip
 
@@ -208,9 +196,46 @@ export default {
         }
     },
     watch: {
+
+        // 检测idc变化并判断ip是否存在
         'idc' (newVal) {
-            if (newVal) {
-                this.getIps()
+           this.$http({
+               url: '/instance_ips/?idc_id=' + newVal,
+               method: 'GET'
+           })
+           .then(response => {
+               this.inips = response.data.inner_ips
+               this.outips = response.data.outer_ips
+
+               let hasInip = false,
+                   hasOutip = false
+
+               this.inips.forEach(e => {
+                    if (e.value === this.inip) {
+                        hasInip = true
+                        return false
+                    }
+               })
+
+               this.outips.forEach(e => {
+                    if (e.value === this.outip) {
+                        hasOutip = true
+                        return false
+                    }
+               })
+
+               if (!hasInip) {
+                    this.inip = ''
+               }
+
+               if (!hasOutip) {
+                    this.outip = ''
+               }
+           })
+        },
+        'modifyModal' (newVal) {
+            if (!newVal) {
+                this.idc = ''
             }
         }
     }

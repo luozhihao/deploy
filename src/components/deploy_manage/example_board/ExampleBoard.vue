@@ -85,7 +85,7 @@
                             <button type="button" class="btn btn-default btn-small" @click="showViewEnv(list.id)">
                                 <span class="table-icon glyphicon glyphicon-eye-open"></span>
                             </button>
-                            <button type="button" class="btn btn-default btn-small">
+                            <button type="button" class="btn btn-default btn-small" @click="$broadcast('showTestEnv', list.id)">
                                 <span class="table-icon glyphicon glyphicon-record"></span>
                             </button>
                         </td>
@@ -118,6 +118,7 @@
         <add-modal></add-modal>
         <modify-modal></modify-modal>
         <view-env-modal></view-env-modal>
+        <test-modal></test-modal>
         <delete-modal></delete-modal>
     </div>
 </template>
@@ -126,6 +127,7 @@
 import addModal from './Add.vue'
 import modifyModal from './Modify.vue'
 import viewEnvModal from '../app_board/ViewEnv.vue'
+import testModal from '../example_board/Test.vue'
 import deleteModal from '../../global/Confirm.vue'
 import bootPage from '../../global/BootPage.vue'
 import { dropdown } from 'vue-strap'
@@ -243,7 +245,8 @@ export default {
         dropdown,
         bootPage,
         modifyModal,
-        viewEnvModal
+        viewEnvModal,
+        testModal
     },
     ready () {
 

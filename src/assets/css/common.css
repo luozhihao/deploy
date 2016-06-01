@@ -141,10 +141,6 @@ fieldset[disabled] .form-control {
     cursor: pointer;
 }
 
-.table-bg {
-    box-shadow: 1px 1px 1px #ccc;
-}
-
 .table-bg tbody {
     background: #fff;
 }

@@ -5,11 +5,11 @@
         </a>
         <aside class="menu">
             <div>
-                <div class="aside-header">
+                <!-- <div class="aside-header">
                     <span class="icon glyphicon glyphicon-home"></span>
                     <span>总览</span>
-                    <!-- <span class="icon-arrow glyphicon glyphicon-menu-down"></span> -->
-                </div>
+                    <span class="icon-arrow glyphicon glyphicon-menu-down"></span>
+                </div> -->
                 <ul class="aside-lists">
                     <li v-link="{ path: '/runBoard' }">
                         <span class="icon glyphicon glyphicon-cd"></span>
@@ -56,7 +56,7 @@
     margin-top: 20px;
 }
 
-.aside-header {
+/* .aside-header {
     position: relative;
     width: 100%;
     height: 48px;
@@ -67,18 +67,18 @@
 
 .aside-header:hover {
     color: #fff;
-}
+} */
 
 .icon {
     width: 20px;
 }
 
-.icon-arrow {
+/* .icon-arrow {
     position: absolute;
     right: 15px;
     top: 15px;
     font-size: 12px;
-}
+} */
 
 .aside-lists {
     padding: 0;

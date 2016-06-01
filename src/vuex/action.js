@@ -55,17 +55,6 @@ export function getRules({ dispatch, state }, param) {
     })
 }
 
-// 获取规则列表
-export function getRuleList({ dispatch, state }, param) {
-    this.$http({
-        url: '/rule_edit/?id=' + param,
-        method: 'GET'
-    })
-    .then(response => {
-        dispatch('GETRULELIST', response.data.rules)
-    })
-}
-
 // 获取应用配置类型
 export function getAppTypes({ dispatch, state }) {
     this.$http({

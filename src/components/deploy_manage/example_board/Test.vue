@@ -1,5 +1,5 @@
 <template>
-    <modal :show.sync="viewEnvModal" effect="fade" width="450px">
+    <modal :show.sync="testModal" effect="fade" width="550px">
         <div slot="modal-header" class="modal-header">
             <h4 class="modal-title">环境配置检查</h4>
         </div>
@@ -7,18 +7,18 @@
             <form class="form-horizontal env-from">
                 <div class="form-group" v-for="list in envList">
                     <label class="control-label" v-text="$key"></label>
-                    <div v-for="env in list">
-                        <span class="selected-tag col-sm-3" :class="env.check ? 'selected-tag active' : 'selected-tag'">
-                            <span v-text="env.rule"></span>
+                    <div class="clearfix" v-for="env in list">
+                        <span class="selected-tag active col-sm-4">
+                            <span v-text="env.rule" :title="env.rule"></span>
                         </span>
-                        <span class="col-sm-6 text-center" v-text="env.msg"></span>
+                        <span v-text="env.msg" :title="env.msg" :class="{'col-sm-7': true, 'text-center': true, 'tag-msg': true, 'text-success': env.msg === 'ok', 'text-warning': env.msg === '未检查', 'text-danger': env.msg !== 'ok' && env.msg !== '未检查' && env.msg !== '检查中...'}"></span>
                     </div>
                 </div>
             </form>
         </div>
         <div slot="modal-footer" class="modal-footer">
             <button type="button" class="btn btn-default" @click="testFn">检查</button>
-            <button type="button" class="btn btn-default" @click='viewEnvModal = false'>关闭</button>
+            <button type="button" class="btn btn-default" @click='testModal = false'>关闭</button>
         </div>
     </modal>
 </template>
@@ -27,7 +27,8 @@
 import { modal } from 'vue-strap'
 
 let origin = {
-        viewEnvModal: false,
+        testModal: false,
+        idNum: null,
         envList: {}
     };
 
@@ -42,31 +43,40 @@ export default {
             for (let key in this.envList) {
 
                 let len = this.envList[key].length,
-                    currentIndex = 0
+                    currentIndex = 0,
+                    _this = this
 
-                function newRequest(currentIndex, len) {
+                const newRequest = (currentIndex, len) => {
                     if (currentIndex >= len) {
                         return
                     }
 
-                    this.envList[key][currentIndex].msg = '检查中...'
+                    _this.envList[key][currentIndex].msg = '检查中...'
 
-                    this.$http({
-                        url: '',
+                    _this.$http({
+                        url: '/instance_check/',
                         method: 'POST',
                         data: {
-                            id: this.envList[key][currentIndex].id
+                            id: _this.idNum,
+                            rid: _this.envList[key][currentIndex].id
                         }
                     })
                     .then(response => {
-                        currentIndex ++
+                        if (response.data.result !== 0) {
+                            _this.envList[key][currentIndex].msg = response.data.msg
 
-                        this.envList[key][currentIndex].msg = response.data.msg
+                        } else {
+                            _this.envList[key][currentIndex].msg = '服务器出错了'
+                        }
+
+                        currentIndex ++
 
                         // 递归调用自身
                         newRequest(currentIndex, len)
                     })
                 }
+
+                newRequest(currentIndex, len)
             }
         }
     },
@@ -74,18 +84,17 @@ export default {
         modal
     },
     events: {
-        'showViewEnv' (param) {
-            this.viewEnvModal = true
+        'showTestEnv' (param) {
+            this.testModal = true
 
             this.$http({
-                url: param.url,
-                method: 'POST',
-                data: {
-                    id: param.id
-                }
+                url: '/instance_check/?id=' + param,
+                method: 'GET'
             })
             .then(response => {
                 this.envList = response.data.ret
+
+                this.idNum = param
             })
         }
     }
@@ -99,8 +108,7 @@ export default {
     padding: 0 20px;
 }
 
-.selected-tag,
-.tagexp {
+.selected-tag {
     border: 1px solid #ccc;
     border-radius: 4px;
     height: 26px;
@@ -111,14 +119,22 @@ export default {
     color: #147688;
     background-color: #fff;
     border-color: #91ddec;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
-.selected-tag.active,
-.tagexp.active {
+.selected-tag.active {
     background-color: #d7f3f9;
 }
 
-.tagexp {
-    float: none;
+.tag-msg {
+    height: 26px;
+    line-height: 26px;
+    margin: 4px 1px 0 3px;
+    font-weight: 600;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 </style>

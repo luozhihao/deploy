@@ -108,7 +108,6 @@ webpackJsonp([1],Array(25).concat([
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var origin = {
-	    typeArr: [{ value: '', label: '全部' }],
 	    lenArr: [10, 50, 100],
 	    pageLen: 5,
 	    url: '/env_config/',
@@ -126,7 +125,7 @@ webpackJsonp([1],Array(25).concat([
 	//             </div>
 	//             <div class="form-group">
 	//                 <label>类型：</label>
-	//                 <v-select :value.sync="param.type" :options="typeArr.concat(types)" placeholder="">
+	//                 <v-select :value.sync="param.type" :options="types" placeholder="请选择">
 	//                 </v-select>
 	//             </div>
 	//             <div class="mt30 table-btn">
@@ -224,8 +223,7 @@ webpackJsonp([1],Array(25).concat([
 	
 	        // 获取已建规则列表
 	        getRuleListFn: function getRuleListFn(list) {
-	            this.getRuleList(list.id);
-	            this.$broadcast('showScript');
+	            this.$broadcast('showScript', list.id);
 	        }
 	    },
 	    vuex: {
@@ -234,8 +232,7 @@ webpackJsonp([1],Array(25).concat([
 	        },
 	        actions: {
 	            getRunTypes: _action.getRunTypes, // 获取类型数据
-	            getRules: _action.getRules, // 获取规则
-	            getRuleList: _action.getRuleList // 获取规则列表
+	            getRules: _action.getRules // 获取规则
 	        }
 	    },
 	    components: {
@@ -352,7 +349,7 @@ webpackJsonp([1],Array(25).concat([
 	
 	
 	// module
-	exports.push([module.id, "\n.bs_searchbox {\n  padding: 4px 8px;\n}\n.btn-group .dropdown-menu .notify {\n  position: absolute;\n  bottom: 5px;\n  width: 96%;\n  margin: 0 2%;\n  min-height: 26px;\n  padding: 3px 5px;\n  background: #f5f5f5;\n  border: 1px solid #e3e3e3;\n  box-shadow: inset 0 1px 1px rgba(0,0,0,.05);\n   pointer-events: none;\n  opacity: .9;\n}\n", "", {"version":3,"sources":["/./src/components/global/Select.vue.style"],"names":[],"mappings":";AAwKA;EACA,iBAAA;CACA;AACA;EACA,mBAAA;EACA,YAAA;EACA,WAAA;EACA,aAAA;EACA,iBAAA;EACA,iBAAA;EACA,oBAAA;EACA,0BAAA;EACA,4CAAA;GACA,qBAAA;EACA,YAAA;CACA","file":"Select.vue","sourcesContent":["<template>\n  <div class=\"btn-group\" v-bind:class=\"{open:show}\">\n    <button v-el:btn type=\"button\" class=\"btn btn-default dropdown-toggle\" \n      @click=\"toggleDropdown\"\n      @blur=\"show = (search ? show:false)\"\n    >\n      <span class=\"placeholder\" v-show=\"showPlaceholder\">{{placeholder}}</span>\n      <span class=\"content\">{{ selectedItems }}</span>\n      <span class=\"caret\"></span>\n    </button>\n    <ul class=\"dropdown-menu\">\n      <template v-if=\"options.length\">\n        <li v-if=\"search\" class=\"bs-searchbox\">\n          <input type=\"text\" placeholder=\"Search\" v-model=\"searchText\" class=\"form-control\" autocomplete=\"off\">\n        </li>\n        <li v-for=\"option in options | filterBy searchText \" v-bind:id=\"option.value\" style=\"position:relative\">\n          <a @mousedown.prevent=\"select(option.value)\" style=\"cursor:pointer\">\n            {{ option.label }}\n            <span class=\"glyphicon glyphicon-ok check-mark\" v-show=\"multiple ? value.indexOf(option.value) !== -1 : value === option.value\"></span>\n          </a>\n        </li>\n      </template>\n      <slot v-else></slot>\n      <div class=\"notify\" v-show=\"showNotify\" transition=\"fadein\">最多选择 ({{limit}} 个)</div>\n    </ul>\n  </div>\n</template>\n\n<script>\nexport default {\n    props: {\n        options: {\n            type: Array,\n            default() { return [] },\n        },\n        value: {\n            twoWay: true\n        },\n        placeholder: {\n            type: String,\n            default: 'Nothing Selected'\n        },\n        multiple: {\n            type: Boolean,\n            default: false\n        },\n        search: { // Allow searching (only works when options are provided)\n      \t    type: Boolean,\n      \t    default: false\n        },\n        limit: {\n            type: Number,\n            default: 1024\n        },\n        closeOnSelect: { // only works when multiple==false\n            type: Boolean,\n            default: true\n        }\n    },\n    ready() {\n        if (this.multiple) {\n            this.value=[]\n        }\n    },\n    data() {\n        return {\n            searchText: null,\n            show: false,\n            showNotify: false\n        }\n    },\n    computed: {\n        selectedItems() {\n            if (!this.multiple) {\n                if (!this.options.length) {\n                    for (var c of this.$children) {\n                        if (c.value == this.value) {\n                            return c.$els.v.innerText\n                        }\n                    }\n                } else {\n                    for(var i = 0; i<this.options.length; i++) {\n                        if (this.options[i].value === this.value) {\n                            return this.options[i].label;\n                        }\n                    }\n                }\n\n                return \"\"\n            } else {\n                if (!this.options.length){\n        \t\t\tvar r = []\n                    for(var c of this.$children){\n                        if(this.value.indexOf(c.value)!==-1){\n                            r.push(c.$els.v.innerText)\n                        }\n                    }\n                    \n                    return r.join(',');\n\n                } else {\n\n    \t\t\t    // we were given bunch of options, so pluck them out to display\n          \t\t\tvar foundItems = [];\n\n                    for (var item of this.options){\n                  \t    if (this.value.indexOf(item.value) !== -1)\n                      \tfoundItems.push(item.label);\n      \t\t\t    }\n\n                    return foundItems.join(', ');\n                }\n            }\n        },\n        showPlaceholder() {\n          \treturn this.multiple ? this.value.length <= 0 : (typeof this.value==='undefined' || this.value=='');\n        }\n    },\n    watch: {\n        value(val) {\n            let timeout\n            if (timeout) clearTimeout(timeout)\n                if (val.length > this.limit) {\n                    this.showNotify = true\n                    this.value.pop()\n                    timeout = setTimeout(()=> this.showNotify = false, 1000)\n                }\n        }\n    },\n    methods: {\n        select(v) {\n            if(this.multiple != false){\n                var index = this.value.indexOf(v);\n                if (index === -1) {\n                    this.value.push(v);\n                }\n                else {\n                    this.value.$remove(v)\n                }\n            } else {\n                this.value = v\n                if (this.closeOnSelect) {\n                    this.toggleDropdown();\n                }\n            }\n        },\n        toggleDropdown() {\n            this.show = !this.show\n\n            return false\n        }\n    },\n\n    ready () {\n        let _this = this\n        $(document).click(function(e){\n            var target = $(e.target);\n\n            if (target.closest(\".btn-group\").length === 0) {\n                if ($('.btn-group').hasClass('open')) {\n                    _this.show = false\n                }\n            }\n        });\n    }\n}\n</script>\n<style>\n.bs_searchbox {\n  padding: 4px 8px;\n}\n.btn-group .dropdown-menu .notify {\n  position: absolute;\n  bottom: 5px;\n  width: 96%;\n  margin: 0 2%;\n  min-height: 26px;\n  padding: 3px 5px;\n  background: #f5f5f5;\n  border: 1px solid #e3e3e3;\n  box-shadow: inset 0 1px 1px rgba(0,0,0,.05);\n   pointer-events: none;\n  opacity: .9;\n}\n</style>"],"sourceRoot":"webpack://"}]);
+	exports.push([module.id, "\n.bs_searchbox {\n  padding: 4px 8px;\n}\n.btn-group .dropdown-menu .notify {\n  position: absolute;\n  bottom: 5px;\n  width: 96%;\n  margin: 0 2%;\n  min-height: 26px;\n  padding: 3px 5px;\n  background: #f5f5f5;\n  border: 1px solid #e3e3e3;\n  box-shadow: inset 0 1px 1px rgba(0,0,0,.05);\n   pointer-events: none;\n  opacity: .9;\n}\n", "", {"version":3,"sources":["/./src/components/global/Select.vue.style"],"names":[],"mappings":";AA6KA;EACA,iBAAA;CACA;AACA;EACA,mBAAA;EACA,YAAA;EACA,WAAA;EACA,aAAA;EACA,iBAAA;EACA,iBAAA;EACA,oBAAA;EACA,0BAAA;EACA,4CAAA;GACA,qBAAA;EACA,YAAA;CACA","file":"Select.vue","sourcesContent":["<template>\n  <div class=\"btn-group\" v-bind:class=\"{open:show}\">\n    <button v-el:btn type=\"button\" class=\"btn btn-default dropdown-toggle\" \n      @click=\"toggleDropdown\"\n      @blur=\"show = (search ? show:false)\"\n    >\n      <span class=\"placeholder\" v-show=\"showPlaceholder\">{{placeholder}}</span>\n      <span class=\"content\">{{ selectedItems }}</span>\n      <span class=\"caret\"></span>\n    </button>\n    <ul class=\"dropdown-menu\">\n      <template v-if=\"options.length\">\n        <li v-if=\"search\" class=\"bs-searchbox\">\n          <input type=\"text\" placeholder=\"Search\" v-model=\"searchText\" class=\"form-control\" autocomplete=\"off\">\n        </li>\n        <li v-for=\"option in options | filterBy searchText \" v-bind:id=\"option.value\" style=\"position:relative\">\n          <a @mousedown.prevent=\"select(option.value)\" style=\"cursor:pointer\">\n            {{ option.label }}\n            <span class=\"glyphicon glyphicon-ok check-mark\" v-show=\"multiple ? value.indexOf(option.value) !== -1 : value === option.value\"></span>\n          </a>\n        </li>\n      </template>\n      <slot v-else></slot>\n      <div class=\"notify\" v-show=\"showNotify\" transition=\"fadein\">最多选择 ({{limit}} 个)</div>\n    </ul>\n  </div>\n</template>\n\n<script>\nexport default {\n    props: {\n        options: {\n            type: Array,\n            default() { return [] },\n        },\n        value: {\n            twoWay: true\n        },\n        placeholder: {\n            type: String,\n            default: 'Nothing Selected'\n        },\n        multiple: {\n            type: Boolean,\n            default: false\n        },\n        search: { // Allow searching (only works when options are provided)\n      \t    type: Boolean,\n      \t    default: false\n        },\n        limit: {\n            type: Number,\n            default: 1024\n        },\n        closeOnSelect: { // only works when multiple==false\n            type: Boolean,\n            default: true\n        }\n    },\n    ready() {\n        if (this.multiple) {\n            this.value=[]\n        }\n    },\n    data() {\n        return {\n            searchText: null,\n            show: false,\n            showNotify: false\n        }\n    },\n    computed: {\n        selectedItems() {\n            if (!this.multiple) {\n                if (!this.options.length) {\n                    for (var c of this.$children) {\n                        if (c.value == this.value) {\n                            return c.$els.v.innerText\n                        }\n                    }\n                } else {\n                    for(var i = 0; i<this.options.length; i++) {\n                        if (this.options[i].value === this.value) {\n                            return this.options[i].label;\n                        }\n                    }\n                }\n\n                return \"\"\n            } else {\n                if (!this.options.length){\n        \t\t\tvar r = []\n                    for(var c of this.$children){\n                        if(this.value.indexOf(c.value)!==-1){\n                            r.push(c.$els.v.innerText)\n                        }\n                    }\n                    \n                    return r.join(',');\n\n                } else {\n\n    \t\t\t    // we were given bunch of options, so pluck them out to display\n          \t\t\tvar foundItems = [];\n\n                    for (var item of this.options){\n                  \t    if (this.value.indexOf(item.value) !== -1)\n                      \tfoundItems.push(item.label);\n      \t\t\t    }\n\n                    return foundItems.join(', ');\n                }\n            }\n        },\n        showPlaceholder() {\n          \treturn this.multiple ? this.value.length <= 0 : (typeof this.value==='undefined' || this.value=='');\n        }\n    },\n    watch: {\n        value(val) {\n            let timeout\n            if (timeout) clearTimeout(timeout)\n                if (val.length > this.limit) {\n                    this.showNotify = true\n                    this.value.pop()\n                    timeout = setTimeout(()=> this.showNotify = false, 1000)\n                }\n        }\n    },\n    methods: {\n        select(v) {\n            if(this.multiple != false){\n                var index = this.value.indexOf(v);\n                if (index === -1) {\n                    this.value.push(v);\n                }\n                else {\n                    this.value.$remove(v)\n                }\n            } else {\n                if (this.value === v) {\n                    this.value = ''\n                } else {\n                    this.value = v\n                }\n\n                if (this.closeOnSelect) {\n                    this.toggleDropdown();\n                }\n            }\n        },\n        toggleDropdown() {\n            this.show = !this.show\n\n            return false\n        }\n    },\n\n    ready () {\n        let _this = this\n        $(document).click(function(e){\n            var target = $(e.target);\n\n            if (target.closest(\".btn-group\").length === 0) {\n                if ($('.btn-group').hasClass('open')) {\n                    _this.show = false\n                }\n            }\n        });\n    }\n}\n</script>\n<style>\n.bs_searchbox {\n  padding: 4px 8px;\n}\n.btn-group .dropdown-menu .notify {\n  position: absolute;\n  bottom: 5px;\n  width: 96%;\n  margin: 0 2%;\n  min-height: 26px;\n  padding: 3px 5px;\n  background: #f5f5f5;\n  border: 1px solid #e3e3e3;\n  box-shadow: inset 0 1px 1px rgba(0,0,0,.05);\n   pointer-events: none;\n  opacity: .9;\n}\n</style>"],"sourceRoot":"webpack://"}]);
 	
 	// exports
 
@@ -584,7 +581,12 @@ webpackJsonp([1],Array(25).concat([
 	                    this.value.$remove(v);
 	                }
 	            } else {
-	                this.value = v;
+	                if (this.value === v) {
+	                    this.value = '';
+	                } else {
+	                    this.value = v;
+	                }
+	
 	                if (this.closeOnSelect) {
 	                    this.toggleDropdown();
 	                }
@@ -3051,11 +3053,9 @@ webpackJsonp([1],Array(25).concat([
 	
 	var _perl2 = _interopRequireDefault(_perl);
 	
-	var _getters = __webpack_require__(104);
-	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var editor; // <template>
+	// <template>
 	//     <modal :show.sync="scriptModal" effect="fade" width="800px">
 	//         <div slot="modal-header" class="modal-header">
 	//             <button type="button" class="close" @click="scriptModal = false">
@@ -3104,6 +3104,12 @@ webpackJsonp([1],Array(25).concat([
 	//                         <textarea id="editScript" class="form-group"></textarea>
 	//                     </div>
 	//                     <div class="form-group">
+	//                         <label class="col-sm-2 control-label">执行账户：<span class="text-danger">*</span></label>
+	//                         <div class="col-sm-6">
+	//                             <input type="text" class="form-control" v-model="account">
+	//                         </div>
+	//                     </div>
+	//                     <div class="form-group">
 	//                         <label class="col-sm-2 control-label">超时时间(s)：</label>
 	//                         <div class="col-sm-6">
 	//                             <input type="number" class="form-control" min="0" max="259200" v-model="timeout" placeholder="最长等待执行秒数，超时则系统返回失败">
@@ -3119,7 +3125,7 @@ webpackJsonp([1],Array(25).concat([
 	//             </form>
 	//         </div>
 	//         <div slot="modal-footer" class="modal-footer">
-	//             <button type="button" class="btn btn-default" :disabled="rule ? false : true" @click="saveScript">保存</button>
+	//             <button type="button" class="btn btn-default" :disabled="rule && account.trim() ? false : true" @click="saveScript">保存</button>
 	//             <button type="button" class="btn btn-default" @click="scriptModal = false">取消</button>
 	//         </div>
 	//     </modal>
@@ -3128,17 +3134,21 @@ webpackJsonp([1],Array(25).concat([
 	// <script>
 	
 	
+	var editor;
+	
 	exports.default = {
 	    data: function data() {
 	        return {
 	            scriptModal: false,
+	            ruleList: [],
 	            rule: '',
 	            scriptTypes: [{ value: '1', label: 'shell' }, { value: '2', label: 'bat' }, { value: '3', label: 'python' }],
 	            scriptTypeSelected: '1',
 	            scriptOriginSelected: '1',
 	            road: '',
 	            timeout: '',
-	            param: ''
+	            param: '',
+	            account: 'root'
 	        };
 	    },
 	
@@ -3157,7 +3167,8 @@ webpackJsonp([1],Array(25).concat([
 	                    param: this.param,
 	                    timeout: this.timeout,
 	                    script: editor.getValue(),
-	                    script_type: this.scriptTypeSelected
+	                    script_type: this.scriptTypeSelected,
+	                    account: this.account
 	                }
 	            }).then(function (response) {
 	                if (response.data.result) {
@@ -3232,11 +3243,6 @@ webpackJsonp([1],Array(25).concat([
 	        radioGroup: _vueStrap.radioGroup,
 	        radio: _vueStrap.radioBtn
 	    },
-	    vuex: {
-	        getters: {
-	            ruleList: _getters.ruleList
-	        }
-	    },
 	    attached: function attached() {
 	
 	        // 初始化codemirror
@@ -3250,10 +3256,36 @@ webpackJsonp([1],Array(25).concat([
 	    },
 	
 	    events: {
-	        'showScript': function showScript() {
+	
+	        // 判断是否存在rule
+	
+	        'showScript': function showScript(param) {
+	            var _this4 = this;
+	
+	            var hasRule = false;
+	
 	            this.scriptModal = true;
 	
-	            this.rule = '';
+	            this.$http({
+	                url: '/rule_edit/?id=' + param,
+	                method: 'GET'
+	            }).then(function (response) {
+	                _this4.ruleList = response.data.rules;
+	
+	                console.log(_this4.ruleList);
+	
+	                _this4.ruleList.forEach(function (e) {
+	                    if (e.value === _this4.rule) {
+	                        hasRule = true;
+	
+	                        return false;
+	                    }
+	                });
+	
+	                if (!hasRule) {
+	                    _this4.rule = '';
+	                }
+	            });
 	        }
 	    },
 	    watch: {
@@ -3261,7 +3293,7 @@ webpackJsonp([1],Array(25).concat([
 	        // 监测规则名
 	
 	        'rule': function rule(newVal) {
-	            var _this4 = this;
+	            var _this5 = this;
 	
 	            if (newVal) {
 	                this.$http({
@@ -3270,10 +3302,11 @@ webpackJsonp([1],Array(25).concat([
 	                }).then(function (response) {
 	                    response.data.script ? editor.setValue(response.data.script) : editor.setValue('');
 	
-	                    _this4.timeout = response.data.timeout;
-	                    _this4.param = response.data.param;
+	                    _this5.timeout = response.data.timeout;
+	                    _this5.param = response.data.param;
+	                    _this5.account = response.data.account;
 	
-	                    response.data.script_type ? _this4.scriptTypeSelected = response.data.script_type : _this4.scriptTypeSelected = '1';
+	                    response.data.script_type ? _this5.scriptTypeSelected = response.data.script_type : _this5.scriptTypeSelected = '1';
 	                });
 	            }
 	        },
@@ -13635,14 +13668,14 @@ webpackJsonp([1],Array(25).concat([
 /* 145 */
 /***/ function(module, exports) {
 
-	module.exports = "\n    <modal :show.sync=\"scriptModal\" effect=\"fade\" width=\"800px\" _v-15113fe8=\"\">\n        <div slot=\"modal-header\" class=\"modal-header\" _v-15113fe8=\"\">\n            <button type=\"button\" class=\"close\" @click=\"scriptModal = false\" _v-15113fe8=\"\">\n                <span _v-15113fe8=\"\">×</span>\n            </button>\n            <h4 class=\"modal-title\" _v-15113fe8=\"\">脚本编写</h4>\n        </div>\n        <div slot=\"modal-body\" class=\"modal-body\" _v-15113fe8=\"\">\n            <form id=\"file_form\" class=\"form-horizontal\" _v-15113fe8=\"\">\n                <div class=\"form-group\" _v-15113fe8=\"\">\n                    <label class=\"col-sm-2 control-label\" _v-15113fe8=\"\">规则名：<span class=\"text-danger\" _v-15113fe8=\"\">*</span></label>\n                    <div class=\"col-sm-6\" _v-15113fe8=\"\">\n                        <v-select :value.sync=\"rule\" :options=\"ruleList\" placeholder=\"请选择\" _v-15113fe8=\"\">\n                        </v-select>\n                    </div>\n                </div>\n                <div class=\"form-group\" _v-15113fe8=\"\">\n                    <label class=\"col-sm-2 control-label\" _v-15113fe8=\"\">脚本来源：</label>\n                    <div class=\"col-sm-6\" _v-15113fe8=\"\">\n                        <radio-group :value.sync=\"scriptOriginSelected\" type=\"default\" _v-15113fe8=\"\">\n                            <radio :value=\"'1'\" _v-15113fe8=\"\">本地脚本</radio>\n                            <radio :value=\"'2'\" _v-15113fe8=\"\">手工录入</radio>\n                        </radio-group>\n                    </div>\n                </div>\n                <div class=\"form-group\" v-if=\"scriptOriginSelected === '1'\" _v-15113fe8=\"\">\n                    <div class=\"col-sm-5 col-sm-offset-2\" _v-15113fe8=\"\">\n                        <input type=\"text\" class=\"form-control\" :readonly=\"true\" v-model=\"road\" _v-15113fe8=\"\">\n                        <input id=\"file\" type=\"file\" name=\"file\" v-show=\"false\" @change=\"fileChange\" _v-15113fe8=\"\">\n                    </div>\n                    <div class=\"col-sm-4\" _v-15113fe8=\"\">\n                        <button type=\"button\" class=\"btn btn-default\" @click=\"fileSearch\" _v-15113fe8=\"\">浏览</button>\n                        <button type=\"button\" class=\"btn btn-default\" @click=\"fileUpload\" _v-15113fe8=\"\">上传</button>\n                    </div>\n                </div>\n                <div class=\"form-group\" _v-15113fe8=\"\">\n                    <label class=\"col-sm-2 control-label\" _v-15113fe8=\"\">脚本类型：</label>\n                    <div class=\"col-sm-6\" _v-15113fe8=\"\">\n                        <radio-group :value.sync=\"scriptTypeSelected\" type=\"default\" _v-15113fe8=\"\">\n                            <radio v-for=\"scriptType in scriptTypes\" :value=\"scriptType.value\" _v-15113fe8=\"\">{{ scriptType.label }}</radio>\n                        </radio-group>\n                    </div>\n                </div>\n                <div v-show=\"rule\" _v-15113fe8=\"\">\n                    <div class=\"form-group\" _v-15113fe8=\"\">\n                        <textarea id=\"editScript\" class=\"form-group\" _v-15113fe8=\"\"></textarea>\n                    </div>\n                    <div class=\"form-group\" _v-15113fe8=\"\">\n                        <label class=\"col-sm-2 control-label\" _v-15113fe8=\"\">超时时间(s)：</label>\n                        <div class=\"col-sm-6\" _v-15113fe8=\"\">\n                            <input type=\"number\" class=\"form-control\" min=\"0\" max=\"259200\" v-model=\"timeout\" placeholder=\"最长等待执行秒数，超时则系统返回失败\" _v-15113fe8=\"\">\n                        </div>\n                    </div>\n                    <div class=\"form-group\" _v-15113fe8=\"\">\n                        <label class=\"col-sm-2 control-label\" _v-15113fe8=\"\">入口参数：</label>\n                        <div class=\"col-sm-6\" _v-15113fe8=\"\">\n                            <input type=\"text\" class=\"form-control\" v-model=\"param\" placeholder=\"该参数用于脚本的输入参数，以空格相隔，无则不填\" _v-15113fe8=\"\">\n                        </div>\n                    </div>\n                </div>\n            </form>\n        </div>\n        <div slot=\"modal-footer\" class=\"modal-footer\" _v-15113fe8=\"\">\n            <button type=\"button\" class=\"btn btn-default\" :disabled=\"rule ? false : true\" @click=\"saveScript\" _v-15113fe8=\"\">保存</button>\n            <button type=\"button\" class=\"btn btn-default\" @click=\"scriptModal = false\" _v-15113fe8=\"\">取消</button>\n        </div>\n    </modal>\n";
+	module.exports = "\n    <modal :show.sync=\"scriptModal\" effect=\"fade\" width=\"800px\" _v-15113fe8=\"\">\n        <div slot=\"modal-header\" class=\"modal-header\" _v-15113fe8=\"\">\n            <button type=\"button\" class=\"close\" @click=\"scriptModal = false\" _v-15113fe8=\"\">\n                <span _v-15113fe8=\"\">×</span>\n            </button>\n            <h4 class=\"modal-title\" _v-15113fe8=\"\">脚本编写</h4>\n        </div>\n        <div slot=\"modal-body\" class=\"modal-body\" _v-15113fe8=\"\">\n            <form id=\"file_form\" class=\"form-horizontal\" _v-15113fe8=\"\">\n                <div class=\"form-group\" _v-15113fe8=\"\">\n                    <label class=\"col-sm-2 control-label\" _v-15113fe8=\"\">规则名：<span class=\"text-danger\" _v-15113fe8=\"\">*</span></label>\n                    <div class=\"col-sm-6\" _v-15113fe8=\"\">\n                        <v-select :value.sync=\"rule\" :options=\"ruleList\" placeholder=\"请选择\" _v-15113fe8=\"\">\n                        </v-select>\n                    </div>\n                </div>\n                <div class=\"form-group\" _v-15113fe8=\"\">\n                    <label class=\"col-sm-2 control-label\" _v-15113fe8=\"\">脚本来源：</label>\n                    <div class=\"col-sm-6\" _v-15113fe8=\"\">\n                        <radio-group :value.sync=\"scriptOriginSelected\" type=\"default\" _v-15113fe8=\"\">\n                            <radio :value=\"'1'\" _v-15113fe8=\"\">本地脚本</radio>\n                            <radio :value=\"'2'\" _v-15113fe8=\"\">手工录入</radio>\n                        </radio-group>\n                    </div>\n                </div>\n                <div class=\"form-group\" v-if=\"scriptOriginSelected === '1'\" _v-15113fe8=\"\">\n                    <div class=\"col-sm-5 col-sm-offset-2\" _v-15113fe8=\"\">\n                        <input type=\"text\" class=\"form-control\" :readonly=\"true\" v-model=\"road\" _v-15113fe8=\"\">\n                        <input id=\"file\" type=\"file\" name=\"file\" v-show=\"false\" @change=\"fileChange\" _v-15113fe8=\"\">\n                    </div>\n                    <div class=\"col-sm-4\" _v-15113fe8=\"\">\n                        <button type=\"button\" class=\"btn btn-default\" @click=\"fileSearch\" _v-15113fe8=\"\">浏览</button>\n                        <button type=\"button\" class=\"btn btn-default\" @click=\"fileUpload\" _v-15113fe8=\"\">上传</button>\n                    </div>\n                </div>\n                <div class=\"form-group\" _v-15113fe8=\"\">\n                    <label class=\"col-sm-2 control-label\" _v-15113fe8=\"\">脚本类型：</label>\n                    <div class=\"col-sm-6\" _v-15113fe8=\"\">\n                        <radio-group :value.sync=\"scriptTypeSelected\" type=\"default\" _v-15113fe8=\"\">\n                            <radio v-for=\"scriptType in scriptTypes\" :value=\"scriptType.value\" _v-15113fe8=\"\">{{ scriptType.label }}</radio>\n                        </radio-group>\n                    </div>\n                </div>\n                <div v-show=\"rule\" _v-15113fe8=\"\">\n                    <div class=\"form-group\" _v-15113fe8=\"\">\n                        <textarea id=\"editScript\" class=\"form-group\" _v-15113fe8=\"\"></textarea>\n                    </div>\n                    <div class=\"form-group\" _v-15113fe8=\"\">\n                        <label class=\"col-sm-2 control-label\" _v-15113fe8=\"\">执行账户：<span class=\"text-danger\" _v-15113fe8=\"\">*</span></label>\n                        <div class=\"col-sm-6\" _v-15113fe8=\"\">\n                            <input type=\"text\" class=\"form-control\" v-model=\"account\" _v-15113fe8=\"\">\n                        </div>\n                    </div>\n                    <div class=\"form-group\" _v-15113fe8=\"\">\n                        <label class=\"col-sm-2 control-label\" _v-15113fe8=\"\">超时时间(s)：</label>\n                        <div class=\"col-sm-6\" _v-15113fe8=\"\">\n                            <input type=\"number\" class=\"form-control\" min=\"0\" max=\"259200\" v-model=\"timeout\" placeholder=\"最长等待执行秒数，超时则系统返回失败\" _v-15113fe8=\"\">\n                        </div>\n                    </div>\n                    <div class=\"form-group\" _v-15113fe8=\"\">\n                        <label class=\"col-sm-2 control-label\" _v-15113fe8=\"\">入口参数：</label>\n                        <div class=\"col-sm-6\" _v-15113fe8=\"\">\n                            <input type=\"text\" class=\"form-control\" v-model=\"param\" placeholder=\"该参数用于脚本的输入参数，以空格相隔，无则不填\" _v-15113fe8=\"\">\n                        </div>\n                    </div>\n                </div>\n            </form>\n        </div>\n        <div slot=\"modal-footer\" class=\"modal-footer\" _v-15113fe8=\"\">\n            <button type=\"button\" class=\"btn btn-default\" :disabled=\"rule &amp;&amp; account.trim() ? false : true\" @click=\"saveScript\" _v-15113fe8=\"\">保存</button>\n            <button type=\"button\" class=\"btn btn-default\" @click=\"scriptModal = false\" _v-15113fe8=\"\">取消</button>\n        </div>\n    </modal>\n";
 
 /***/ },
 /* 146 */,
 /* 147 */
 /***/ function(module, exports) {
 
-	module.exports = "\n    <div _v-3c857cf8=\"\">\n        <form class=\"form-inline\" _v-3c857cf8=\"\">\n            <div class=\"form-group\" _v-3c857cf8=\"\">\n                <label _v-3c857cf8=\"\">名称：</label>\n                <input type=\"text\" class=\"form-control\" v-model=\"param.name\" _v-3c857cf8=\"\">\n            </div>\n            <div class=\"form-group\" _v-3c857cf8=\"\">\n                <label _v-3c857cf8=\"\">类型：</label>\n                <v-select :value.sync=\"param.type\" :options=\"typeArr.concat(types)\" placeholder=\"\" _v-3c857cf8=\"\">\n                </v-select>\n            </div>\n            <div class=\"mt30 table-btn\" _v-3c857cf8=\"\">\n                <button type=\"button\" class=\"btn btn-default btn-pd\" @click=\"$broadcast('showAdd')\" _v-3c857cf8=\"\">\n                    <span class=\"glyphicon glyphicon-plus\" _v-3c857cf8=\"\"></span>\n                    添加\n                </button>\n            </div>\n            <table class=\"table table-hover table-bordered table-bg\" _v-3c857cf8=\"\">\n                <thead _v-3c857cf8=\"\">\n                    <tr _v-3c857cf8=\"\">\n                        <th _v-3c857cf8=\"\">名称</th>\n                        <th _v-3c857cf8=\"\">类型</th>\n                        <th _v-3c857cf8=\"\">版本/型号</th>\n                        <th _v-3c857cf8=\"\">检查规则</th>\n                        <th _v-3c857cf8=\"\">备注</th>\n                        <th _v-3c857cf8=\"\">操作</th>\n                    </tr>\n                </thead>\n                <tbody _v-3c857cf8=\"\">\n                    <tr v-for=\"list in tableList\" _v-3c857cf8=\"\">\n                        <td v-text=\"list.name\" _v-3c857cf8=\"\"></td>\n                        <td v-text=\"list.type\" _v-3c857cf8=\"\"></td>\n                        <td v-text=\"list.version\" :title=\"list.version\" _v-3c857cf8=\"\"></td>\n                        <td _v-3c857cf8=\"\">\n                            <button type=\"button\" class=\"btn btn-default btn-small\" @click=\"getRuleFn(list)\" _v-3c857cf8=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-list-alt\" _v-3c857cf8=\"\"></span>\n                                规则\n                            </button>\n                            <button type=\"button\" class=\"btn btn-default btn-small\" @click=\"getRuleListFn(list)\" _v-3c857cf8=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-duplicate\" _v-3c857cf8=\"\"></span>\n                                脚本\n                            </button>\n                        </td>\n                        <td v-text=\"list.remark\" _v-3c857cf8=\"\"></td>\n                        <td _v-3c857cf8=\"\">\n                            <button type=\"button\" class=\"btn btn-default btn-small\" @click=\"$broadcast('showModify', list.id)\" _v-3c857cf8=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-edit\" _v-3c857cf8=\"\"></span>\n                                修改\n                            </button>\n                            <button type=\"button\" class=\"btn btn-default btn-small\" @click=\"$broadcast('showConfirm', list.id)\" _v-3c857cf8=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-trash\" _v-3c857cf8=\"\"></span>\n                                删除\n                            </button>\n                        </td>\n                    </tr>\n                    <tr v-if=\"tableList.length === 0\" _v-3c857cf8=\"\">\n                        <td class=\"text-center\" colspan=\"6\" _v-3c857cf8=\"\">\n                            暂无数据\n                        </td>\n                    </tr>\n                </tbody>\n                <tfoot _v-3c857cf8=\"\">\n                    <tr _v-3c857cf8=\"\">\n                        <td colspan=\"6\" _v-3c857cf8=\"\">\n                            <div class=\"pull-right\" _v-3c857cf8=\"\">\n                                <boot-page :async=\"true\" :lens=\"lenArr\" :page-len=\"pageLen\" :url=\"url\" :param=\"param\" _v-3c857cf8=\"\"></boot-page>\n                            </div>\n                        </td>\n                    </tr>\n                </tfoot>\n            </table>\n        </form>\n        <add-modal _v-3c857cf8=\"\"></add-modal>\n        <rule-modal _v-3c857cf8=\"\"></rule-modal>\n        <modify-modal _v-3c857cf8=\"\"></modify-modal>\n        <delete-modal _v-3c857cf8=\"\"></delete-modal>\n        <editscript-modal _v-3c857cf8=\"\"></editscript-modal>\n    </div>\n";
+	module.exports = "\n    <div _v-3c857cf8=\"\">\n        <form class=\"form-inline\" _v-3c857cf8=\"\">\n            <div class=\"form-group\" _v-3c857cf8=\"\">\n                <label _v-3c857cf8=\"\">名称：</label>\n                <input type=\"text\" class=\"form-control\" v-model=\"param.name\" _v-3c857cf8=\"\">\n            </div>\n            <div class=\"form-group\" _v-3c857cf8=\"\">\n                <label _v-3c857cf8=\"\">类型：</label>\n                <v-select :value.sync=\"param.type\" :options=\"types\" placeholder=\"请选择\" _v-3c857cf8=\"\">\n                </v-select>\n            </div>\n            <div class=\"mt30 table-btn\" _v-3c857cf8=\"\">\n                <button type=\"button\" class=\"btn btn-default btn-pd\" @click=\"$broadcast('showAdd')\" _v-3c857cf8=\"\">\n                    <span class=\"glyphicon glyphicon-plus\" _v-3c857cf8=\"\"></span>\n                    添加\n                </button>\n            </div>\n            <table class=\"table table-hover table-bordered table-bg\" _v-3c857cf8=\"\">\n                <thead _v-3c857cf8=\"\">\n                    <tr _v-3c857cf8=\"\">\n                        <th _v-3c857cf8=\"\">名称</th>\n                        <th _v-3c857cf8=\"\">类型</th>\n                        <th _v-3c857cf8=\"\">版本/型号</th>\n                        <th _v-3c857cf8=\"\">检查规则</th>\n                        <th _v-3c857cf8=\"\">备注</th>\n                        <th _v-3c857cf8=\"\">操作</th>\n                    </tr>\n                </thead>\n                <tbody _v-3c857cf8=\"\">\n                    <tr v-for=\"list in tableList\" _v-3c857cf8=\"\">\n                        <td v-text=\"list.name\" _v-3c857cf8=\"\"></td>\n                        <td v-text=\"list.type\" _v-3c857cf8=\"\"></td>\n                        <td v-text=\"list.version\" :title=\"list.version\" _v-3c857cf8=\"\"></td>\n                        <td _v-3c857cf8=\"\">\n                            <button type=\"button\" class=\"btn btn-default btn-small\" @click=\"getRuleFn(list)\" _v-3c857cf8=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-list-alt\" _v-3c857cf8=\"\"></span>\n                                规则\n                            </button>\n                            <button type=\"button\" class=\"btn btn-default btn-small\" @click=\"getRuleListFn(list)\" _v-3c857cf8=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-duplicate\" _v-3c857cf8=\"\"></span>\n                                脚本\n                            </button>\n                        </td>\n                        <td v-text=\"list.remark\" _v-3c857cf8=\"\"></td>\n                        <td _v-3c857cf8=\"\">\n                            <button type=\"button\" class=\"btn btn-default btn-small\" @click=\"$broadcast('showModify', list.id)\" _v-3c857cf8=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-edit\" _v-3c857cf8=\"\"></span>\n                                修改\n                            </button>\n                            <button type=\"button\" class=\"btn btn-default btn-small\" @click=\"$broadcast('showConfirm', list.id)\" _v-3c857cf8=\"\">\n                                <span class=\"table-icon glyphicon glyphicon-trash\" _v-3c857cf8=\"\"></span>\n                                删除\n                            </button>\n                        </td>\n                    </tr>\n                    <tr v-if=\"tableList.length === 0\" _v-3c857cf8=\"\">\n                        <td class=\"text-center\" colspan=\"6\" _v-3c857cf8=\"\">\n                            暂无数据\n                        </td>\n                    </tr>\n                </tbody>\n                <tfoot _v-3c857cf8=\"\">\n                    <tr _v-3c857cf8=\"\">\n                        <td colspan=\"6\" _v-3c857cf8=\"\">\n                            <div class=\"pull-right\" _v-3c857cf8=\"\">\n                                <boot-page :async=\"true\" :lens=\"lenArr\" :page-len=\"pageLen\" :url=\"url\" :param=\"param\" _v-3c857cf8=\"\"></boot-page>\n                            </div>\n                        </td>\n                    </tr>\n                </tfoot>\n            </table>\n        </form>\n        <add-modal _v-3c857cf8=\"\"></add-modal>\n        <rule-modal _v-3c857cf8=\"\"></rule-modal>\n        <modify-modal _v-3c857cf8=\"\"></modify-modal>\n        <delete-modal _v-3c857cf8=\"\"></delete-modal>\n        <editscript-modal _v-3c857cf8=\"\"></editscript-modal>\n    </div>\n";
 
 /***/ }
 ]));

@@ -138,7 +138,12 @@ export default {
                     this.value.$remove(v)
                 }
             } else {
-                this.value = v
+                if (this.value === v) {
+                    this.value = ''
+                } else {
+                    this.value = v
+                }
+
                 if (this.closeOnSelect) {
                     this.toggleDropdown();
                 }

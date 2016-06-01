@@ -19,7 +19,6 @@ const state = {
     types: [],
     rules: [],
     ruleId: null,
-    ruleList: [],
     appTypes: [],
     packages: [],
     idcs: []
@@ -46,11 +45,6 @@ const mutations = {
     // 规则id
     GETRULEID (state, data) {
         state.ruleId = data
-    },
-
-    // 规则列表
-    GETRULELIST (state, data) {
-        state.ruleList = data
     },
 
     // 应用配置类型

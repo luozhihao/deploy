@@ -11,7 +11,7 @@
             </div>
             <div class="form-group">
                 <label>项目类型：</label>
-                <v-select :value.sync="param.type" :options="typeArr.concat(appTypes)" placeholder="">
+                <v-select :value.sync="param.type" :options="appTypes" placeholder="请选择">
                 </v-select>
             </div>
             <div class="mt30 table-btn">
@@ -111,7 +111,6 @@ let origin = {
             name: '',
             type: ''
         },
-        typeArr: [{value: '', label: '全部'}],
         tableList: []
     }
 

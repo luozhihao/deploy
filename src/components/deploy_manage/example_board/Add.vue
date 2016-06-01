@@ -152,7 +152,7 @@ export default {
             })
             .then(response => {
                 if (response.data.result) {
-                    this.$data = Object.assign({}, origin, init)
+                    this.addModal = false
 
                     this.$dispatch('refresh')
                     this.$dispatch('show-success')
@@ -175,6 +175,8 @@ export default {
     },
     events: {
         'showAdd' () {
+            this.$data = Object.assign({}, origin, init)
+            
             this.addModal = true
         }
     },

@@ -7,7 +7,7 @@
             </div>
             <div class="form-group">
                 <label>类型：</label>
-                <v-select :value.sync="param.type" :options="typeArr.concat(types)" placeholder="">
+                <v-select :value.sync="param.type" :options="types" placeholder="请选择">
                 </v-select>
             </div>
             <div class="mt30 table-btn">
@@ -87,11 +87,10 @@ import modifyModal from './Modify.vue'
 import bootPage from '../../global/BootPage.vue'
 import deleteModal from '../../global/Confirm.vue'
 import editscriptModal from './Script.vue'
-import { getRunTypes, getRules, getRuleList } from '../../../vuex/action.js'
+import { getRunTypes, getRules } from '../../../vuex/action.js'
 import { types } from '../../../vuex/getters.js'
 
 let origin = {
-        typeArr: [{value: '', label: '全部'}],
         lenArr: [10, 50, 100],
         pageLen: 5,
         url: '/env_config/',
@@ -121,8 +120,7 @@ export default {
 
         // 获取已建规则列表
         getRuleListFn (list) {
-            this.getRuleList(list.id)
-            this.$broadcast('showScript')
+            this.$broadcast('showScript', list.id)
         }
     },
     vuex: {
@@ -131,8 +129,7 @@ export default {
         },
         actions: {
             getRunTypes, // 获取类型数据
-            getRules, // 获取规则
-            getRuleList // 获取规则列表
+            getRules // 获取规则
         }
     },
     components: {

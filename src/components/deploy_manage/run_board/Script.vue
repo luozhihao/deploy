@@ -47,6 +47,12 @@
                         <textarea id="editScript" class="form-group"></textarea>
                     </div>
                     <div class="form-group">
+                        <label class="col-sm-2 control-label">执行账户：<span class="text-danger">*</span></label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" v-model="account">
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label class="col-sm-2 control-label">超时时间(s)：</label>
                         <div class="col-sm-6">
                             <input type="number" class="form-control" min="0" max="259200" v-model="timeout" placeholder="最长等待执行秒数，超时则系统返回失败">
@@ -62,7 +68,7 @@
             </form>
         </div>
         <div slot="modal-footer" class="modal-footer">
-            <button type="button" class="btn btn-default" :disabled="rule ? false : true" @click="saveScript">保存</button>
+            <button type="button" class="btn btn-default" :disabled="rule && account.trim() ? false : true" @click="saveScript">保存</button>
             <button type="button" class="btn btn-default" @click="scriptModal = false">取消</button>
         </div>
     </modal>
@@ -77,7 +83,6 @@ import Codebg from 'codemirror/theme/erlang-dark.css'
 import shell from 'codemirror/mode/shell/shell.js'
 import python from 'codemirror/mode/python/python.js'
 import perl from 'codemirror/mode/perl/perl.js'
-import { ruleList } from '../../../vuex/getters.js'
 
 var editor;
 
@@ -85,6 +90,7 @@ export default {
     data () {
         return {
             scriptModal: false,
+            ruleList: [],
             rule: '',
             scriptTypes: [
                 {value: '1', label: 'shell'},
@@ -95,7 +101,8 @@ export default {
             scriptOriginSelected: '1',
             road: '',
             timeout: '',
-            param: ''
+            param: '',
+            account: 'root'
         }
     },
     methods: {
@@ -110,7 +117,8 @@ export default {
                     param: this.param,
                     timeout: this.timeout,
                     script: editor.getValue(),
-                    script_type: this.scriptTypeSelected
+                    script_type: this.scriptTypeSelected,
+                    account: this.account
                 }
             })
             .then(response => {
@@ -180,11 +188,6 @@ export default {
         radioGroup,
         radio: radioBtn
     },
-    vuex: {
-        getters: {
-            ruleList
-        }
-    },
     attached () {
 
         // 初始化codemirror
@@ -197,10 +200,34 @@ export default {
         }); 
     }, 
     events: {
-        'showScript' () {
+
+        // 判断是否存在rule
+        'showScript' (param) {
+            let hasRule = false
+
             this.scriptModal = true
 
-            this.rule = ''
+            this.$http({
+                url: '/rule_edit/?id=' + param,
+                method: 'GET'
+            })
+            .then(response => {
+                this.ruleList = response.data.rules
+
+                console.log(this.ruleList)
+
+                this.ruleList.forEach(e => {
+                    if (e.value === this.rule) {
+                        hasRule = true
+
+                        return false
+                    }
+                })
+
+                if (!hasRule) {
+                    this.rule = ''
+                }
+            })
         }
     },
     watch: {
@@ -217,6 +244,7 @@ export default {
 
                     this.timeout = response.data.timeout
                     this.param = response.data.param
+                    this.account = response.data.account
 
                     response.data.script_type ? this.scriptTypeSelected = response.data.script_type : this.scriptTypeSelected = '1'
                 })
@@ -236,7 +264,6 @@ export default {
                     editor.setOption('mode', 'python');
                     break;
             }
-
         }
     }
 }
