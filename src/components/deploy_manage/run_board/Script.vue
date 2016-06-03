@@ -214,8 +214,6 @@ export default {
             .then(response => {
                 this.ruleList = response.data.rules
 
-                console.log(this.ruleList)
-
                 this.ruleList.forEach(e => {
                     if (e.value === this.rule) {
                         hasRule = true

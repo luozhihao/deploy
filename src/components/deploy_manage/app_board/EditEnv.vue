@@ -56,13 +56,6 @@ export default {
                 })
                 .then(response => {
                     if (response.data.result) {
-                        this.env = ''
-                        this.envId = null
-                        this.rules = []
-                        this.envValue = []
-
-                        this.editEnvModal = false
-
                         this.$dispatch('show-success')
                     }
                 })
@@ -79,6 +72,10 @@ export default {
         'showEditEnv' (param) {
             this.editEnvModal = true
             this.envId = param
+
+            this.env = ''
+            this.rules = []
+            this.envValue = []
 
             this.$http({
                 url: '/package_envs/',
