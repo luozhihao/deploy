@@ -192,6 +192,10 @@ export default {
                         this.getPages()
                     }
 
+                    if (!response.data.data.length) {
+                        this.activeNum = this.pageTotal - 1
+                    }
+
                     this.$dispatch('data', response.data)
                 })
             }
@@ -199,6 +203,11 @@ export default {
 
         // 刷新表格
         refresh () {
+            this.getData()
+        },
+
+        // 重置并刷新表格
+        refresh2 () {
             this.pages = [1]
 
             this.activeNum = 0
@@ -231,7 +240,7 @@ export default {
 
                 this.getData()
             } else {
-                this.refresh()
+                this.refresh2()
             }
         },
 

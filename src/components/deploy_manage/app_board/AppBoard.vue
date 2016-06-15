@@ -58,6 +58,10 @@
                                 <span class="table-icon glyphicon glyphicon-edit"></span>
                                 修改
                             </button>
+                            <button type="button" class="btn btn-default btn-small" @click="$broadcast('showUpload', list.id)">
+                                <span class="table-icon glyphicon glyphicon-open"></span>
+                                上传
+                            </button>
                             <button type="button" class="btn btn-default btn-small" @click="$broadcast('showConfirm', list.id)">
                                 <span class="table-icon glyphicon glyphicon-trash"></span>
                                 删除
@@ -83,6 +87,7 @@
         </form>
         <add-modal></add-modal>
         <modify-modal></modify-modal>
+        <upload-modal></upload-modal>
         <edit-env-modal></edit-env-modal>
         <view-env-modal></view-env-modal>
         <copy-modal></copy-modal>
@@ -94,6 +99,7 @@
 import vSelect from '../../global/Select.vue'
 import addModal from './Add.vue'
 import ModifyModal from './Modify.vue'
+import UploadModal from './Upload.vue'
 import copyModal from './Copy.vue'
 import editEnvModal from './EditEnv.vue'
 import viewEnvModal from './ViewEnv.vue'
@@ -142,6 +148,7 @@ export default {
         deleteModal,
         bootPage,
         ModifyModal,
+        UploadModal,
         editEnvModal,
         viewEnvModal
     },

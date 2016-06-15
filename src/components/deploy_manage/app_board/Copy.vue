@@ -86,4 +86,9 @@ export default {
 .copy-body {
     min-height: 200px;
 }
+
+.copy-body .dropdown-menu {
+    max-height: 160px;
+    overflow-y: auto;
+}
 </style>
