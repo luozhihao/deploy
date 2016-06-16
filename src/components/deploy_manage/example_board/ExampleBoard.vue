@@ -44,10 +44,6 @@
                             <label for="ip">机器IP</label>
                         </li>
                         <li>
-                            <input id="port" type="checkbox" value="8" v-model="checkedNames"> 
-                            <label for="port">端口</label>
-                        </li>
-                        <li>
                             <input id="domain" type="checkbox" value="9" v-model="checkedNames"> 
                             <label for="domain">域名</label>
                         </li>
@@ -74,7 +70,7 @@
                 <thead>
                     <tr>
                         <th v-for="name in checkedArr" v-text="name" track-by="$index"></th>
-                        <th>配置环境要求</th>
+                        <th>配置检查 / 部署</th>
                         <th>操作</th>
                     </tr>
                 </thead>
@@ -140,8 +136,8 @@ let origin = {
     param: {
         search: ''
     },
-    checkedNames: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13'],
-    checkedArr: ['实例名称', '部署包名称', '项目名称', '项目类型', '版本', '机房位置', '机器IP', '端口', '域名', '部署目录', '日志文件目录', '配置文件目录', '备注'],
+    checkedNames: ['1', '2', '3', '4', '5', '6', '7', '9', '10', '11', '12', '13'],
+    checkedArr: ['实例名称', '部署包名称', '项目名称', '项目类型', '版本', '机房位置', '机器IP', '域名', '部署目录', '日志文件目录', '配置文件目录', '备注'],
     tableList: []
 }
 
@@ -212,9 +208,6 @@ export default {
                     break
                 case '7':
                     return '机器IP'
-                    break
-                case '8':
-                    return '端口'
                     break
                 case '9':
                     return '域名'

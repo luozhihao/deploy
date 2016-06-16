@@ -1,5 +1,5 @@
 <template>
-    <modal :show.sync="addModal" effect="fade" width="460px">
+    <modal :show.sync="addModal" effect="fade" width="550px">
         <div slot="modal-header" class="modal-header">
             <h4 class="modal-title">添加</h4>
         </div>
@@ -26,23 +26,35 @@
                     </div>
                 </div>
                 <div class="form-group input-box">
-                    <label class="control-label col-sm-3">内网IP端口：<span class="text-danger" v-show="!outip">*</span></label>
-                    <div class="col-sm-5">
+                    <label class="control-label col-sm-3">内网IP：<span class="text-danger" v-show="!outip">*</span></label>
+                    <div class="col-sm-8">
                         <v-select :value.sync="inip" :options="inips" :search="true" placeholder="请选择">
                         </v-select>
                     </div>
-                    <div class="col-sm-3">
-                        <input type="text" class="form-control" v-model="inport">
-                    </div>
                 </div>
                 <div class="form-group input-box">
-                    <label class="control-label col-sm-3">外网IP端口：<span class="text-danger" v-show="!inip">*</span></label>
-                    <div class="col-sm-5">
+                    <label class="control-label col-sm-3">外网IP：<span class="text-danger" v-show="!inip">*</span></label>
+                    <div class="col-sm-8">
                         <v-select :value.sync="outip" :options="outips" :search="true" placeholder="请选择">
                         </v-select>
                     </div>
-                    <div class="col-sm-3">
-                        <input type="text" class="form-control" v-model="outport">
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3">关闭监听端口号：<span class="text-danger">*</span></label>
+                    <div class="col-sm-8">
+                        <input type="number" min="0" class="form-control" v-model="shutdownPort">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3">tomcat端口号：<span class="text-danger">*</span></label>
+                    <div class="col-sm-8">
+                        <input type="number" min="0" class="form-control" v-model="tomcatPort">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3">转发请求端口号：<span class="text-danger">*</span></label>
+                    <div class="col-sm-8">
+                        <input type="number" min="0" class="form-control" v-model="requestPort">
                     </div>
                 </div>
                 <div class="form-group">
@@ -78,7 +90,7 @@
             </form>
         </div>
         <div slot="modal-footer" class="modal-footer">
-            <button type="button" class="btn btn-default" :disabled="exampleName && pack && idc && (inip || outip) ? false : true" @click="saveFn">保存</button>
+            <button type="button" class="btn btn-default" :disabled="exampleName.trim() && pack && idc && (inip || outip) && shutdownPort.trim() && tomcatPort.trim() && requestPort.trim() ? false : true" @click="saveFn">保存</button>
             <button type="button" class="btn btn-default" @click='addModal = false'>取消</button>
         </div>
     </modal>
@@ -96,10 +108,11 @@ let origin = {
         idc: '',
         inips: [],
         inip: '',
-        inport: '',
         outips: [],
         outip: '',
-        outport: '',
+        shutdownPort: '',
+        tomcatPort: '',
+        requestPort: '',
         domain: '',
         deployPath: '',
         logPath: '',
@@ -116,22 +129,6 @@ export default {
 
         // 添加方法
         saveFn () {
-            if (this.inip.trim()) {
-                if (!this.inport.trim()) {
-                    this.$dispatch('show-notify', '请填写内网端口')
-
-                    return false
-                }
-            }
-
-            if (this.outip.trim()) {
-                if (!this.outport.trim()) {
-                    this.$dispatch('show-notify', '请填写外网端口')
-
-                    return false
-                }
-            }
-
             this.$http({
                 url: '/instance_add/',
                 method: 'POST',
@@ -141,8 +138,9 @@ export default {
                     idc: this.idc,
                     inip: this.inip,
                     outip: this.outip,
-                    inport: this.inport,
-                    outport: this.outport,
+                    shutdownPort: this.shutdownPort,
+                    tomcatPort: this.tomcatPort,
+                    requestPort: this.requestPort,
                     domain: this.domain,
                     deployPath: this.deployPath,
                     logPath: this.logPath,

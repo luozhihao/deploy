@@ -1,7 +1,7 @@
 <template>
     <modal :show.sync="testModal" effect="fade" width="550px">
         <div slot="modal-header" class="modal-header">
-            <h4 class="modal-title">环境配置检查</h4>
+            <h4 class="modal-title">环境配置检查 / 部署</h4>
         </div>
         <div slot="modal-body" class="modal-body">
             <form class="form-horizontal env-from">
@@ -18,6 +18,7 @@
         </div>
         <div slot="modal-footer" class="modal-footer">
             <button type="button" class="btn btn-default" @click="testFn">检查</button>
+            <button type="button" class="btn btn-default" @click="setFn">部署</button>
             <button type="button" class="btn btn-default" @click='testModal = false'>关闭</button>
         </div>
     </modal>
@@ -64,7 +65,6 @@ export default {
                     .then(response => {
                         if (response.data.result !== 0) {
                             _this.envList[key][currentIndex].msg = response.data.msg
-
                         } else {
                             _this.envList[key][currentIndex].msg = '服务器出错了'
                         }
@@ -77,6 +77,29 @@ export default {
                 }
 
                 newRequest(currentIndex, len)
+            }
+        },
+
+        // 部署方法
+        setFn () {
+            let isPass = true
+
+            for (let key in this.envList) {
+                let arr = this.envList[key]
+
+                arr.forEach((e) => {
+                    console.log(e.msg)
+
+                    if (e.msg !== 'ok') {
+                        isPass = false
+                    }
+                })
+            }
+
+            if (isPass) {
+                console.log(111)
+            } else {
+                this.$dispatch('show-notify', '存在未通过检测的配置')
             }
         }
     },
