@@ -42,19 +42,19 @@
                 <div class="form-group">
                     <label class="control-label col-sm-3">关闭监听端口号：<span class="text-danger">*</span></label>
                     <div class="col-sm-8">
-                        <input type="number" min="0" class="form-control" v-model="shutdownPort">
+                        <input type="number" min="0" max="99999" class="form-control" v-model="shutdownPort">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-3">tomcat端口号：<span class="text-danger">*</span></label>
                     <div class="col-sm-8">
-                        <input type="number" min="0" class="form-control" v-model="tomcatPort">
+                        <input type="number" min="0" max="99999" class="form-control" v-model="tomcatPort">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-3">转发请求端口号：<span class="text-danger">*</span></label>
                     <div class="col-sm-8">
-                        <input type="number" min="0" class="form-control" v-model="requestPort">
+                        <input type="number" min="0" max="99999" class="form-control" v-model="requestPort">
                     </div>
                 </div>
                 <div class="form-group">
@@ -129,36 +129,41 @@ export default {
 
         // 添加方法
         saveFn () {
-            this.$http({
-                url: '/instance_add/',
-                method: 'POST',
-                data: {
-                    exampleName: this.exampleName,
-                    pack: this.pack,
-                    idc: this.idc,
-                    inip: this.inip,
-                    outip: this.outip,
-                    shutdownPort: this.shutdownPort,
-                    tomcatPort: this.tomcatPort,
-                    requestPort: this.requestPort,
-                    domain: this.domain,
-                    deployPath: this.deployPath,
-                    logPath: this.logPath,
-                    docPath: this.docPath,
-                    remark: this.remark
-                }
-            })
-            .then(response => {
-                if (response.data.result) {
-                    this.addModal = false
+            let reg = /^([1-9][0-9]{0,4})$/
 
-                    this.$dispatch('refresh')
-                    this.$dispatch('show-success')
-                } else {
-                    this.$dispatch('show-error')
-                }
-            })
+            if (reg.test(this.shutdownPort) && reg.test(this.tomcatPort) && reg.test(this.requestPort)) {
+                this.$http({
+                    url: '/instance_add/',
+                    method: 'POST',
+                    data: {
+                        exampleName: this.exampleName,
+                        pack: this.pack,
+                        idc: this.idc,
+                        inip: this.inip,
+                        outip: this.outip,
+                        shutdownPort: this.shutdownPort,
+                        tomcatPort: this.tomcatPort,
+                        requestPort: this.requestPort,
+                        domain: this.domain,
+                        deployPath: this.deployPath,
+                        logPath: this.logPath,
+                        docPath: this.docPath,
+                        remark: this.remark
+                    }
+                })
+                .then(response => {
+                    if (response.data.result) {
+                        this.addModal = false
 
+                        this.$dispatch('refresh')
+                        this.$dispatch('show-success')
+                    } else {
+                        this.$dispatch('show-error')
+                    }
+                })
+            } else {
+                this.$dispatch('show-notify', '端口号格式需为5位以内的正整数')
+            }
         }
     },
     components: {

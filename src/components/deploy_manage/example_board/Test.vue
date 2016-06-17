@@ -88,8 +88,6 @@ export default {
                 let arr = this.envList[key]
 
                 arr.forEach((e) => {
-                    console.log(e.msg)
-
                     if (e.msg !== 'ok') {
                         isPass = false
                     }
@@ -97,7 +95,22 @@ export default {
             }
 
             if (isPass) {
-                console.log(111)
+                this.$http({
+                    url: '/instance_release/',
+                    method: 'POST',
+                    data: {
+                        id: this.idNum
+                    }
+                })
+                .then((response) => {
+                    if (response.data.result === 1) {
+                        this.testModal = false
+
+                        this.$dispatch('show-success')
+                    } else {
+                        this.$dispatch('show-error', response.data.msg)
+                    }
+                })
             } else {
                 this.$dispatch('show-notify', '存在未通过检测的配置')
             }
